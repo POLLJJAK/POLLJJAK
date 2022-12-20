@@ -1,0 +1,14 @@
+127.0.0.1 - - [08/Dec/2022:19:36:09 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:36:14 +0900] "GET /mybatisApp00/WEB-INF/view/Hello.jsp HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:36:26 +0900] "GET /mybatisApp00/WEB-INF/view/Hello.jsp HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:38:24 +0900] "GET /mybatisApp00/WEB-INF/view/Hello.jsp HTTP/1.1" 404 721
+127.0.0.1 - - [08/Dec/2022:19:39:12 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:39:15 +0900] "GET /mybatisApp00/studentlist.action HTTP/1.1" 200 5910
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:41:06 +0900] "GET /mybatisApp00/studentlist.action HTTP/1.1" 200 5910
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:41:10 +0900] "GET /mybatisApp00/gradelist.action HTTP/1.1" 200 5419
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:41:11 +0900] "GET /mybatisApp00/studentlist.action HTTP/1.1" 200 5910
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:41:12 +0900] "GET /mybatisApp00/studentupdateform.action?sid=1 HTTP/1.1" 200 4243
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:41:12 +0900] "GET /mybatisApp00/css/main.css HTTP/1.1" 200 721
+127.0.0.1 - - [08/Dec/2022:19:44:12 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:44:13 +0900] "GET /mybatisApp00/WEB-INF/view/Hello.jsp HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [08/Dec/2022:19:44:34 +0900] "GET /mybatisApp00/studentlist.action HTTP/1.1" 200 5910

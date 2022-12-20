@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>mybatisApp01</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+	
+	<!-- check~!!! -->
+	<!-- 필터 등록 → 인코딩 필터 등록 → CharacterEncodingFilter -->
+	<!-- 필터 : 요청/응답 여과시켜서 얻고자하는 형태로 나오게 하는 것 -->
+	<!-- CharacterEncodingFilter 사용해서 뭘로 요청하든 UTF-8로 바꾸는 필터 사용해보자 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<!-- <filter-class>내가설계한클래스</filter-class> -->
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<!-- └→ 아무 class가서 CharacterEncodingFilter 써서 import 구문 가져와서 filter-class에 적어주면 된다. -->
+		
+		<!-- 필터 설정 → 필터에 파라미터 초기값 지정 -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	
+	<!-- 어떤 요청일 때 이 필터가 기능하게 할 껀지도 명시해야 한다. -->
+	<!-- servlet에서 servlet-mapping 있듯이,  filter도 filter-mapping이 있다. -->
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<!-- └→ contextpath(cp) 에 있는 모든 요청일 때, 기능하게 할 것이라는 의미 -->
+		<!-- 이러면 이제 이미 여기서 utf-8 필터 거쳤기 때문에 -->
+		<!-- request.setCharacterEncoding=utf-8 안해도 된다. --> 
+	</filter-mapping>
+	
+</web-app>
