@@ -8,7 +8,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="U-main.jsp">플젝폴짝</a><link href="assets/img/pol-favicon.png" rel="icon"></h1>
+        <h1><a href="U-main.jsp">플젝폴짝</a><link href="assets/img/pol-favicon.png" rel="icon">  </h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>

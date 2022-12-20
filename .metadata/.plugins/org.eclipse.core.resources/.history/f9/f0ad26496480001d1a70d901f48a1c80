@@ -10,13 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- head import (css imported)-->
-<c:import url="./common/Head.jsp" /> 
-
 <body>
-    
-<c:import url="./common/Nav.jsp" />
-
 
   <main id="main">
 
@@ -44,9 +38,6 @@
     </section>
 
   </main><!-- End #main -->
-
-<!-- footer import (js imported)-->
-<c:import url="./common/Footer.jsp" />
 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
