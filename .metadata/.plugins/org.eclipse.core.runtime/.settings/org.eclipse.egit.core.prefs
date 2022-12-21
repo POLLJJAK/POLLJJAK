@@ -1,3 +1,4 @@
-GitRepositoriesView.GitDirectories=C\:\\FinalProject\\POLLJJAK\\.git;
-GitRepositoriesView.GitDirectories.relative=POLLJJAK\\.git;
+GitRepositoriesView.GitDirectories=C\:\\POLLJJAK\\POLLJJAK\\.git;C\:\\POLLJJAK\\.git;
+GitRepositoriesView.GitDirectories.relative=POLLJJAK\\.git;.git;
+core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
