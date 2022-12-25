@@ -7,14 +7,22 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-    <title>Vesperr Bootstrap Template - Index</title>
+    <title>플젝폴짝</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
   
     <!-- Favicons -->
     <link href="assets/img/pol-favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  
+  	
+  	<!-- Fontawesome -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  	
+  	
+  	<!-- Jquery CDN -->
+  	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   
@@ -39,4 +47,14 @@
     
     <!-- 좋아요 아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    
+    <style type="text/css">
+    .form-control
+    {
+    	align-content: center;
+    	
+    }
+    
+    
+    </style>
   </head>

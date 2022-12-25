@@ -165,6 +165,15 @@ body {
 	-webkit-tap-highlight-color: transparent
 }
 
+# 관리 홈 페이지 데이터 숫자 크기 관리
+.dataCountNum {
+	margin-top: 0;
+	font-size: 3.0rem;
+	font-weight: var(- -tblr-font-weight-medium);
+	line-height: 1.2
+}
+	
+	
 .hr, hr {
 	margin: 2rem 0;
 	color: inherit;
