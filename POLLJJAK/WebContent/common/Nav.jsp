@@ -26,7 +26,7 @@
 						조회/지원</a></li>
 				<li><a class="nav-link scrollto" href="Inner-page.jsp">프로젝트
 						개설</a></li>
-				<li><a class="nav-link scrollto" href="Inner-page.jsp">내
+				<li><a class="nav-link scrollto" href="Project-home.jsp">내
 						프로젝트 홈</a></li>
 				<li><a class="nav-link scrollto " href="Inner-page.jsp">라운지</a></li>
 				<li><a class="nav-link scrollto" href="Inner-page.jsp">기업
