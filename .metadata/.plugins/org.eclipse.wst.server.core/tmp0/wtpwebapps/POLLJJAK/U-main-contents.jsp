@@ -11,7 +11,7 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
 
-	<div class="container">
+	<div class="container" data-aos="fade-up">
 		<div class="row">
 			<div
 				class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
@@ -42,7 +42,7 @@
 	<h2>관리자 공지사항</h2>
 	<p>플젝폴짝의 새로운 공지사항을 확인하세요!</p>
 </div>
-<div class="container mb-300">
+<div class="container mb-100" data-aos="fade-up">
 	<div id="carousel-new-notice" class="carousel carousel-dark slide" data-bs-ride="carousel">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carousel-new-notice" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -53,7 +53,7 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active" data-bs-interval="10000" >
-				<img src="assets/img/portfolio/carousel.png"
+				<img src="assets/img/portfolio/portfolio-1.jpg""
 					class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>라운지 이용 에티켓</h5>
@@ -61,14 +61,14 @@
 				</div>
 			</div>
 			<div class="carousel-item" data-bs-interval="2000">
-				<img src= "assets/img/portfolio/portfolio-1.jpg" class="d-block w-100" alt="...">
+				<img src= "assets/img/portfolio/portfolio-2.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>새로운 프로젝트 개설</h5>
 					<p>마음에 드는 프로젝트가 없나요? 자신만의 새로운 프로젝트를 개설해보세요! </p>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="assets/img/portfolio/portfolio-1.jpg" class="d-block w-100" alt="...">
+				<img src="assets/img/portfolio/portfolio-3.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>새로운 공지사항</h5>
 					<p>고객센터에서 관리자에게 무엇이든 물어보세요!</p>
@@ -94,8 +94,8 @@
 	<h2>신규 프로젝트</h2>
 	<p>플젝폴짝의 새로운 프로젝트 모집을 확인하세요!</p>
 </div>
-<section class="pt-5 pb-5">
-    <div class="container mb-300">
+<section class="pt-5 pb-5" data-aos="fade-up">
+    <div class="container mb-100">
 	    <div id="carousel-new-project" class="carousel carousel-dark slide" data-bs-ride="carousel">
 	        <div class="row">
 	            <div class="col-12">
@@ -216,8 +216,8 @@
 	<h2>인기 프로젝트</h2>
 	<p>플젝폴짝의 인기 프로젝트 모집을 확인하세요!</p>
 </div>
-<section class="pt-5 pb-5">
-    <div class="container mb-300">
+<section class="pt-5 pb-5" data-aos="fade-up">
+    <div class="container mb-100">
 	    <div id="carousel-poupular-project" class="carousel carousel-dark slide" data-bs-ride="carousel">
 	        <div class="row">
 	            <div class="col-12">

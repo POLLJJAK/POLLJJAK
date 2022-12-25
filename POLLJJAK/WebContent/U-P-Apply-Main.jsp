@@ -53,7 +53,7 @@ String cp = request.getContextPath();
 				<!-- End PageIntro Section -->
 
 				<!-- ====== InnerNav ====== -->
-				<nav id="navbar" class="navbar">
+				<nav id="navbar" class="navbar" data-aos="fade-up"> 
 					<ul style="margin-left: auto; margin-right: auto;">
 						<li><a class="nav-link scrollto active" href="Inner-page.jsp">전체
 								프로젝트</a></li>
@@ -70,7 +70,7 @@ String cp = request.getContextPath();
 				<!-- End InnerNav -->
 
 				<!-- ====== Select Section ====== -->
-				<div class="select-project-part form-group">
+				<div class="select-project-part form-group" data-aos="fade-up">
 					<p>전체 프로젝트</p>
 					<div class="row row-cols-auto">
 						<div class="col">
@@ -146,7 +146,7 @@ String cp = request.getContextPath();
 		<h2>인기 프로젝트</h2>
 		<p>플젝폴짝의 인기 프로젝트 모집을 확인하세요!</p>
 	</div>
-	<section class="pt-5 pb-5">
+	<section class="pt-5 pb-5" data-aos="fade-up">
 		<div class="container">
 			<div id="carousel-poupular -project" class="carousel carousel-dark" data-bs-ride="carousel">
 				<div class="row">
