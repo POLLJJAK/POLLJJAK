@@ -35,7 +35,7 @@
 	</section>End Breadcrumbs Section
 	-->
 	
-	<div class="section-title" data-aos="fade-up">
+	<div class="section-title mt-5" data-aos="fade-up">
 		<h2>관리자 공지사항</h2>
 		<p>플젝폴짝의 새로운 공지사항을 확인하세요!</p>
 	</div>
