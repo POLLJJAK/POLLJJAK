@@ -141,9 +141,6 @@ String cp = request.getContextPath();
 				</div>
 			</div>
 		</section>
-		
-
-
 	</main>
 	
 	

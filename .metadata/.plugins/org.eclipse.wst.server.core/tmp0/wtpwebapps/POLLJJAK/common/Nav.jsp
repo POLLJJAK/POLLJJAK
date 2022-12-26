@@ -24,7 +24,7 @@
 						조회/지원</a></li> -->
 				<li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp">프로젝트
 						조회/지원</a></li>
-				<li><a class="nav-link scrollto" href="Inner-page.jsp">프로젝트
+				<li><a class="nav-link scrollto" href="ProjectOpenMain.jsp">프로젝트
 						개설</a></li>
 				<li><a class="nav-link scrollto" href="Project-home.jsp">내
 						프로젝트 홈</a></li>
