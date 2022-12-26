@@ -544,6 +544,7 @@ section {
   margin: 15px 0 0 0;
 }
 
+
 /*--------------------------------------------------------------
 # Clients
 --------------------------------------------------------------*/
@@ -1671,21 +1672,24 @@ section {
 .mb-100{
 	margin-bottom : 100px !important;
 }
-
 .mb-200{
 	margin-bottom : 200px !important;
 }
-
 .mb-300{
 	margin-bottom : 300px !important;
 }
-
 
 
 /* nav-bar search box design */
 .nav-search::placeholder {color:#ccc; padding-left: 20px;}
 .nav-search::-webkit-input-placeholder {color:#ccc;padding-left: 20px;}
 
+/* inner-nav 반응형 예외 */
+@media (max-width: 991px){
+	.navbar.inner-nav ul {
+	    display: flex !important;
+	}
+}
 
 /* carousel */
 .carousel-inner>.carousel-item>img {
@@ -1698,7 +1702,6 @@ section {
 	display: block;
 	width: 5%;
 }
-
 .carousel-row {
     --bs-gutter-x: -4.5rem;
     --bs-gutter-y: 0;
@@ -1708,7 +1711,6 @@ section {
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
 }
-
 .card {
     --bs-card-spacer-y: 1rem;
     --bs-card-spacer-x: 1rem;
@@ -1739,14 +1741,12 @@ section {
     border-radius: var(--bs-card-border-radius);
     cursor: pointer;
 }
-
 .img-fluid {
     max-width: 100%;
     height: auto;
     border-top-left-radius: 26px;
     border-top-right-radius: 26px;
 }
-
 .card-body {
     flex: 1 1 auto;
     padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
@@ -1755,5 +1755,4 @@ section {
     border-bottom-right-radius: 26px;
     border: 1px solid lightgray;
 }
-
 

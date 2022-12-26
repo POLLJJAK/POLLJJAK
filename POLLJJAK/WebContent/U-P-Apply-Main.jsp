@@ -18,7 +18,19 @@ String cp = request.getContextPath();
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<script src="./js/U-P-Apply-Main.js"></script>
+
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+<!-- <script src="./js/U-P-Apply-Main.js"></script> -->
 
 <body>
 	<c:import url="./common/Nav.jsp" />
@@ -53,18 +65,13 @@ String cp = request.getContextPath();
 				<!-- End PageIntro Section -->
 
 				<!-- ====== InnerNav ====== -->
-				<nav id="navbar" class="navbar" data-aos="fade-up"> 
+				<nav id="navbar_" class="navbar inner-nav" data-aos="fade-up"> 
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto active" href="Inner-page.jsp">전체
-								프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="Inner-page.jsp">신규
-								프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="Inner-page.jsp">인기
-								프로젝트</a></li>
-						<li><a class="nav-link scrollto " href="Inner-page.jsp">완료
-								프로젝트</a></li>
+						<li><a class="nav-link scrollto active" href="Inner-page.jsp">전체 프로젝트</a></li>
+						<li><a class="nav-link scrollto" href="Inner-page.jsp">신규 프로젝트</a></li>
+						<li><a class="nav-link scrollto" href="Inner-page.jsp">인기 프로젝트</a></li>
+						<li><a class="nav-link scrollto " href="Inner-page.jsp">완료 프로젝트</a></li>
 					</ul>
-					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
 				<hr>
 				<!-- End InnerNav -->
@@ -408,17 +415,6 @@ String cp = request.getContextPath();
 		class="back-to-top d-flex align-items-center justify-content-center">
 		<i class="bi bi-arrow-up-short"></i>
 	</a>
-
-	<!-- Vendor JS Files -->
-	<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-	<script src="assets/vendor/aos/aos.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-	<!-- Template Main JS File -->
-	<script src="assets/js/main.js"></script>
 </body>
 
 <script>
