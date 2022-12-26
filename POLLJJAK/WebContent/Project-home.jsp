@@ -70,9 +70,9 @@ String cp = request.getContextPath();
 					
 					<!-- 일단 임시로 링크걸어둠 -->
 					<div class="container-lg mb-3" onclick="location.href='<%=cp %>/Inner-Project-home.jsp';" style="cursor: pointer;">
-						<div class="card">
-							<div class="card-body col-xs-12 col-lg-12">
-								<div class="h5 card-title fw-bolder">진행중인 프로젝트 제목1</div>
+						<div class="pj-box">
+							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+								<div class="h5 fw-bolder">진행중인 프로젝트 제목1</div>
 								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
 								<div class="mb-1">전체 진척도 <span>75%</span></div>
 								<div class="progress">
@@ -97,11 +97,11 @@ String cp = request.getContextPath();
 					</h5>
 						
 					<div class="container-lg mb-3">
-						<div class="card">
-							<div class="card-body col-xs-12 col-lg-12">
-								<div class="h5 card-title fw-bolder">완료 프로젝트 제목3</div>
-								<div class="card-date mb-2">2022-12-24 ~ 2022-12-25</div>
-								<div class="card-percent mb-1">전체 진척도 <span>100%</span></div>
+						<div class="pj-box">
+							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+								<div class="h5 fw-bolder">완료 프로젝트 제목3</div>
+								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
+								<div class="mb-1">전체 진척도 <span>100%</span></div>
 								<div class="progress">
 									<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>								
@@ -110,11 +110,11 @@ String cp = request.getContextPath();
 					</div>
 					
 					<div class="container-lg mb-3">
-						<div class="card">
-							<div class="card-body col-xs-12 col-lg-12">
-								<div class="h5 card-title fw-bolder">완료 프로젝트 제목2</div>
-								<div class="card-date mb-2">2022-12-24 ~ 2022-12-25</div>
-								<div class="card-percent mb-1">전체 진척도 <span>100%</span></div>
+						<div class="pj-box">
+							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+								<div class="h5 fw-bolder">완료 프로젝트 제목2</div>
+								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
+								<div class="mb-1">전체 진척도 <span>100%</span></div>
 								<div class="progress">
 									<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>								
@@ -125,11 +125,11 @@ String cp = request.getContextPath();
 					
 					
 					<div class="container-lg mb-3">
-						<div class="card">
-							<div class="card-body col-xs-12 col-lg-12">
-								<div class="h5 card-title fw-bolder">완료 프로젝트 제목1</div>
-								<div class="card-date mb-2">2022-12-24 ~ 2022-12-25</div>
-								<div class="card-percent mb-1">전체 진척도 <span>100%</span></div>
+						<div class="pj-box">
+							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+								<div class="h5 fw-bolder">완료 프로젝트 제목1</div>
+								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
+								<div class="mb-1">전체 진척도 <span>100%</span></div>
 								<div class="progress">
 									<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>								
@@ -154,20 +154,21 @@ String cp = request.getContextPath();
 
 <style>
 
-.projectHome-list-now .card {
+.projectHome-list-now .pj-box {
 	background: #fff;
 	transition: 0.3s;
 	transition: ease-in-out 0.3s;
+	border: 1px solid gray;
 	border-radius: 5px;
 }
 
-.projectHome-list-now .card:hover {
+.projectHome-list-now .pj-box:hover {
   background: #60A7F7;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   color: #fff;
 }
  
-.projectHome-list-complete .card {
+.projectHome-list-complete .pj-box {
 	background: #D8D8D8;
 	transition: 0.3s;
 	transition: ease-in-out 0.4s;
@@ -175,7 +176,7 @@ String cp = request.getContextPath();
 	color: #28313D;
 }
 
-.projectHome-list-complete .card:hover {
+.projectHome-list-complete .pj-box:hover {
 	background: #8E8E8E;
   	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
