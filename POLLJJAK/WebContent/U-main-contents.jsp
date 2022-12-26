@@ -253,7 +253,7 @@
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
-					</div>
+					</div> 
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<div class="carousel-row">
