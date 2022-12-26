@@ -196,9 +196,9 @@ String cp = request.getContextPath();
 											<img class="img-fluid" alt="100%x280"
 												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
 											<div class="card-body">
-												<h4 class="card-title">박성순의 프로젝트</h4>
-												<p class="card-text">박성순의 프로젝트</p>
-												<p class="card-text">JAVA/Web</p>
+												<h4 class="card-title">박원석의 프로젝트</h4>
+												<p class="card-text">박원석의 프로젝트</p>
+												<p class="card-text">Python/Django</p>
 											</div>
 										</div>
 									</div>
@@ -259,9 +259,9 @@ String cp = request.getContextPath();
 											<img class="img-fluid" alt="100%x280"
 												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
 											<div class="card-body">
-												<h4 class="card-title">박성순의 프로젝트</h4>
-												<p class="card-text">박성순의 프로젝트</p>
-												<p class="card-text">JAVA/Web</p>
+												<h4 class="card-title">박원석의 프로젝트</h4>
+												<p class="card-text">박원석의 프로젝트</p>
+												<p class="card-text">Python/Django</p>
 											</div>
 										</div>
 									</div>
@@ -322,9 +322,9 @@ String cp = request.getContextPath();
 											<img class="img-fluid" alt="100%x280"
 												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
 											<div class="card-body">
-												<h4 class="card-title">박성순의 프로젝트</h4>
-												<p class="card-text">박성순의 프로젝트</p>
-												<p class="card-text">JAVA/Web</p>
+												<h4 class="card-title">박원석의 프로젝트</h4>
+												<p class="card-text">박원석의 프로젝트</p>
+												<p class="card-text">Python/Django</p>
 											</div>
 										</div>
 									</div>
@@ -385,9 +385,9 @@ String cp = request.getContextPath();
 											<img class="img-fluid" alt="100%x280"
 												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
 											<div class="card-body">
-												<h4 class="card-title">박성순의 프로젝트</h4>
-												<p class="card-text">박성순의 프로젝트</p>
-												<p class="card-text">JAVA/Web</p>
+												<h4 class="card-title">박원석의 프로젝트</h4>
+												<p class="card-text">박원석의 프로젝트</p>
+												<p class="card-text">Python/Django</p>
 											</div>
 										</div>
 									</div>
@@ -426,7 +426,8 @@ String cp = request.getContextPath();
 	$().ready(function(){
 		$(".card").click(function(){
 			var target = $(this).find("input").val();
-			$(location).attr("href", "/POLLJJAK/Inner-page.jsp?target=" + target);
+			/*$(location).attr("href", "/POLLJJAK/Inner-page.jsp?target=" + target);*/
+			$(location).attr("href", "/POLLJJAK/ProjectDetail.jsp");
 		});
 	})
 
