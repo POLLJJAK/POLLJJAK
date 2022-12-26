@@ -25,8 +25,8 @@
     <section class="breadcrumbs">
       <!-- ====== PageIntro Section ====== -->
             <div class="pageintro">
-               <div class="section-title">
-                  <h2>프로젝트 상세보기</h2>
+               <div class="section-title mt-5" data-aos="fade-up">
+                  <h2><b>프로젝트 상세보기</b></h2>
                   <p>프로젝트 상세정보를 확인해보세요!</p>
                </div>
             </div>            
