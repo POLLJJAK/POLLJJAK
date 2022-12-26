@@ -90,19 +90,18 @@ String cp = request.getContextPath();
 						</div>
 						
 						<!-- 프로젝트 홈 메뉴 -->
-						<div id="portfolio" class="portfolio mt-5">
-							<div class="row">
-								<div class="col-lg-12 d-flex justify-content-center">
-									<ul id="portfolio-flters">
-										<li data-filter=".teamManage" class="filter-active">팀원 관리</li>
-										<li data-filter=".workManage">업무 관리</li>
-										<li data-filter=".meetNote">회의록</li>
-										<li data-filter=".todoManage">일정 관리</li>
-										<li data-filter=".rounge">라운지</li>
-									</ul>
-								</div>
-							</div>
-							<hr>
+						<nav id="navbar" class="mt-5 pb-0 navbar"> 
+						   <ul style="margin-left: auto; margin-right: auto;">
+						      <li><a class="nav-link pb-0  scrollto active" href="Inner-page.jsp">팀원 관리</a></li>
+						      <li><a class="nav-link pb-0  scrollto" href="Inner-page.jsp">업무 관리</a></li>
+						      <li><a class="nav-link pb-0  scrollto" href="Inner-page.jsp">일정 관리</a></li>
+						      <li><a class="nav-link pb-0  scrollto" href="Inner-page.jsp">회의록</a></li>
+						      <li><a class="nav-link pb-0  scrollto " href="Inner-page.jsp">라운지</a></li>
+						   </ul>
+						   <i class="bi bi-list mobile-nav-toggle"></i>
+						</nav>
+						<div class="container">
+						   <hr>
 						</div>
 
 
@@ -130,7 +129,7 @@ String cp = request.getContextPath();
 											<td>20%</td>
 											<td>2022-12-25</td>
 											<td><button class="btn btn-primary">ON</button></td>
-											<td><button class="btn btn-light">프로필버튼</button></td>								
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -139,7 +138,7 @@ String cp = request.getContextPath();
 											<td>20%</td>
 											<td>2022-12-25</td>
 											<td><button class="btn btn-light">OFF</button></td>
-											<td><button class="btn btn-light">프로필버튼</button></td>								
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -148,7 +147,7 @@ String cp = request.getContextPath();
 											<td>20%</td>
 											<td>2022-12-25</td>
 											<td><button class="btn btn-light">OFF</button></td>
-											<td><button class="btn btn-light">프로필버튼</button></td>								
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -157,7 +156,7 @@ String cp = request.getContextPath();
 											<td>20%</td>
 											<td>2022-12-25</td>
 											<td><button class="btn btn-light">OFF</button></td>
-											<td><button class="btn btn-light">프로필버튼</button></td>								
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
 											<td colspan="7">현재 팀원이 없습니다.</td>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<context:component-scan
+		base-package="org.springframework.samples.petclinic.web" />
+
+	<!-- ※ 『dispatcher-servlet.xml』의 기본 샘플 코드 -->
+	<!--    이 코드는 기본 설정에 대한 템플릿을 복사하기 위해 스프링 doc 를 참조하여 작성한다. -->
+	<!--    ① 『C:\s-f-3.0.2-with-docs\docs\spring-framework-reference』경로로 이동 -->
+	<!--    ② 『spring-framework-reference.pdf』 파일 실행 -->
+	<!--    ③ 본문 내용의 425 페이지(찾아서 직접 이동, 파일 페이지가 아니라 실제 기록된 페이지 파일페이지는 450/805) -->
+	<!--    ④ 페이지 하단의 XML 파일 샘플코드 복사 & 붙여넣기-->
+	
+
+</beans>
