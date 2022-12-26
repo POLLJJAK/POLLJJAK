@@ -24,7 +24,7 @@ String cp = request.getContextPath();
 			<!-- <div class="container">
 
 				<div class="d-flex justify-content-between align-items-center">
-					<h2>마이페이지ddd</h2>
+					<h2>마이페이지</h2>
 					<ol>
 						<li><a href="U-main.jsp">플젝폴짝 홈으로</a></li>
 						<li>마이페이지</li>
