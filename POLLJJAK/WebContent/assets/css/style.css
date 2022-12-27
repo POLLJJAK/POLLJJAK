@@ -1684,7 +1684,7 @@ section {
 .nav-search::placeholder {color:#ccc; padding-left: 20px;}
 .nav-search::-webkit-input-placeholder {color:#ccc;padding-left: 20px;}
 
-/* inner-nav ¹ÝÀÀÇü ¿¹¿Ü */
+/* inner-nav ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 @media (max-width: 991px){
 	.navbar.inner-nav ul {
 	    display: flex !important;

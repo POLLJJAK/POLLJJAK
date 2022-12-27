@@ -31,17 +31,18 @@
 	document.getElementById("viewCompany").className = "nav-link scrollto";
 </script>
 
-<!-- title -->
-<div style="margin-top: 100px;">
-	<div class="section-title" data-aos="fade-up">
-		<h2>프로젝트 개설</h2>
-		<p>진행 중인 프로젝트와 지난 모집 내역을 확인 해보세요.</p>
-	</div>
-</div> <!-- end title -->
 
 <main id="main">
-	
-	<section class="projectHome-list-now pb-2">
+	<section class="projectHome-list-now pb-2" data-aos="fade-up">
+
+		<!-- title -->
+		<div class="pt-5">
+			<div class="section-title pt-5">
+				<h6>프로젝트 개설</h6>
+				<p>진행 중인 프로젝트와 지난 모집 내역을 확인 해보세요.</p>
+			</div>
+		</div> <!-- end title -->
+
 		<div class="container">
 			<div class="row">
 			
@@ -57,7 +58,7 @@
 				</form>
 				<hr />
 				
-				<div class="container-lg mb-3" onclick="location.href='#';" style="cursor: pointer;">
+				<div class="container-lg mb-3" onclick="location.href='<%=cp %>/ProjectDetail.jsp';" style="cursor: pointer;">
 					<div class="pj-box">
 						<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 							<div class="h5 fw-bolder">프로젝트 제목1[모집중]</div>
@@ -69,7 +70,7 @@
 		</div>
 	</section>
 	 
-	<section class="projectHome-list-complete">
+	<section class="projectHome-list-complete" data-aos="fade-up">
 		<div class="container">
 			<div class="row">
 			
