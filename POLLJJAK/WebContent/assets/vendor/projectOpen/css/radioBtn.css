@@ -1,9 +1,9 @@
-.location input[type=radio]
+.radioBtn input[type=radio]
 {
     display: none;
 }
 
-.location input[type=radio] + label
+.radioBtn input[type=radio] + label
 {
     display: inline-block;
     cursor: pointer;
@@ -17,13 +17,13 @@
     transition:all 0.5s;
 }
 
-.location input[type=radio] + label
+.radioBtn input[type=radio] + label
 {
     background-color: #fff;
     color: #333;
 }
 
-.location input[type=radio]:checked + label
+.radioBtn input[type=radio]:checked + label
 {
     background-color: #3498db;
     color: #fff;

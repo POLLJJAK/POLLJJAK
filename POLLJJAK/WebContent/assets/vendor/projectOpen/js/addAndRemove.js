@@ -1,3 +1,4 @@
+// 모집 분야 숫자 증감
 var i = 1;
 
 function fnCalCount(type, ths){
@@ -14,7 +15,7 @@ function fnCalCount(type, ths){
     }
 }
 
-//추가 버튼
+// 모집 분야 추가 버튼
 
 $(document).on("click","input[name=addPart]",function(){
 	
@@ -29,12 +30,12 @@ $(document).on("click","input[name=addPart]",function(){
         '    </td>'+
         '	 <td class="bseq_ea" style="visibility: hidden;">6</td>'+
         '    <td>'+
-		'		<button type ="button" onclick="fnCalCount(\''+'p'+'\',this);" style="background-color:white; border: none;">+</button>'+
+        '		<button type ="button" onclick="fnCalCount(\''+'m'+'\',this);" style="background-color:white; border: none;">-</button>'+
 		'		<input type="text" name="pop_out" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;""/>'+
-		'		<button type ="button" onclick="fnCalCount(\''+'m'+'\',this);" style="background-color:white; border: none;">-</button>'+
+		'		<button type ="button" onclick="fnCalCount(\''+'p'+'\',this);" style="background-color:white; border: none;">+</button>'+
 		'	</td>'+
         '    <td>'+
-        '       <input type="button" class="btn btn-primary" name="remove" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
+        '       <input type="button" class="btn btn-primary" name="removePart" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
 		'	</td>'+
         '</tr>';
         
@@ -46,11 +47,41 @@ $(document).on("click","input[name=addPart]",function(){
 });
 
 
-//삭제 버튼
-$(document).on("click","input[name=remove]",function(){
+// 모집 분야 삭제 버튼
+$(document).on("click","input[name=removePart]",function(){
     
     var trHtml = $(this).parent().parent();
     
     trHtml.remove(); //tr 테그 삭제
+    
+});
+
+
+// ---------------------------------
+
+// 참고 추가 버튼
+$(document).on("click","input[name=addReference]",function(){
+	
+    var add =     
+    	'<div class="form-group row" id="reference">'+
+        '    <div class="com-sm-3">'+
+        '        <input type="text" class="form-control" name="reference'+ (1 + i) +'"\ placeholder="링크를 입력해주세요.">'+
+        '    <div>'+
+        '       <input type="button" class="btn btn-primary" name="removeReference" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
+		'	</div>'+
+        '</div>';
+        
+    var divHtml = $( "div[id=reference]:last" ); //last를 사용하여 tr 이라는 명을 가진 마지막 태그 호출
+    
+    divHtml.after(add); //마지막 tr명 뒤에 붙인다.
+    
+    i++;
+});
+// 참고 삭제 버튼
+$(document).on("click","input[name=removeReference]",function(){
+    
+    var divHtml = $(this).parent().parent();
+    
+    divHtml.remove(); //tr 테그 삭제
     
 });
