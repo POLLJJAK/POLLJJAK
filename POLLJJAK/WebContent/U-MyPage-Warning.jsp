@@ -90,7 +90,7 @@ String cp = request.getContextPath();
 				<div class="MyPage-Warning" style="text-align: center; margin-bottom: 100px;" >
 					<!-- <p style="font-weight: bold;">패스워드 입력 후 마이페이지를 이용하실 수 있습니다</p> -->
 					<div style="margin: 0 auto; width: 300px; text-align: center;">
-						<input type="password" class="form-control"
+						<input type="password" class="form-control" id = "pw"
 							placeholder="비밀번호를 입력하세요"
 							style="background-color: #3498db; color: white;" >
 						<button
@@ -127,5 +127,20 @@ String cp = request.getContextPath();
 	<script src="assets/js/main.js"></script>
 
 </body>
+<script>
+
+	$().ready(function(){
+		$(".btn").click(function(){
+			var target = $("#pw").val();
+			// PW 임의 지정
+			if(target == "0000")
+				{
+					$(location).attr("href", "/POLLJJAK/U-MyPage-Info.jsp");
+				}
+		});
+	})
+
+</script>
+
 
 </html>
