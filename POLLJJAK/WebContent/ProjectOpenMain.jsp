@@ -57,7 +57,7 @@
 				</form>
 				<hr />
 				
-				<div class="container-lg mb-3" onclick="location.href='#';" style="cursor: pointer;">
+				<div class="container-lg mb-3" onclick="location.href='<%=cp %>/ProjectDetail.jsp';" style="cursor: pointer;">
 					<div class="pj-box">
 						<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 							<div class="h5 fw-bolder">프로젝트 제목1[모집중]</div>

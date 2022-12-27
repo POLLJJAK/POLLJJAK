@@ -22,7 +22,7 @@ $(document).on("click","input[name=addPart]",function(){
     var add =     
     	'<tr id="tr">'+
         '    <td>'+
-        '        <select name="part'+ (1 + i) +'"\>'+
+        '        <select class="form-select form-select-sm" name="part'+ (1 + i) +'"\>'+
         '            <option value="front'+ (1 + i) +'"\>프론트</option>'+
         '            <option value="backend'+ (1 + i) +'"\>백엔드</option>'+
         '            <option value="pm'+ (1 + i) +'"\>기획</option>'+
@@ -35,7 +35,7 @@ $(document).on("click","input[name=addPart]",function(){
 		'		<button type ="button" onclick="fnCalCount(\''+'p'+'\',this);" style="background-color:white; border: none;">+</button>'+
 		'	</td>'+
         '    <td>'+
-        '       <input type="button" class="btn btn-primary" name="removePart" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
+        '       <input type="button" class="btn btn-primary mt-2" name="removePart" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
 		'	</td>'+
         '</tr>';
         
@@ -63,11 +63,12 @@ $(document).on("click","input[name=removePart]",function(){
 $(document).on("click","input[name=addReference]",function(){
 	
     var add =     
-    	'<div class="form-group row" id="reference">'+
+    	'<div class="form-group row mt-2" id="reference">'+
         '    <div class="com-sm-3">'+
-        '        <input type="text" class="form-control" name="reference'+ (1 + i) +'"\ placeholder="링크를 입력해주세요.">'+
+        '        <input type="text" class="form-control mt-2" name="reference'+ (1 + i) +'"\ placeholder="링크를 입력해주세요.">'+
+        '    </div>'+
         '    <div>'+
-        '       <input type="button" class="btn btn-primary" name="removeReference" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
+        '       <input type="button" class="btn btn-primary mt-2" name="removeReference" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
 		'	</div>'+
         '</div>';
         

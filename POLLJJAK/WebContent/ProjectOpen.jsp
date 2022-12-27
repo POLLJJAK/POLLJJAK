@@ -24,13 +24,14 @@
 	</div>
 </div> <!-- end title -->
 
+
 <main id="main">
 	<section class="inner-page">
 		<div class="container">
-			<form action="">
-			
+			<form name="newProduct" action="<%=cp %>/ProjectDetail.jsp" class="" method="post" 
+			enctype="multipart/form-data">
 				<div class="form-group row">
-					<label class="col-sm-4">프로젝트 명<em style="color: red;"> * </em></label>
+					<label class="col-sm-4 form-label">프로젝트 명<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
 						<input type="text" id="projectId" name="projectId" class="form-control" placeholder="프로젝트 명을 입력해주세요.">
 					</div>
@@ -39,9 +40,9 @@
 				
 				<div class="form-group row">
 					<div>
-						<label class="col-sm-4">프로젝트 분야<em style="color: red;"> * </em></label>
+						<label class="col-sm-4 form-label">프로젝트 분야<em style="color: red;"> * </em></label>
 					</div>
-					<label class="col-sm-2">주제</label>
+					<label class="col-sm-2 form-label">주제</label>
 					<div class="radioBtn">
 						<input type="radio" id="subject1" name="subject" value="living"><label for="subject1">생활</label>
 						<input type="radio" id="subject2" name="subject" value="task"><label for="subject2">업무</label>
@@ -51,7 +52,7 @@
 						<input type="radio" id="subject6" name="subject" value="shopping"><label for="subject6">유통/쇼핑</label>
 						<input type="radio" id="subject7" name="subject" value="entertainment"><label for="subject7">엔터테인먼트</label>
 					</div>
-					<label class="col-sm-2">세부분야</label>
+					<label class="col-sm-2 form-label">세부분야</label>
 					<div class="radioBtn">
 						<input type="radio" id="detail1" name="detail" value="mobile"><label for="detail1">모바일</label>
 						<input type="radio" id="detail2" name="detail" value="iot"><label for="detail2">IOT</label>
@@ -68,7 +69,7 @@
 				<div class="form-group row">
 					<!--  -->
 					<div id="root">
-					<label class="col-sm-4">대표이미지</label>
+					<label class="col-sm-4 form-label">대표이미지</label>
 						<div class="contents">
 							<div class="upload-box">
 								<div id="drop-file" class="drag-file">
@@ -87,14 +88,14 @@
 				<hr>
 				
 				<div class="form-group row">
-					<label class="col-sm-4">지역</label>
-					<div class="radioBtn">
+					<label class="col-sm-4 form-label">지역</label>
+					<div class="radioBtn" id="radioBtn">
 						<input type="radio" id="location1" name="location" value="all"><label for="location1">모두 가능</label>
 						<input type="radio" id="location2" name="location" value="online"><label for="location2">온라인</label>
 						<input type="radio" id="location3" name="location" value="offline"><label for="location3">오프라인</label>
 					</div>
 					<div>
-						<select>
+						<select class="form-select form-select-sm w-25 mt-2">
 							<option>지역선택</option>
 							<option>상관없음</option>
 							<option>서울</option>
@@ -105,12 +106,12 @@
 				</div>
 				<hr />
 
-		        <label class="col-sm-4">모집 분야</label>
+		        <label class="col-sm-4 form-label">모집 분야</label>
 				<table>
 				    <tbody>
 				        <tr id="tr">
 				            <td>
-				                <select name="part1">
+				                <select class="form-select form-select-sm" name="part1">
 				                    <option value="front1">프론트</option>
 				                    <option value="backend1">백엔드</option>
 				                    <option value="pm1">기획</option>
@@ -133,12 +134,12 @@
 				        </tr>
 				    </tbody>
 				</table>
-				<input type="button" class="btn btn-primary" name="addPart" value="추가" 
+				<input type="button" class="btn btn-primary mt-2" name="addPart" value="추가" 
 				style="background-color: #3498db; border-color: #3498db;">
 				<hr />
 				
 				<div class="form-group row">
-					<label class="col-sm-4">출시 플랫폼<em style="color: red;"> * </em></label>
+					<label class="col-sm-4 form-label">출시 플랫폼<em style="color: red;"> * </em></label>
 					<div class="radioBtn">
 						<input type="radio" id="platform1" name="platform" value="web"><label for="platform1">웹</label>
 						<input type="radio" id="platform2" name="platform" value="app"><label for="platform2">앱</label>
@@ -149,15 +150,15 @@
 				<hr>
 				
 				<div class="form-group row">
-					<label class="col-sm-4">프로젝트 설명<em style="color: red;"> * </em></label>
+					<label class="col-sm-4 form-label">프로젝트 설명<em style="color: red;"> * </em></label>
 					<div class="com-sm-5">
-						<textarea name="description" cols="50" rows="2" class="form-control" placeholder="프로젝트 설명을 입력해주세요."></textarea>
+						<textarea name="description" rows="10" class="form-control h-15" placeholder="프로젝트 설명을 입력해주세요."></textarea>
 					</div>
 				</div>
 				<hr />
 				
 				<div class="form-group row">
-					<label class="col-sm-4">기술/언어</label>
+					<label class="col-sm-4 form-label">기술/언어</label>
 					<div class="com-sm-3">
 						<input type="text" name="language" class="form-control" placeholder="기술명을 입력해주세요. ex) Java, Spring">
 					</div>
@@ -165,7 +166,7 @@
 				<hr />
 				
 				<div class="form-group row">
-					<label class="col-sm-4">모집마감일<em style="color: red;"> * </em></label>
+					<label class="col-sm-4 form-label">모집마감일<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
 				        <input type="text" name="deadLine" value="" class="datepicker inp" placeholder="모집마감일" readonly="readonly"/> 
 					</div>
@@ -173,7 +174,7 @@
 				<hr />
 				
 				<div class="form-group row">
-					<label class="col-sm-6">프로젝트 시작 및 마감 예정일자<em style="color: red;"> * </em></label>
+					<label class="col-sm-6 form-label">프로젝트 시작 및 마감 예정일자<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
 						<div class="com-sm-3">
 					        <input type="text" name="startDate" value="" class="datepicker inp" placeholder="시작일" readonly="readonly"/> 
@@ -183,20 +184,20 @@
 				</div>
 				<hr />
 				
-				<label class="col-sm-4">참고 자료</label>
+				<label class="col-sm-4 form-label">참고 자료</label>
 				<div class="form-group row" id="reference">
 					<div class="com-sm-3">
-						<input type="text" class="form-control" name="reference1" placeholder="링크를 입력해주세요.">
+						<input type="text" class="form-control mt-2" name="reference1" placeholder="링크를 입력해주세요.">
 					</div>
 				</div>
-				<input type="button" class="btn btn-primary" name="addReference" value="추가" 
+				<input type="button" class="btn btn-primary mt-2" name="addReference" value="추가" 
 				style="background-color: #3498db; border-color: #3498db;">
 				<br><br>
 				
 				<div class="form-group row">
 					<div >
-						<input type="button" class="btn btn-primary" value="등록" 
-						onclick="location.href='<%=cp %>/ProjectDetail.jsp';" style="background-color: #3498db; border-color: #3498db; float: right;">
+						<input type="submit" class="btn btn-primary" value="등록" 
+						style="background-color: #3498db; border-color: #3498db; float: right;">
 					</div>
 				</div>
 			</form>
