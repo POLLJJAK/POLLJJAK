@@ -20,8 +20,7 @@
 				</h1>
 				<h2 data-aos="fade-up" data-aos-delay="400">개발자가 되고싶어?</h2>
 				<div data-aos="fade-up" data-aos-delay="800">
-					<a href="Inner-page.jsp" class="btn-get-started scrollto">프로젝트
-						둘러보기</a>
+					<a href="Inner-page.jsp" class="btn-get-started scrollto">프로젝트 둘러보기</a>
 				</div>
 			</div>
 			<div class="col-lg-6 order-1 order-lg-2 hero-img"
@@ -30,7 +29,6 @@
 			</div>
 		</div>
 	</div>
-
 </section>
 <!-- End Hero -->
 
@@ -253,7 +251,7 @@
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
-					</div>
+					</div> 
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<div class="carousel-row">
@@ -262,7 +260,7 @@
 										<img class="img-fluid" alt="100%x280"
 											src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
 										<div class="card-body">
-											<h4 class="card-title">한은영의 프로젝트</h4>
+											<h4 class="card-title">한공주의 프로젝트</h4>
 											<p class="card-text">한은영의 프로젝트</p>
 											<p class="card-text">JAVA/ORACLE</p>
 										</div>

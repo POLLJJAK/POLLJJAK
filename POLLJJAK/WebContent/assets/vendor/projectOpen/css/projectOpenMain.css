@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.projectHome-list-now .pj-box {
+	background: #fff;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.projectHome-list-now .pj-box:hover {
+  background: #60A7F7;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+ 
+.projectHome-list-complete .pj-box {
+	background: #D8D8D8;
+	transition: 0.3s;
+	transition: ease-in-out 0.4s;
+	border-radius: 5px;
+	color: #28313D;
+}
+
+.projectHome-list-complete .pj-box:hover {
+	background: #8E8E8E;
+  	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}

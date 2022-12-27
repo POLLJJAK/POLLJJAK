@@ -6,9 +6,7 @@
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
-	<div
-		class="container d-flex align-items-center justify-content-between">
-
+	<div class="container d-flex align-items-center justify-content-between">
 		<div class="logo">
 			<h1>
 				<a href="U-main.jsp">플젝폴짝</a>
@@ -74,3 +72,4 @@
 	</div>
 </header>
 <!-- End Header -->
+
