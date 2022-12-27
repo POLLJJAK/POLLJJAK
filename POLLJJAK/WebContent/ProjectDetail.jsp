@@ -163,7 +163,7 @@
           </div>  
           
           <!-- 소식탭 -->
-          <div id="tab-2" class="tab-content">
+          <div id="tab-2" class="tab-content" >
           	
           	<div class="project-news">
           		<div class="news">
