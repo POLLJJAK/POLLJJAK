@@ -6,13 +6,29 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-
 <!DOCTYPE html>
 
 <html lang="en">
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" /> 
+
+<!-- 드래그 앤 드랍 -->
+<script>
+	$( function() {
+	    $( "ul.droptrue" ).sortable({
+	      connectWith: "ul"
+	    });
+	 
+	    $( "ul.dropfalse" ).sortable({
+	      connectWith: "ul",
+	      dropOnEmpty: false
+	    });
+	 
+	    $( "#sortable1, #sortable2" ).disableSelection();
+	  } );
+
+</script>
 
 
 <body>
@@ -196,23 +212,41 @@
           	※ 블랙리스트에 등록된 회원은 해당 프로젝트에 지원할수없습니다.</p>
           	<br><br>
           	
- 		  <div class="blacklist" id="box1">
-	 		  <div class="column"  ondrop="drop(event)" ondragover="dragOver(event)">
-		      <h5 style="text-align: center;">지원자 목록</h5>
-		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag1">서른아잉교</div>
-		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag2">도딤도딤빵</div>
-		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag3">혼자사는박또기</div>
-		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag4">수업하지말까요?</div>
-		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag5">그래~그렇게하자~</div>
-			  </div>
+	 		  <div class="blacklist justify-content-center" id="box1">
+					<!--
+ 		 		  <div class="column"  ondrop="drop(event)" ondragover="dragOver(event)">
+			      	<h5 style="text-align: center;">지원자 목록</h5>
+ 					<div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag1">서른아잉교</div>
+				    <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag2">도딤도딤빵</div>
+				    <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag3">혼자사는박또기</div>
+				    <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag4">수업하지말까요?</div>
+				    <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag5">그래~그렇게하자~</div>
+				  </div>
+				  
+				  <div class="column" ondrop="drop(event)" ondragover="dragOver(event)" id="box2">
+				      <h5 style="text-align: center;">차단 목록</h5>
+				  </div>
+			    	-->
+			    	<div class="column">
+			      		<h5 style="text-align: center;">지원자 목록</h5>
+				 		<ul id="sortable1" class="droptrue">
+							<li class="">서른아잉교</li>
+					    	<li class="">도딤도딤빵</li>
+					    	<li class="">혼자사는박또기</li>
+					    	<li class="">수업하지말까요?</li>
+					    	<li class="">그래~그렇게하자~</li>
+					  	</ul>
+					</div>
 			  
-			  <div class="column" ondrop="drop(event)" ondragover="dragOver(event)" id="box2">
-			      <h5 style="text-align: center;">차단 목록</h5>
-			  </div>
-		   
- 		  
- 		  
- 		  </div>
+			  		<div class="column">
+			      		<h5 style="text-align: center;">차단 목록</h5>
+				 		<ul id="sortable2" class="droptrue">
+	
+					  	</ul>
+					</div>
+
+	 		  
+	 		  </div>
  		  </div>
           
           
