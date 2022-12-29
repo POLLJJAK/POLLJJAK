@@ -278,7 +278,7 @@ String cp = request.getContextPath();
 									<option value="Linux">Linux</option>
 									<option value="Docker">Docker</option>
 									<option value="Perl">Perl</option>
-									<option value="Kuberbetes">Kuberbetes</option>
+									<option value="Kubernetes">Kubernetes</option>
 									<option value="AWS">AWS</option>
 								</select>
 								</div>
