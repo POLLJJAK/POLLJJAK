@@ -37,7 +37,7 @@
 
     <!-- ======= Portfolio Details Section ======= -->
     
-    <section id="portfolio-details" class="portfolio-details">
+    <section id="portfolio-details" class="portfolio-details" data-aos="fade-up">
       <div class="container">
       
 	  
@@ -198,7 +198,7 @@
           	
  		  <div class="blacklist" id="box1">
 	 		  <div class="column"  ondrop="drop(event)" ondragover="dragOver(event)">
-		      <h5 style="text-align: center;">지원자 목록</h5>
+		      <h6 style="text-align: center;"><b>지원자 목록</b></h6>
 		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag1">서른아잉교</div>
 		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag2">도딤도딤빵</div>
 		      <div class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag3">혼자사는박또기</div>
@@ -207,7 +207,7 @@
 			  </div>
 			  
 			  <div class="column" ondrop="drop(event)" ondragover="dragOver(event)" id="box2">
-			      <h5 style="text-align: center;">차단 목록</h5>
+			      <h6 style="text-align: center;"><b>차단 목록</b></h6>
 			  </div>
 		   
  		  

@@ -116,13 +116,14 @@
 	{
 		display: flex;
 		gap: 30px;
+		
 	}
 	.column 
 	{
+		border: 2px solid #3498db; 
 		margin-left:10%;
 		flex-basis: 40%;
-		background: #ddd;
-		min-height: 90vh;
+		min-height: 50vh;
 		padding: 5px;
 		border-radius: 10px;
 	}
@@ -130,14 +131,18 @@
 	{
 		text-align: center;
 		font-size: 22px;
+		border-radius: 10px;
 		
 	}
 	.list-group-item 
 	{
-		background: #fff;
+		background: #ffffff;
+		border: 2px solid #3498db;
 		margin: 20px;
-		padding: 20px;
+		padding: 10px;
 		border-radius: 5px;
+		text-align: center;
 		cursor: pointer;
+		
 	}
 	
