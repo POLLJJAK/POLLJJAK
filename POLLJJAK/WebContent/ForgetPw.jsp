@@ -347,7 +347,7 @@ $(function(){
 					<div class="input-container empty-view">
 						<br><br><br>
 						<span>위의 "이메일로 찾기"<br>혹은 "전화번호로 찾기" 중<br>
-						원하는 수단을 선택해<br>아이디를 찾아보세요.</span>	
+						원하는 수단을 선택해<br>비밀번호를 찾아보세요.</span>	
 					</div>
 					<div class="input-container btn-wrap">
 						<input type="submit" class="btn" value="다음">
