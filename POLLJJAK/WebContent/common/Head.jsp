@@ -31,7 +31,6 @@
   	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 	<link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +46,7 @@
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
 	<link href="assets/vendor/projectOpen/css/calendar.css" rel="stylesheet">
 	<link href="assets/vendor/projectDetail/css/projectDetail.css" rel="stylesheet">
-    
+	
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
   
@@ -60,6 +59,7 @@
     
     <!-- 좋아요 아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    
     
     <style type="text/css">
     .form-control

@@ -3,6 +3,7 @@
     $(document).ready(function(){
       
       $('ul.tabs li').click(function(){
+    	  console.log("ddd");
         var tab_id = $(this).attr('data-tab');
 
         $('ul.tabs li').removeClass('current');
@@ -10,9 +11,10 @@
 
         $(this).addClass('current');
         $("#"+tab_id).addClass('current');
-      })
+      });
+      
 
-    })
+    });
     
     
     /* 드래그앤드롭 */
@@ -27,7 +29,8 @@
 	        ghostClass: "blue-background-class"
 	    });
 	}); */
-	
+    
+    /*	
 	function drag(ev) 
 	{
 		
@@ -45,3 +48,5 @@
 	    var data = ev.dataTransfer.getData("text");
 	    ev.target.appendChild(document.getElementById(data));
 	}
+ 	*/
+    

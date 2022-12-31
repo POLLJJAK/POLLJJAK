@@ -4,13 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<link href="assets/img/pol-favicon.png" rel="icon">
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
 	<div class="container d-flex align-items-center justify-content-between">
 		<div class="logo">
 			<h1>
 				<a href="U-main.jsp">플젝폴짝</a>
-				<link href="assets/img/pol-favicon.png" rel="icon">
 			</h1>
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
