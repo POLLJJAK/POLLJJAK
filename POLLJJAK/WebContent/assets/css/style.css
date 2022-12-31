@@ -513,9 +513,11 @@ section {
 
 /* new title  */
 .section-title h6 {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
   font-size: 20px;
   font-weight: bold;
-  text-transform: uppercase;
   position: relative;
   color: #222222;
 }
@@ -523,6 +525,7 @@ section {
 .section-title h6::before,
 .section-title h6::after {
   content: "";
+  flex-grow: 1;
   width: 50px;
   height: 2px;
   background: #3498db;
@@ -530,11 +533,11 @@ section {
 }
 
 .section-title h6::before {
-  margin: 0 15px 10px 0;
+  margin: 0 15px 0 0;
 }
 
 .section-title h6::after {
-  margin: 0 0 10px 15px;
+  margin: 0 0 0 15px;
 }
 
 

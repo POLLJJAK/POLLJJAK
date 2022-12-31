@@ -44,6 +44,7 @@
   <script src="assets/vendor/projectOpen/js/addAndRemove.js"></script>
   <script src="assets/vendor/projectOpenMain/js/deleteList.js"></script>
   <script src="assets/vendor/projectDetail/js/projectDetail.js"></script>
+
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
