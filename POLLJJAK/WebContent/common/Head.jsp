@@ -47,6 +47,14 @@
 	<link href="assets/vendor/projectOpen/css/calendar.css" rel="stylesheet">
 	<link href="assets/vendor/projectDetail/css/projectDetail.css" rel="stylesheet">
 	
+	
+	<!-- 프로젝트 홈 일정관리 캘린더 -->
+	<!-- fullcalendar CDN -->
+	<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+	<!-- fullcalendar 언어 CDN -->
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+	
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
   

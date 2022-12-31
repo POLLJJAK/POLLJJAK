@@ -82,11 +82,11 @@ String cp = request.getContextPath();
 						<!-- 프로젝트 홈 메뉴 -->
 						<nav id="navbar_" class="mt-5 pb-0 navbar inner-nav"> 
 						   <ul style="margin-left: auto; margin-right: auto;">
-						      <li><a class="nav-link pb-0  scrollto active" href="Project-home-teamManage.jsp">팀원 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Project-home-workManage.jsp">업무 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Project-home-todoManage.jsp">일정 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Project-home-meetingManage.jsp">회의록</a></li>
-						      <li><a class="nav-link pb-0  scrollto " href="Project-home-rounge.jsp">라운지</a></li>
+						      <li><a class="nav-link pb-0  scrollto active" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
+						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+						      <li><a class="nav-link pb-0  scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 						   </ul>
 						</nav>
 						
@@ -96,7 +96,10 @@ String cp = request.getContextPath();
 
 
 						<!-- 컨텐츠 란 -->
-						<h5 class="container-lg p-4 pb-0 fw-bolder">팀원 관리</h5>
+						<div class="container d-flex justify-content-between">
+							<h5 class="p-2 m-0 fw-bolder align-self-center">팀원 목록</h5>
+						</div>
+						
 						
 						<div style="overflow-x:auto;">
 								<table class="table table-hover text-center align-middle">
@@ -118,7 +121,7 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-primary">ON</button></td>
+											<td><button class="btn btn-primary">요청함</button></td>
 											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
@@ -127,7 +130,7 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">OFF</button></td>
+											<td><button class="btn btn-light">요청안함</button></td>
 											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
@@ -136,7 +139,7 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">OFF</button></td>
+											<td><button class="btn btn-light">요청안함</button></td>
 											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
@@ -145,7 +148,7 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">OFF</button></td>
+											<td><button class="btn btn-light">요청안함</button></td>
 											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
 										</tr>
 										<tr>
@@ -155,14 +158,16 @@ String cp = request.getContextPath();
 								</table>
 						</div>
 						
-						<div class="p-2 pt-0">
-							<div class="p-1 d-flex justify-content-end">
-								<div class=" p-2 border rounded">
+						<div class="container">
+							<div class="p-2 row justify-content-between">
+								<div class="p-1 col-md-12 col-lg-2 text-center align-self-center">
+									<div class="p-2 border rounded ">
 									전체 팀원 : 4 / 5
+									</div>
 								</div>
+
 							</div>
 						</div>
-					
 						
 						
 						
@@ -194,69 +199,26 @@ String cp = request.getContextPath();
 		      		<div style="margin-bottom: 20px;">
 		      			함께한 팀원들을 평가하세요!
 		      		</div>
-					<div class="mb-2 row justify-content-center text-center">
-						<div class="col-lg-12 mb-2">팀원 1</div>
-						<!-- 별점 기능 -->
-						<div class="row justify-content-center">
-							<div class="rating-big col-lg-1 align-self-center">1.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">3.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">5.0</div>
-						</div>
-					</div>
 
 					<div class="mb-2 row justify-content-center text-center">
-						<div class="col-lg-12 mb-2">팀원 2</div>
+						<div class="col-lg-12 mb-1">팀원 1</div>
+						
 						<!-- 별점 기능 -->
-						<div class="row justify-content-center">
-							<div class="rating-big col-lg-1 align-self-center">1.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">3.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">5.0</div>
+						<div class="scoreSelect1">
+							<input type="radio" class="score" id="score1.0" name="score"><label for="score1.0">1.0</label>
+							<input type="radio" class="score" id="score1.5" name="score"><label for="score1.5">1.5</label>
+							<input type="radio" class="score" id="score2.0" name="score"><label for="score2.0">2.0</label>
+							<input type="radio" class="score" id="score2.5" name="score"><label for="score2.5">2.5</label>
+							<input type="radio" class="score" id="score3.0" name="score"><label for="score3.0">3.0</label>
+							<input type="radio" class="score" id="score3.5" name="score"><label for="score3.5">3.5</label>
+							<input type="radio" class="score" id="score4.0" name="score"><label for="score4.0">4.0</label>
+							<input type="radio" class="score" id="score4.5" name="score"><label for="score4.5">4.5</label>
+							<input type="radio" class="score" id="score5.0" name="score"><label for="score5.0">5.0</label>
 						</div>
+						
 					</div>
 					
-					<div class="mb-2 row justify-content-center text-center">
-						<div class="col-lg-12 mb-2">팀원 3</div>
-						<!-- 별점 기능 -->
-						<div class="row justify-content-center">
-							<div class="rating-big col-lg-1 align-self-center">1.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">3.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">5.0</div>
-						</div>
-					</div>
-					
-					<div class="mb-2 row justify-content-center text-center">
-						<div class="col-lg-12 mb-2">팀원 4</div>
-						<!-- 별점 기능 -->
-						<div class="row justify-content-center">
-							<div class="rating-big col-lg-1 align-self-center">1.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">3.0</div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-medium col-lg-1 align-self-center"></div>
-							<div class="rating col-lg-1 align-self-center"></div>
-							<div class="rating-big col-lg-1 align-self-center">5.0</div>
-						</div>
-					</div>
+				
 					
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
@@ -266,35 +228,9 @@ String cp = request.getContextPath();
 		 </div>
 	</div>
 	
-	<!-- 중단 요청 모달창 -->
-	<div class="modal fade" id="stopProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-		    	<div class="modal-header">
-		        	<h5 class="modal-title">중단 요청</h5>
-		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      	</div>
-		      	<div class="modal-body row mb-3 justify-content-center">
-		      		<div style="margin-bottom: 20px;">
-		      			중단하시겠습니까?<br>
-		      			※ 중단한 프로젝트는 다시 시작할 수 없습니다.
-		      		</div>
-		      		
-		      		<div class="form-group">
-						<textarea class="form-control" placeholder="중단 사유를 입력해주세요.">
-						</textarea>
-						<div style="float: right;">(최대 500자)</div>
-					</div>
-					
-		      	</div>
-		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-primary">중단하기</button>
-		        	<button type="button" class="btn btn-primary">취소하기</button>
-		      	</div>
-		    </div>
-		 </div>
-	</div>
 	
+	
+
 
 </body>
 
@@ -352,40 +288,33 @@ String cp = request.getContextPath();
 
 
 	/* 팀원 평가 별점 기능css*/
-	.rating {
-		width: 15px;
-		height: 15px;
-		padding: 3px;
-		border: 1px solid gray;
-		border-radius: 50%;
-		margin-left: 5px;
-		margin-right: 5px;
+	.scoreSelect1 {
+	    padding: 15px 10px;
 	}
-	.rating-medium{
-		text-align: center;
-		font-size: 12px;
-		width: 20px;
-		height: 20px;
-		padding: 3px;
-		border: 1px solid gray;
-		border-radius: 50%;
-		margin-left: 5px;
-		margin-right: 5px;
+	.scoreSelect1 input[type=radio]{
+	    display: none;
 	}
-	
-	.rating-big {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 12px;
-		width: 35px;
-		height: 35px;
-		border: 1px solid gray;
-		border-radius: 50%;
-		margin-left: 5px;
-		margin-right: 5px;
+	.scoreSelect1 input[type=radio]+label{
+	    display: inline-block;
+	    cursor: pointer;
+	    height: 40px;
+	    width: 40px;
+	    border: 1px solid #E8E7DA;
+	    border-radius: 100%;
+	    line-height: 40px;
+	    text-align: center;
+	    font-weight:bold;
+	    font-size:12px;
 	}
-	
+	.scoreSelect1 input[type=radio]+label{
+	    background-color: #fff;
+	    color: #333;
+	}
+	.scoreSelect1 input[type=radio]:checked+label{
+	    background-color: #FFE400;
+	    border: 1px solid #FFE400;
+	    color: #fff;
+	}
 </style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>

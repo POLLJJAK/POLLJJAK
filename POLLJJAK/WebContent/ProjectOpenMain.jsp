@@ -33,15 +33,26 @@
 
 
 <main id="main">
+
+	<!-- 빈칸 여백 -->
+	<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
+
+
 	<section class="projectHome-list-now pb-2" data-aos="fade-up">
 
-		<!-- title -->
-		<div class="pt-5">
-			<div class="section-title pt-5">
-				<h6>프로젝트 개설</h6>
-				<p>진행 중인 프로젝트와 지난 모집 내역을 확인 해보세요.</p>
+		<div class="container">
+			<div class="row">
+				<!-- title -->
+				<div class="d-flex justify-content-center col" style="width: 50%;"  data-aos="fade-up">
+					<div class="section-title pt-4">
+						<h6>프로젝트 개설</h6>
+						<div>진행 중인 프로젝트와 지난 모집 내역을 확인 해보세요</div>
+					</div>
+				</div>
+				<!-- end title -->
 			</div>
-		</div> <!-- end title -->
+		</div>
+				
 
 		<div class="container">
 			<div class="row">

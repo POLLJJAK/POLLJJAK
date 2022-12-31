@@ -61,7 +61,9 @@ String cp = request.getContextPath();
 						<p>다양한 프로젝트 모집을 찾아보세요!</p>
 					</div>
 				</div>
+
 				<hr>
+
 				<!-- End PageIntro Section -->
 
 				<!-- ====== InnerNav ====== -->
