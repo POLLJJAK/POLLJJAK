@@ -409,12 +409,13 @@
 		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      	</div>
 		      	<div class="modal-body row mb-3 justify-content-center" style="font-weight: bold; font-size: large; text-align: center;">
-		      		<div style="margin-bottom: 20px;">
+		      		<div style="margin-bottom: 20px; ">
 		      			지원사유를 입력해주세요!
+		      			<p style="font-size: xx-small; color: red;">※지원 사유는 지원즉시 전체 공개 됩니다. 신중하게 작성해주세요!</p>
 		      		</div>
 		      		
 					<div class="form-group">
-						<textarea class="form-control" placeholder="지원 사유는 지원즉시 전체 공개 됩니다. 신중하게 작성해주세요!">
+						<textarea class="form-control" >
 						</textarea>
 						<div style="float: right; font-size: small;">(최대 500자)</div>
 					</div>
