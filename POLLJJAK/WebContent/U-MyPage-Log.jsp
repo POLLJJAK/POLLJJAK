@@ -44,18 +44,6 @@ String cp = request.getContextPath();
 				<!-- End PageIntro Section -->
 				
 							
-				<!-- title -->
-				<div class="container"  data-aos="fade-up">
-					<div class="row">
-						<div class="d-flex justify-content-center col" style="width: 50%;"  data-aos="fade-up">
-							<div class="section-title pt-4">
-								<h6>마이 페이지</h6>
-								<div>참여하고 싶은 다양한 프로젝트 모집을 찾아보세요!</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end title -->
 				
 
 				<div class="MyPage-Info"
