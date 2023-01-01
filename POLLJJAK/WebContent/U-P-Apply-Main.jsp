@@ -38,7 +38,7 @@ String cp = request.getContextPath();
 	<main id="main">
 
 		<!-- ======= Breadcrumbs Section ======= -->
-		<section class="breadcrumbs">
+		<section class="inner-page">
 			<!-- <div class="container">
 
 				<div class="d-flex justify-content-between align-items-center">
@@ -55,7 +55,7 @@ String cp = request.getContextPath();
 		<section class="inner-page">
 			<div class="container" data-aos="fade-up">
 				<!-- ====== PageIntro Section ====== -->
-				<div class="pageintro">
+				<div class="pageintro" style="margin-buttom: 50px;">
 					<div class="section-title">
 						<h6>프로젝트 조회/지원</h6>
 						<p>다양한 프로젝트 모집을 찾아보세요!</p>
@@ -155,256 +155,208 @@ String cp = request.getContextPath();
 	</div>
 	<section class="pt-5 pb-5" data-aos="fade-up">
 		<div class="container">
-			<div id="carousel-poupular -project" class="carousel carousel-dark" data-bs-ride="carousel">
-				<div class="row">
-					<div class="col-12">
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<div class="carousel-row">
-									<div class="col-md-3 mb-3">
-										<div class="card ">
-											<input type="hidden" value="aaaa"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-											<div class="card-body">
-												<h4 class="card-title">한은영의 프로젝트</h4>
-												<p class="card-text">한은영의 프로젝트</p>
-												<p class="card-text">JAVA/ORACLE</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="BBBB"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">김유림의 프로젝트</h4>
-												<p class="card-text">김유림의 프로젝트</p>
-												<p class="card-text">C/MariaDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="cccc"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-											<div class="card-body">
-												<h4 class="card-title">김인교의 프로젝트</h4>
-												<p class="card-text">김인교의 프로젝트</p>
-												<p class="card-text">C++/MongoDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="dddd"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">박원석의 프로젝트</h4>
-												<p class="card-text">박원석의 프로젝트</p>
-												<p class="card-text">Python/Django</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+			<div class="row">
+				<div class="col-3">
+					<div class="card ">
+						<input type="hidden" value="aaaa" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">한은영의 프로젝트</h4>
+							<p class="card-text">한은영의 프로젝트</p>
+							<p class="card-text">JAVA/ORACLE</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="BBBB" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">김유림의 프로젝트</h4>
+							<p class="card-text">김유림의 프로젝트</p>
+							<p class="card-text">C/MariaDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="cccc" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">김인교의 프로젝트</h4>
+							<p class="card-text">김인교의 프로젝트</p>
+							<p class="card-text">C++/MongoDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="dddd" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">박원석의 프로젝트</h4>
+							<p class="card-text">박원석의 프로젝트</p>
+							<p class="card-text">Python/Django</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<div class="card ">
+						<input type="hidden" value="aaaa" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">김호진의 프로젝트</h4>
+							<p class="card-text">김호진의 프로젝트</p>
+							<p class="card-text">JAVA/ORACLE</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="BBBB" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">유동현의 프로젝트</h4>
+							<p class="card-text">유동현의 프로젝트</p>
+							<p class="card-text">C/MariaDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="cccc" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">임시연의 프로젝트</h4>
+							<p class="card-text">임시연의 프로젝트</p>
+							<p class="card-text">C++/MongoDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="dddd" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">최나윤의 프로젝트</h4>
+							<p class="card-text">최나윤의 프로젝트</p>
+							<p class="card-text">Python/Django</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<div class="card ">
+						<input type="hidden" value="aaaa" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">정영준의 프로젝트</h4>
+							<p class="card-text">정영준의 프로젝트</p>
+							<p class="card-text">JAVA/ORACLE</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="BBBB" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">민찬우의 프로젝트</h4>
+							<p class="card-text">민찬우의 프로젝트</p>
+							<p class="card-text">C/MariaDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="cccc" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">조영관의 프로젝트</h4>
+							<p class="card-text">조영관의 프로젝트</p>
+							<p class="card-text">C++/MongoDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="dddd" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">반보영의 프로젝트</h4>
+							<p class="card-text">반보영의 프로젝트</p>
+							<p class="card-text">Python/Django</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<div class="card ">
+						<input type="hidden" value="aaaa" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">고연수의 프로젝트</h4>
+							<p class="card-text">고연수의 프로젝트</p>
+							<p class="card-text">JAVA/ORACLE</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="BBBB" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">김태민의 프로젝트</h4>
+							<p class="card-text">김태민의 프로젝트</p>
+							<p class="card-text">C/MariaDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="cccc" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">김보경의 프로젝트</h4>
+							<p class="card-text">김보경의 프로젝트</p>
+							<p class="card-text">C++/MongoDB</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card">
+						<input type="hidden" value="dddd" /> <img class="img-fluid"
+							alt="100%x280"
+							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+						<div class="card-body">
+							<h4 class="card-title">최동현의 프로젝트</h4>
+							<p class="card-text">최동현의 프로젝트</p>
+							<p class="card-text">Python/Django</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div id="carousel-poupular -project" class="carousel carousel-dark" data-bs-ride="carousel">
-				<div class="row">
-					<div class="col-12">
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<div class="carousel-row">
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="eeee"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-											<div class="card-body">
-												<h4 class="card-title">한은영의 프로젝트</h4>
-												<p class="card-text">한은영의 프로젝트</p>
-												<p class="card-text">JAVA/ORACLE</p>
-											</div>
 
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="ffff"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">김유림의 프로젝트</h4>
-												<p class="card-text">김유림의 프로젝트</p>
-												<p class="card-text">C/MariaDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="gggg"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-											<div class="card-body">
-												<h4 class="card-title">김인교의 프로젝트</h4>
-												<p class="card-text">김인교의 프로젝트</p>
-												<p class="card-text">C++/MongoDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="hhhh"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">박원석의 프로젝트</h4>
-												<p class="card-text">박원석의 프로젝트</p>
-												<p class="card-text">Python/Django</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div id="carousel-poupular -project" class="carousel carousel-dark" data-bs-ride="carousel">
-				<div class="row">
-					<div class="col-12">
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<div class="carousel-row">
-									<div class="col-md-3 mb-3"> 
-										<div class="card">
-											<input type="hidden" value="iiii"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-											<div class="card-body">
-												<h4 class="card-title">한은영1의 프로젝트</h4>
-												<p class="card-text">한은영의 프로젝트</p>
-												<p class="card-text">JAVA/ORACLE</p>
-											</div>
-
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="jjjj"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">김유림의 프로젝트</h4>
-												<p class="card-text">김유림의 프로젝트</p>
-												<p class="card-text">C/MariaDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="kkkk"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-											<div class="card-body">
-												<h4 class="card-title">김인교의 프로젝트</h4>
-												<p class="card-text">김인교의 프로젝트</p>
-												<p class="card-text">C++/MongoDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="llll"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">박원석의 프로젝트</h4>
-												<p class="card-text">박원석의 프로젝트</p>
-												<p class="card-text">Python/Django</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div id="carousel-poupular -project" class="carousel carousel-dark" data-bs-ride="carousel">
-				<div class="row">
-					<div class="col-12">
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<div class="carousel-row">
-									<div class="col-md-3 mb-3" onclick="javascript:void(0);">
-										<div class="card">
-											<input type="hidden" value="rtrt"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-											<div class="card-body">
-												<h4 class="card-title">한은영의 프로젝트</h4>
-												<p class="card-text">한은영의 프로젝트</p>
-												<p class="card-text">JAVA/ORACLE</p>
-											</div>
-
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="ytyt"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">김유림의 프로젝트</h4>
-												<p class="card-text">김유림의 프로젝트</p>
-												<p class="card-text">C/MariaDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="uyuy"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-											<div class="card-body">
-												<h4 class="card-title">김인교의 프로젝트</h4>
-												<p class="card-text">김인교의 프로젝트</p>
-												<p class="card-text">C++/MongoDB</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 mb-3">
-										<div class="card">
-											<input type="hidden" value="iuiu"/>
-											<img class="img-fluid" alt="100%x280"
-												src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-											<div class="card-body">
-												<h4 class="card-title">박원석의 프로젝트</h4>
-												<p class="card-text">박원석의 프로젝트</p>
-												<p class="card-text">Python/Django</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</section>
 	<!--  Carousel Popular Project Section -->
 
