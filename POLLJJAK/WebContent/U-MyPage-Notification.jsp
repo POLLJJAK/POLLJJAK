@@ -13,7 +13,6 @@ String cp = request.getContextPath();
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-
 <body>
 
 	<c:import url="./common/Nav.jsp" />
@@ -43,8 +42,9 @@ String cp = request.getContextPath();
 					</div>
 				</div>
 				<!-- End PageIntro Section -->
-				
-				<div class="MyPage-Info" style="text-align: center; font-size: small;">
+
+				<div class="MyPage-Info"
+					style="text-align: center; font-size: small;">
 					<img src="assets/img/UserIcon/User-Icon.png" alt=""
 						style="width: 60px; height: 60px; padding: 10px;"> <br>
 					<button
@@ -64,45 +64,44 @@ String cp = request.getContextPath();
 						src="assets/img/UserIcon/star.png" alt=""
 						style="width: 10px; height: 10px;">
 					<!-- End Star -->
-
 					<p>최근 로그인 날짜 : 2022-12-09</p>
 				</div>
 				<hr>
-
 				<!-- ====== InnerNav ====== -->
-				<nav id="navbar" class="navbar" >
+				<nav id="navbar" class="navbar">
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto" href="U-MyPage-Warning.jsp">정보</a></li>
-						<li><a class="nav-link scrollto" href="U-MyPage-Warning.jsp">프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="U-MyPage-Warning.jsp">알림</a></li>
-						<li><a class="nav-link scrollto " href="U-MyPage-Warning.jsp">활동내역</a></li>
+						<li><a class="nav-link scrollto " href="U-MyPage-Info.jsp">정보</a></li>
+						<li><a class="nav-link scrollto" href="U-MyPage-project.jsp">프로젝트</a></li>
+						<li><a class="nav-link scrollto active"
+							href="U-MyPage-Notification.jsp">알림</a></li>
+						<li><a class="nav-link scrollto " href="Inner-page.jsp">활동내역</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
 				<hr>
 				<!-- End InnerNav -->
 
-				<div class="section-title" style = "margin-top: 100px;">
-					<h6>비밀번호 입력</h6>
-					<p>비밀번호 입력 후 마이페이지를 이용하실 수 있습니다</p>
-				</div>
 
-				<div class="MyPage-Warning" style="text-align: center; margin-bottom: 100px;" >
-					<!-- <p style="font-weight: bold;">패스워드 입력 후 마이페이지를 이용하실 수 있습니다</p> -->
-					<div style="margin: 0 auto; width: 300px; text-align: center;">
-						<input type="password" class="form-control" id = "pw"
-							placeholder="비밀번호를 입력하세요"
-							style="background-color: #3498db; color: white;" >
-						<button
-							style="background-color: #3498db; border-radius: 50px; margin-top: 20px; width: 300px;"
-							class="btn btn-default">
-							<span style="color: white;">확인</span>
-						</button>
+				<!--  ====== User-Notification Section ====== -->
+				<div class="form-group row">
+					<div class="col-sm-3"></div>
+					<label for="form-select" class="col-sm-3 col-form-label">오늘</label>
+					<div class="col-sm-2">
+						<select class="form-select">
+							<option value="none">기간 선택</option>
+							<option value="1">1개월 이내</option>
+							<option value="3">3개월 이내</option>
+							<option value="6">6개월 이내</option>
+							<option value="all">전체 기간</option>
+						</select>
+						<div class="col-sm-3"></div>
 					</div>
 				</div>
-				<hr>
-			</div>
-		</section>
+				<!-- User-Notification Section -->
+				</section>
+				
+				
+			<hr>
 	</main>
 	<!-- End #main -->
 
@@ -121,26 +120,33 @@ String cp = request.getContextPath();
 	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 	<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-	<script src="assets/vendor/php-email-form/validate.js"></script>
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
 
 </body>
-<script>
 
-	$().ready(function(){
-		$(".btn").click(function(){
-			var target = $("#pw").val();
-			// PW 임의 지정
-			if(target == "0000")
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		var flag = true;
+		
+		$("#modify").click(function()
+		{
+			$("fieldset").attr("disabled", false);
+			
+			$("#modify_done").click(function()
 				{
+					alert("수정이 완료되었습니다.");
 					$(location).attr("href", "/POLLJJAK/U-MyPage-Info.jsp");
-				}
+				});
 		});
-	})
+		
+	});
+			
+	
+			
 
 </script>
-
 
 </html>

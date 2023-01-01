@@ -39,7 +39,7 @@ String cp = request.getContextPath();
 
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
-
+		
 		<section class="inner-page">
 		
 			<!-- title -->
@@ -54,27 +54,31 @@ String cp = request.getContextPath();
 				</div>
 			</div>
 			<!-- end title -->
-	
-
+		
+		
 			<div class="container" data-aos="fade-up">
-				<!-- === PageIntro Section ======
-				<div class="pageintro" style="margin-buttom: 50px;">
+				<!-- ====== PageIntro Section ====== -->
+				<!--
+ 				<div class="pageintro" style="margin-buttom: 50px;">
 					<div class="section-title">
 						<h6>프로젝트 조회/지원</h6>
 						<p>다양한 프로젝트 모집을 찾아보세요!</p>
 					</div>
-				</div> -->
+				</div>
+				-->
+
 
 				<hr>
+
 				<!-- End PageIntro Section -->
 
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar_" class="navbar inner-nav" data-aos="fade-up"> 
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto active" href="U-P-Apply-Main.jsp">전체 프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="U-P-Apply-New.jsp">신규 프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="U-P-Apply-Popular.jsp">인기 프로젝트</a></li>
-						<li><a class="nav-link scrollto " href="U-P-Apply-Complete.jsp">완료 프로젝트</a></li>
+						<li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp">전체 프로젝트</a></li>
+						<li><a class="nav-link scrollto " href="U-P-Apply-New.jsp">신규 프로젝트</a></li>
+						<li><a class="nav-link scrollto " href="U-P-Apply-Popular.jsp">인기 프로젝트</a></li>
+						<li><a class="nav-link scrollto active " href="U-P-Apply-Complete.jsp">완료 프로젝트</a></li>
 					</ul>
 				</nav>
 				<hr>
@@ -82,7 +86,7 @@ String cp = request.getContextPath();
 
 				<!-- ====== Select Section ====== -->
 				<div class="select-project-part form-group" data-aos="fade-up">
-					<p>전체 프로젝트</p>
+					<p>완료 프로젝트</p>
 					<div class="row row-cols-auto">
 						<div class="col">
 							<select class="form-select form-select-sm">
@@ -154,8 +158,8 @@ String cp = request.getContextPath();
 	
 	<!-- ====== Carousel Popular Project Section ====== -->
 	<div class="section-title" data-aos="fade-up">
-		<h2>전체 프로젝트</h2>
-		<p>플젝폴짝의 전체 프로젝트 모집을 확인하세요!</p>
+		<h2>완료 프로젝트</h2>
+		<p>플젝폴짝의 완료 프로젝트 모집을 확인하세요!</p>
 	</div>
 	<section class="pt-5 pb-5" data-aos="fade-up">
 		<div class="container">

@@ -19,7 +19,7 @@ String cp = request.getContextPath();
 
 	<main id="main">
 		<!-- ======= Breadcrumbs Section ======= -->
-		 <section class="breadcrumbs">
+		 <section class="inner-page">
 			<!-- <div class="container">
 
 				<div class="d-flex justify-content-between align-items-center">
@@ -38,7 +38,7 @@ String cp = request.getContextPath();
 				<!-- ====== PageIntro Section ====== -->
 				<div class="pageintro">
 					<div class="section-title">
-						<h6>마이 페이지</h6>
+						<h2>마이 페이지</h2>
 					</div>
 				</div>
 				<!-- End PageIntro Section -->
@@ -70,9 +70,9 @@ String cp = request.getContextPath();
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar" class="navbar">
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto active" href="Inner-page.jsp">정보</a></li>
-						<li><a class="nav-link scrollto" href="Inner-page.jsp">프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="Inner-page.jsp">알림</a></li>
+						<li><a class="nav-link scrollto active" href="U-MyPage-Info.jsp">정보</a></li>
+						<li><a class="nav-link scrollto" href="U-MyPage-project.jsp">프로젝트</a></li>
+						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
 						<li><a class="nav-link scrollto " href="Inner-page.jsp">활동내역</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
@@ -130,41 +130,6 @@ String cp = request.getContextPath();
 									<option value="none">주요 직무 선택</option>
 									<option value="UI/UX" selected>UI/UX</option>
 									<option value="게임">게임</option>
-									<option value="프로젝트 매니저">프로젝트 매니저</option>
-									<option value="하드웨어 기획">하드웨어 기획</option>
-									<option value="그래픽 디자인">그래픽 디자인</option>
-									<option value="UI/UX 디자인">UI/UX 디자인</option>
-									<option value="3D 디자인">3D 디자인</option>
-									<option value="하드웨어 디자인">하드웨어 디자인</option>
-									<option value="IOS">IOS</option>
-									<option value="안드로이드">안드로이드</option>
-									<option value="웹 프론트엔드">웹 프론트엔드</option>
-									<option value="웹 퍼블리셔">웹 퍼블리셔</option>
-									<option value="크로스 플랫폼">크로스 플랫폼</option>
-									<option value="임베디드SW">임베디드SW</option>
-									<option value="웹서버">웹서버</option>
-									<option value="블록체인">블록체인</option>
-									<option value="AI">AI</option>
-									<option value="DB/빅데이터/DS">DB/빅데이터/DS</option>
-									<option value="게임서버">게임서버</option>
-									<option value="사업기획">사업기획</option>
-									<option value="마케팅">마케팅</option>
-									<option value="재무/회계">재무/회계</option>
-									<option value="영업">영업</option>
-									<option value="전략/컨설팅">전략/컨설팅</option>
-									<option value="투자/고문">투자/고문</option>
-								</select>
-								</div>
-								<div class = "col-sm-3"></div>
-							</div>
-							<div class="row mb-3">
-								<div class = "col-sm-3"></div>
-								<label for="sub-persnal-part" class="col-sm-2 col-form-label">부가 개인 역량</label>
-								<div class="col-sm-4">
-									<select class="form-select" id="sub-persnal-part">
-									<option value="none">부가 개인 역량 선택</option>
-									<option value="UI/UX" >UI/UX</option>
-									<option value="게임" selected>게임</option>
 									<option value="프로젝트 매니저">프로젝트 매니저</option>
 									<option value="하드웨어 기획">하드웨어 기획</option>
 									<option value="그래픽 디자인">그래픽 디자인</option>
@@ -259,7 +224,7 @@ String cp = request.getContextPath();
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
-							<div class="row mb-5">
+							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
 								<label for="persnal-skill" class="col-sm-2 col-form-label">주요기술</label>
 								<div class="col-sm-4">
@@ -278,7 +243,82 @@ String cp = request.getContextPath();
 									<option value="Linux">Linux</option>
 									<option value="Docker">Docker</option>
 									<option value="Perl">Perl</option>
-									<option value="Kuberbetes">Kuberbetes</option>
+									<option value="Kubernetes">Kubernetes</option>
+									<option value="AWS">AWS</option>
+								</select>
+								</div>
+								<div class = "col-sm-3"></div>
+							</div>
+							<div class="row mb-3">
+								<div class = "col-sm-3"></div>
+								<label for="persnal-skill" class="col-sm-2 col-form-label">부가기술 1</label>
+								<div class="col-sm-4">
+									<select class="form-select" id="persnal-skill1">
+									<option value="none">기술 선택</option>
+									<option value="Java" >Java</option>
+									<option value="Spring">Spring</option>
+									<option value="React" selected>React</option>
+									<option value="Python">Python</option>
+									<option value="C">C</option>
+									<option value="C++">C++</option>
+									<option value="Kotlin">Kotlin</option>
+									<option value="Angular">Angular</option>
+									<option value="TypeScript">TypeScript</option>
+									<option value="NodeJs">NodeJs</option>
+									<option value="Linux">Linux</option>
+									<option value="Docker">Docker</option>
+									<option value="Perl">Perl</option>
+									<option value="Kubernetes">Kubernetes</option>
+									<option value="AWS">AWS</option>
+								</select>
+								</div>
+								<div class = "col-sm-3"></div>
+							</div>
+							<div class="row mb-3">
+								<div class = "col-sm-3"></div>
+								<label for="persnal-skill" class="col-sm-2 col-form-label">부가기술 2</label>
+								<div class="col-sm-4">
+									<select class="form-select" id="persnal-skill1">
+									<option value="none">기술 선택</option>
+									<option value="Java" >Java</option>
+									<option value="Spring">Spring</option>
+									<option value="React">React</option>
+									<option value="Python" selected >Python</option>
+									<option value="C">C</option>
+									<option value="C++">C++</option>
+									<option value="Kotlin">Kotlin</option>
+									<option value="Angular">Angular</option>
+									<option value="TypeScript">TypeScript</option>
+									<option value="NodeJs">NodeJs</option>
+									<option value="Linux">Linux</option>
+									<option value="Docker">Docker</option>
+									<option value="Perl">Perl</option>
+									<option value="Kubernetes">Kubernetes</option>
+									<option value="AWS">AWS</option>
+								</select>
+								</div>
+								<div class = "col-sm-3"></div>
+							</div>
+							<div class="row mb-5">
+								<div class = "col-sm-3"></div>
+								<label for="persnal-skill" class="col-sm-2 col-form-label">부가기술 3</label>
+								<div class="col-sm-4">
+									<select class="form-select" id="persnal-skill1">
+									<option value="none" selected>기술 선택</option>
+									<option value="Java" >Java</option>
+									<option value="Spring">Spring</option>
+									<option value="React">React</option>
+									<option value="Python">Python</option>
+									<option value="C">C</option>
+									<option value="C++">C++</option>
+									<option value="Kotlin">Kotlin</option>
+									<option value="Angular">Angular</option>
+									<option value="TypeScript">TypeScript</option>
+									<option value="NodeJs">NodeJs</option>
+									<option value="Linux">Linux</option>
+									<option value="Docker">Docker</option>
+									<option value="Perl">Perl</option>
+									<option value="Kubernetes">Kubernetes</option>
 									<option value="AWS">AWS</option>
 								</select>
 								</div>

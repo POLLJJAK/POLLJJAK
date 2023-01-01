@@ -36,7 +36,7 @@
 <!-- ====== Carousel Notice Section ====== -->
 <!-- 일단 메인 배너에 대한 코드를 만들어 놓긴 했는데
 저는 개인적으로 메인만 있는게 더 좋을 것 같은 생각입니다 -->
-<div class="section-title" data-aos="fade-up">
+<div class="section-title"  style = "margin-bottom: 50px;"data-aos="fade-up">
 	<h2>관리자 공지사항</h2>
 	<p>플젝폴짝의 새로운 공지사항을 확인하세요!</p>
 </div>
@@ -54,7 +54,7 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active" data-bs-interval="10000">
-				<img src="assets/img/portfolio/portfolio-1.jpg"
+				<img src="https://images.unsplash.com/photo-1563725911583-7d108f720483"
 					class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>라운지 이용 에티켓</h5>
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 			<div class="carousel-item" data-bs-interval="2000">
-				<img src="assets/img/portfolio/portfolio-2.jpg"
+				<img src="https://images.unsplash.com/photo-1563725911583-7d108f720483"
 					class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>새로운 프로젝트 개설</h5>
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="assets/img/portfolio/portfolio-3.jpg"
+				<img src="https://images.unsplash.com/photo-1563725911583-7d108f720483"
 					class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>새로운 공지사항</h5>
@@ -124,7 +124,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">한은영의 프로젝트</h4>
 											<p class="card-text">한은영의 프로젝트</p>
@@ -136,7 +136,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">김유림의 프로젝트</h4>
 											<p class="card-text">김유림의 프로젝트</p>
@@ -147,7 +147,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">김인교의 프로젝트</h4>
 											<p class="card-text">김인교의 프로젝트</p>
@@ -158,7 +158,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">박원석의 프로젝트</h4>
 											<p class="card-text">박원석의 프로젝트</p>
@@ -173,7 +173,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">이상홍의 프로젝트</h4>
 											<p class="card-text">이상홍의 프로젝트</p>
@@ -184,7 +184,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">조윤상의 프로젝트</h4>
 											<p class="card-text">조윤상의 프로젝트</p>
@@ -195,7 +195,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">임권묵의 프로젝트</h4>
 											<p class="card-text">임권묵의 프로젝트</p>
@@ -206,7 +206,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">권희용의 프로젝트</h4>
 											<p class="card-text">권희용의 프로젝트</p>
@@ -257,7 +257,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">한공주의 프로젝트</h4>
 											<p class="card-text">한은영의 프로젝트</p>
@@ -269,7 +269,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">김유림의 프로젝트</h4>
 											<p class="card-text">김유림의 프로젝트</p>
@@ -280,7 +280,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">김인교의 프로젝트</h4>
 											<p class="card-text">김인교의 프로젝트</p>
@@ -291,7 +291,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">박성순의 프로젝트</h4>
 											<p class="card-text">박성순의 프로젝트</p>
@@ -306,7 +306,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">이상홍의 프로젝트</h4>
 											<p class="card-text">이상홍의 프로젝트</p>
@@ -317,7 +317,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">조윤상의 프로젝트</h4>
 											<p class="card-text">조윤상의 프로젝트</p>
@@ -328,7 +328,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">임권묵의 프로젝트</h4>
 											<p class="card-text">임권묵의 프로젝트</p>
@@ -339,7 +339,7 @@
 								<div class="col-md-3 mb-3">
 									<div class="card">
 										<img class="img-fluid" alt="100%x280"
-											src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
 											<h4 class="card-title">권희용의 프로젝트</h4>
 											<p class="card-text">권희용의 프로젝트</p>

@@ -19,15 +19,27 @@
 
 
 <main id="main">
+
+	<!-- 빈칸 여백 -->
+	<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
+
+
 	<section class="inner-page" data-aos="fade-up">
 	
-		<!-- title -->
-		<div class="pt-5">
-			<div class="section-title pt-5">
-				<h6>프로젝트 생성</h6>
-				<p>마음에 드는 프로젝트가 없나요? 그럼 만들어봅시다.</p>
+		<div class="container ">
+			<div class="row">
+				<!-- title -->
+				<div class="d-flex justify-content-center col" style="width: 50%;"  data-aos="fade-up">
+					<div class="section-title pt-4">
+						<h6>프로젝트 생성</h6>
+						<div>마음에 드는 프로젝트가 없나요? 그럼 만들어봅시다.</div>
+					</div>
+				</div>
+				<!-- end title -->
 			</div>
-		</div> <!-- end title -->
+		</div>
+				
+
 	
 		<div class="container">
 			<form name="newProduct" action="<%=cp %>/ProjectDetail.jsp" class="" method="post" 
