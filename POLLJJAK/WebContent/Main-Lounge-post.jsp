@@ -54,24 +54,6 @@
 			
 		<section class="pt-5 pb-5" data-aos="fade-up">
 		<div class="container" data-aos="fade-up">
-			<!-- <table class="table">
-				<tr>
-					<th>번호</th>
-					<th>젬ㅎㄱ</th>
-					<th>닉네임</th>
-					<th>일시</th>
-					<th>어찌구</th>
-					<th>어찌구</th>
-				</tr>
-				<tr>
-					<td>555</td>
-					<td>ㅇ찌구저ㅣ지지</td>
-					<td>555</td>
-					<td>닉네네네네</td>
-					<td>101010101</td>
-					<td>101010101</td>
-				</tr>
-			</table> -->
 			<div class="board_wrap">
 				<div class="board-title">
 					<!-- <strong>자유게시판</strong>

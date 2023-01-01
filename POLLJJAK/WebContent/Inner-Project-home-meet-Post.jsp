@@ -27,7 +27,7 @@ String cp = request.getContextPath();
 	<main id="main">
 
 		<!-- 빈칸 여백 -->
-		<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
+		<section class="pb-2"></section>
 
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
@@ -35,7 +35,6 @@ String cp = request.getContextPath();
 				<!-- 상단 현재 보고있는 프로젝트 표시바 -->
 				<div class="projectView container col-lg-12">
 					<div class="row">
-					
 						<div class="projectStatus p-3 pb-0 border rounded-top">
 							<div class="container text-center">
 								<div class="row justify-content-center">
@@ -64,7 +63,6 @@ String cp = request.getContextPath();
 									<div class="col-md-0 col-lg-2"></div>
 									
 
-									
 								</div>
 							</div>
 						</div>
@@ -74,13 +72,14 @@ String cp = request.getContextPath();
 							<nav id="navbar_" class="mt-5 pj_nav">
 							   <ul class="justify-content-center">
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-meet.jsp">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
+						
 						
 						<div class="container">
 						   <hr>
@@ -89,67 +88,25 @@ String cp = request.getContextPath();
 
 						<!-- 컨텐츠 란 -->
 						<div class="container d-flex justify-content-between">
-							<h5 class="p-2 m-0 fw-bolder align-self-center">업무 관리</h5>
-						</div>
-						
-						
-						<div class="container-lg mb-3" onclick="location.href='<%=cp %>/Inner-Project-home-subWork.jsp';" style="cursor: pointer;">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<div class="d-flex justify-content-between">
-										<div style="font-size: 1.0rem; font-weight: bold;">주요 업무1</div>
-										<div class="mb-2" style="font-size: 1.0rem;">2022-11-18 ~ 2022-12-03</div>
-									</div>
-									<div class="d-flex">
-										<div class="align-self-center pt-1 pb-1 pr-1" style="font-size: 0.8rem; font-weight: bold;">진척도 <span>80%</span></div>
-										<div class="progress align-self-center" style="width: 75%; height: 10px;">
-											<div class="progress-bar" role="progressbar" style="width: 80%; background-color: #81EC81" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-										<div class="d-flex ms-auto align-self-center">
-											<div class="teamIcon">팀원1</div>
-											<div class="teamIcon">팀원2</div>
-											<div class="teamIcon">팀원3</div>
-											<div class="teamIcon">팀원4</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="container-lg mb-3" onclick="location.href='<%=cp %>/Inner-Project-home-subWork.jsp';" style="cursor: pointer;">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<div class="d-flex justify-content-between">
-										<div style="font-size: 1.0rem; font-weight: bold;">주요 업무2</div>
-										<div class="mb-2" style="font-size: 1.0rem;">2022-12-03 ~ 2022-12-10</div>
-									</div>
-									<div class="d-flex">
-										<div class="align-self-center pt-1 pb-1 pr-1" style="font-size: 0.8rem; font-weight: bold;">진척도 <span>35%</span></div>
-										<div class="progress align-self-center" style="width: 75%; height: 10px;">
-											<div class="progress-bar" role="progressbar" style="width: 35%; background-color: #81EC81" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-										<div class="d-flex ms-auto align-self-center" style="font-size: 0.8rem;">
-											<div class="teamIcon">팀원1</div>
-											<div class="teamIcon">팀원2</div>
-										</div>
-									</div>
-								</div>
+							<h5 class="p-2 m-0 fw-bolder align-self-center">회의록</h5>
+							<div class="p-2 ms-auto align-self-center" data-bs-toggle="modal" data-bs-target="#mainWorkAdd">
+								<button type="button" class="btn btn-light">작성하기</button>
 							</div>
 						</div>
 
-						<!-- 파일 관리 -->
-						<h5 class="container-lg p-4 pb-0 fw-bolder">프로젝트 파일 목록</h5>
 						
+						<!-- 포스트 상세보기 -->
 						<div class="container">
-							<div class="filelistBox mb-3">
-								<ul class="p-3 list-unstyled">
-									<li> 파일1.png </li>
-									<li> 파일2.png </li>
-									<li> 파일3.png </li>
-									<li> 파일4.png </li>
-								</ul>
+							<div class="row justify-content-center">
+								
+								
+								
+								
+								
+								
+								
 							</div>
-						</div>
+					    </div>
 						
 						
 					</div>

@@ -66,12 +66,12 @@ String cp = request.getContextPath();
 										<div class="row justify-content-center">
 											
 											<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject">
-												<button class="stopBtn mb-2">중단하기</button>
+												<button class="L-stopBtn mb-2">중단하기</button>
 											</div>
 											
 											<div class="row col-md-12 col-lg-12">
 												<div class="col-lg-6 ps-0 pe-0" data-bs-toggle="modal" data-bs-target="#teamEvaluation">
-													<button class="scoreBtn mb-2">팀원평가</button>
+													<button class="L-scoreBtn mb-2">팀원평가</button>
 												</div>
 												<div class="col-lg-6 ps-0 pe-0">
 													<button type="button" class="projectEndBtn mb-2">마감처리</button>
@@ -86,15 +86,17 @@ String cp = request.getContextPath();
 						</div>
 						
 						<!-- 프로젝트 홈 메뉴 -->
-							<nav id="navbar_" class="mt-5 pb-0 navbar inner-nav"> 
-						   <ul style="margin-left: auto; margin-right: auto;">
-						      <li><a class="nav-link pb-0  scrollto active" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
-						   </ul>
-						</nav>
+						<div class="container">
+							<nav id="navbar_" class="mt-5 pj_nav">
+							   <ul class="justify-content-center">
+							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							   </ul>
+							</nav>
+						</div>
 						
 						<div class="container">
 						   <hr>
@@ -108,7 +110,7 @@ String cp = request.getContextPath();
 						
 						
 						
-						<div style="overflow-x:auto;">
+					<div style="overflow-x:auto;">
 								<table class="table table-hover text-center align-middle">
 									<thead>
 										<tr>
@@ -119,7 +121,6 @@ String cp = request.getContextPath();
 											<th scope="col">마지막 로그인 일자</th>
 											<th scope="col">중단요청</th>
 											<th scope="col">프로필</th>
-											<th scope="col">팀원방출</th>
 										</tr>
 									</thead>
 									<tbody>	
@@ -129,11 +130,8 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-primary">요청함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
-											<td data-bs-toggle="modal" data-bs-target="#outTeamBtn">
-												<button class="btn btn-light" onclick="">팀원방출</button>
-											</td>								
+											<td><button class="btn btn-danger"><div class="bi bi-person-x"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -141,11 +139,8 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">요청안함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>
-											<td data-bs-toggle="modal" data-bs-target="#outTeamBtn">
-												<button class="btn btn-light" onclick="">팀원방출</button>
-											</td>								
+											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -153,11 +148,8 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">요청안함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>	
-											<td data-bs-toggle="modal" data-bs-target="#outTeamBtn">
-												<button class="btn btn-light" onclick="">팀원방출</button>
-											</td>							
+											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -165,14 +157,11 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">요청안함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>
-											<td data-bs-toggle="modal" data-bs-target="#outTeamBtn">
-												<button class="btn btn-light" onclick="">팀원방출</button>
-											</td>								
+											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
-											<td colspan="8">현재 팀원이 없습니다.</td>
+											<td colspan="7">현재 팀원이 없습니다.</td>
 										</tr>
 									</tbody>								
 								</table>
@@ -187,7 +176,7 @@ String cp = request.getContextPath();
 								</div>
 								
 								<div class="p-1 col-lg-2" data-bs-toggle="modal" data-bs-target="#inviteTeamBtn">
-									<button class="p-2 btn btn-light" style="float: right;">팀원초대</button>
+									<button class="p-2 gradientBtn color-9" style="float: right;">팀원초대</button>
 								</div>
 							</div>
 						</div>
@@ -232,7 +221,7 @@ String cp = request.getContextPath();
 					
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-primary" id="submitStopBtn">링크 복사하기</button>
+		        	<button type="button" class="gradientBtn color-9" id="submitStopBtn">링크 복사하기</button>
 		      	</div>
 		    </div>
 		 </div>
@@ -309,7 +298,7 @@ String cp = request.getContextPath();
 					
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-primary">팀원평가 완료</button>
+		        	<button type="button" class="gradientBtn color-9">팀원평가 완료</button>
 		      	</div>
 		    </div>
 		 </div>
@@ -347,103 +336,6 @@ String cp = request.getContextPath();
 	<c:import url="./common/Footer.jsp" />
 
 </body>
-
-
-<!-- css 스타일 적용 -->
-<style>
-	.projectView {
-		border: 1px solid gray;
-		border-radius: 6px;
-	}
-	
-	.projectStatus {
-		background: #EEEEEE;
-	}
-
-	.pj-title {
-		font-size: 14px;
-		font-weight: bold;
-		background: #BDBDBD;
-	}
-	.pj-date {
-		font-size: 12px;
-	}
-	.stopBtn {
-		font-size: 14px;
-		color: white;
-		background: #EC5454;
-		border: 0px solid;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.stopBtn:hover {
-		background: #C74B4B;
-	}
-	
-	.scoreBtn {
-		width: 100%;
-		font-size: 14px;
-		color: black;
-		background: #fff;
-		border: 1px dotted;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.scoreBtn:hover {
-		color: white;
-		background: #5e5e5e;
-	}
-	.scrollme {
-		overflow-x: auto;
-	}
-	
-	.projectEndBtn, .inviteBtn {
-		width: 100%;
-		font-size: 14px;
-		color: black;
-		background: #fff;
-		border: 1px dotted;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.projectEndBtn:hover, .inviteBtn:hover {
-		color: white;
-		background: #5e5e5e;
-	}
-	
-	/* 팀원 평가 별점 기능css*/
-	.scoreSelect1 {
-	    padding: 15px 10px;
-	}
-	.scoreSelect1 input[type=radio]{
-	    display: none;
-	}
-	.scoreSelect1 input[type=radio]+label{
-	    display: inline-block;
-	    cursor: pointer;
-	    height: 40px;
-	    width: 40px;
-	    border: 1px solid #E8E7DA;
-	    border-radius: 100%;
-	    line-height: 40px;
-	    text-align: center;
-	    font-weight:bold;
-	    font-size:12px;
-	}
-	.scoreSelect1 input[type=radio]+label{
-	    background-color: #fff;
-	    color: #333;
-	}
-	.scoreSelect1 input[type=radio]:checked+label{
-	    background-color: #FFE400;
-	    border: 1px solid #FFE400;
-	    color: #fff;
-	}
-</style>
-
 
 
 </html>
