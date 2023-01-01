@@ -136,7 +136,7 @@
             		<td>모집분야 1</td>
             		<td>2/2</td>
             		<td><div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
-            		<button class="fullbtn" >지원하기</button> </td>
+            		<button class="fullbtn" >지원하기</button></div></td>
             		</tr>
             		<tr>
             		<td>모집분야 2</td>
@@ -367,7 +367,7 @@
 		  </div>
         </div>
 
-      
+      </div>
     </section><!-- End Portfolio Details Section -->
 	
   </main><!-- End #main -->
