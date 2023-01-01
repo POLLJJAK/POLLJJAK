@@ -159,15 +159,25 @@
 						</div>
 					</div>
 					<div class="board_page">
-						<a href="#" class="bt first"><<</a>
-						<a href="#" class="bt prev"><</a>
-						<a href="#" class="num on">1</a>
-						<a href="#" class="num">2</a>
-						<a href="#" class="num">3</a>
-						<a href="#" class="num">4</a>
-						<a href="#" class="num">5</a>
-						<a href="#" class="bt next">></a>
-						<a href="#" class="bt last">>></a>
+						<ul class="pagination justify-content-center">
+							  
+							    <li class="page-item">
+							      <a class="page-link" href="#" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							      </a>
+							    </li>
+							    
+							    <li class="page-item"><a class="page-link" href="#">1</a></li>
+							    <li class="page-item"><a class="page-link" href="#">2</a></li>
+							    <li class="page-item"><a class="page-link" href="#">3</a></li>
+							    
+							    <li class="page-item">
+							      <a class="page-link" href="#" aria-label="Next">
+							        <span aria-hidden="true">&raquo;</span>
+							      </a>
+							    </li>
+							    
+					  	</ul>
 					</div>
 					<div class="bt_wrap">
 						<!-- <a href="#" class="on">작성하기</a> -->
