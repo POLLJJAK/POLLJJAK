@@ -27,7 +27,7 @@ String cp = request.getContextPath();
 	<main id="main">
 
 		<!-- 빈칸 여백 -->
-		<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
+		<section class="pb-2"></section>
 
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
@@ -68,15 +68,18 @@ String cp = request.getContextPath();
 						</div>
 						
 						<!-- 프로젝트 홈 메뉴 -->
-						<nav id="navbar_" class="mt-5 pb-0 navbar inner-nav"> 
-						   <ul style="margin-left: auto; margin-right: auto;">
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto active" href="Inner-Project-home-meet.jsp">회의록</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
-						   </ul>
-						</nav>
+						<div class="container">
+							<nav id="navbar_" class="mt-5 pj_nav">
+							   <ul class="justify-content-center">
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							   </ul>
+							</nav>
+						</div>
+						
 						
 						<div class="container">
 						   <hr>
@@ -87,22 +90,120 @@ String cp = request.getContextPath();
 						<div class="container d-flex justify-content-between">
 							<h5 class="p-2 m-0 fw-bolder align-self-center">회의록</h5>
 							<div class="p-2 ms-auto align-self-center" data-bs-toggle="modal" data-bs-target="#mainWorkAdd">
-								<button type="button" class="btn btn-light">작성하기</button>
+								<button type="button" class="gradientBtn color-9">작성하기</button>
 							</div>
 						</div>
+
 						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+						<div class="container">
+							<div class="row justify-content-center">
+								<table class="table" style="width: 70%;">
+									<thead>
+										<tr>
+											<th scope="col">번호</th>
+											<th scope="col">제목</th>
+											<th scope="col">작성자</th>
+											<th scope="col">작성일</th>
+										</tr>
+									</thead>
+									<tbody class="table-group-divider" style="font-size: 0.8rem;">
+										<tr>
+											<td scope="row">10</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">9</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">8</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">7</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">6</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">5</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">4</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">3</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">2</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									
+										<tr>
+											<td scope="row">1</td>
+											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
+											<td>팀원1</td>
+											<td>2023-01-01</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
+							<div>
+							  <ul class="pagination justify-content-center">
+							  
+							    <li class="page-item">
+							      <a class="page-link" href="#" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							      </a>
+							    </li>
+							    
+							    <li class="page-item"><a class="page-link" href="#">1</a></li>
+							    <li class="page-item"><a class="page-link" href="#">2</a></li>
+							    <li class="page-item"><a class="page-link" href="#">3</a></li>
+							    
+							    <li class="page-item">
+							      <a class="page-link" href="#" aria-label="Next">
+							        <span aria-hidden="true">&raquo;</span>
+							      </a>
+							    </li>
+							    
+							  </ul>
+						  </div>
+						  
+						  
+					    </div>
 						
 					</div>
 				</div>
@@ -122,61 +223,6 @@ String cp = request.getContextPath();
 
 
 </body>
-
-
-<!-- css 스타일 적용 -->
-<style>
-	.projectView {
-		border: 1px solid gray;
-		border-radius: 6px;
-	}
-	
-	.projectStatus {
-		background: #EEEEEE;
-	}
-
-	.pj-title {
-		font-size: 14px;
-		font-weight: bold;
-		background: #BDBDBD;
-	}
-	.pj-date {
-		font-size: 12px;
-	}
-	.stopBtn {
-		float: right;
-		font-size: 14px;
-		color: white;
-		background: #EC5454;
-		border: 0px solid;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.stopBtn:hover {
-		background: #C74B4B;
-	}
-	
-	.scoreBtn {
-		float: right;
-		font-size: 14px;
-		color: black;
-		background: #fff;
-		border: 1px dotted;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.scoreBtn:hover {
-		color: white;
-		background: #5e5e5e;
-	}
-	.scrollme {
-		overflow-x: auto;
-	}
-
-
-</style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script>

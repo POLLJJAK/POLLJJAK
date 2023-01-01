@@ -31,6 +31,7 @@
   	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 	<link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,17 +44,24 @@
     <link href="assets/vendor/projectOpen/css/checkbox.css" rel="stylesheet">
     <link href="assets/vendor/projectOpen/css/radioBtn.css" rel="stylesheet">
     <link href="assets/vendor/projectOpen/css/projectOpenMain.css" rel="stylesheet">
+    
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
 	<link href="assets/vendor/projectOpen/css/calendar.css" rel="stylesheet">
 	<link href="assets/vendor/projectDetail/css/projectDetail.css" rel="stylesheet">
 	
 	
-	<!-- 프로젝트 홈 일정관리 캘린더 -->
+	<!-- @@@ 내 프로젝트 홈 @@@@ -->
+	<!-- 내 프로젝트 홈 css 파일 -->
+	<link href="assets/css/Inner-Project-home.css" rel="stylesheet">
+	
+	<!-- 내 프로젝트 홈 → 일정 관리 → 캘린더 -->
 	<!-- fullcalendar CDN -->
 	<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
 	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
 	<!-- fullcalendar 언어 CDN -->
 	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+	
+	
 	
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
