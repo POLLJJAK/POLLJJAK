@@ -37,33 +37,35 @@ String cp = request.getContextPath();
 
 	<main id="main">
 
-		<!-- ======= Breadcrumbs Section ======= -->
-		<section class="inner-page">
-			<!-- <div class="container">
+		<!-- 빈칸 여백 -->
+		<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
 
-				<div class="d-flex justify-content-between align-items-center">
-					<h2>프로젝트 조회/지원</h2>
-					<ol>
-						<li><a href="U-main.jsp">플젝폴짝 홈으로</a></li>
-						<li>프로젝트 조회/지원</li>
-					</ol>
+		<section class="inner-page">
+		
+			<!-- title -->
+			<div class="container"  data-aos="fade-up">
+				<div class="row">
+					<div class="d-flex justify-content-center col" style="width: 50%;"  data-aos="fade-up">
+						<div class="section-title pt-4">
+							<h6>프로젝트 조회/지원</h6>
+							<div>참여하고 싶은 다양한 프로젝트 모집을 찾아보세요!</div>
+						</div>
+					</div>
 				</div>
-			</div> -->
-		</section>
-		<!-- End Breadcrumbs Section -->
+			</div>
+			<!-- end title -->
+	
 
-		<section class="inner-page">
 			<div class="container" data-aos="fade-up">
-				<!-- ====== PageIntro Section ====== -->
+				<!-- === PageIntro Section ======
 				<div class="pageintro" style="margin-buttom: 50px;">
 					<div class="section-title">
 						<h6>프로젝트 조회/지원</h6>
 						<p>다양한 프로젝트 모집을 찾아보세요!</p>
 					</div>
-				</div>
+				</div> -->
 
 				<hr>
-
 				<!-- End PageIntro Section -->
 
 				<!-- ====== InnerNav ====== -->
