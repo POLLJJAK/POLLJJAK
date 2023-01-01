@@ -70,15 +70,17 @@ String cp = request.getContextPath();
 						</div>
 						
 						<!-- 프로젝트 홈 메뉴 -->
-						<nav id="navbar_" class="mt-5 pb-0 navbar inner-nav"> 
-						   <ul style="margin-left: auto; margin-right: auto;">
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto active" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
-						   </ul>
-						</nav>
+						<div class="container">
+							<nav id="navbar_" class="mt-5 pj_nav">
+							   <ul class="justify-content-center">
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							   </ul>
+							</nav>
+						</div>
 						
 						<div class="container">
 						   <hr>
@@ -308,77 +310,6 @@ String cp = request.getContextPath();
 
 </body>
 
-
-<!-- css 스타일 적용 -->
-<style>
-	.projectView {
-		border: 1px solid gray;
-		border-radius: 6px;
-	}
-	
-	.projectStatus {
-		background: #EEEEEE;
-	}
-
-	.pj-title {
-		font-size: 14px;
-		font-weight: bold;
-		background: #BDBDBD;
-	}
-	.pj-date {
-		font-size: 12px;
-	}
-	.stopBtn {
-		float: right;
-		font-size: 14px;
-		color: white;
-		background: #EC5454;
-		border: 0px solid;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.stopBtn:hover {
-		background: #C74B4B;
-	}
-	
-	.scoreBtn {
-		float: right;
-		font-size: 14px;
-		color: black;
-		background: #fff;
-		border: 1px dotted;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.scoreBtn:hover {
-		color: white;
-		background: #5e5e5e;
-	}
-	.scrollme {
-		overflow-x: auto;
-	}
-	
-	.filelistBox {
-		border: 1px solid gray;
-		border-radius: 8px;
-		padding: 3px;
-		font-size: 14px;
-		background: #EEEEEE;
-	}
-	
-	.teamIcon {
-		font-size: 0.8rem;
-		margin-left: 5px;
-		padding: 2px;
-		border: 1px solid gray;
-		border-radius: 5px;
-		background: #EEEEEE;
-	}
-
-
-</style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script>

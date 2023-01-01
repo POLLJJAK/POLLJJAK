@@ -11,7 +11,8 @@
 <html lang="en">
 
 <!-- head import (css imported)-->
-<c:import url="./common/Head.jsp" /> 
+<c:import url="./common/Head.jsp" />
+<script src="assets/vendor/projectOpen/js/fileUpload.js"></script> 
 
 <body>
 <c:import url="./common/Nav.jsp" />

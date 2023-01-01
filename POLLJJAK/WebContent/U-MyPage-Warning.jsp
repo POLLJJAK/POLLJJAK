@@ -44,6 +44,7 @@ String cp = request.getContextPath();
 				</div>
 				<!-- End PageIntro Section -->
 				
+				
 				<div class="MyPage-Info" style="text-align: center; font-size: small;">
 					<img src="assets/img/UserIcon/User-Icon.png" alt=""
 						style="width: 60px; height: 60px; padding: 10px;"> <br>
@@ -82,10 +83,18 @@ String cp = request.getContextPath();
 				<hr>
 				<!-- End InnerNav -->
 
-				<div class="section-title" style = "margin-top: 100px;">
-					<h6>비밀번호 입력</h6>
-					<p>비밀번호 입력 후 마이페이지를 이용하실 수 있습니다</p>
+				<!-- title -->
+				<div class="container"  data-aos="fade-up">
+					<div class="row">
+						<div class="d-flex justify-content-center col" style="width: 50%;"  data-aos="fade-up">
+							<div class="section-title pt-4">
+								<h6>비밀번호 입력</h6>
+								<div>비밀번호 입력 후 마이페이지를 이용하실 수 있습니다</div>
+							</div>
+						</div>
+					</div>
 				</div>
+				<!-- end title -->
 
 				<div class="MyPage-Warning" style="text-align: center; margin-bottom: 100px;" >
 					<!-- <p style="font-weight: bold;">패스워드 입력 후 마이페이지를 이용하실 수 있습니다</p> -->

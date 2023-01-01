@@ -67,15 +67,17 @@ String cp = request.getContextPath();
 						</div>
 						
 						<!-- 프로젝트 홈 메뉴 -->
-						<nav id="navbar_" class="mt-5 pb-0 navbar inner-nav"> 
-						   <ul style="margin-left: auto; margin-right: auto;">
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
-						      <li><a class="nav-link pb-0  scrollto active" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
-						   </ul>
-						</nav>
+						<div class="container">
+							<nav id="navbar_" class="mt-5 pj_nav">
+							   <ul class="justify-content-center">
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto active"  href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							   </ul>
+							</nav>
+						</div>
 						
 						<div class="container">
 						   <hr>
@@ -143,7 +145,7 @@ String cp = request.getContextPath();
 									// 캘린더 랜더링
 									calendar.render();
 								});
-							})();
+							});
 						</script>
 						
 						<div class="d-inline-flex">
@@ -178,7 +180,7 @@ String cp = request.getContextPath();
 							    </p>
 							    
 							    <div class="p-2 row" data-bs-toggle="modal" data-bs-target="#calendarEventAdd">
-							    	<button class="btn btn-primary">일정 등록</button>
+							    	<button class="gradientBtn color-9">일정 등록</button>
 							    </div>
 							    
 							</div>
@@ -237,7 +239,7 @@ String cp = request.getContextPath();
 					
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-primary" onclick="location.href='<%=cp %>/Inner-Project-home-mainWork-Leader.jsp';" style="cursor: pointer;">등록하기</button>
+		        	<button type="button" class="gradientBtn color-9" onclick="location.href='<%=cp %>/Inner-Project-home-mainWork-Leader.jsp';" style="cursor: pointer;">등록하기</button>
 		      	</div>
 		    </div>
 		 </div>
@@ -255,92 +257,6 @@ String cp = request.getContextPath();
 
 </body>
 
-
-<!-- css 스타일 적용 -->
-<style>
-	.projectView {
-		border: 1px solid gray;
-		border-radius: 6px;
-	}
-	
-	.projectStatus {
-		background: #EEEEEE;
-	}
-
-	.pj-title {
-		font-size: 14px;
-		font-weight: bold;
-		background: #BDBDBD;
-	}
-	.pj-date {
-		font-size: 12px;
-	}
-	.stopBtn {
-		float: right;
-		font-size: 14px;
-		color: white;
-		background: #EC5454;
-		border: 0px solid;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.stopBtn:hover {
-		background: #C74B4B;
-	}
-	
-	.scoreBtn {
-		float: right;
-		font-size: 14px;
-		color: black;
-		background: #fff;
-		border: 1px dotted;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.scoreBtn:hover {
-		color: white;
-		background: #5e5e5e;
-	}
-	.scrollme {
-		overflow-x: auto;
-	}
-	
-	/* 일정관리 캘린더 드래그 박스의 스타일 */
-	#external-events {
-	  width: 230px;
-	  padding: 10px;
-	  border: 1px solid #ccc;
-	  border-radius: 6px;
-	  background: #fff;
-	  text-align: left;
-	  margin-bottom: 50px;
-	}
-
-	#external-events .fc-event {
-	  margin: 3px 0;
-	  cursor: move;
-	}
-	
-	#external-events p {
-	  margin: 1.5em 0;
-	  font-size: 11px;
-	  color: #666;
-	}
-	
-	#external-events p input {
-	  margin: 0;
-	  vertical-align: middle;
-	}
- 
-	#calendar1 {
-    	max-width: 95%;
-    	margin-bottom: 50px;
-    	margin-left: 20px;
-  	}
-
-</style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script>

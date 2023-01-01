@@ -80,15 +80,17 @@ String cp = request.getContextPath();
 						</div>
 						
 						<!-- 프로젝트 홈 메뉴 -->
-						<nav id="navbar_" class="mt-5 pb-0 navbar inner-nav"> 
-						   <ul style="margin-left: auto; margin-right: auto;">
-						      <li><a class="nav-link pb-0  scrollto active" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
-						      <li><a class="nav-link pb-0  scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-						      <li><a class="nav-link pb-0  scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
-						   </ul>
-						</nav>
+						<div class="container">
+							<nav id="navbar_" class="mt-5 pj_nav">
+							   <ul class="justify-content-center">
+							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							   </ul>
+							</nav>
+						</div>
 						
 						<div class="container">
 						   <hr>
@@ -121,8 +123,8 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-primary">요청함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
+											<td><button class="btn btn-danger"><div class="bi bi-person-x"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -130,8 +132,8 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">요청안함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
+											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -139,8 +141,8 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">요청안함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
+											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
 											<th scope="row">팀원</th>
@@ -148,8 +150,8 @@ String cp = request.getContextPath();
 											<td>백엔드</td>
 											<td>20%</td>
 											<td>2022-12-25</td>
-											<td><button class="btn btn-light">요청안함</button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">프로필버튼</button></td>								
+											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
+											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
 										</tr>
 										<tr>
 											<td colspan="7">현재 팀원이 없습니다.</td>
@@ -222,7 +224,7 @@ String cp = request.getContextPath();
 					
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-primary">팀원평가 완료</button>
+		        	<button type="button" class="gradientBtn color-9">팀원평가 완료</button>
 		      	</div>
 		    </div>
 		 </div>
@@ -315,6 +317,43 @@ String cp = request.getContextPath();
 	    border: 1px solid #FFE400;
 	    color: #fff;
 	}
+	
+	/* 프로젝트 홈 메뉴*/
+	.pj_nav {
+	  padding: 0;
+	}
+	
+	.pj_nav ul {
+	  margin: 0;
+	  padding: 0;
+	  display: flex;
+	  list-style: none;
+	  align-items: center;
+	}
+	
+	.pj_nav li {
+	  position: relative;
+	}
+	
+	.pj_nav a,
+	.pj_nav a:focus {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  padding: 0 15px 0 15px;
+	  font-size: 0.9rem;
+	  font-weight: 400;
+	  color: #555555;
+	  white-space: nowrap;
+	}
+	
+	.pj_nav a:hover,
+	.pj_nav .active,
+	.pj_nav .active:focus,
+	.pj_nav li:hover>a {
+	  color: #3498db;
+	}
+	
 </style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
