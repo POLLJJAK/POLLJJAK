@@ -23,7 +23,7 @@
           <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
             <a href="Inner-page.jsp" class="scrollto">고객센터</a>
             <a href="Inner-page.jsp" class="scrollto">이용안내</a>
-            <a href="Inner-page.jsp">서비스약관</a>
+            <a href="TermsOfService.jsp">서비스약관</a>
           </nav>
         </div>
       </div>

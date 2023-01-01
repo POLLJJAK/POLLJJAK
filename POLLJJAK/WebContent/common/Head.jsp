@@ -48,6 +48,7 @@
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
 	<link href="assets/vendor/projectOpen/css/calendar.css" rel="stylesheet">
 	<link href="assets/vendor/projectDetail/css/projectDetail.css" rel="stylesheet">
+	<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
 	
 	
 	<!-- @@@ 내 프로젝트 홈 @@@@ -->
