@@ -36,43 +36,37 @@ String cp = request.getContextPath();
 
 	<c:import url="./common/Nav.jsp" />
 
-	<!-- NavBar active 속성 변경 -->
-	<script type="text/javascript">
-		document.getElementById("myProjectHome").className = "nav-link scrollto active";
-
-		document.getElementById("projectOpen").className = "nav-link scrollto";
-		document.getElementById("projectMake").className = "nav-link scrollto";
-		document.getElementById("Rounge").className = "nav-link scrollto";
-		document.getElementById("viewCompany").className = "nav-link scrollto";
-	</script>
 
 
 	<main id="main">
 	
-	
-
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
 
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
 				<div class="row">
-					<div class="container-lg">
-						<div class="h5 text-primary fw-bolder">
-							내 프로젝트 홈
+				
+					<!-- title -->
+					<div class="d-flex justify-content-center col" style="width: 50%;">
+						<div class="section-title pt-4">
+							<h6 class="">내 프로젝트 홈</h6>
+							<div>현재 진행 중인 프로젝트와 완료했던 프로젝트를 확인해보세요!</div>
 						</div>
-						<hr>
 					</div>
+					<!-- end title -->
 						
-					<h5 class="container-lg mb-3 fw-bolder">
+					<h5 class="container mb-3 fw-bolder">
 						진행중인 프로젝트
 					</h5>
+					<hr>
+					
 					
 					<!-- 일단 임시로 링크걸어둠 -->
-					<div class="container-lg mb-3" onclick="location.href='<%=cp %>/Inner-Project-home.jsp';" style="cursor: pointer;">
+					<div class="container mb-3" onclick="location.href='<%=cp %>/Inner-Project-home-teamManage.jsp';" style="cursor: pointer;">
 						<div class="pj-box">
 							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-								<div class="h5 fw-bolder">진행중인 프로젝트 제목1</div>
+								<div class="fw-bolder" style="font-size: 16px; font-weight: bold;">진행중인 프로젝트 제목1</div>
 								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
 								<div class="mb-1">전체 진척도 <span>75%</span></div>
 								<div class="progress">
@@ -92,11 +86,11 @@ String cp = request.getContextPath();
 			<div class="container">
 				<div class="row">
 
-					<h5 class="h5 container-lg mb-3 fw-bolder">
+					<h5 class="h5 container mb-3 fw-bolder">
 						완료 프로젝트
 					</h5>
 						
-					<div class="container-lg mb-3">
+					<div class="container mb-3">
 						<div class="pj-box">
 							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 								<div class="h5 fw-bolder">완료 프로젝트 제목3</div>
@@ -109,7 +103,7 @@ String cp = request.getContextPath();
 						</div>
 					</div>
 					
-					<div class="container-lg mb-3">
+					<div class="container mb-3">
 						<div class="pj-box">
 							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 								<div class="h5 fw-bolder">완료 프로젝트 제목2</div>
@@ -124,7 +118,7 @@ String cp = request.getContextPath();
 					
 					
 					
-					<div class="container-lg mb-3">
+					<div class="container mb-3">
 						<div class="pj-box">
 							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 								<div class="h5 fw-bolder">완료 프로젝트 제목1</div>

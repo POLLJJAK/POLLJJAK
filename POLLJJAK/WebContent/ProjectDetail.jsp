@@ -27,7 +27,58 @@
 	 
 	    $( "#sortable1, #sortable2" ).disableSelection();
 	  } );
-
+	
+	
+	/* 지원취소 */
+	function deleteM()
+	{
+		if (confirm("지원멤버에서 삭제하시겠습니까?"))
+		{
+			/* 삭제ok → delete로 */
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	/* 리더div 스크롤따라오게 */
+	/* 
+	$(document).ready(function()
+	{
+	    var currentPosition = parseInt($(".col-lg-4").css("top"));
+	    $(window).scroll(function() 
+	    {
+	    	var position = $(window).scrollTop(); 
+	    	$(".col-lg-4").stop().animate({"top":position+currentPosition+"px"},1000);
+	    });
+	});
+ 	*/
+ 	
+ 	//지원사유
+ 	$(document).ready(function(){
+ 		$("#reason1").css("display","none");
+ 		
+        $('#member1').hover(function() 
+     	{
+			$("#reason1").css("display","inline");
+        	}, function(){
+            $("#reason1").css("display","none");
+        });
+    });
+ 	
+ 	$(function(){
+ 		$('.news').hide();
+ 	    $(".news").slice(0, 3).show(); 				// select the first ten
+ 	    $("#load").click(function(e){ 				// click event for load more
+ 	        e.preventDefault();
+ 	        $(".news:hidden").slice(0, 3).fadeIn(1000).show();   // select next 10 hidden divs and show them
+ 	        if($(".news:hidden").length == 0){      // check if any hidden divs still exist
+ 	            alert("No more news"); 			    // alert if there are none left
+ 	        }
+ 	    });
+ 	});
+ 	
+ 	
 </script>
 
 
@@ -53,7 +104,7 @@
 
     <!-- ======= Portfolio Details Section ======= -->
     
-    <section id="portfolio-details" class="portfolio-details">
+    <section id="portfolio-details" class="portfolio-details" data-aos="fade-up">
       <div class="container">
       
 	  
@@ -84,24 +135,26 @@
             		<tr>
             		<td>모집분야 1</td>
             		<td>2/2</td>
-            		<td> <button class="btn-hover color-9">지원하기</button> </td>
+            		<td><div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
+            		<button class="fullbtn" >지원하기</button> </td>
             		</tr>
             		<tr>
             		<td>모집분야 2</td>
             		<td style="color: red;">1/2</td>
-            		<td> <button class="btn-hover color-9">지원하기</button> </td>
+            		<td><div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#apply">
+					<button class="btn-hover color-9">지원하기</button></div></td>
             		</tr>
             	</table>
             </div>
             
             <div class="project-allmember">
             <h5><strong>확정멤버</strong></h5>
-            	<div class="member" style="border: 3px solid #25aae1;">
+            	<div class="member" id="member1" style="border: 3px solid #25aae1;">
             		<table>
             			<tr>
             			<th>모집분야1</th>
             			<th style="float: right;">
-            			<a><img src="assets/img/icon-delete.png" alt=""
+            			<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""
                   		style="float: right; width: 15px; height: 15px; "></a></th>
             			</tr>
             			<tr>
@@ -114,7 +167,7 @@
             			<tr>
             			<th>모집분야 2</th>
             			<th style="float: right;">
-            			<a><img src="assets/img/icon-delete.png" alt=""
+            			<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""
                   		style="float: right; width: 15px; height: 15px; "></a></th>
             			</tr>
             			<tr>
@@ -126,7 +179,7 @@
             			<tr>
             			<th>모집분야1</th>
             			<th style="float: right;">
-            			<a><img src="assets/img/icon-delete.png" alt=""
+            			<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""
                   		style="float: right; width: 15px; height: 15px; "></a></th>
             			</tr>
             			<tr>
@@ -137,8 +190,8 @@
             <hr>
             <!-- 지원사유 -->
             <div class="apply-reason">
-            	<div class="reason2">
-            	<p>4조 4조 화이팅 오늘은 24일 크리스마스이브네요 크리스마스같지도않다 촤핳,, 연말이 이렇게 가네연,,</p>
+            	<div id="reason1">
+            	<p>지원사유1번</p>
             	</div>
             </div>
             <hr>
@@ -197,11 +250,47 @@
           			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
           			<b>혼자사는박또기</b>님이 지원하셨습니다.
           		</div>
+          		<div class="news">
+          			22.12.24 <br>
+          			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
+          			<b>혼자사는박또기</b>님이 지원하셨습니다.
+          		</div>
+          		<div class="news">
+          			22.12.24 <br>
+          			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
+          			<b>혼자사는박또기</b>님이 지원하셨습니다.
+          		</div>
+          		<div class="news">
+          			22.12.24 <br>
+          			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
+          			<b>혼자사는박또기</b>님이 지원하셨습니다.
+          		</div>
+          		<div class="news">
+          			22.12.24 <br>
+          			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
+          			<b>혼자사는박또기</b>님이 지원하셨습니다.
+          		</div>
+          		<div class="news">
+          			22.12.24 <br>
+          			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
+          			<b>혼자사는박또기</b>님이 지원하셨습니다.
+          		</div>
+          		<div class="news">
+          			22.12.24 <br>
+          			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
+          			<b>혼자사는박또기</b>님이 지원하셨습니다.
+          		</div>
+          		<div class="news">
+          			22.12.24 <br>
+          			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
+          			<b>혼자사는박또기</b>님이 지원하셨습니다.
+          		</div>
           		
           			
           		
           	</div>
-          	<button class="btn-hover color-9" style="align-content: center; margin-left: 30%; margin-top: 10%;">더보기</button>
+          	<button class="btn-hover color-9"  id ="load"
+          	style="align-content: center; margin-left: 30%; margin-top: 10%;">더보기</button>
           
           </div>
           
@@ -228,7 +317,7 @@
 				  </div>
 			    	-->
 			    	<div class="column">
-			      		<h5 style="text-align: center;">지원자 목록</h5>
+			      		<h5 style="text-align: center; margin-top: 20px;"><b>지원자 목록</b></h5>
 				 		<ul id="sortable1" class="droptrue">
 							<li class="">서른아잉교</li>
 					    	<li class="">도딤도딤빵</li>
@@ -239,7 +328,7 @@
 					</div>
 			  
 			  		<div class="column">
-			      		<h5 style="text-align: center;">차단 목록</h5>
+			      		<h5 style="text-align: center;  margin-top: 20px; color: red;"><b>차단 목록</b></h5>
 				 		<ul id="sortable2" class="droptrue">
 	
 					  	</ul>
@@ -274,7 +363,6 @@
                 Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
               </p>
             </div> -->
-          </div>
 
 		  </div>
         </div>
@@ -286,6 +374,62 @@
 
 <!-- footer import (js imported)-->
 <c:import url="./common/Footer.jsp" />
+
+<!-- 지원마감 -->
+<div class="modal fade" id="applyEnd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title">지원 불가</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		      	<div class="modal-body row mb-3 justify-content-center">
+		      		<div style="margin-bottom: 20px; font-weight: bold; color: red; font-size: large; text-align: center;">
+		      			해당 분야는 지원이 마감되었습니다.
+		      		</div>
+					<div class="mb-2 row justify-content-center text-center">
+						<div class="col-lg-12 mb-2">다른 분야를 지원해보세요!</div>
+						
+					</div>
+
+		      	</div>
+		      	<div class="modal-footer justify-content-center">
+		        	<button type="button" class="btn-hover color-9">확인</button>
+		      	</div>
+		    </div>
+		 </div>
+	</div>
+	
+<!-- 지원하기 -->
+<div class="modal fade" id="apply" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title">지원하기</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		      	<div class="modal-body row mb-3 justify-content-center" style="font-weight: bold; font-size: large; text-align: center;">
+		      		<div style="margin-bottom: 20px; ">
+		      			지원사유를 입력해주세요!
+		      			<p style="font-size: xx-small; color: red;">※지원 사유는 지원즉시 전체 공개 됩니다. 신중하게 작성해주세요!</p>
+		      		</div>
+		      		
+					<div class="form-group">
+						<textarea class="form-control" >
+						</textarea>
+						<div style="float: right; font-size: small;">(최대 500자)</div>
+					</div>
+
+		      	</div>
+		      	<div class="modal-footer justify-content-center">
+		      		<button type="reset" class="fullbtn">취소</button>
+		        	<button type="button" class="btn-hover color-9">제출</button>
+		      	</div>
+		    </div>
+		 </div>
+	</div>
+
+
 
 </body>
   

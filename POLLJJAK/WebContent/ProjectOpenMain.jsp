@@ -33,15 +33,26 @@
 
 
 <main id="main">
+
+	<!-- 빈칸 여백 -->
+	<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
+
+
 	<section class="projectHome-list-now pb-2" data-aos="fade-up">
 
-		<!-- title -->
-		<div class="pt-5">
-			<div class="section-title pt-5">
-				<h6>프로젝트 개설</h6>
-				<p>진행 중인 프로젝트와 지난 모집 내역을 확인 해보세요.</p>
+		<div class="container">
+			<div class="row">
+				<!-- title -->
+				<div class="d-flex justify-content-center col" style="width: 50%;"  data-aos="fade-up">
+					<div class="section-title pt-4">
+						<h6>프로젝트 개설</h6>
+						<div>진행 중인 프로젝트와 지난 모집 내역을 확인 해보세요</div>
+					</div>
+				</div>
+				<!-- end title -->
 			</div>
-		</div> <!-- end title -->
+		</div>
+				
 
 		<div class="container">
 			<div class="row">
@@ -81,7 +92,7 @@
 				<div class="container-lg mb-3">
 					<div class="pj-box">
 						<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-							<input type="button" class="btn btn-primary" value="리스트에서 삭제" onclick="CheckAddProduct()" 
+							<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList1" 
 							style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
 							<div class="h5 fw-bolder">프로젝트 제목1[모집 실패]</div>
 							<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
@@ -92,7 +103,7 @@
 				<div class="container-lg mb-3">
 					<div class="pj-box">
 						<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-							<input type="button" class="btn btn-primary" value="리스트에서 삭제" onclick="CheckAddProduct()" 
+							<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList2" 
 							style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
 							<div class="h5 fw-bolder">프로젝트 제목1[모집 삭제]</div>
 							<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
@@ -103,7 +114,7 @@
 				<div class="container-lg mb-3">
 					<div class="pj-box">
 						<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-							<input type="button" class="btn btn-primary" value="리스트에서 삭제" onclick="CheckAddProduct()" 
+							<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList3" 
 							style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
 							<div class="h5 fw-bolder">프로젝트 제목1[모집 삭제]</div>
 							<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
