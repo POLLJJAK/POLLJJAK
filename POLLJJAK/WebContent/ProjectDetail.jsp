@@ -72,8 +72,8 @@
  	    $("#load").click(function(e){ 				// click event for load more
  	        e.preventDefault();
  	        $(".news:hidden").slice(0, 3).fadeIn(1000).show();   // select next 10 hidden divs and show them
- 	        if($(".news:hidden").length == 0){      // check if any hidden divs still exist
- 	            alert("No more news"); 			    // alert if there are none left
+ 	        if($(".news:hidden").length == 1){      // check if any hidden divs still exist
+ 	            //alert("No more news"); 			    // alert if there are none left
  	        }
  	    });
  	});

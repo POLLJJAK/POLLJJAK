@@ -72,8 +72,8 @@ String cp = request.getContextPath();
 					<ul style="margin-left: auto; margin-right: auto;">
 						<li><a class="nav-link scrollto " href="U-MyPage-Info.jsp">정보</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-project.jsp">프로젝트</a></li>
-						<li><a class="nav-link scrollto active" href="U-MyPage-Notification.jsp">알림</a></li>
-						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
+						<li><a class="nav-link scrollto " href="U-MyPage-Notification.jsp">알림</a></li>
+						<li><a class="nav-link scrollto active" href="U-MyPage-Log.jsp">활동내역</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
@@ -100,7 +100,7 @@ String cp = request.getContextPath();
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
-									23.01.01 <br> <span style="color: blue; font-weight: bold;">게시글1</span>에 <b>한은영</b>님이 댓글을 달았습니다.
+									23.01.01 <br> <span style="color: blue; font-weight: bold;">게시글1</span>에 <b>닉네임</b>님이 댓글을 달았습니다.
 								</p> 
 							</div>
 							<div class="col-sm-3"></div>
@@ -109,7 +109,7 @@ String cp = request.getContextPath();
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
-									23.01.01 <br> <span style="color: blue; font-weight: bold;">게시글2</span>에 <b>김유림</b>님이 좋아요를 달았습니다.
+									23.01.01 <br> <span style="color: blue; font-weight: bold;">게시글2</span>에 <b>닉네임</b>님이 좋아요를 달았습니다.
 								</p> 
 							</div>
 							<div class="col-sm-3"></div>
@@ -118,7 +118,7 @@ String cp = request.getContextPath();
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
-									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로젝트1</span>에 <b>박원석</b>님이 지원하셨습니다.
+									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로젝트1</span>에 <b>닉네임</b>님이 지원하셨습니다.
 								</p> 
 							</div>
 							<div class="col-sm-3"></div>
@@ -127,7 +127,7 @@ String cp = request.getContextPath();
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
-									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로젝트1</span>에 <b>김인교</b>님이 지원하셨습니다.
+									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로젝트1</span>에 <b>닉네임</b>님이 지원하셨습니다.
 								</p> 
 							</div>
 							<div class="col-sm-3"></div>
@@ -136,7 +136,7 @@ String cp = request.getContextPath();
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
-									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로필</span>에 <b>기업회원1</b>님이 좋아요를 달았습니다.
+									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로필</span>에 <b>닉네임</b>님이 좋아요를 달았습니다.
 								</p> 
 							</div>
 							<div class="col-sm-3"></div>
@@ -145,7 +145,7 @@ String cp = request.getContextPath();
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
-									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로필</span>에 <b>기업회원2</b>님이 좋아요를 달았습니다.
+									23.01.01 <br> <span style="color: blue; font-weight: bold;">프로필</span>에 <b>닉네임</b>님이 좋아요를 달았습니다.
 								</p> 
 							</div>
 							<div class="col-sm-3"></div>
