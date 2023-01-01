@@ -75,7 +75,7 @@ String cp = request.getContextPath();
 						<li><a class="nav-link scrollto active"
 							href="U-MyPage-project.jsp">프로젝트</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
-						<li><a class="nav-link scrollto " href="U-MyPage-log.jsp">활동내역</a></li>
+						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
