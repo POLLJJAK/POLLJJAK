@@ -34,8 +34,8 @@
 					<div class="serach" style="margin-right: 30px;">
 						<div class="col-lg-12">
 							<div class="input-group" style="margin-left: 30px;">
-								<span class="fa fa-search form-control-feedback" style="color: #3498db;line-height: 2;z-index: 1;"></span>
-								<input type="text" class="form-control nav-search" placeholder="Search" style="margin: -1px 0px 0px -25px; border-radius: 20px; ">
+								<span class="fa fa-search form-control-feedback" style="color: #3498db; line-height: 2; z-index: 1;"></span>
+								<input type="text" class="form-control nav-search" placeholder="Search" style="padding-left:30px; margin: -1px 0px 0px -25px; border-radius: 20px;">
 							</div>
 						</div>
 					</div>
