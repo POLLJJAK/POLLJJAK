@@ -90,7 +90,8 @@ String cp = request.getContextPath();
 						<div class="container d-flex justify-content-between">
 							<h5 class="p-2 m-0 fw-bolder align-self-center">회의록</h5>
 							<div class="p-2 ms-auto align-self-center" data-bs-toggle="modal" data-bs-target="#mainWorkAdd">
-								<button type="button" class="gradientBtn color-9">작성하기</button>
+								<button type="button" class="gradientBtn color-9" onclick="location.href='<%=cp %>/Inner-Project-home-meet-Post-Insert.jsp'">
+								작성하기</button>
 							</div>
 						</div>
 
