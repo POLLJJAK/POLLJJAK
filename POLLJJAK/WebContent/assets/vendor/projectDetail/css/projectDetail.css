@@ -1,4 +1,4 @@
- <!--  버튼  -->
+ /*  버튼  */
     
     .buttons 
     {
@@ -50,7 +50,7 @@
 		 width: 30%;
 	    font-size: 12px;
 	    font-weight: 600;
-	    color: #gray;
+	    color: gray;
 	    cursor: pointer;
 	    height: 30px;
 	    text-align:center;
@@ -61,7 +61,7 @@
 	   
 	}
 	
-    <!-- 멤버박스 -->
+    /* 멤버박스 */
     .project-allmember
     {
     	width: 100%;
@@ -79,8 +79,7 @@
     	border-radius: 12px;
     }
     
-	    
-    <!-- 탭박스 -->
+    /* 탭박스 */
     /* .container-box{
 	  width: 500px;
 	  margin: 0 auto;
