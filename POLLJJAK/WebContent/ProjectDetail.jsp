@@ -20,11 +20,6 @@
 	      connectWith: "ul"
 	    });
 	 
-	    $( "ul.dropfalse" ).sortable({
-	      connectWith: "ul",
-	      dropOnEmpty: false
-	    });
-	 
 	    $( "#sortable1, #sortable2" ).disableSelection();
 	  } );
 	
@@ -104,21 +99,22 @@
 
     <!-- ======= Portfolio Details Section ======= -->
     
-    <section id="portfolio-details" class="portfolio-details" data-aos="fade-up">
-      <div class="container">
+    <section id="portfolio-details" class="portfolio-details" >
+      <div class="container" >
       
 	  
         <div class="row gy-4">
           <div class="col-lg-8" >
       <!-- ======= 탭메뉴 ====== -->
-	  <ul class="tabs">
+	  <ul class="tabs" data-aos="fade-up">
 	    <li class="tab-link current" data-tab="tab-1">상세보기</li>
 	    <li class="tab-link" data-tab="tab-2">소식</li>
 	    <li class="tab-link" data-tab="tab-3">블랙리스트</li>
 	  </ul>
           <!-- ======= 상세보기 ====== -->
-		  <div id="tab-1" class="tab-content current"> 
+		  <div id="tab-1" class="tab-content current" data-aos="fade-up"> 
           	<div class="project-title" style="text-align: center;">
+          	<br><br>
             <h2><b>소규모 프로젝트 관리와 매칭</b></h2>
             <img src="assets/img/UserIcon/User-Icon.png" alt=""
                   style="width: 60px; height: 60px; padding: 10px;"> <br>
@@ -233,7 +229,7 @@
           
           <!-- 소식탭 -->
           <div id="tab-2" class="tab-content" >
-          	
+          	<br><br>
           	<div class="project-news">
           		<div class="news">
           			22.12.24 <br>
