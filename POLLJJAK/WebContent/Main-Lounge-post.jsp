@@ -11,10 +11,10 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
+<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
 
 <body>
 	<c:import url="./common/Nav.jsp" />
-	<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
 	
 	<main id="main">
 
