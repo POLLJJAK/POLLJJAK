@@ -12,9 +12,9 @@
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 
+	<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
 <body>
 	<c:import url="./common/Nav.jsp" />
-	<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
 	<main id="main">
 
 		<!-- 빈칸 여백 -->
@@ -76,7 +76,9 @@
 				<div class="board-title">
 					<!-- <strong>자유게시판</strong>
 					<p>다양한 주제로 소통해보세요!</p> -->
-					<button class="btn-hover color-9" style=" margin: 1%; margin-left:90%; width: 100px;">작성하기</button>
+					<button type="button" class="btn-hover color-9" style=" margin: 1%; margin-left:90%; width: 100px;"
+					 onclick="location.href='<%=cp %>/Main-Lounge-post-insert.jsp';"
+					 >작성하기</button>
 				</div>
 				<div class="board_list_wrap">
 					<div class="board_list">

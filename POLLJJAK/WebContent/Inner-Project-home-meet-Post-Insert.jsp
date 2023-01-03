@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -176,7 +176,7 @@ String cp = request.getContextPath();
 	          // 표 만들기
 	          ['table', ['table']],
 	          // 그림첨부, 링크만들기, 동영상 첨부
-	          ['insert', ['link', 'picture', 'video', 'hr']],
+	          ['insert', ['link', 'picture','video', 'hr']],
 	          // 코드보기, 확대해서 보기, 도움말
 	          ['view', ['codeview']]
 	        ],
