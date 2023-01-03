@@ -158,7 +158,7 @@ String cp = request.getContextPath();
 	          // 표 만들기
 	          ['table', ['table']],
 	          // 그림첨부, 링크만들기, 동영상 첨부
-	          ['insert', ['link', 'picture', 'video', 'hr']],
+	          ['insert', ['link', 'picture','video', 'hr']],
 	          // 코드보기, 확대해서 보기, 도움말
 	          ['view', ['codeview']]
 	        ],

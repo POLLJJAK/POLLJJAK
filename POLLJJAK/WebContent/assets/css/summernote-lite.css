@@ -184,7 +184,7 @@
 }
 
 .note-icon-link::before {
-	content: ""
+	content: " "
 }
 
 .note-icon-magic::before {
@@ -208,7 +208,7 @@
 }
 
 .note-icon-picture::before {
-	content: ""
+	content: " "
 }
 
 .note-icon-question::before {
