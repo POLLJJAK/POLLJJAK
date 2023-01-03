@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -86,7 +86,6 @@ String cp = request.getContextPath();
 						</div>
 
 
-
 						<!-- 컨텐츠 란 -->
 						<div class="container" style="width:75%;">
 							<h5 class="p-2 ps-0 m-0 mb-3 fw-bolder align-self-center">회의록</h5>
@@ -94,78 +93,56 @@ String cp = request.getContextPath();
 						
 						
 						
-						<!-- 포스트 상세보기 -->
-						<div class="container" style="width: 75%;">
-							<div class="row justify-content-center">
-								<hr>
-								<div class="row justify-content-between m-0 mb-3 p-0">
-									<div class="m-0 col-8">
-										<div style="font-size: 1.0rem; font-weight: bold;">팀원1</div>
-										<div class="meet-member">이번 회의에 참석한 사람은 팀원2, 팀원3 입니다.</div>
-									</div>
-									<div class="m-0 col-4">
-										<div style="font-size: 1.0rem; text-align: right">2023-01-03 ~ 2023-01-03</div>
-									</div>
-								</div>
-								
-								<h1 class="mb-3">회의록 제목입니다.</h1>
-								
-								<!-- 본문 내용 -->
-								<div class="mb-3">
-									오늘 회의에서는 이러이러하고 이러이러한 일을 진행하였습니다.<br>
-									근데 뭐 들으세요?<br>
-									아 뉴진스의 하입뽀이요~<br>
-									Baby, got me looking so crazy
-									빠져버리는 daydream
-									Got me feeling you
-									너도 말해줄래
-									누가 내게 뭐라든
-									남들과는 달라 넌
-									Maybe you could be the one
-									날 믿어봐 한 번
-									I'm not looking for just fun
-									Maybe I could be the one
-									Oh baby
-									예민하대 나 lately
-									너 없이는 매일 매일이 yeah
-									재미없어 어쩌지
-									I just want you
-									Call my phone right now
-									I just wanna hear you're mine
-									'Cause I know what you like boy
-									You're my chemical hype boy
-									내 지난 날들은
-									눈 뜨면 잊는 꿈
-									Hype boy 너만 원해
-									Hype boy 내가 전해
-									And we can go high
-									말해봐 yeah 느껴봐 mm mm
-									Take him to the sky
-									You know I hype you boy
-									눈을 감아
-									말해봐 yeah 느껴봐 mm mm
-								</div>
-								<hr>
-								<div class="meet-post-fileTitle mb-3">첨부파일</div>
-								<div class="meet-post-filebox mb-3">
-									<ul class="meet-file-ul">
-										<li class="meet-file-li">첨부된 파일명1</li>
-										<li class="meet-file-li">첨부된 파일명2</li>
-									</ul>
-								</div>
-								<hr>
+
+						
+						
+	
+						<div class="container" style="width:75%;">
+							<div>
+								<div>회의주제</div>
+								<input type="text" class="form-control" placeholder="주제를 입력해주세요." />
+							</div>
+		
+		
+							<div>
+								<div>제목</div>
+								<input type="text" class="form-control" placeholder="제목을 입력해주세요." />
 							</div>
 							
+							<div>
+								<div>회의일시</div>
+								<div class="form-group mb-3">
+							        <input type="text" name="startDate" value="" class="datepicker inp" placeholder="회의시작" readonly="readonly"/> 
+									<input type="text" name="endDate" value="" class="datepicker inp" placeholder="회의종료" readonly="readonly" />
+								</div>
+							</div>
 							
+							<div class="mb-3">
+								<div>참석인원</div>
+								<div class="checkbox">
+									<input type="checkbox" id="member1" name="member" value="member1"><label for="member1">팀원1</label>
+									<input type="checkbox" id="member2" name="member" value="member2"><label for="member2">팀원2</label>
+									<input type="checkbox" id="member3" name="member" value="member3"><label for="member3">팀원3</label>	
+									<input type="checkbox" id="member4" name="member" value="member4"><label for="member4">팀원4</label>
+								</div>
+							</div>
+						</div>
+
+						
+						<!-- 포스트 상세보기 -->
+						<div class="container d-flex justify-content-center">
+							<div style="width: 75%">
+								<div id="summernote"></div>
+							</div>
 					    </div>
 						
-					
-						<div class="container d-flex justify-content-end pe-0 mb-3" style="width: 75%;">
-							<div class="d-flex p-2 pe-0 align-self-center">
-								<button type="button" class="meet-post-deleteBtn" onclick="location.href='<%=cp %>/Inner-Project-home-meet.jsp'">삭제</button>
+						<!-- 버튼 -->
+						<div class="container d-flex justify-content-end" style="width: 75%;">
+							<div class="d-flex p-2 align-self-center">
+								<button type="button" class="btn btn-light" onclick="location.href='<%=cp %>/Inner-Project-home-meet.jsp'">취소</button>
 							</div>
-							<div class="d-flex p-2 pe-0 me-0 align-self-center">
-								<button type="button" class="gradientBtn color-9">수정하기</button>
+							<div class="d-flex p-2 pe-0 align-self-center">
+								<button type="button" class="gradientBtn color-9">작성하기</button>
 							</div>
 						</div>
 						
@@ -177,17 +154,46 @@ String cp = request.getContextPath();
 		
 	</main>
 	
+	<!-- 썸머노트 스크립트 -->
+	<script type="text/javascript">
+	 	$('#summernote').summernote({
+	        height: 400,
+	 		lang: "ko-KR",
+	        placeholder: '내용을 입력해주세요.',
+	        tabsize: 2,
+	        toolbar: [
+	          // 글꼴 설정
+	          /* ['fontname', ['fontname']], */
+	          // 글자 크기 설정
+	          /* ['fontsize', ['fontsize']], */
+	          // 굵기, 기울임꼴, 밑줄, 취소 선, 서식지우기 설정 가능
+	          ['style', ['style']],
+	          ['font', ['bold', 'italic', 'underline','strikethrough']],
+	          // 글자색
+	          /* ['color', ['color']], */
+	          // 글머리 기호, 번호 매기기, 문단 정렬
+	          ['para', ['ul', 'ol']],
+	          // 표 만들기
+	          ['table', ['table']],
+	          // 그림첨부, 링크만들기, 동영상 첨부
+	          ['insert', ['link', 'picture','video', 'hr']],
+	          // 코드보기, 확대해서 보기, 도움말
+	          ['view', ['codeview']]
+	        ],
+	        /* fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'], */
+	      });
+	
+	</script>
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
-	
-
 
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script>
 
-</script>
+
+
+
 
 </html>

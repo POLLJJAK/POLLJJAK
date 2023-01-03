@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -18,13 +19,13 @@
   	<!-- Fontawesome -->
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   	
-  	
   	<!-- Jquery CDN -->
   	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
   
   	<!-- Calendar -->
   	<!-- calendar.css 보다 윗 줄에 작성되어야 함 -->
@@ -50,20 +51,27 @@
 	<link href="assets/vendor/projectDetail/css/projectDetail.css" rel="stylesheet">
 	
 	
+	  
+  	<!-- 게시판 썸머노트 lite 버전(cdn아님)  -->
+	<script src="assets/js/summernote-lite.js"></script>
+  	<script src="assets/js/summernote-ko-KR.js"></script>
+	<link href="assets/css/summernote-lite.css" rel="stylesheet">
+		
+	
 	
 	<!-- @@@ 내 프로젝트 홈 @@@@ -->
 	<!-- 내 프로젝트 홈 css 파일 -->
 	<link href="assets/css/Inner-Project-home.css" rel="stylesheet">
 	
+
+
 	<!-- 내 프로젝트 홈 → 일정 관리 → 캘린더 -->
 	<!-- fullcalendar CDN -->
 	<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
 	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
 	<!-- fullcalendar 언어 CDN -->
 	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
-	
-	
-	
+
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
   

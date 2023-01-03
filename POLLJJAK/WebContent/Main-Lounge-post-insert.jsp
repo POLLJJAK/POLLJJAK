@@ -17,7 +17,7 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
+	<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
 
 <style>
 	title{width: 2000px; text-align: left;}

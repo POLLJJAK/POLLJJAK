@@ -263,15 +263,156 @@
 {
     outline: none;
 }
-   .gradientBtn.color-9 
-   {
+.gradientBtn.color-9 
+{
     background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
-    /* box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75); */
 }
 	
 
 
 
+/* 회의록 게시판 */
+.meet_wrap{
+	width: 75%;
+	margin: auto; 
+}
+
+.meet_title{
+	margin-bottom: 30px;
+}
+
+.meet_title strong {
+	font-size: 3rem;
+}
+
+.meet_title p {
+	margin-top: 5px;
+	font-size: 1.4rem;
+}
+
+.meet_list{
+	width: 100%;
+	border-top: 2px solid #000;
+	border-bottom:2px solid #000;
+	font-size: small;;
+}
+
+.meet_list > div {
+	border-bottom: 1px solid #ddd;
+	font-size: small;
+}
+
+.meet_list > div.top{
+	border-color: 1px solid #ddd;
+}
+
+.meet_list > div:last-child{
+	border-color: 1px solid #000;
+}
+
+.meet_list > div > div{
+	display: inline-block;
+	padding15px 0;
+	text-align: center;
+	font-size: medium;
+}
+.meet_list > div:hover{
+	background: #ddd;
+    cursor: pointer;
+}
+
+.meet_list > div.top > div{
+	font-weight: 600;
+}
+
+.meet_list .num{
+	width: 10%;
+	
+}
+.meet_list .title{
+	width: 55%;
+	/* height: 50%; */
+	text-align: left;
+	padding: 1%;
+}
+
+.meet_list .top .title{
+	text-align: center;
+}
+
+.meet_list .writer{
+	width: 10%;
+	font-size: small;
+	text-align: left;
+	
+}
+.meet_list .date{
+	width: 10%;
+	font-size: small;
+	
+}
+.meet_list .topic{
+	width: 10%;
+	
+}
+
+.meet_page{
+	margin-top: 30px;
+	text-align: center;
+	font-size: small;
+}
+
+
+/* 회의록 포스트 파일 목록 박스*/
+
+.meet-member {
+	font-size: 0.8rem;
+	color: #13BBFF;
+}
+
+.meet-post-fileTitle {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.meet-file-ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+.meet-file-li {
+	font-size: 12px;
+	margin: 0 10px 0 0;
+	padding: 3px 10px 3px 10px;
+	background: #dedede;
+	border: 0px;
+	border-radius: 6px;
+	float: left;
+}
+
+.meet-post-deleteBtn {
+	font-size: 0.8rem;
+	background-color: #dedede;
+	color: #eee;
+	border: 0px;
+	border-radius: 6px;
+	padding: 10px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+	
+}
+
+
+.meet-post-deleteBtn:hover {
+	font-size: 0.8rem;
+	background-color: #5e5e5e;
+	color: #fff;
+	border: 0px;
+	border-radius: 6px;
+	padding: 10px;
+}
 
 
 
