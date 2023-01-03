@@ -87,49 +87,67 @@ String cp = request.getContextPath();
 
 
 						<!-- 컨텐츠 란 -->
-						<div class="container d-flex justify-content-center">
-							<h5 class="p-2 m-0 fw-bolder align-self-center">회의록</h5>
-						</div>
-	
-						<div>
-							제목
+						<div class="container" style="width:75%;">
+							<h5 class="p-2 ps-0 m-0 mb-3 fw-bolder align-self-center">회의록</h5>
 						</div>
 						
-						<div>
-							회의시작일시 ~ 회의종료일시
-						</div>
 						
-						<div>
-							참석자 - 팀원1 팀원2 팀원3 팀원4
-						</div>
 						
-						<div>
-							회의안건
-						</div>
 
+						
+						
+	
+						<div class="container" style="width:75%;">
+							<div>
+								<div>회의주제</div>
+								<input type="text" class="form-control" placeholder="주제를 입력해주세요." />
+							</div>
+		
+		
+							<div>
+								<div>제목</div>
+								<input type="text" class="form-control" placeholder="제목을 입력해주세요." />
+							</div>
+							
+							<div>
+								<div>회의일시</div>
+								<div class="form-group mb-3">
+							        <input type="text" name="startDate" value="" class="datepicker inp" placeholder="회의시작" readonly="readonly"/> 
+									<input type="text" name="endDate" value="" class="datepicker inp" placeholder="회의종료" readonly="readonly" />
+								</div>
+							</div>
+							
+							<div class="mb-3">
+								<div>참석인원</div>
+								<div class="checkbox">
+									<input type="checkbox" id="member1" name="member" value="member1"><label for="member1">팀원1</label>
+									<input type="checkbox" id="member2" name="member" value="member2"><label for="member2">팀원2</label>
+									<input type="checkbox" id="member3" name="member" value="member3"><label for="member3">팀원3</label>	
+									<input type="checkbox" id="member4" name="member" value="member4"><label for="member4">팀원4</label>
+								</div>
+							</div>
+						</div>
 
 						
 						<!-- 포스트 상세보기 -->
-						<div class="container">
-							<div style="width: 70%">
+						<div class="container d-flex justify-content-center">
+							<div style="width: 75%">
 								<div id="summernote"></div>
 							</div>
 					    </div>
 						
-						<div class="container d-flex justify-content-end">
+						<!-- 버튼 -->
+						<div class="container d-flex justify-content-end" style="width: 75%;">
 							<div class="d-flex p-2 align-self-center">
-								<button type="button" class="btn btn-light">취소</button>
+								<button type="button" class="btn btn-light" onclick="location.href='<%=cp %>/Inner-Project-home-meet.jsp'">취소</button>
 							</div>
-							<div class="d-flex p-2 align-self-center">
+							<div class="d-flex p-2 pe-0 align-self-center">
 								<button type="button" class="gradientBtn color-9">작성하기</button>
 							</div>
 						</div>
 						
 					</div>
 				</div>
-				
-				
-				
 				
 			</div>
 		</section>

@@ -14,15 +14,16 @@ String cp = request.getContextPath();
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 
-
 <body>
-
+	<!-- 위로 가는 버튼 -->
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center">
 		<i class="bi bi-arrow-up-short"></i>
 	</a>
-
+	
+	
 	<c:import url="./common/Nav.jsp" />
+
 
 	<main id="main">
 
@@ -32,9 +33,10 @@ String cp = request.getContextPath();
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
 			
-				<!-- 상단 현재 보고있는 프로젝트 표시바 -->
 				<div class="projectView container col-lg-12">
 					<div class="row">
+					
+						<!-- 상단 현재 보고있는 프로젝트 표시바 -->
 						<div class="projectStatus p-3 pb-0 border rounded-top">
 							<div class="container text-center">
 								<div class="row justify-content-center">
@@ -62,7 +64,6 @@ String cp = request.getContextPath();
 									<div class="col-md-0 col-lg-2"></div>
 									<div class="col-md-0 col-lg-2"></div>
 									
-
 								</div>
 							</div>
 						</div>
@@ -87,131 +88,129 @@ String cp = request.getContextPath();
 
 
 						<!-- 컨텐츠 란 -->
-						<div class="container d-flex justify-content-between">
+						<div class="container d-flex justify-content-between" style="width: 75%;">
 							<h5 class="p-2 m-0 fw-bolder align-self-center">회의록</h5>
-							<div class="p-2 ms-auto align-self-center" data-bs-toggle="modal" data-bs-target="#mainWorkAdd">
+							<div class="p-2 ms-auto align-self-center">
 								<button type="button" class="gradientBtn color-9" onclick="location.href='<%=cp %>/Inner-Project-home-meet-Post-Insert.jsp'">
 								작성하기</button>
 							</div>
 						</div>
-
 						
-						<div class="container">
-							<div class="row justify-content-center">
-								<table class="table" style="width: 70%;">
-									<thead>
-										<tr>
-											<th scope="col">번호</th>
-											<th scope="col">제목</th>
-											<th scope="col">작성자</th>
-											<th scope="col">작성일</th>
-										</tr>
-									</thead>
-									<tbody class="table-group-divider" style="font-size: 0.8rem;">
-										<tr>
-											<td scope="row">10</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">9</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">8</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">7</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">6</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">5</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">4</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">3</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">2</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									
-										<tr>
-											<td scope="row">1</td>
-											<td><a href="Inner-Project-home-meet-Post.jsp">회의록 제목입니다.</a></td>
-											<td>팀원1</td>
-											<td>2023-01-01</td>
-										</tr>
-									</tbody>
-								</table>
+
+	
+						<!-- 게시판 글 목록 -->
+						<div class="meet_wrap mb-3">
+							<div class="meet_list_wrap">
+								<div class="meet_list mb-3">
+									<div class="top">
+										<div class="num">번호</div>
+										<div class="topic">주제</div>
+										<div class="title">제목</div>
+										<div class="writer">작성자</div>
+										<div class="date">작성일</div>
+									</div>
+									<div onclick="location.href='<%=cp %>/Inner-Project-home-meet-Post.jsp';">
+										<div class="num">10</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">9</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">8</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">7</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">6</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">5</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">4</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">3</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">2</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+									<div>
+										<div class="num">1</div>
+										<div class="topic">주제1</div>
+										<div class="title">회의록 제목입니다.</div>
+										<div class="writer">팀원</div>
+										<div class="date">2023.01.01</div>
+									</div>
+								</div>
+								
+								
+								<div class="board_page">
+									<ul class="pagination justify-content-center">
+									    <li class="page-item">
+									      <a class="page-link" href="#" aria-label="Previous">
+									        <span aria-hidden="true">&laquo;</span>
+									      </a>
+									    </li>
+									    
+									    <li class="page-item"><a class="page-link" href="#">1</a></li>
+									    <li class="page-item"><a class="page-link" href="#">2</a></li>
+									    <li class="page-item"><a class="page-link" href="#">3</a></li>
+									    
+									    <li class="page-item">
+									      <a class="page-link" href="#" aria-label="Next">
+									        <span aria-hidden="true">&raquo;</span>
+									      </a>
+									    </li>
+								  	</ul>
+								</div>
+								
+								
 							</div>
-							
-							<div>
-							  <ul class="pagination justify-content-center">
-							  
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Previous">
-							        <span aria-hidden="true">&laquo;</span>
-							      </a>
-							    </li>
-							    
-							    <li class="page-item"><a class="page-link" href="#">1</a></li>
-							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-							    
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Next">
-							        <span aria-hidden="true">&raquo;</span>
-							      </a>
-							    </li>
-							    
-							  </ul>
-						  </div>
-						  
-						  
-					    </div>
+						</div>
+						
+						
+						</div>
 						
 					</div>
 				</div>
-				
-				
-				
-				
 			</div>
 		</section>
 		
@@ -226,8 +225,5 @@ String cp = request.getContextPath();
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script>
-
-</script>
 
 </html>
