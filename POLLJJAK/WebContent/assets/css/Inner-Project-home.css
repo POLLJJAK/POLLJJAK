@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-<<<<<<< HEAD
 /* 내 프로젝트 홈 (진행 프로젝트, 완료 프로젝트 목록)*/
 .projectHome-list-now .pj-box {
 	background: #fff;
@@ -30,8 +29,6 @@
 }
 
 
-=======
->>>>>>> d18894c59221b5e0feab8a47eb3e1043912127b8
 /* 내 프로젝트 홈 (프로젝트 목록 박스) */
 .projectView {
 	border: 1px solid gray;
