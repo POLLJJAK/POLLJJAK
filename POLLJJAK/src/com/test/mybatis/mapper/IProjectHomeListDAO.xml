@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IProjectHomeListDAO">
+	
+	<select id="list" resultType="com.test.mybatis.ProjectHomeListDTO">
+		SELECT P_NAME, USER_CODE,
+			   TO_CHAR(PJ_START_DATE, 'YYYY-MM-DD') AS PJ_START_DATE,
+			   TO_CHAR(PJ_END_DATE, 'YYYY-MM-DD') AS PJ_END_DATE,
+			   (
+			       SELECT COUNT(*)
+			 	   FROM U_P_APPLY I1, PH_MAINWORK I2, PH_SUBWORK I3
+				   WHERE I1.USER_CODE = #{user_code}
+				     AND I1.U_P_APPLY_CODE = I2.U_P_APPLY_CODE
+				     AND I2.PH_MAINWORK_CODE = I3.PH_MAINWORK_CODE
+			   ) AS ALL_SUBWORK,
+			   (
+				   SELECT COUNT(*)
+				   FROM U_P_APPLY I1, PH_MAINWORK I2, PH_SUBWORK I3, PH_SUBWORK_COMPLETE I4
+				   WHERE I1.USER_CODE = #{user_code}
+				     AND I1.U_P_APPLY_CODE = I2.U_P_APPLY_CODE
+				     AND I2.PH_MAINWORK_CODE = I3.PH_MAINWORK_CODE
+				     AND I3.PH_SUBWORK_CODE = I4.PH_SUBWORK_CODE
+			   ) AS COMPLETE_SUBWORK
+		FROM P T1, P_TEAM_CONFIRM T2, P_END T3
+		WHERE T1.P_CODE = T2.P_CODE
+		  AND NOT (T2.P_TEAM_CONFIRM_CODE = T3.P_TEAM_CONFIRM_CODE)
+		  AND T1.USER_CODE = #{user_code}
+	</select>
+	
+	
+	
+</mapper>

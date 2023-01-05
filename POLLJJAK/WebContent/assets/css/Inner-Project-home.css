@@ -1,6 +1,37 @@
 @charset "UTF-8";
 
+<<<<<<< HEAD
+/* 내 프로젝트 홈 (진행 프로젝트, 완료 프로젝트 목록)*/
+.projectHome-list-now .pj-box {
+	background: #fff;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
 
+.projectHome-list-now .pj-box:hover {
+  background: #60A7F7;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+ 
+.projectHome-list-complete .pj-box {
+	background: #D8D8D8;
+	transition: 0.3s;
+	transition: ease-in-out 0.4s;
+	border-radius: 5px;
+	color: #28313D;
+}
+
+.projectHome-list-complete .pj-box:hover {
+	background: #8E8E8E;
+  	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+=======
+>>>>>>> d18894c59221b5e0feab8a47eb3e1043912127b8
 /* 내 프로젝트 홈 (프로젝트 목록 박스) */
 .projectView {
 	border: 1px solid gray;
@@ -351,6 +382,12 @@
 	font-size: small;
 	
 }
+.meet_list .countLike{
+	width: 10%;
+	font-size: small;
+	text-align: right;
+	
+}
 .meet_list .topic{
 	width: 10%;
 	
@@ -413,6 +450,5 @@
 	border-radius: 6px;
 	padding: 10px;
 }
-
 
 
