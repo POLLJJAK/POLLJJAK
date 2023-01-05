@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 /* 내 프로젝트 홈 (프로젝트 목록 박스) */
 .projectView {
 	border: 1px solid gray;
@@ -351,6 +350,12 @@
 	font-size: small;
 	
 }
+.meet_list .countLike{
+	width: 10%;
+	font-size: small;
+	text-align: right;
+	
+}
 .meet_list .topic{
 	width: 10%;
 	
@@ -413,6 +418,5 @@
 	border-radius: 6px;
 	padding: 10px;
 }
-
 
 

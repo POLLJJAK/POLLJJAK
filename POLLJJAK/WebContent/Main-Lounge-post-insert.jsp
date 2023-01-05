@@ -17,7 +17,7 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-	<link href="assets/vendor/Main-Lounge/css/Main-Lounge.css" rel="stylesheet">
+
 
 <style>
 	title{width: 2000px; text-align: left;}
@@ -64,41 +64,43 @@
 		<section class="pt-5 pb-5" >
 		<div class="container" >
 			<div class="board_wrap">
-				
-			<form action="">
-				<div class="board_list_wrap">
-					<p style="font-size: small; text-align: right;"><%= sf.format(nowTime) %><p>
-					<div class="board_list">
+			<!-- 작성폼 -->
+			<form >
+			<div class="board_list_wrap">
+				<div class="meet_wrap mb-3">
+					<table class="table">
+						<tr>
+							<th colspan="2">
+							<p style="font-size: small; text-align: right;"><%= sf.format(nowTime) %><p>
+							</th>
+						</tr>
+						<tr>
+							<th style="font-size: x-large; padding-top: 7px; width: 80px;">제목</th>
+							<td><input type="text" class="form-control" placeholder="제목 입력해주세요." /></td>
+						</tr>
+					</table>
 					
-					<div class="top">
-							<div class="num">제목</div>
-							<div> <input type="text" class="title" id="title"style="width: 800px; height: 30px;"> </div>
-					</div>	
-					<div class="top">	
-							<div class="num">작성자</div>
-							<div> <input type="text" class="text" id="user"> </div>
+					<!-- 썸머노트 -->
+					<div style="width: 100%; align-content: center;">
+						<div id="summernote"></div>
 					</div>
-					    
-					</div><!--end board_list -->
-						<!-- 포스트 상세보기 -->
-						<div class="container">
-							<div style="width: 100%; align-content: center;">
-								<div id="summernote"></div>
-							</div>
-					    </div>
-					    <div style="text-align: center;;">
-					    <button type="reset" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">취소</button>
-					    <button type="submit" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">등록</button>
-						</div>
+			    </div><!-- end meet_wrap mb-3-->
+			    <div style="text-align: center;;">
+				    <button type="reset" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">취소</button>
+				    <button type="submit" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">등록</button>
 				</div>
-				</form>
-			</div>
-			</div>
-			
-			</section>
+			</div><!-- end board_list_wrap -->
 			
 			
-		</section>
+			
+			</form><!-- end form -->
+			</div><!-- end board_wrap -->
+			
+								
+				
+		</div>
+	</section>
+</section>
 		
   </main><!-- End #main -->
 	<!-- 썸머노트 스크립트 -->
