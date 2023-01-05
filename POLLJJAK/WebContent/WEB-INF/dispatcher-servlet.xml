@@ -25,9 +25,9 @@
 	<!-- sqlSessionFactory에게 property 넘기기 위해서 -->
 	<bean id="localDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@211.238.142.65:1521:xe"></property>
-		<property name="username" value="scott"></property>
-		<property name="password" value="tiger"></property>
+		<property name="url" value="jdbc:oracle:thin:@34.64.167.230:1521:xe"></property>
+		<property name="username" value="polljjak"></property>
+		<property name="password" value="java002$"></property>
 	</bean>
 	
 	

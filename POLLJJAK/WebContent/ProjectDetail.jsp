@@ -35,19 +35,6 @@
 		else
 			return false;
 	}
-	
-	/* 리더div 스크롤따라오게 */
-	/* 
-	$(document).ready(function()
-	{
-	    var currentPosition = parseInt($(".col-lg-4").css("top"));
-	    $(window).scroll(function() 
-	    {
-	    	var position = $(window).scrollTop(); 
-	    	$(".col-lg-4").stop().animate({"top":position+currentPosition+"px"},1000);
-	    });
-	});
- 	*/
  	
  	//지원사유
  	$(document).ready(function(){
