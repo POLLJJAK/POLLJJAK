@@ -14,6 +14,9 @@
 		<!--    - 『class=""』 속성은 Controller 객체의 클래스 경로 및 이름을 등록한다. -->
 		<!--  -->
 		
+		<!-- ignore 체크  -->
+		
+		
 	<!-- ① 기존 코드 -->
 	<!-- ※ Annotation 표기법으로 Controller 객체를 등록할 수 있도록 한다. -->
 	<context:component-scan base-package="com.test.mybatis" />

@@ -1,5 +1,6 @@
 metadata/
 .metadata/
 Servers/
-POLLJJAK/WebContent/WEB-INF/dispatcher-servlet.xml
 
+
+!dispatcher-servlet.xml
