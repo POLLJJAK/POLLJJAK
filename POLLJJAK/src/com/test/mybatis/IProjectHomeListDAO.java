@@ -11,5 +11,7 @@ import java.util.ArrayList;
 
 public interface IProjectHomeListDAO
 {
-	public ArrayList<ProjectHomeListDTO> list(String user_code);
+	public ArrayList<ProjectHomeListDTO> pj_run_list(String user_code);
+	public ArrayList<ProjectHomeListDTO> pj_complete_list(String user_code);
+	
 }

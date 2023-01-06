@@ -40,7 +40,6 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/projectOpen/js/calendar.js"></script>
-  <script src="assets/vendor/projectOpen/js/addAndRemove.js"></script>
   <script src="assets/vendor/projectOpenMain/js/deleteList.js"></script>
   <script src="assets/vendor/projectDetail/js/projectDetail.js"></script>
 

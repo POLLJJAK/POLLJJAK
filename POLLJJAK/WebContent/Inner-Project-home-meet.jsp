@@ -11,7 +11,7 @@ String cp = request.getContextPath();
 <!DOCTYPE html>
 <html lang="ko">
 
-<!-- head import (css imported)-->
+<link href="assets/css/Inner-Project-home.css" rel="stylesheet">
 <c:import url="./common/Head.jsp" />
 
 <body>

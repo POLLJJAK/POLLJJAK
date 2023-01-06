@@ -12,12 +12,13 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<script src="assets/vendor/projectOpen/js/fileUpload.js"></script> 
+<script src="<%=cp %>/resources/js/fileUpload.js"></script>
+ 
+<script src="<%=cp %>/resources/js/ProjectOpen.js"></script> 
+<link rel="stylesheet" href="<%=cp %>/css/ProjectOpen.css" />
 
 <body>
 <c:import url="./common/Nav.jsp" />
-
-
 
 <main id="main">
 
@@ -41,10 +42,9 @@
 		</div>
 				
 
-	
+	<!-- <%=cp %>/ProjectDetail.jsp -->
 		<div class="container">
-			<form name="newProduct" action="<%=cp %>/ProjectDetail.jsp" class="" method="post" 
-			enctype="multipart/form-data">
+			<form name="newProduct"  action="" class="" method="post" enctype="multipart/form-data">
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">프로젝트 명<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
@@ -58,25 +58,29 @@
 						<label class="col-sm-4 form-label">프로젝트 분야<em style="color: red;"> * </em></label>
 					</div>
 					<label class="col-sm-2 form-label">주제</label>
-					<div class="radioBtn">
-						<input type="radio" id="subject1" name="subject" value="living"><label for="subject1">생활</label>
-						<input type="radio" id="subject2" name="subject" value="task"><label for="subject2">업무</label>
-						<input type="radio" id="subject3" name="subject" value="publicTransport"><label for="subject3">공공/교통</label>
-						<input type="radio" id="subject4" name="subject" value="madical"><label for="subject4">의료</label>
-						<input type="radio" id="subject5" name="subject" value="education"><label for="subject5">교육</label>
-						<input type="radio" id="subject6" name="subject" value="shopping"><label for="subject6">유통/쇼핑</label>
-						<input type="radio" id="subject7" name="subject" value="entertainment"><label for="subject7">엔터테인먼트</label>
+					<div class="radioBtn" id = "subject_part">
+						<input type="radio" id="subject1" name="subject" value="SBPT000001"><label for="subject1">생활</label>
+						<input type="radio" id="subject2" name="subject" value="SBPT000002"><label for="subject2">업무</label>
+						<input type="radio" id="subject3" name="subject" value="SBPT000003"><label for="subject3">공공/교통</label>
+						<input type="radio" id="subject4" name="subject" value="SBPT000004"><label for="subject4">금융/핀테크</label>
+						<input type="radio" id="subject5" name="subject" value="SBPT000005"><label for="subject5">의료</label>
+						<input type="radio" id="subject6" name="subject" value="SBPT000006"><label for="subject6">교육</label>
+						<input type="radio" id="subject7" name="subject" value="SBPT000007"><label for="subject7">유통/쇼핑</label>
+						<input type="radio" id="subject8" name="subject" value="SBPT000008"><label for="subject8">엔터테인먼트</label>
+						<input type="radio" id="subject9" name="subject" value="SBPT000009"><label for="subject9">기타</label>
 					</div>
 					<label class="col-sm-2 form-label">세부분야</label>
-					<div class="radioBtn">
-						<input type="radio" id="detail1" name="detail" value="mobile"><label for="detail1">모바일</label>
-						<input type="radio" id="detail2" name="detail" value="iot"><label for="detail2">IOT</label>
-						<input type="radio" id="detail3" name="detail" value="desktop"><label for="detail3">데스크톱 S/W</label>	
-						<input type="radio" id="detail4" name="detail" value="ai"><label for="detail4">인공지능</label>
-						<input type="radio" id="detail5" name="detail" value="security"><label for="detail5">보안</label>
-						<input type="radio" id="detail6" name="detail" value="vr"><label for="detail6">가상현실</label>
-						<input type="radio" id="detail7" name="detail" value="bigData"><label for="detail7">빅데이터</label>
-						<input type="radio" id="detail8" name="detail" value="autoCtrlTech"><label for="detail8">자동제어 기술</label>
+					<div class="radioBtn" id = "department_part">
+						<input type="radio" id="detail1" name="detail" value="DPT0000001"><label for="detail1">모바일</label>
+						<input type="radio" id="detail2" name="detail" value="DPT0000002"><label for="detail2">IOT</label>
+						<input type="radio" id="detail3" name="detail" value="DPT0000003"><label for="detail3">데스크톱 S/W</label>	
+						<input type="radio" id="detail4" name="detail" value="DPT0000004"><label for="detail4">인공지능</label>
+						<input type="radio" id="detail5" name="detail" value="DPT0000005"><label for="detail5">보안</label>
+						<input type="radio" id="detail6" name="detail" value="DPT0000006"><label for="detail6">가상현실</label>
+						<input type="radio" id="detail7" name="detail" value="DPT0000007"><label for="detail7">빅데이터</label>
+						<input type="radio" id="detail8" name="detail" value="DPT0000008"><label for="detail8">자동제어 기술</label>
+						<input type="radio" id="detail9" name="detail" value="DPT0000009"><label for="detail9">블록체인</label>
+						<input type="radio" id="detail10" name="detail" value="DPT0000010"><label for="detail10">영상처리</label>
 					</div>
 				</div>
 				<hr>
@@ -104,42 +108,69 @@
 				
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">지역</label>
-					<div class="radioBtn" id="radioBtn">
+					<div class="radioBtn" id="region">
 						<input type="radio" id="location1" name="location" value="all"><label for="location1">모두 가능</label>
 						<input type="radio" id="location2" name="location" value="online"><label for="location2">온라인</label>
 						<input type="radio" id="location3" name="location" value="offline"><label for="location3">오프라인</label>
 					</div>
-					<div>
-						<select class="form-select form-select-sm w-25 mt-2">
-							<option>지역선택</option>
-							<option>상관없음</option>
-							<option>서울</option>
-							<option>경기</option>
-							<option>충북</option>
-						</select>
+						<div>
+							<select class="form-select form-select-sm w-25 mt-2" id = "region_part">
+								<option value="none">지역 선택</option>
+								<option value="RPT0000001" selected>서울</option>
+								<option value="RPT0000002">경기</option>
+								<option value="RPT0000003">인천</option>
+								<option value="RPT0000004">강원</option>
+								<option value="RPT0000005">충북</option>
+								<option value="RPT0000006">충남</option>
+								<option value="RPT0000007">전북</option>
+								<option value="RPT0000008">전남</option>
+								<option value="RPT0000009">경북</option>
+								<option value="RPT0000010">경남</option>
+								<option value="RPT0000011">제주</option>
+							</select>
+						</div>
 					</div>
-				</div>
 				<hr />
 
 		        <label class="col-sm-4 form-label">모집 분야</label>
 				<table>
-				    <tbody>
-				        <tr id="tr">
+				    <tbody id="positionAppendSpot">
+				        <tr>
 				            <td>
-				                <select class="form-select form-select-sm" name="part1">
-				                    <option value="front1">프론트</option>
-				                    <option value="backend1">백엔드</option>
-				                    <option value="pm1">기획</option>
+				                <select class="form-select form-select-sm" id="position">
+				                    <option value="none">주요 직무 선택</option>
+									<option value="PSPT000001" selected>UI/UX</option>
+									<option value="PSPT000002">게임</option>
+									<option value="PSPT000003">프로젝트 매니저</option>
+									<option value="PSPT000004">하드웨어 기획</option>
+									<option value="PSPT000005">그래픽 디자인</option>
+									<option value="PSPT000006">UI/UX 디자인</option>
+											<option value="PSPT000007">3D 디자인</option>
+									<option value="PSPT000008">하드웨어 디자인</option>
+										<option value="PSPT000009">IOS</option>
+									<option value="PSPT000010">안드로이드</option>
+									<option value="PSPT000011">웹 프론트엔드</option>
+									<option value="PSPT000012">웹 퍼블리셔</option>
+									<option value="PSPT000013">크로스 플랫폼</option>
+									<option value="PSPT000014">임베디드SW</option>
+									<option value="PSPT000015">웹서버</option>
+											<option value="PSPT000016">블록체인</option>
+									<option value="PSPT000017">AI</option>
+									<option value="PSPT000018">DB/빅데이터/DS</option>
+									<option value="PSPT000019">게임서버</option>
+									<option value="PSPT000020">사업기획</option>
+									<option value="PSPT000021">마케팅</option>
+									<option value="PSPT000022">재무/회계</option>
+									<option value="PSPT000023">영업</option>
+									<option value="PSPT000024">전략/컨설팅</option>
+									<option value="PSPT000025">투자/고문</option>
 				                </select>
 				            </td>
 				            <td class="bseq_ea" style="visibility: hidden;">6</td>
 				            <td>
-								<button type="button" onclick="fnCalCount('m', this);" 
-								style="background-color:white; border: none;">-</button>
-								<input type="text" name="pop_out" value="1" readonly="readonly" 
-								style="text-align:center; width: 15px; border: none;"/>
-								<button type ="button" onclick="fnCalCount('p',this);" 
-								style="background-color:white; border: none;">+</button>
+								<button type="button" onclick="fnCalCount('m', this);" style="background-color:white; border: none;">-</button>
+								<input type="text" id="" name="pop_out" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;"/>
+								<button type ="button" onclick="fnCalCount('p',this);" style="background-color:white; border: none;">+</button>
 							</td>
 							<!-- 
 				            <td>
@@ -149,17 +180,17 @@
 				        </tr>
 				    </tbody>
 				</table>
-				<input type="button" class="btn btn-primary mt-2" name="addPart" value="추가" 
+				<input type="button" class="btn btn-primary mt-2" id="addPart" value="추가" 
 				style="background-color: #3498db; border-color: #3498db;">
 				<hr />
 				
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">출시 플랫폼<em style="color: red;"> * </em></label>
 					<div class="radioBtn">
-						<input type="radio" id="platform1" name="platform" value="web"><label for="platform1">웹</label>
-						<input type="radio" id="platform2" name="platform" value="app"><label for="platform2">앱</label>
-						<input type="radio" id="platform3" name="platform" value="program"><label for="platform3">프로그램</label>	
-						<input type="radio" id="platform4" name="platform" value="undecided"><label for="platform4">미정</label>
+						<input type="radio" id="platform1" name="platform" value="RLPT000001"><label for="platform1">웹</label>
+						<input type="radio" id="platform2" name="platform" value="RLPT000002"><label for="platform2">앱</label>
+						<input type="radio" id="platform3" name="platform" value="RLPT000003"><label for="platform3">프로그램</label>	
+						<input type="radio" id="platform4" name="platform" value="RLPT000004"><label for="platform4">미정</label>
 					</div>
 				</div>
 				<hr>
@@ -171,14 +202,31 @@
 					</div>
 				</div>
 				<hr />
-				
-				<div class="form-group row">
-					<label class="col-sm-4 form-label">기술/언어</label>
-					<div class="com-sm-3">
-						<input type="text" name="language" class="form-control" placeholder="기술명을 입력해주세요. ex) Java, Spring">
+
+					<div class="form-group row">
+						<label class="col-sm-4 form-label">기술/언어</label>
+						<div class="com-sm-3">
+							<select class="form-select" id="persnal-skill1">
+								<option value="none">기술 선택</option>
+								<option value="SPT0000001">Java</option>
+								<option value="SPT0000002">Spring</option>
+								<option value="SPT0000003" selected>React</option>
+								<option value="SPT0000004">Python</option>
+								<option value="SPT0000005">C</option>
+								<option value="SPT0000006">C++</option>
+								<option value="SPT0000007">Kotlin</option>
+								<option value="SPT0000008">Angular</option>
+								<option value="SPT0000009">TypeScript</option>
+								<option value="SPT0000010">NodeJs</option>
+								<option value="SPT0000011">Linux</option>
+								<option value="SPT0000012">Docker</option>
+								<option value="SPT0000013">Perl</option>
+								<option value="SPT0000014">Kubernetes</option>
+								<option value="SPT0000015">AWS</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<hr />
+					<hr />
 				
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">모집마감일<em style="color: red;"> * </em></label>
@@ -211,7 +259,7 @@
 				
 				<div class="form-group row">
 					<div >
-						<input type="submit" class="btn btn-primary" value="등록" 
+						<input type="submit" class="btn btn-primary" value="등록"  id = "add"
 						style="background-color: #3498db; border-color: #3498db; float: right;">
 					</div>
 				</div>
