@@ -221,29 +221,6 @@ $(function(){
 	    color: gray;
 	}
 	
-	/* new title  */
-	.section-title p {
-	  position: relative;
-	  color: gray;
-	}
-	
-	.section-title p::before,
-	.section-title p::after {
-	  content: "";
-	  width: 100px;
-	  height: 1.5px;
-	  background: #3498db;
-	  display: inline-block;
-	}
-	
-	.section-title p::before {
-	  margin: 0 10px 3px 0;
-	}
-	
-	.section-title p::after {
-	  margin: 0 0 3px 10px;
-	}
-	
 	.radioBtn {
 	    text-align: center;
 	}
