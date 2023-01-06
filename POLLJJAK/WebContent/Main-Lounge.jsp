@@ -11,7 +11,8 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-
+<%-- <link rel="stylesheet" href="<%=cp %>/resources/css/Main-Lounge.css" /> --%>
+<link rel="stylesheet" href="<%=cp %>/resources/css/projectDetail.css" />
 
 <body>
 	
@@ -46,7 +47,7 @@
 				<nav id="navbar_" class="navbar inner-nav" data-aos="fade-up"> 
 					<ul style="margin-left: auto; margin-right: auto;">
 						<li><a class="nav-link scrollto" href="#" style="margin-right: 100px;">공지사항</a></li>
-						<li><a class="nav-link scrollto active" href="#" >자유게시판</a></li>
+						<li><a class="nav-link scrollto active" href="<%=cp %>/mainlounge.action" >자유게시판</a></li>
 					</ul>
 				</nav>
 				<hr>
@@ -75,76 +76,17 @@
 										<div class="date">작성일</div>
 										<div class="countLike">좋아요</div>
 									</div>
+									
+									<c:forEach var="list" items="${list}">
 									<div onclick="location.href='<%=cp %>/Main-Lounge-post.jsp';">
-										<div class="num">10</div>
-										<div class="title">오늘은 1월1일입니다</div>
-										<div class="writer">뚬니똠니</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">3</div>
+										<div class="num">${list.sid }</div>
+										<div class="title">${list.title }</div>
+										<div class="writer">${list.nickname}</div>
+										<div class="date">${list.postDate }</div>
+										<div class="countLike">${list.postLike }</div>
 									</div>
-									<div>
-										<div class="num">9</div>
-										<div class="title">시간진짜빠르네요 미친거아녀?</div>
-										<div class="writer">김호진</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">13</div>
-									</div>
-									<div>
-										<div class="num">8</div>
-										<div class="title">배고픈데 감자빵머글까</div>
-										<div class="writer">은영공주</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">14</div>
-									</div>
-									<div>
-										<div class="num">7</div>
-										<div class="title">저만 점심생각하고사나요? 머시켜먹징</div>
-										<div class="writer">또기공주</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">0</div>
-									</div>
-									<div>
-										<div class="num">6</div>
-										<div class="title">날씨가 풀린것같아요 패딩안입어도..</div>
-										<div class="writer">텐삼이형</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">1</div>
-									</div>
-									<div>
-										<div class="num">5</div>
-										<div class="title">세상에 다적으려니까 귀찮아디졍</div>
-										<div class="writer">로카티</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">33</div>
-									</div>
-									<div>
-										<div class="num">4</div>
-										<div class="title">만남은 쉽고 이별은어려워~</div>
-										<div class="writer">채르르르히</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">78</div>
-									</div>
-									<div>
-										<div class="num">3</div>
-										<div class="title">내일이가면 정을주지말자어 내일이오면 아무일없던거처럼</div>
-										<div class="writer">방탄노래나와요</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">3</div>
-									</div>
-									<div>
-										<div class="num">2</div>
-										<div class="title">여기지하방은 너무어두워~! 쏘에비나잇 살려죠 여기사람사라요</div>
-										<div class="writer">하루종일나오네</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">3</div>
-									</div>
-									<div>
-										<div class="num">1</div>
-										<div class="title">우리다시만나기를원햇듯이 이또한 지낙</div>
-										<div class="writer">개발새발자</div>
-										<div class="date">2023.01.01</div>
-										<div class="countLike">3</div>
-									</div>
+									</c:forEach>
+									
 								</div>
 						<div class="board_page">
 							<ul class="pagination justify-content-center">

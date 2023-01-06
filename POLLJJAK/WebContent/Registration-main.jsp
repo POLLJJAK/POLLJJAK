@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>아이디찾기</title>
+<title>회원가입 메인</title>
 <script src="https://kit.fontawesome.com/51db22a717.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,37 +20,6 @@
 <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-	$(".input-email").click(function()
-	{
-		alert("인증번호가 발송되었습니다.");
-	});
-	$(".input-tel").click(function()
-	{
-		alert("인증번호가 발송되었습니다.");
-	});
-	$(".input-authentic").click(function()
-	{
-		alert("인증번호가 일치합니다.");
-	});
-	
-	$(".radioBtn").on('click', function()
-	{
-        var email = $('input[type=radio][id="method-email"]:checked').val();
-		var tel = $('input[type=radio][id="method-tel"]:checked').val();
-		
-		if(email){
-	        $('.email-view').show();
-	        $('.tel-view').hide();
-	        $('.empty-view').hide();
-	    }else if(tel){
-	        $('.tel-view').show();
-	        $('.email-view').hide();
-	        $('.empty-view').hide();
-	    }
-		
-	});
-});
 </script>
 <style type="text/css">
 	@font-face {
@@ -123,8 +92,7 @@ $(function(){
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;
-	    padding:100px;
-	    /* background: rgb(255,255,255); */
+	    padding:110px;
 		background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
 	}
 	.form-left-side .top-wrap{
@@ -165,9 +133,6 @@ $(function(){
 	    color: #3498db;
 	    line-height: 45px;
 	}
-	.input-container .input-wrap .fa-phone{
-		transform: scaleX(-1);
-	}
 	.input-container .input-wrap .btn{
 	    width:95px;
 	    height:17px;
@@ -176,7 +141,6 @@ $(function(){
 	    border-radius: 4px;
 	    background-color: #3498db;
 	    cursor: pointer;
-	    font-family: Cafe24Ssurround;
 	}
 	
 	.input-container .input-wrap input{
@@ -202,67 +166,36 @@ $(function(){
 	}
 	
 	.btn-wrap{
-	    margin-top: 40px;
+	    margin-top: 20px;
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;;
+	    text-decoration: none;
 	}
-	.btn-wrap .btn{
-	    width:95px;
-	    height:35px;
-	    color:white;
-	    border: 0;
-	    border-radius: 4px;
-	    background-color: #3498db;
-	    cursor: pointer;
+	.btn-wrap .forget {
+	    font-size: 11px;
+	    margin: 5px 0 5px 0;
+	}
+	.btn-wrap .user-type {
+	    font-size: 30px;
+	    text-align: center;
 	}
 	.btn-wrap a{
-	    margin-top:10px;
-	    text-decoration: none;
-	    font-size: 11px;
 	    color: gray;
 	}
-	
-	.radioBtn input[type=radio]
-	{
-	    display: none;
+	.outline{
+		margin-top: 20px;
+		width: 200px;
+		line-height: 100px;
+		border-radius: 10px 10px 10px 10px;
+		border: 4px solid #3498db;
+		background-color: white;
+		color: gray;
+		font-size: 30px;
+		padding: 10px;
+		cursor: pointer;
 	}
-	
-	.radioBtn input[type=radio] + label
-	{
-	    display: inline-block;
-	    cursor: pointer;
-	    width: 100px;
-	    border: 1px solid #A6A6A6;
-	    border-radius:3px;
-	    line-height: 24px;
-	    text-align: center;
-	    font-size:13px;
-	    transition:all 0.5s;
-	    background-color: #fff;
-	    color: gray;
-	}
-	
-	.radioBtn input[type=radio]:checked + label
-	{
-	    background-color: #3498db;
-	    color: #fff;
-	    border: 1px solid #3498db;
-	}
-	
-	.email-view, .tel-view{
-		display: none;
-	}
-	.empty-view{
-		width: 300px;
-		height: 195px;
-		padding: 10px 0 10px 0;
-		text-align: center;
-		font-size: 18px;
-	}
-	.moveTo{
-		margin: 5px 0 5px 0;
-	}
+
 	
 </style>
 </head>
@@ -271,58 +204,26 @@ $(function(){
 		<div class="form-container shadow">
 			<div class="form-right-side">
 				<div class="top-logo-wrap"></div>
-				<h1>아이디 찾기</h1>
+				<h1>회원가입</h1>
 				<p>Team 4, Cheer up guys.<br>We can finish our Final Project in time.<br>Him Eul Nae Yo SUPER POWER.</p>
 			</div>
 			<div class="form-left-side">
-				<div class="radioBtn">
-					<input type="radio" id="method-email" name="forgetId" value="method-email"><label for="method-email">이메일로 찾기</label>
-					<input type="radio" id="method-tel" name="forgetId" value="method-tel"><label for="method-tel">전화번호로 찾기</label>
-				</div>
-				<div class="input-container email-view">
-					<div class="input-wrap input-name">
-						<i class="fa fa-user-o"></i>
-						<input placeholder="이름" type="text">
+				<div class="input-container btn-wrap">
+					<div class="user-type">
+						<button class="outline" type="button" 
+						onclick="location.href='registrationform.action';" >
+							<i class="fa fa-users"></i>일반회원
+						</button>
+						<button class="outline" type="button" 
+						onclick="location.href='<%=cp %>/Registration-company.jsp';" >
+							<i class="fa fa-building"></i>기업회원
+						</button>
 					</div>
-					<div class="input-wrap">
-						<i class="fa fa-envelope"></i>
-						<input placeholder="이메일" type="text">
-						<button type="button" class="input-email btn">인증번호 받기</button>
-					</div>
-					<div class="input-wrap">
-						<i class="fas fa-unlock-alt"></i>
-						<input placeholder="인증번호" type="text">
-						<button type="button" class="input-authentic btn">확인</button>
-					</div>
-				</div>
-				<div class="input-container tel-view">
-					<div class="input-wrap input-name">
-						<i class="fa fa-user-o"></i>
-						<input placeholder="이름" type="text">
-					</div>
-					<div class="input-wrap">
-						<i class="fa fa-phone"></i>
-						<input placeholder="전화번호" type="text">
-						<button type="button" class="input-tel btn">인증번호 받기</button>
-					</div>
-					<div class="input-wrap">
-						<i class="fas fa-unlock-alt"></i>
-						<input placeholder="인증번호" type="text">
-						<button type="button" class="input-authentic btn">확인</button>
-					</div>
-				</div>
-				<div class="input-container empty-view">
-					<br><br><br>
-					<span>위의 "이메일로 찾기"<br>혹은 "전화번호로 찾기" 중<br>
-					원하는 수단을 선택해<br>아이디를 찾아보세요.</span>	
 				</div>
 				<div class="input-container btn-wrap">
-					<div>아이디 : 플젝폴짝</div>
-					<div class="moveTo">
+					<div class="forget">
 						<a href="<%=cp %>/U-main.jsp" >홈으로</a>
-						<a> | </a>
-						<a href="<%=cp %>/ForgetPw.jsp" >비밀번호 찾기</a>
-						<a> | </a>
+						<a>|</a>
 						<a href="<%=cp %>/Login.jsp" >로그인으로</a>
 					</div>
 				</div>

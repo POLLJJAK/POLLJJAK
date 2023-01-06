@@ -13,7 +13,7 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-
+<link rel="stylesheet" href="<%=cp %>/resources/css/projectDetail.css" />
 
 <style>
 	.info {
@@ -109,7 +109,8 @@
 			<div class="board_wrap">
 				<div class="board-title">
 					<button type="button" class="btn-hover color-9" style=" margin: 1%; margin-left:80%; width: 100px;"
-					 onclick="location.href='<%=cp %>/Main-Lounge-post.jsp';"
+					 <%-- onclick="location.href='<%=cp %>/Main-Lounge-post.jsp';" --%>
+					 onclick="location.href='mainlounge.action';"
 					 >목록으로</button>
 				</div>
 			
