@@ -261,7 +261,7 @@
 					<div class="login-top-wrap">
 						<span>계정이 없으신가요?</span>
 						<div class="create-account-btn">
-							<a href="<%=cp %>/U-main.jsp">회원가입</a>
+							<a href="<%=cp %>/Registration-main.jsp">회원가입</a>
 						</div>
 					</div>
 					<div class="login-input-container">

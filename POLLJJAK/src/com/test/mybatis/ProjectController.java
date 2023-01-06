@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-// ÄÁÆ®·Ñ·¯ µî·Ï
+// ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ ï¿½ï¿½ï¿½
 @Controller
 public class ProjectController
 {
-	// SqlSession À» È°¿ëÇÏ¿© ¸¶ÀÌ¹ÙÆ¼½º °´Ã¼ ÀÇÁ¸¼º (ÀÚµ¿) ÁÖÀÔ
+	// SqlSession ï¿½ï¿½ È°ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ì¹ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½Úµï¿½) ï¿½ï¿½ï¿½ï¿½
 	@Autowired
 	private SqlSession sqlSession;
 	
