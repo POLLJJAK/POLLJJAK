@@ -22,13 +22,6 @@ String cp = request.getContextPath();
 		<i class="bi bi-arrow-up-short"></i>
 	</a>
 
-	<!-- Vendor JS Files -->
-	<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-	<script src="assets/vendor/aos/aos.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
@@ -61,20 +54,20 @@ String cp = request.getContextPath();
 					</h5>
 					<hr>
 					
-					
-					<!-- 일단 임시로 링크걸어둠 -->
-					<div class="container mb-3" onclick="location.href='<%=cp %>/Inner-Project-home-teamManage.jsp';" style="cursor: pointer;">
-						<div class="pj-box">
-							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-								<div class="fw-bolder" style="font-size: 16px; font-weight: bold;">진행중인 프로젝트 제목1</div>
-								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
-								<div class="mb-1">전체 진척도 <span>75%</span></div>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 75%; background-color: #81EC81" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-								</div>								
+					<c:forEach var="pj_complete_list" items="${list}">
+						<div class="container mb-3" onclick="location.href='<%=cp %>/Inner-Project-home-teamManage.jsp';" style="cursor: pointer;">
+							<div class="pj-box">
+								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+									<div class="fw-bolder" style="font-size: 16px; font-weight: bold;">${pj_complete_list.p_name }</div>
+									<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
+									<div class="mb-1">전체 진척도 <span>${pj_complete_list.all_subwork }%</span></div>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 75%; background-color: #81EC81" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+									</div>								
+								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach>
 					
 					
 				</div>
@@ -90,54 +83,25 @@ String cp = request.getContextPath();
 						완료 프로젝트
 					</h5>
 						
-					<div class="container mb-3">
-						<div class="pj-box">
-							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-								<div class="h5 fw-bolder">완료 프로젝트 제목3</div>
-								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
-								<div class="mb-1">전체 진척도 <span>100%</span></div>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>								
+					<c:forEach var="pj_complete_list" items="${list}">
+						<div class="container mb-3">
+							<div class="pj-box">
+								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+									<div class="h5 fw-bolder">${pj_complete_list.p_name }</div>
+									<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
+									<div class="mb-1">전체 진척도 <span>${pj_complete_list.all_subwork }%</span></div>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>								
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="container mb-3">
-						<div class="pj-box">
-							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-								<div class="h5 fw-bolder">완료 프로젝트 제목2</div>
-								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
-								<div class="mb-1">전체 진척도 <span>100%</span></div>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>								
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					<div class="container mb-3">
-						<div class="pj-box">
-							<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-								<div class="h5 fw-bolder">완료 프로젝트 제목1</div>
-								<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
-								<div class="mb-1">전체 진척도 <span>100%</span></div>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>								
-							</div>
-						</div>
-					</div>
-					
-					
+					</c:forEach>
+
 				</div>
 			</div>
 		</section>
 	</main>
-	
-	
 	
 	
 
@@ -145,37 +109,4 @@ String cp = request.getContextPath();
 	<c:import url="./common/Footer.jsp" />
 
 </body>
-
-<style>
-
-.projectHome-list-now .pj-box {
-	background: #fff;
-	transition: 0.3s;
-	transition: ease-in-out 0.3s;
-	border: 1px solid gray;
-	border-radius: 5px;
-}
-
-.projectHome-list-now .pj-box:hover {
-  background: #60A7F7;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  color: #fff;
-}
- 
-.projectHome-list-complete .pj-box {
-	background: #D8D8D8;
-	transition: 0.3s;
-	transition: ease-in-out 0.4s;
-	border-radius: 5px;
-	color: #28313D;
-}
-
-.projectHome-list-complete .pj-box:hover {
-	background: #8E8E8E;
-  	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-</style>
-
-
-
 </html>
