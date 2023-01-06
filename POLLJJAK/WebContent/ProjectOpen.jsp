@@ -44,7 +44,7 @@
 
 	<!-- <%=cp %>/ProjectDetail.jsp -->
 		<div class="container">
-			<form name="newProduct"  action="" class="" method="post" enctype="multipart/form-data">
+			<form name="newProduct"  action="pApply.action" method="post" enctype="multipart/form-data" onSubmit="return validation()">
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">프로젝트 명<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
@@ -107,16 +107,16 @@
 				<hr>
 				
 				<div class="form-group row">
-					<label class="col-sm-4 form-label">지역</label>
-					<div class="radioBtn" id="region">
+					<label class="col-sm-4 form-label">지역<em style="color: red;"> * </em></label>
+					<div class="radioBtn" id="location">
 						<input type="radio" id="location1" name="location" value="all"><label for="location1">모두 가능</label>
 						<input type="radio" id="location2" name="location" value="online"><label for="location2">온라인</label>
 						<input type="radio" id="location3" name="location" value="offline"><label for="location3">오프라인</label>
 					</div>
 						<div>
-							<select class="form-select form-select-sm w-25 mt-2" id = "region_part">
-								<option value="none">지역 선택</option>
-								<option value="RPT0000001" selected>서울</option>
+							<select class="form-select form-select-sm w-25 mt-2" id = "region_part" name = "region_part">
+								<option value="">지역 선택</option>
+								<option value="RPT0000001">서울</option>
 								<option value="RPT0000002">경기</option>
 								<option value="RPT0000003">인천</option>
 								<option value="RPT0000004">강원</option>
@@ -131,30 +131,65 @@
 						</div>
 					</div>
 				<hr />
-
-		        <label class="col-sm-4 form-label">모집 분야</label>
-				<table>
-				    <tbody id="positionAppendSpot">
-				        <tr>
-				            <td>
-				                <select class="form-select form-select-sm" id="position">
-				                    <option value="none">주요 직무 선택</option>
-									<option value="PSPT000001" selected>UI/UX</option>
+				
+				  <label class="col-sm-4 form-label">팀장 직무<em style="color: red;"> * </em></label>
+					<table>
+						<tr>
+							<td><select class="form-select form-select-sm mb-4 " id="leader_position">
+									<option value="">팀장 직무 선택</option>
+									<option value="PSPT000001">UI/UX</option>
 									<option value="PSPT000002">게임</option>
 									<option value="PSPT000003">프로젝트 매니저</option>
 									<option value="PSPT000004">하드웨어 기획</option>
 									<option value="PSPT000005">그래픽 디자인</option>
 									<option value="PSPT000006">UI/UX 디자인</option>
-											<option value="PSPT000007">3D 디자인</option>
+									<option value="PSPT000007">3D 디자인</option>
 									<option value="PSPT000008">하드웨어 디자인</option>
-										<option value="PSPT000009">IOS</option>
+									<option value="PSPT000009">IOS</option>
 									<option value="PSPT000010">안드로이드</option>
 									<option value="PSPT000011">웹 프론트엔드</option>
 									<option value="PSPT000012">웹 퍼블리셔</option>
 									<option value="PSPT000013">크로스 플랫폼</option>
 									<option value="PSPT000014">임베디드SW</option>
 									<option value="PSPT000015">웹서버</option>
-											<option value="PSPT000016">블록체인</option>
+									<option value="PSPT000016">블록체인</option>
+									<option value="PSPT000017">AI</option>
+									<option value="PSPT000018">DB/빅데이터/DS</option>
+									<option value="PSPT000019">게임서버</option>
+									<option value="PSPT000020">사업기획</option>
+									<option value="PSPT000021">마케팅</option>
+									<option value="PSPT000022">재무/회계</option>
+									<option value="PSPT000023">영업</option>
+									<option value="PSPT000024">전략/컨설팅</option>
+									<option value="PSPT000025">투자/고문</option>
+							</select></td>
+						</tr>
+					</table>
+
+
+				<label class="col-sm-4 form-label">팀원 직무<em style="color: red;"> * </em></label>
+				<table>
+				    <tbody id="positionAppendSpot">
+				        <tr>
+				            <td>
+				                <select class="form-select form-select-sm" id="position">
+				                    <option value="">팀원 직무 선택</option>
+									<option value="PSPT000001" >UI/UX</option>
+									<option value="PSPT000002">게임</option>
+									<option value="PSPT000003">프로젝트 매니저</option>
+									<option value="PSPT000004">하드웨어 기획</option>
+									<option value="PSPT000005">그래픽 디자인</option>
+									<option value="PSPT000006">UI/UX 디자인</option>
+									<option value="PSPT000007">3D 디자인</option>
+									<option value="PSPT000008">하드웨어 디자인</option>
+									<option value="PSPT000009">IOS</option>
+									<option value="PSPT000010">안드로이드</option>
+									<option value="PSPT000011">웹 프론트엔드</option>
+									<option value="PSPT000012">웹 퍼블리셔</option>
+									<option value="PSPT000013">크로스 플랫폼</option>
+									<option value="PSPT000014">임베디드SW</option>
+									<option value="PSPT000015">웹서버</option>
+									<option value="PSPT000016">블록체인</option>
 									<option value="PSPT000017">AI</option>
 									<option value="PSPT000018">DB/빅데이터/DS</option>
 									<option value="PSPT000019">게임서버</option>
@@ -168,9 +203,9 @@
 				            </td>
 				            <td class="bseq_ea" style="visibility: hidden;">6</td>
 				            <td>
-								<button type="button" onclick="fnCalCount('m', this);" style="background-color:white; border: none;">-</button>
-								<input type="text" id="" name="pop_out" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;"/>
-								<button type ="button" onclick="fnCalCount('p',this);" style="background-color:white; border: none;">+</button>
+								<button type="button" onclick="fnCalCount('-', this);" style="background-color:white; border: none;">-</button>
+								<input type="text" id="count" name="count" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;"/>
+								<button type ="button" onclick="fnCalCount('+',this);" style="background-color:white; border: none;">+</button>
 							</td>
 							<!-- 
 				            <td>
@@ -186,7 +221,7 @@
 				
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">출시 플랫폼<em style="color: red;"> * </em></label>
-					<div class="radioBtn">
+					<div class="radioBtn" id = "platform" >
 						<input type="radio" id="platform1" name="platform" value="RLPT000001"><label for="platform1">웹</label>
 						<input type="radio" id="platform2" name="platform" value="RLPT000002"><label for="platform2">앱</label>
 						<input type="radio" id="platform3" name="platform" value="RLPT000003"><label for="platform3">프로그램</label>	
@@ -198,19 +233,19 @@
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">프로젝트 설명<em style="color: red;"> * </em></label>
 					<div class="com-sm-5">
-						<textarea name="description" rows="10" class="form-control h-15" placeholder="프로젝트 설명을 입력해주세요."></textarea>
+						<textarea name="description" id ="description"  name = "description" rows="10" class="form-control h-15" placeholder="프로젝트 설명을 입력해주세요."></textarea>
 					</div>
 				</div>
 				<hr />
 
 					<div class="form-group row">
-						<label class="col-sm-4 form-label">기술/언어</label>
+						<label class="col-sm-4 form-label">주요 기술/언어</label>
 						<div class="com-sm-3">
-							<select class="form-select" id="persnal-skill1">
-								<option value="none">기술 선택</option>
+							<select class="form-select" id="persnal-skill">
+								<option value="">주요 기술 선택</option>
 								<option value="SPT0000001">Java</option>
 								<option value="SPT0000002">Spring</option>
-								<option value="SPT0000003" selected>React</option>
+								<option value="SPT0000003" >React</option>
 								<option value="SPT0000004">Python</option>
 								<option value="SPT0000005">C</option>
 								<option value="SPT0000006">C++</option>
@@ -231,7 +266,7 @@
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">모집마감일<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
-				        <input type="text" name="deadLine" value="" class="datepicker inp" placeholder="모집마감일" readonly="readonly"/> 
+				        <input type="text" name="deadLine" id = "deadLine" class="datepicker inp" placeholder="모집마감일" readonly="readonly"/> 
 					</div>
 				</div>
 				<hr />
@@ -240,8 +275,8 @@
 					<label class="col-sm-6 form-label">프로젝트 시작 및 마감 예정일자<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
 						<div class="com-sm-3">
-					        <input type="text" name="startDate" value="" class="datepicker inp" placeholder="시작일" readonly="readonly"/> 
-							<input type="text" name="endDate" value="" class="datepicker inp" placeholder="마감일" readonly="readonly" />
+					        <input type="text" name="startDate" id = "startDate" class="datepicker inp" placeholder="시작일" readonly="readonly"/> 
+							<input type="text" name="endDate" id = "endDate" class="datepicker inp" placeholder="마감일" readonly="readonly" />
 						</div>
 					</div>
 				</div>
@@ -250,10 +285,10 @@
 				<label class="col-sm-4 form-label">참고 자료</label>
 				<div class="form-group row" id="reference">
 					<div class="com-sm-3">
-						<input type="text" class="form-control mt-2" name="reference1" placeholder="링크를 입력해주세요.">
+						<input type="text" class="form-control mt-2" id = "reference" name="reference" placeholder="링크를 입력해주세요.">
 					</div>
 				</div>
-				<input type="button" class="btn btn-primary mt-2" name="addReference" value="추가" 
+				<input type="button" class="btn btn-primary mt-2" name="addReference" id = "addReference" value="추가" 
 				style="background-color: #3498db; border-color: #3498db;">
 				<br><br>
 				
