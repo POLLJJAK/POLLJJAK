@@ -75,6 +75,17 @@
 										<div class="date">작성일</div>
 										<div class="countLike">좋아요</div>
 									</div>
+									
+									<c:forEach var="list" items="${list}">
+									<div onclick="location.href='<%=cp %>/Main-Lounge-post.jsp';">
+										<div class="num">${list.sid }</div>
+										<div class="title">${list.title }</div>
+										<div class="writer">${list.nickname}</div>
+										<div class="date">${list.postDate }</div>
+										<div class="countLike">${list.postLike }</div>
+									</div>
+									</c:forEach>
+									
 									<div onclick="location.href='<%=cp %>/Main-Lounge-post.jsp';">
 										<div class="num">10</div>
 										<div class="title">오늘은 1월1일입니다</div>
