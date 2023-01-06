@@ -5,7 +5,7 @@
 
 <mapper namespace="com.test.mybatis.ISampleDAO">
 
-	<select id="" resultType="com.test.mybatis.DTO이름">
-		<!-- 쿼리문  -->
-	</select>
+<!-- 	<select id="" resultType="com.test.mybatis.DTO이름">
+		쿼리문 
+	</select> -->
 </mapper>

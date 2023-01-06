@@ -46,6 +46,8 @@
         	}, function(){
             $("#reason1").css("display","none");
         });
+        
+        $()
     });
  	
  	$(function(){
@@ -384,36 +386,41 @@
 	</div>
 	
 <!-- 지원하기 -->
-<div class="modal fade" id="apply" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-		    	<div class="modal-header">
-		        	<h5 class="modal-title">지원하기</h5>
-		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      	</div>
-		      	<div class="modal-body row mb-3 justify-content-center" style="font-weight: bold; font-size: large; text-align: center;">
-		      		<div style="margin-bottom: 20px; ">
-		      			지원사유를 입력해주세요!
-		      			<p style="font-size: xx-small; color: red;">※지원 사유는 지원즉시 전체 공개 됩니다. 신중하게 작성해주세요!</p>
-		      		</div>
-		      		
-					<div class="form-group">
-						<textarea class="form-control" >
-						</textarea>
-						<div style="float: right; font-size: small;">(최대 500자)</div>
+	<!-- 컨트롤러 태워서 지원 사유랑 직무 넣어주고 리다이렉트  --> 
+	<form action="projectapply.action" method="post">
+		<div class="modal fade" id="apply" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">지원하기</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
 					</div>
+					<div class="modal-body row mb-3 justify-content-center"
+						style="font-weight: bold; font-size: large; text-align: center;">
+						<div style="margin-bottom: 20px;">
+							지원사유를 입력해주세요!
+							<p style="font-size: xx-small; color: red;">※지원 사유는 지원즉시 전체
+								공개 됩니다. 신중하게 작성해주세요!</p>
+						</div>
 
-		      	</div>
-		      	<div class="modal-footer justify-content-center">
-		      		<button type="reset" class="fullbtn">취소</button>
-		        	<button type="button" class="btn-hover color-9">제출</button>
-		      	</div>
-		    </div>
-		 </div>
-	</div>
+						<div class="form-group">
+							<textarea class="form-control" id="applyreason">
+						</textarea>
+							<div style="float: right; font-size: small;">(최대 500자)</div>
+						</div>
 
-
-
+					</div>
+					<div class="modal-footer justify-content-center">
+						<button type="reset" class="fullbtn">취소</button>
+						<button type="submit" class="btn-hover color-9">제출</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 </body>
   
 </html>
