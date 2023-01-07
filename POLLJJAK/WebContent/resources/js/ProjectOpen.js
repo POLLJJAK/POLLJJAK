@@ -1,21 +1,24 @@
 $().ready(function(){
-	
+
 		// 모집 분야 추가 버튼
 		$('#addPart').click(function(){
 			
-			//최대추가 갯수 등 예외처리 나중에 추가
-			//
-			//
-			//
-			//
-			
 			var appendedPartCnt = $(".appendedPart").length;
 			
-			if(appendedPartCnt == 4 )
+			
+			if(appendedPartCnt == levelCheck() || $("input[name='count']").val() > levelCheck())
 			{
-				alert("모집인원을 초과하여 직무를 추가할 수 없습니다(최대 5명)");
+				alert("현재 레벨의 모집인원을 초과하여 직무를 추가할 수 없습니다");
+				for(i = 0; i < appendedPartCnt; i++)
+				{
+					var totalCount = 0;
+					totalCount += $("input[name='count']").eq(i).attr("value");
+					
+					
+				}
 				return;
 			}
+			
 			var add = 
 				`<tr class="appendedPart appendedPart${appendedPartCnt}">
 					<td>
@@ -53,7 +56,7 @@ $().ready(function(){
 					</td>
 					<td>
 						<button type="button" onclick="fnCalCount('-', this);" style="background-color:white; border: none;">-</button>
-						<input type="text" id="count${appendedPartCnt}" name="pop_out" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;"/>
+						<input type="text" id="count${appendedPartCnt}" name="count" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;"/>
 						<button type ="button" onclick="fnCalCount('+',this);" style="background-color:white; border: none;">+</button>
 					</td>
 					<td>
@@ -70,39 +73,6 @@ $().ready(function(){
 			
 				
 		});
-	
-	// 참고 추가 버튼
-	$(document).on("click","input[name=addReference]",function(){
-		
-	    var add =     
-	    	'<div class="form-group row mt-2" id="reference">'+
-	        '    <div class="com-sm-3">'+
-	        '        <input type="text" class="form-control mt-2" name="reference'+ (1 + i) +'"\ placeholder="링크를 입력해주세요.">'+
-	        '    </div>'+
-	        '    <div>'+
-	        '       <input type="button" class="btn btn-primary mt-2" name="removeReference" value="삭제" style="background-color: #3498db; border-color: #3498db;">'+
-			'	</div>'+
-	        '</div>';
-	        
-	    var divHtml = $( "div[id=reference]:last" ); //last를 사용하여 tr 이라는 명을 가진 마지막 태그 호출
-	    
-	    divHtml.after(add); //마지막 tr명 뒤에 붙인다.
-	    
-	    i++;
-	});
-	
-	// 참고 삭제 버튼
-	$(document).on("click","input[name=removeReference]",function(){
-	    
-	    var divHtml = $(this).parent().parent();
-	    
-	    divHtml.remove(); //tr 테그 삭제
-	    
-	});
-	
-	    	
-	
-		
 		
 		
 		//END OF VALIDATION ------------------------------------------------
@@ -289,18 +259,45 @@ function validation()
 	
 };
 	
-
-function fnCalCount(operation, target){
-	var updateTarget = $(target).siblings("input").eq(0);
-	//조건 예외처리 나중에 추가
-	//
-	
-	if(operation === '-'){
-		updateTarget.val((parseInt(updateTarget.val()) - 1));			
-	}else if(operation === '+'){
-		updateTarget.val((parseInt(updateTarget.val()) + 1));
+	function levelCheck()
+	{
+		var level = 1;
+		
+		if($("#levelInfo").val() >= 2)
+		{
+			level++;
+			
+			if($("#levelInfo").val() >= 4)
+			{
+				level++;
+				
+				if($("levelInfo").val() >= 6)
+				{
+					level++;
+				}
+			}
+			
+		}
+		return level;
 	}
-}	
+
+	function fnCalCount(operation, target)
+	{
+		var updateTarget = $(target).siblings("input").eq(0);
+		//조건 예외처리 나중에 추가
+				
+		if(operation === '-')
+		{
+			updateTarget.val((parseInt(updateTarget.val()) - 1));	
+		}
+		else if(operation === '+')
+		{
+			updateTarget.val((parseInt(updateTarget.val()) + 1));
+		}
+		
+			
+	}
+	
 
 
 

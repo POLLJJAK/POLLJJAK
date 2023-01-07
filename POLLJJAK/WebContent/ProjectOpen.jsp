@@ -44,7 +44,7 @@
 
 	<!-- <%=cp %>/ProjectDetail.jsp -->
 		<div class="container">
-			<form name="newProduct"  action="pApply.action" method="post" enctype="multipart/form-data" onSubmit="return validation()">
+			<form name="newProduct"  action="papply.action" method="post" enctype="multipart/form-data" onSubmit="return validation()">
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">프로젝트 명<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
@@ -135,7 +135,7 @@
 				  <label class="col-sm-4 form-label">팀장 직무<em style="color: red;"> * </em></label>
 					<table>
 						<tr>
-							<td><select class="form-select form-select-sm mb-4 " id="leader_position">
+							<td><select class="form-select form-select-sm mb-4 " id="leader_position" name = "leader_position">
 									<option value="">팀장 직무 선택</option>
 									<option value="PSPT000001">UI/UX</option>
 									<option value="PSPT000002">게임</option>
@@ -172,7 +172,7 @@
 				    <tbody id="positionAppendSpot">
 				        <tr>
 				            <td>
-				                <select class="form-select form-select-sm" id="position">
+				                <select class="form-select form-select-sm" id="position" name = "position">
 				                    <option value="">팀원 직무 선택</option>
 									<option value="PSPT000001" >UI/UX</option>
 									<option value="PSPT000002">게임</option>
@@ -222,7 +222,7 @@
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">출시 플랫폼<em style="color: red;"> * </em></label>
 					<div class="radioBtn" id = "platform" >
-						<input type="radio" id="platform1" name="platform" value="RLPT000001"><label for="platform1">웹</label>
+						<input type="radio" id="platform1" name="platform" value="RPT000001"><label for="platform1">웹</label>
 						<input type="radio" id="platform2" name="platform" value="RLPT000002"><label for="platform2">앱</label>
 						<input type="radio" id="platform3" name="platform" value="RLPT000003"><label for="platform3">프로그램</label>	
 						<input type="radio" id="platform4" name="platform" value="RLPT000004"><label for="platform4">미정</label>
@@ -241,7 +241,7 @@
 					<div class="form-group row">
 						<label class="col-sm-4 form-label">주요 기술/언어</label>
 						<div class="com-sm-3">
-							<select class="form-select" id="persnal-skill">
+							<select class="form-select" id="persnal-skill" name = "persnal-skill">
 								<option value="">주요 기술 선택</option>
 								<option value="SPT0000001">Java</option>
 								<option value="SPT0000002">Spring</option>
@@ -288,8 +288,6 @@
 						<input type="text" class="form-control mt-2" id = "reference" name="reference" placeholder="링크를 입력해주세요.">
 					</div>
 				</div>
-				<input type="button" class="btn btn-primary mt-2" name="addReference" id = "addReference" value="추가" 
-				style="background-color: #3498db; border-color: #3498db;">
 				<br><br>
 				
 				<div class="form-group row">
@@ -299,6 +297,7 @@
 					</div>
 				</div>
 			</form>
+			<input type = "text" id = "level"  name = "level" value = "${levelInfo}" style = "display:none"/>
 		</div>
 	</section>
 </main><!-- End #main -->

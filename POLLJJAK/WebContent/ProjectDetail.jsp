@@ -105,7 +105,7 @@
 		  <div id="tab-1" class="tab-content current" data-aos="fade-up"> 
           	<div class="project-title" style="text-align: center;">
           	<br><br>
-            <h2><b>소규모 프로젝트 관리와 매칭</b></h2>
+            <h2><b>${pInfo.p_name}</b></h2>
             <img src="assets/img/UserIcon/User-Icon.png" alt=""
                   style="width: 60px; height: 60px; padding: 10px;"> <br>
             
@@ -117,6 +117,18 @@
             
             <div class="project-part">
             <h5><strong>모집현황</strong></h5>
+            <table class = "table">
+            	<c:forEach var="position" items="${pPositionInfo }" varStatus="status">
+					<tr>
+						<td>모집분야${status.index+1}</td>
+						<td>${position.position_part }</td>
+						<td>${position.p_apply_count}/${position.p_position_count }</td>
+						<td><div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
+            			<button class="fullbtn" >지원하기</button></div></td>
+					</tr>
+					</c:forEach>
+				</table>
+				<!-- 
             	<table class="table">
             		<tr>
             		<td>모집분야 1</td>
@@ -131,7 +143,12 @@
 					<button class="btn-hover color-9">지원하기</button></div></td>
             		</tr>
             	</table>
+            	 -->
             </div>
+            
+            
+            
+            
             
             <div class="project-allmember">
             <h5><strong>확정멤버</strong></h5>
@@ -185,29 +202,47 @@
             <div class="project-info">
             	<div class="part">
            		<h5><strong>📂 프로젝트 분류</strong></h5>
-            	[ 생활 ] [ 모바일 ]
+            	<p>[ ${pInfo.subject_part} ]</p>
             	</div><br>
+            	
             	<div class="platform">
            		<h5><strong>- 출시플랫폼</strong></h5>
-            	[ 웹 ] [ 앱 ]
+            	<p>[ ${pInfo.platform_part} ]</p>
             	</div><br>
-            	<div class="meet-time">
-           		<h5><strong>- 미팅시간</strong></h5>
-            	[ 오후 ] 
-            	</div><br>
+            	
             	<div class="intro">
             	<h5><strong>-  소개</strong></h5>
-            	<p>
-            	커리어상의 새로운 발전이나 개발역량의 증진을 원하는 개발자와 프로젝트 파트너를 찾는 기업 회원을 위한 커뮤니티 이다. 전국 여러지역의 모든 개발자들이 온라인 커뮤니티에 모여 다양한 분야의 현직 개발자들과 소통하고 정보를 공유하며 사이드 프로젝트를 진행할 수 있는 플랫폼을 기획하였다. 기존의 개발자들이 사이드 프로젝트를 진행하기 위해 오프라인에서 직접 인원을 모집하던 형태에서 벗어나 온라인에서도 손쉽게 사이드 프로젝트 인원을 모집할 수 있도록 하는 것이 주 목적이다. 또한 이용자 개개인의 관심 분야 및 경력을 한눈에 확인할 수 있어 각 이용자들이 프로필을 통해 자신이 원하는 조건의 개발자와 손쉽게 소통할 수 있으며 사이드 프로젝트 모집과 더불어 개설된 프로젝트의 일정 관리 및 협업을 지원하여 손쉬운 프로젝트 관리를 돕는다. 진행된 사이드 프로젝트의 내역은 일반 이용자 개개인의 포트폴리오가 되며 다양한 기업회원들이 해당 포트폴리오 및 프로젝트 내역을 열람하고 다양한 선택 기준으로 여러 개발자들의 정보를 열람한뒤 프로젝트 파트너를 찾을 수 있으며 기업과 프리랜서, 개발자가 모두 하나로 연결되는 프로젝트 관리 통합 플랫폼이다. 
-            	</p>
+            	<p>${pInfo.p_info_content} </p>
             	</div>
+            	
             	<div class="skill-data">
            		<h5><strong>- 기술언어</strong></h5>
-            	[ JAVA ] [ Spring ] [ React ] 
+            	<p>[ ${pInfo.skill_part} ] </p>
             	</div><br>
+            	
             	<div class="skill-data">
            		<h5><strong>- 참고자료</strong></h5>
-            	<a>http://localhost:8090/POLLJJAK/ProjectDetail.jsp</a>
+            	<a>${pInfo.p_info_refo}</a>
+            	</div><br>
+            	
+            	<div class="p_start_date">
+           		<h5><strong>- 프로젝트 모집 개시일</strong></h5>
+            	<a>${pInfo.p_start_date}</a>
+            	</div><br>
+            	
+            	<div class="p_end_date">
+           		<h5><strong>- 프로젝트 모집 마감일</strong></h5>
+            	<a>${pInfo.p_end_date}</a>
+            	</div><br>
+            	
+            	<div class="project_start_date">
+           		<h5><strong>- 프로젝트 시작 예정일</strong></h5>
+            	<a>${pInfo.pj_start_date}</a>
+            	</div><br>
+            	
+            	<div class="project_end_date">
+           		<h5><strong>- 프로젝트 종료 예정일</strong></h5>
+            	<a>${pInfo.pj_end_date}</a>
             	</div><br>
             </div>
             

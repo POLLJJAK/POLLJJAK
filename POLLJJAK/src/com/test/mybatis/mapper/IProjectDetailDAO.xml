@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IProjectDetailDAO">
+	
+	<!-- 완료 프로젝트 개수 조회  레벨산정-->
+	<select id="getProjectDetail" resultType="com.test.dto.ProjectDetailDTO">
+		SELECT  P.P_NAME, 
+				P.P_START_DATE, 
+				P.P_END_DATE, 
+				P.PJ_START_DATE, 
+				P.PJ_END_DATE, 
+				P.P_INFO_CONTENT,
+				P.P_INFO_REFO, 
+				P.P_UPDATE_DATE, 
+				U.U_NICKNAME,
+				RP.REGION_PART,
+				PP.PLATFORM_PART,
+				SP.SKILL_PART,
+				DP.DEPARTMENT_PART,
+				SP.SUBJECT_PART
+		FROM P P,
+			 U U,
+			 REGION_PART RP,
+			 PLATFORM_PART PP,
+			 SKILL_PART SP,
+			 DEPARTMENT_PART DP,
+			 SUBJECT_PART SP
+		WHERE P.P_CODE = #{p_code}
+		  AND P.USER_CODE = U.USER_CODE
+		  AND P.REGION_PART_CODE = RP.REGION_PART_CODE
+		  AND P.PLATFORM_PART_CODE = PP.PLATFORM_PART_CODE
+		  AND P.SKILL_PART_CODE = SP.SKILL_PART_CODE
+		  AND P.DEPARTMENT_PART_CODE = DP.DEPARTMENT_PART_CODE
+		  AND P.SUBJECT_PART_CODE = SP.SUBJECT_PART_CODE
+	</select> 
+	
+	<select id="getProjectPosition" resultType="com.test.dto.ProjectDetailDTO">
+		SELECT PPP.POSITION_PART,
+			   COUNT(*) AS P_APPLY_COUNT,
+			   PP.P_POSITION_COUNT
+		FROM P_POSITION PP, 
+			 POSITION_PART PPP, 
+			 U_P_APPLY UPA
+		WHERE PP.P_CODE = #{p_code}
+  		  AND PP.POSITION_PART_CODE = PPP.POSITION_PART_CODE
+  		  AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
+  		  AND UPA.U_P_READY_DATE IS NOT NULL
+		GROUP BY POSITION_PART, P_POSITION_COUNT
+	</select> 
+	
+	<select id="getProjectApplicant" resultType="com.test.dto.ProjectDetailDTO">
+		SELECT  P.P_NAME, 
+				P.P_START_DATE, 
+				P.P_END_DATE, 
+				P.PJ_START_DATE, 
+				P.PJ_END_DATE, 
+				P.P_INFO_CONTENT,
+				P.P_INFO_REFO, 
+				P.P_UPDATE_DATE, 
+				U.U_NICKNAME,
+				RP.REGION_PART,
+				PP.PLATFORM_PART,
+				SP.SKILL_PART,
+				DP.DEPARTMENT_PART,
+				SP.SUBJECT_PART
+		FROM P P,
+			 U U,
+			 REGION_PART RP,
+			 PLATFORM_PART PP,
+			 SKILL_PART SP,
+			 DEPARTMENT_PART DP,
+			 SUBJECT_PART SP
+		WHERE P.P_CODE = #{p_code}
+		  AND P.USER_CODE = U.USER_CODE
+		  AND P.REGION_PART_CODE = RP.REGION_PART_CODE
+		  AND P.PLATFORM_PART_CODE = PP.PLATFORM_PART_CODE
+		  AND P.SKILL_PART_CODE = SP.SKILL_PART_CODE
+		  AND P.DEPARTMENT_PART_CODE = DP.DEPARTMENT_PART_CODE
+		  AND P.SUBJECT_PART_CODE = SP.SUBJECT_PART_CODE
+	</select> 
+	
+	
+	
+</mapper>

@@ -1,21 +1,19 @@
-package com.test.mybatis;
-
-import java.awt.List;
+package com.test.dto;
 
 public class ProjectOpenDTO {
 	
-	// ¹Ş¾Æ¾ß ÇÏ´Â Á¤º¸
-	// ÇÁ·ÎÁ§Æ® °³¼³½Ã ÇÊ¿äÇÑ ¸ğµç µ¥ÀÌÅÍ 
-		
-	// ¡Û °³¼³ ÇÁ·ÎÁ§Æ®
-	//   °øÅëÈ¸¿ø ÄÚµå, Áö¿ªÄÚµå, ÇÃ·§Æû ÄÚµå, ±â¼úºĞ·ùÄÚµå, ºĞ¾ßÄÚµå
-	// , ÁÖÁ¦ ÄÚµå, ÇÁ·ÎÁ§Æ® ¸í, °³¼³ÀÏ, ¸ğÁı¸¶°¨ÀÏ, ÇÁ·ÎÁ§Æ® ½ÃÀÛ ¿¹Á¤ ÀÏÀÚ, ÇÁ·ÎÁ§Æ® Á¾·á ¿¹Á¤ ÀÏÀÚ
-	// , ÇÁ·ÎÁ§Æ® ¼Ò°³, Âü°íÀÚ·áURL, ÃÖÁ¾ ¼öÁ¤ ÀÏ½Ã
-	
-	
-	private String  user_code, region_part_code, platform_part_code, skill_part_code
-	, department_part_code, p_name, p_start_date,p_end_date, pj_start_date, pj_end_date
+	// í”„ë¡œì íŠ¸ ë“±ë¡ì— ê´€ë ¨ëœ ë³€ìˆ˜ë“¤
+	private String  p_code, user_code, region_part_code, platform_part_code, skill_part_code
+	, department_part_code,subject_part_code, p_name, p_start_date,p_end_date, pj_start_date, pj_end_date
 	, p_info_content, p_info_refo, p_update_date;
+
+	public String getP_code() {
+		return p_code;
+	}
+
+	public void setP_code(String p_code) {
+		this.p_code = p_code;
+	}
 
 	public String getUser_code() {
 		return user_code;
@@ -55,6 +53,14 @@ public class ProjectOpenDTO {
 
 	public void setDepartment_part_code(String department_part_code) {
 		this.department_part_code = department_part_code;
+	}
+
+	public String getSubject_part_code() {
+		return subject_part_code;
+	}
+
+	public void setSubject_part_code(String subject_part_code) {
+		this.subject_part_code = subject_part_code;
 	}
 
 	public String getP_name() {
@@ -120,6 +126,12 @@ public class ProjectOpenDTO {
 	public void setP_update_date(String p_update_date) {
 		this.p_update_date = p_update_date;
 	}
+	
+	
+	
+	
+
+	
 	
 	
 	

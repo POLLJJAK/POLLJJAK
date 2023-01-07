@@ -2,7 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
@@ -39,9 +42,7 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/projectOpen/js/calendar.js"></script>
-  <script src="assets/vendor/projectOpenMain/js/deleteList.js"></script>
-
+  <script src="<%=cp %>/resources/common/js/calendar.js"></script>
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
