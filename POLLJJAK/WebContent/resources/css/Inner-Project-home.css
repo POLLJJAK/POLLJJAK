@@ -1,0 +1,458 @@
+@charset "UTF-8";
+
+/* 내 프로젝트 홈 (진행 프로젝트, 완료 프로젝트 목록)*/
+.projectHome-list-now .pj-box {
+	background: #fff;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.no-pj-title {
+	font-size: 1.3rem;
+	font-weight: bold;	
+	color: #E8E8E8;
+}
+
+
+.projectHome-list-now .pj-box:hover {
+  background: #60A7F7;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+ 
+.projectHome-list-complete .pj-box {
+	background: #D8D8D8;
+	transition: 0.3s;
+	transition: ease-in-out 0.4s;
+	border-radius: 5px;
+	color: #28313D;
+}
+
+.projectHome-list-complete .pj-box:hover {
+	background: #8E8E8E;
+  	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 내 프로젝트 홈 (프로젝트 목록 박스) */
+.projectView {
+	border: 1px solid gray;
+	border-radius: 6px;
+}
+
+.projectStatus {
+	background: #EEEEEE;
+}
+
+
+.subWork-box {
+	border: 1px solid gray;
+	border-radius: 6px;
+}
+.subWork-todoBox {
+	border: 1px solid gray;
+	border-radius: 6px;
+	background: #BDBDBD;
+}
+
+
+.pj-title {
+	font-size: 14px;
+	font-weight: bold;
+	background: #BDBDBD;
+}
+
+
+.pj-date {
+	font-size: 12px;
+}
+
+/* 중단 요청, 중단 버튼 */
+.stopBtn {
+	float: right;
+	font-size: 14px;
+	color: white;
+	background: #EC5454;
+	border: 0px solid;
+	border-radius: 5px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+}
+
+.L-stopBtn {
+	font-size: 14px;
+	color: white;
+	background: #EC5454;
+	border: 0px solid;
+	border-radius: 5px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+}
+
+.stopBtn:hover, .L-stopBtn:hover {
+	background: #C74B4B;
+}
+
+/* 팀원 평가 버튼 */
+.scoreBtn {
+	float: right;
+	font-size: 14px;
+	color: black;
+	background: #fff;
+	border: 1px dotted;
+	border-radius: 5px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+}
+
+.L-scoreBtn {
+	width: 100%;
+	font-size: 14px;
+	color: black;
+	background: #fff;
+	border: 1px dotted;
+	border-radius: 5px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+}
+
+.scoreBtn:hover, .L-scoreBtn:hover {
+	color: white;
+	background: #5e5e5e;
+}
+.scrollme {
+	overflow-x: auto;
+}
+
+
+/* 프로젝트 마감처리 버튼 */
+.projectEndBtn {
+	width: 100%;
+	font-size: 14px;
+	color: black;
+	background: #fff;
+	border: 1px dotted;
+	border-radius: 5px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+}
+.projectEndBtn:hover {
+	color: white;
+	background: #5e5e5e;
+}
+
+
+/* 팀원 평가 별점 기능 css*/
+.scoreSelect1 {
+    padding: 15px 10px;
+}
+.scoreSelect1 input[type=radio]{
+    display: none;
+}
+.scoreSelect1 input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #E8E7DA;
+    border-radius: 100%;
+    line-height: 40px;
+    text-align: center;
+    font-weight:bold;
+    font-size:12px;
+}
+.scoreSelect1 input[type=radio]+label{
+    background-color: #fff;
+    color: #333;
+}
+.scoreSelect1 input[type=radio]:checked+label{
+    background-color: #FFE400;
+    border: 1px solid #FFE400;
+    color: #fff;
+}
+
+/* 내 프로젝트 홈 메뉴바(팀원관리, 업무관리, 회의록, 일정관리, 라운지)*/
+.pj_nav {
+  padding: 0;
+}
+
+.pj_nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.pj_nav li {
+  position: relative;
+}
+
+.pj_nav a,
+.pj_nav a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px 0 15px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #555555;
+  white-space: nowrap;
+}
+
+.pj_nav a:hover,
+.pj_nav .active,
+.pj_nav .active:focus,
+.pj_nav li:hover>a {
+  color: #3498db;
+}
+
+
+/* 일정관리 캘린더 드래그 박스의 스타일 */
+#external-events {
+  width: 230px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+#external-events .fc-event {
+  margin: 3px 0;
+  cursor: move;
+}
+
+#external-events p {
+  margin: 1.5em 0;
+  font-size: 11px;
+  color: #666;
+}
+
+#external-events p input {
+  margin: 0;
+  vertical-align: middle;
+}
+
+#calendar1 {
+   	max-width: 95%;
+   	margin-bottom: 50px;
+   	margin-left: 20px;
+ 	}
+
+ 	
+
+/* 내 프로젝트 홈 - 세부 업무 (파일박스, 팀아이콘) */
+.filelistBox {
+	border: 1px solid gray;
+	border-radius: 8px;
+	padding: 3px;
+	font-size: 14px;
+	background: #EEEEEE;
+}
+
+.teamIcon {
+	font-size: 0.8rem;
+	margin-left: 5px;
+	padding: 2px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	background: #EEEEEE;
+}
+
+
+
+/* 그래디언트 버튼 사용해보기 */
+.gradientBtn
+{
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-size: 300% 100%;
+
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.gradientBtn:hover 
+{
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.gradientBtn:focus 
+{
+    outline: none;
+}
+.gradientBtn.color-9 
+{
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+}
+	
+
+
+
+/* 회의록 게시판 */
+.meet_wrap{
+	width: 75%;
+	margin: auto; 
+}
+
+.meet_title{
+	margin-bottom: 30px;
+}
+
+.meet_title strong {
+	font-size: 3rem;
+}
+
+.meet_title p {
+	margin-top: 5px;
+	font-size: 1.4rem;
+}
+
+.meet_list{
+	width: 100%;
+	border-top: 2px solid #000;
+	border-bottom:2px solid #000;
+	font-size: small;;
+}
+
+.meet_list > div {
+	border-bottom: 1px solid #ddd;
+	font-size: small;
+}
+
+.meet_list > div.top{
+	border-color: 1px solid #ddd;
+}
+
+.meet_list > div:last-child{
+	border-color: 1px solid #000;
+}
+
+.meet_list > div > div{
+	display: inline-block;
+	padding15px 0;
+	text-align: center;
+	font-size: medium;
+}
+.meet_list > div:hover{
+	background: #ddd;
+    cursor: pointer;
+}
+
+.meet_list > div.top > div{
+	font-weight: 600;
+}
+
+.meet_list .num{
+	width: 10%;
+	
+}
+.meet_list .title{
+	width: 55%;
+	/* height: 50%; */
+	text-align: left;
+	padding: 1%;
+}
+
+.meet_list .top .title{
+	text-align: center;
+}
+
+.meet_list .writer{
+	width: 10%;
+	font-size: small;
+	text-align: left;
+	
+}
+.meet_list .date{
+	width: 10%;
+	font-size: small;
+	
+}
+.meet_list .countLike{
+	width: 10%;
+	font-size: small;
+	text-align: right;
+	
+}
+.meet_list .topic{
+	width: 10%;
+	
+}
+
+.meet_page{
+	margin-top: 30px;
+	text-align: center;
+	font-size: small;
+}
+
+
+/* 회의록 포스트 파일 목록 박스*/
+
+.meet-member {
+	font-size: 0.8rem;
+	color: #13BBFF;
+}
+
+.meet-post-fileTitle {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.meet-file-ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+.meet-file-li {
+	font-size: 12px;
+	margin: 0 10px 0 0;
+	padding: 3px 10px 3px 10px;
+	background: #dedede;
+	border: 0px;
+	border-radius: 6px;
+	float: left;
+}
+
+.meet-post-deleteBtn {
+	font-size: 0.8rem;
+	background-color: #dedede;
+	color: #eee;
+	border: 0px;
+	border-radius: 6px;
+	padding: 10px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+	
+}
+
+
+.meet-post-deleteBtn:hover {
+	font-size: 0.8rem;
+	background-color: #5e5e5e;
+	color: #fff;
+	border: 0px;
+	border-radius: 6px;
+	padding: 10px;
+}
+
+

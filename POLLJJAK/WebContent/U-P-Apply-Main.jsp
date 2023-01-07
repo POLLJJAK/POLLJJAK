@@ -162,7 +162,7 @@ String cp = request.getContextPath();
 			<div class="row">
 				<div class="col-3">
 					<div class="card ">
-						<input type="hidden" value="aaaa" /> <img class="img-fluid"
+						<input type="hidden" value="P000000001" /> <img class="img-fluid"
 							alt="100%x280"
 							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 						<div class="card-body">
@@ -379,7 +379,7 @@ String cp = request.getContextPath();
 		$(".card").click(function(){
 			var target = $(this).find("input").val();
 			/*$(location).attr("href", "/POLLJJAK/Inner-page.jsp?target=" + target);*/
-			$(location).attr("href", "/POLLJJAK/ProjectDetail.jsp");
+			$(location).attr("href", "/POLLJJAK/projectDetail.action?p_code=" + target);
 		});
 	})
 

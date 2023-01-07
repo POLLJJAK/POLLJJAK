@@ -10,8 +10,9 @@ package com.test.mybatis;
 public class ProjectHomeListDTO
 {
 	private String p_name, user_code, pj_start_date, pj_end_date;
-	private int all_subwork, complete_subwork;
-	
+	private int all_percent;
+	private String p_code;
+	private String u_p_apply_code;
 	
 	public String getP_name()
 	{
@@ -45,26 +46,31 @@ public class ProjectHomeListDTO
 	{
 		this.pj_end_date = pj_end_date;
 	}
-	public int getAll_subwork()
+	public int getAll_percent()
 	{
-		return all_subwork;
+		return all_percent;
 	}
-	public void setAll_subwork(int all_subwork)
+	public void setAll_percent(int all_percent)
 	{
-		this.all_subwork = all_subwork;
+		this.all_percent = all_percent;
 	}
-	public int getComplete_subwork()
+	public String getP_code()
 	{
-		return complete_subwork;
+		return p_code;
 	}
-	public void setComplete_subwork(int complete_subwork)
+	public void setP_code(String p_code)
 	{
-		this.complete_subwork = complete_subwork;
+		this.p_code = p_code;
+	}
+	public String getU_p_apply_code()
+	{
+		return u_p_apply_code;
+	}
+	public void setU_p_apply_code(String u_p_apply_code)
+	{
+		this.u_p_apply_code = u_p_apply_code;
 	}
 
-	
-	
-	
 	
 	
 }

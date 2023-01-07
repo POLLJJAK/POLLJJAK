@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -45,16 +45,16 @@ String cp = request.getContextPath();
 									<!-- 프로젝트 정보 (제목, 진행기간, 전체 진척도)-->
 									<div class="col-md-12 col-lg-4 mb-4">
 										<div>
-											<div class="pj-title p-0 md-2 rounded">진행중인 프로젝트 제목1</div>
+											<div class="pj-title p-0 md-2 rounded">${pj_title_info.p_name }</div>
 										</div>
 										
 										<div>
-											<div class="pj-date p-0 mt-1 mb-1">2022-12-24 ~ 2022-12-25</div>
+											<div class="pj-date p-0 mt-1 mb-1">${pj_title_info.pj_start_date } ~ ${pj_title_info.pj_end_date }</div>
 										</div>
 										
 										<div>
 											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: 75%; background-color: #81EC81" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #81EC81" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
 											</div>
 										</div>
 									</div>
@@ -117,45 +117,19 @@ String cp = request.getContextPath();
 										</tr>
 									</thead>
 									<tbody>	
-										<tr>
-											<th scope="row">팀장</th>
-											<td>팀원1</td>
-											<td>백엔드</td>
-											<td>20%</td>
-											<td>2022-12-25</td>
-											<td><button class="btn btn-danger"><div class="bi bi-person-x"></div></button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
-										</tr>
-										<tr>
-											<th scope="row">팀원</th>
-											<td>팀원2</td>
-											<td>백엔드</td>
-											<td>20%</td>
-											<td>2022-12-25</td>
-											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
-										</tr>
-										<tr>
-											<th scope="row">팀원</th>
-											<td>팀원3</td>
-											<td>백엔드</td>
-											<td>20%</td>
-											<td>2022-12-25</td>
-											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
-										</tr>
-										<tr>
-											<th scope="row">팀원</th>
-											<td>팀원4</td>
-											<td>백엔드</td>
-											<td>20%</td>
-											<td>2022-12-25</td>
-											<td><button class="btn btn-light"><div class="bi bi-person-check-fill"></div></button></td>
-											<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
-										</tr>
-										<tr>
-											<td colspan="7">현재 팀원이 없습니다.</td>
-										</tr>
+
+										<c:forEach var="pj_team_info" items="${pj_team_info}">
+											<tr>
+												<th scope="row">${pj_team_info.team_role }</th>
+												<td>${pj_team_info.u_name }</td>
+												<td>${pj_team_info.position_part }</td>
+												<td>${pj_team_info.contribute }</td>
+												<td>${pj_team_info.last_login_date }</td>
+												<td><button class="btn btn-danger"><div class="bi bi-person-x"></div></button></td>
+												<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								
+											</tr>
+										</c:forEach>
+
 									</tbody>								
 								</table>
 						</div>
@@ -164,7 +138,7 @@ String cp = request.getContextPath();
 							<div class="p-2 row justify-content-between">
 								<div class="p-1 col-md-12 col-lg-2 text-center align-self-center">
 									<div class="p-2 border rounded ">
-									전체 팀원 : 4 / 5
+									전체 팀원 : ${pj_team_count }
 									</div>
 								</div>
 

@@ -2,6 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,7 +15,8 @@
     <title>플젝폴짝</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-  
+
+	<!-- 부트스트랩 템플릿 관련 스타일 -->
     <!-- Favicons -->
     <link href="assets/img/pol-favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -22,10 +27,8 @@
   	<!-- Jquery CDN -->
   	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  
   
   	<!-- Calendar -->
   	<!-- calendar.css 보다 윗 줄에 작성되어야 함 -->
@@ -41,30 +44,29 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/vendor/projectOpen/css/fileUpload.css" rel="stylesheet">
-    <link href="assets/vendor/projectOpen/css/checkbox.css" rel="stylesheet">
-    <link href="assets/vendor/projectOpen/css/radioBtn.css" rel="stylesheet">
-    <link href="assets/vendor/projectOpen/css/projectOpenMain.css" rel="stylesheet">
-    
+	<!-- END OF 부트스트랩 템플릿 관련 라이브러리 -->
+
+	<!-- 공통사용 스타일 -->	
+    <link href="<%=cp %>/resources/common/css/fileUpload.css" rel="stylesheet">
+    <link href="<%=cp %>/resources/common/css/checkbox.css" rel="stylesheet">
+    <link href="<%=cp %>/resources/common/css/radioBtn.css" rel="stylesheet">
     
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
-	<link href="assets/vendor/projectOpen/css/calendar.css" rel="stylesheet">
+	<link href="<%=cp %>/resources/common/css/calendar.css" rel="stylesheet">
 	
+	<script src="<%=cp %>/resources/js/calendar.js"></script>
 	
-	  
   	<!-- 게시판 썸머노트 lite 버전(cdn아님)  -->
 	<script src="assets/js/summernote-lite.js"></script>
   	<script src="assets/js/summernote-ko-KR.js"></script>
 	<link href="assets/css/summernote-lite.css" rel="stylesheet">
-		
 	
 	
 	<!-- @@@ 내 프로젝트 홈 @@@@ -->
 	<!-- 내 프로젝트 홈 css 파일 -->
-	<link href="assets/css/Inner-Project-home.css" rel="stylesheet">
+	<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
 	
-
-
+	
 	<!-- 내 프로젝트 홈 → 일정 관리 → 캘린더 -->
 	<!-- fullcalendar CDN -->
 	<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
@@ -90,9 +92,6 @@
     .form-control
     {
     	align-content: center;
-    	
     }
-    
-    
     </style>
-  </head>
+</head>

@@ -5,7 +5,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
+	
+	
+	
 %>
 
 <!DOCTYPE html>
@@ -27,6 +30,7 @@ String cp = request.getContextPath();
 	<script src="assets/js/main.js"></script>
 
 
+
 	<c:import url="./common/Nav.jsp" />
 
 
@@ -43,7 +47,7 @@ String cp = request.getContextPath();
 					<!-- title -->
 					<div class="d-flex justify-content-center col" style="width: 50%;">
 						<div class="section-title pt-4">
-							<h6 class="">내 프로젝트 홈</h6>
+							<h6>내 프로젝트 홈</h6>
 							<div>현재 진행 중인 프로젝트와 완료했던 프로젝트를 확인해보세요!</div>
 						</div>
 					</div>
@@ -52,24 +56,40 @@ String cp = request.getContextPath();
 					<h5 class="container mb-3 fw-bolder">
 						진행중인 프로젝트
 					</h5>
-					<hr>
 					
-					<c:forEach var="pj_complete_list" items="${list}">
-						<div class="container mb-3" onclick="location.href='<%=cp %>/Inner-Project-home-teamManage.jsp';" style="cursor: pointer;">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<div class="fw-bolder" style="font-size: 16px; font-weight: bold;">${pj_complete_list.p_name }</div>
-									<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
-									<div class="mb-1">전체 진척도 <span>${pj_complete_list.all_subwork }%</span></div>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 75%; background-color: #81EC81" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-									</div>								
+					<c:choose>
+						<c:when test="${fn:length(pj_run_list) == 0}">
+							<div class="container mb-3">
+								<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+									<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
 								</div>
 							</div>
-						</div>
-					</c:forEach>
-					
-					
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="pj_run_list" items="${pj_run_list}">
+								<div onclick="location.href='inner-project-home-teammanage.action?u_p_apply_code=${pj_run_list.u_p_apply_code }'">
+									<div class="container mb-3">
+										<div class="pj-box">
+											<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+												<div class="h5 fw-bolder">${pj_run_list.p_name }</div>
+												<div class="mb-2">${pj_run_list.pj_start_date }~${pj_run_list.pj_end_date }</div>
+												<div class="mb-1">전체 진척도 ${pj_run_list.all_percent }%</div>
+												<div class="progress">
+													<div class="progress-bar" role="progressbar"
+														style="width: ${pj_run_list.all_percent }%; background-color: #81EC81"
+														aria-valuenow="${pj_run_list.all_percent }%"
+														aria-valuemin="0" aria-valuemax="100">${pj_run_list.all_percent }%</div>
+												</div>
+												<%-- ${pj_run_list.p_code }
+												${pj_run_list.u_p_apply_code } --%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+
 				</div>
 			</div>
 		</section>
@@ -83,21 +103,36 @@ String cp = request.getContextPath();
 						완료 프로젝트
 					</h5>
 						
-					<c:forEach var="pj_complete_list" items="${list}">
-						<div class="container mb-3">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<div class="h5 fw-bolder">${pj_complete_list.p_name }</div>
-									<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
-									<div class="mb-1">전체 진척도 <span>${pj_complete_list.all_subwork }%</span></div>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #5E5E5E" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>								
+					<c:choose>
+						<c:when test="${fn:length(pj_complete_list) == 0}">
+							<div class="container mb-3">
+								<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+									<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
 								</div>
 							</div>
-						</div>
-					</c:forEach>
-
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="pj_complete_list" items="${pj_complete_list}">
+								<div onclick="location.href='inner-project-home-teammanage.action?u_p_apply_code=${pj_complete_list.u_p_apply_code }'">
+									<div class="container mb-3">
+										<div class="pj-box">
+											<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+												<div class="h5 fw-bolder">${pj_complete_list.p_name }</div>
+												<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
+												<div class="mb-1">전체 진척도 ${pj_complete_list.all_percent }%</div>
+												<div class="progress">
+													<div class="progress-bar" role="progressbar" style="width: ${pj_complete_list.all_percent }%; background-color: #5E5E5E" aria-valuenow="${pj_complete_list.all_percent }" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>		
+												<%-- ${pj_complete_list.p_code }
+												${pj_complete_list.u_p_apply_code }	 --%>					
+											</div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+					
 				</div>
 			</div>
 		</section>
