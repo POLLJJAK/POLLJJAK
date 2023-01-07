@@ -13,7 +13,10 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
+<!-- 내 프로젝트 홈 css 파일 -->
+<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
 
+	
 
 <body>
 
@@ -83,8 +86,8 @@
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
 							   <ul class="justify-content-center">
-							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>

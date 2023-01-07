@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IInnerProjectMainWorkDAO">
+	
+	<select id="pj_mainwork_list" resultType="com.test.mybatis.InnerProjectMainWorkDTO">
+		SELECT PH_MAINWORK_TITLE, PJ_START_DATE, PJ_END_DATE, 
+		(
+			ROUND(NVL(
+					(SELECT COUNT(*)
+					FROM PH_SUBWORK 
+					WHERE PH_MAINWORK_CODE =C1.PH_MAINWORK_CODE)
+			/ DECODE(
+					(SELECT COUNT(*)
+					FROM PH_SUBWORK_COMPLETE 
+					WHERE PH_SUBWORK_CODE IN (
+						SELECT PH_SUBWORK_CODE
+						FROM PH_SUBWORK 
+						WHERE PH_MAINWORK_CODE =C1.PH_MAINWORK_CODE
+					))
+			, 0, NULL ,(
+					SELECT COUNT(*)
+					FROM PH_SUBWORK_COMPLETE 
+					WHERE PH_SUBWORK_CODE IN (
+						SELECT PH_SUBWORK_CODE
+						FROM PH_SUBWORK 
+						WHERE PH_MAINWORK_CODE =C1.PH_MAINWORK_CODE
+			)
+			)), 0)*100, 0)
+		) AS MAINWORK_PERCENT
+		, PH_MAINWORK_CODE
+		FROM 
+		(
+			SELECT PH_MAINWORK_TITLE
+			, TO_CHAR(PH_MAINWORK_START_DATE, 'YYYY-MM-DD') AS PJ_START_DATE
+			, TO_CHAR(PH_MAINWORK_END_DATE, 'YYYY-MM-DD') AS PJ_END_DATE
+			, PH_MAINWORK_CODE
+			FROM PH_MAINWORK
+			WHERE U_P_APPLY_CODE IN (
+				SELECT P3.U_P_APPLY_CODE
+				FROM P P1, P_POSITION P2, U_P_APPLY P3, P_REJECT P4
+				WHERE P1.P_CODE = (
+					SELECT T3.P_CODE
+					FROM U_P_APPLY T1, P_POSITION T2, P T3
+					WHERE T1.U_P_APPLY_CODE = #{u_p_apply_code}
+					  AND T1.P_POSITION_CODE = T2.P_POSITION_CODE
+					  AND T2.P_CODE = T3.P_CODE
+				)  
+				 AND P1.P_CODE = P2.P_CODE
+				 AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
+				 AND NOT P3.U_P_APPLY_CODE = P4.U_P_APPLY_CODE
+			)
+		) C1
+		ORDER BY 2
+	</select>
+	
+	
+	<select id="pj_mainwork_list_member" resultType="com.test.mybatis.InnerProjectMainWorkDTO" parameterType="map">
+		SELECT B4.U_NAME
+		FROM
+		(
+			SELECT A2.U_P_APPLY_CODE
+			FROM
+			(
+				SELECT *
+				FROM PH_MAINWORK
+				WHERE U_P_APPLY_CODE IN (
+					SELECT P3.U_P_APPLY_CODE
+					FROM P P1, P_POSITION P2, U_P_APPLY P3, P_REJECT P4
+					WHERE P1.P_CODE = (
+						SELECT T3.P_CODE
+						FROM U_P_APPLY T1, P_POSITION T2, P T3
+						WHERE T1.U_P_APPLY_CODE = #{u_p_apply_code}
+						  AND T1.P_POSITION_CODE = T2.P_POSITION_CODE
+						  AND T2.P_CODE = T3.P_CODE
+					)  
+					 AND P1.P_CODE = P2.P_CODE
+					 AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
+					 AND NOT P3.U_P_APPLY_CODE = P4.U_P_APPLY_CODE
+				)
+			) A1, PH_MAINWORK_MEMBER A2
+			WHERE A1.PH_MAINWORK_CODE = A2.PH_MAINWORK_CODE
+			  AND A1.PH_MAINWORK_CODE = #{ph_mainwork_code}
+		) B1, U_P_APPLY B2, USER_MAIN B3, U B4
+		WHERE B1.U_P_APPLY_CODE = B2.U_P_APPLY_CODE
+		  AND B2.USER_CODE = B3.USER_CODE
+		  AND B3.USER_CODE = B4.USER_CODE
+	</select>
+
+
+	
+	
+</mapper>

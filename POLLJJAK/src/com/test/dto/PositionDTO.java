@@ -3,7 +3,7 @@
  	- 주요직무
 =====================*/
 
-package com.test.mybatis;
+package com.test.dto;
 
 public class PositionDTO
 {

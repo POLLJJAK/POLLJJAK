@@ -1,4 +1,4 @@
-package com.test.mybatis;
+package com.test.controller;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.mybatis.IInnerProjectTeamManageDAO;
+
 @Controller
-public class InnerProjectHomeTeamManageController
+public class InnerProjectTeamManageController
 {
 	
 	@Autowired
@@ -25,15 +27,19 @@ public class InnerProjectHomeTeamManageController
 		IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
 		
 		model.addAttribute("pj_title_info", dao.pj_title_info(u_p_apply_code));
-		
 		model.addAttribute("pj_team_info", dao.pj_team_info(u_p_apply_code));
-		
 		model.addAttribute("pj_team_count", dao.pj_team_count(u_p_apply_code));
 		
 		result = "/Inner-Project-home-teamManage.jsp";
 		
 		return result;
 	}
+	
+	
+	
+
+	
+	
 	
 	
 }

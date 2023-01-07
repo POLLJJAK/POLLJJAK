@@ -278,7 +278,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="persnal-skill" class="col-sm-2 col-form-label">부가기술 1</label>
 								<div class="col-sm-4">
-									<select class="form-select" id="persnal-skill1" name="skill_part_code">
+									<select class="form-select" id="persnal-skill1" name="skill_part_code1">
 										<option value="none">기술 선택</option>
 										<c:forEach var="skill" items="${skillList }">
 										<option value="${skill.skill_part_code }">${skill.skill_part }</option>
@@ -311,7 +311,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="persnal-skill" class="col-sm-2 col-form-label">부가기술 2</label>
 								<div class="col-sm-4">
-									<select class="form-select" id="persnal-skill1" name="skill_part_code">
+									<select class="form-select" id="persnal-skill1" name="skill_part_code2">
 										<option value="none">기술 선택</option>
 										<c:forEach var="skill" items="${skillList }">
 										<option value="${skill.skill_part_code }">${skill.skill_part }</option>
@@ -344,7 +344,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="persnal-skill" class="col-sm-2 col-form-label">부가기술 3</label>
 								<div class="col-sm-4">
-									<select class="form-select" id="persnal-skill1" name="skill_part_code">
+									<select class="form-select" id="persnal-skill1" name="skill_part_code3">
 										<option value="none">기술 선택</option>
 										<c:forEach var="skill" items="${skillList }">
 										<option value="${skill.skill_part_code }">${skill.skill_part }</option>

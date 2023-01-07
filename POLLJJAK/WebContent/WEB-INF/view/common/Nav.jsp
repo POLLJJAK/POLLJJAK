@@ -63,7 +63,14 @@
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           -->
-				<li><a class="getstarted scrollto" href="U-MyPage-Warning.jsp">로그인</a></li>
+				<li>
+					<c:if test="${user_code == null }"><a class="getstarted scrollto" href="loginform.action">로그인</a></c:if>
+					<c:if test="${user_code != null }">
+						<a class="getstarted scrollto" href="logout.action">로그아웃</a>
+						<br>
+						<p>${user_code.u_name }</p>
+					</c:if>
+				</li>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 		</nav>

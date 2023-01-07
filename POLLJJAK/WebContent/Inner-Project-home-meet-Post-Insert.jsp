@@ -14,6 +14,8 @@
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 
+<!-- 내 프로젝트 홈 css 파일 -->
+<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
 
 <body>
 

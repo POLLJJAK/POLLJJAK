@@ -5,7 +5,7 @@
  * 
  */
 
-package com.test.mybatis;
+package com.test.dto;
 
 public class ProjectHomeListDTO
 {

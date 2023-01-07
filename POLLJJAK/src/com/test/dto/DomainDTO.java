@@ -3,7 +3,7 @@
 	- 도메인(이메일 뒷자리)
 */
 
-package com.test.mybatis;
+package com.test.dto;
 
 public class DomainDTO
 {
