@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.test.mybatis.ILoginDAO">
 	
-	<select id="login" resultType="com.test.mybatis.UserDTO">
+	<select id="login" resultType="com.test.dto.UserDTO">
 		SELECT U_ID, U_PW
 		FROM U
 	</select>
