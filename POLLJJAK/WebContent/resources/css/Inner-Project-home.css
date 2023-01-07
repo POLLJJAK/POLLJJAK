@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 /* 내 프로젝트 홈 (진행 프로젝트, 완료 프로젝트 목록)*/
+    .form-control
+    {
+    	align-content: center;
+    }
 .projectHome-list-now .pj-box {
 	background: #fff;
 	transition: 0.3s;
