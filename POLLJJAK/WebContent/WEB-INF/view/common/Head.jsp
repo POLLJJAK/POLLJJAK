@@ -47,13 +47,13 @@
    <!-- END OF 부트스트랩 템플릿 관련 라이브러리 -->
 
    <!-- 공통사용 스타일 -->   
-    <link href="<%=cp %>/resources/common/css/fileUpload.css" rel="stylesheet">
-    <link href="<%=cp %>/resources/common/css/checkbox.css" rel="stylesheet">
-    <link href="<%=cp %>/resources/common/css/radioBtn.css" rel="stylesheet">
+    <link href="resources/common/css/fileUpload.css" rel="stylesheet">
+    <link href="resources/common/css/checkbox.css" rel="stylesheet">
+    <link href="resources/common/css/radioBtn.css" rel="stylesheet">
     
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
-	<link href="<%=cp %>/resources/common/css/calendar.css" rel="stylesheet">
-	
+	<link href="resources/common/css/calendar.css" rel="stylesheet">
+
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
   
