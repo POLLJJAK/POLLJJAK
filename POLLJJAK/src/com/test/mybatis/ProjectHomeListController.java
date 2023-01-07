@@ -22,19 +22,22 @@ public class ProjectHomeListController
 	
 	
 	@RequestMapping(value="/projecthomelist.action", method=RequestMethod.GET)
-	public String projectCompletelist(ModelMap model, String user_code) 
+	public String projectRunlist(ModelMap model, String user_code) 
 	{
-		
 		String result = null;
 		
-		user_code = "U000000012";
+		// 김태민 유저 U000000012
+		// 한은영 유저 U000000001
+		user_code = "U000000001";
 		
 		IProjectHomeListDAO dao = sqlSession.getMapper(IProjectHomeListDAO.class);
 		
-		model.addAttribute("list", dao.list(user_code));
+		model.addAttribute("pj_run_list", dao.pj_run_list(user_code));
+		model.addAttribute("pj_complete_list", dao.pj_complete_list(user_code));
 		
 		result ="/Project-home.jsp";
 		
 		return result;
 	};
+	
 }
