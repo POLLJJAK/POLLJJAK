@@ -53,10 +53,6 @@
     
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
 	<link href="<%=cp %>/resources/common/css/calendar.css" rel="stylesheet">
-	
-	<script src="<%=cp %>/resources/js/calendar.js"></script>
-	
-
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -67,14 +63,5 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-<<<<<<< HEAD
-    
-    <!-- 좋아요 아이콘 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-    
-    
-    
-=======
-   
->>>>>>> 477d0532f0cd35767550130c5d262ed9b1c33b9f
+
 </head>

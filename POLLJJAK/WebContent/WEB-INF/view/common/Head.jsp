@@ -54,25 +54,6 @@
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
 	<link href="<%=cp %>/resources/common/css/calendar.css" rel="stylesheet">
 	
-	<script src="<%=cp %>/resources/js/calendar.js"></script>
-	
-  	<!-- 게시판 썸머노트 lite 버전(cdn아님)  -->
-	<script src="assets/js/summernote-lite.js"></script>
-  	<script src="assets/js/summernote-ko-KR.js"></script>
-	<link href="assets/css/summernote-lite.css" rel="stylesheet">
-	
-	
-	<!-- @@@ 내 프로젝트 홈 @@@@ -->
-	<!-- 내 프로젝트 홈 css 파일 -->
-	<link href="assets/css/Inner-Project-home.css" rel="stylesheet">
-	
-	
-	<!-- 내 프로젝트 홈 → 일정 관리 → 캘린더 -->
-	<!-- fullcalendar CDN -->
-	<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-	<!-- fullcalendar 언어 CDN -->
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -83,6 +64,5 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-    
-   
+
 </head>
