@@ -5,7 +5,7 @@
 
 <mapper namespace="com.test.mybatis.IMainLoungeListDAO">
 	
-	<select id="list" resultType="com.test.mybatis.MainLoungeListDTO">
+	<select id="list" resultType="com.test.dto.MainLoungeListDTO">
 		SELECT SID, POST_CODE, USER_CODE, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
 		FROM L_POST_LIST_VIEW
 		ORDER BY SID DESC
@@ -27,7 +27,7 @@
 		WHERE L_POST_CODE=#{post_code}
 	</delete>
 	
-	<select id="postdetail" resultType="com.test.mybatis.MainLoungeListDTO">
+	<select id="postdetail" resultType="com.test.dto.MainLoungeListDTO">
 		SELECT SID, POST_CODE, USER_CODE, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
 		FROM L_POST_LIST_VIEW
 		WHERE POST_CODE=#{post_code}

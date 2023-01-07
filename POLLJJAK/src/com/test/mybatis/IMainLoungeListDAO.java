@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.test.dto.MainLoungeListDTO;
+
 public interface IMainLoungeListDAO
 {
 	// 자유게시만 글 목록

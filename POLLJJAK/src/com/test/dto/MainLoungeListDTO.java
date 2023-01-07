@@ -3,7 +3,7 @@
  	- 메인라운지 자유게시판
 =============================== */
 
-package com.test.mybatis;
+package com.test.dto;
 
 public class MainLoungeListDTO
 {
