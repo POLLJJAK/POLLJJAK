@@ -19,6 +19,8 @@
 <c:import url="./common/Head.jsp" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/Main-Lounge.css" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
+
 
 <style>
 	.form-control
