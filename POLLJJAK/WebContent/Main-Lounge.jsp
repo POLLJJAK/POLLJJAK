@@ -12,13 +12,15 @@
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 <%-- <link rel="stylesheet" href="<%=cp %>/resources/css/Main-Lounge.css" /> --%>
+<link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css"/>
+<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
+
 <style type="text/css">
     .form-control
     {
     	align-content: center;
     }
     </style>
-<link rel="stylesheet" href="<%=cp %>/resources/css/projectDetail.css" />
 <body>
 	
 	<c:import url="./common/Nav.jsp" />
