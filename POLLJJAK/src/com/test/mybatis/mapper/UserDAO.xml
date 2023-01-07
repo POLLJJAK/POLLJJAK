@@ -10,7 +10,8 @@
 	<select id="list" resultType="com.test.mybatis.UserDTO">
 		SELECT U_CODE, USER_CODE, SUBJECT_PART_CODE, REGION_PART_CODE
 			 , POSITION_PART_CODE, TIME_PART_CODE, Domain_Part_Code
-     		 , U_NAME, U_NICKNAME, U_TEL, U_EMAIL, U_INTRO, U_PORTFOLIO_URL, U_ID, U_PW
+     		 , U_NAME, U_NICKNAME, U_TEL, U_EMAIL, U_INTRO, U_PORTFOLIO_URL
+             , U_ID, U_PW
 		FROM U
 		ORDER BY U_CODE
 	</select>
@@ -29,6 +30,10 @@
           , #{u_portfolio_url, mode=IN, jdbcType=VARCHAR}
           , #{u_id, mode=IN, jdbcType=VARCHAR}
           , #{u_pw, mode=IN, jdbcType=VARCHAR}
+          , #{skill_part_code, mode=IN, jdbcType=VARCHAR}
+          , #{skill_part_code1, mode=IN, jdbcType=VARCHAR}
+          , #{skill_part_code2, mode=IN, jdbcType=VARCHAR}
+          , #{skill_part_code3, mode=IN, jdbcType=VARCHAR}
           )}
 	</select>
 	

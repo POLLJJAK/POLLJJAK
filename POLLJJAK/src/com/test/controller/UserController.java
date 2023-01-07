@@ -2,7 +2,7 @@
  	UserController.java
 ==========================*/
 
-package com.test.mybatis;
+package com.test.controller;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +12,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.test.dto.UserDTO;
+import com.test.mybatis.IUserDAO;
+
 @Controller
 public class UserController
 {
 	@Autowired
 	private SqlSession sqlSession;
-	
-	@RequestMapping(value = "/userlist.action", method = RequestMethod.GET)
-	public String userList(Model model)
-	{
-		String result = null;
-		
-		IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
-		
-		model.addAttribute("list", dao.list());
-		
-		result = "WEB-INF/view/UserList.jsp";
-		
-		return result;
-	}
 	
 	// 회원가입폼으로
 	@RequestMapping(value = "/registrationform.action", method = RequestMethod.GET)
@@ -62,8 +51,8 @@ public class UserController
 		
 		dao.add(user);
 		
-		result = "redirect:userlist.action";
-		//result = "/WEB-INF/view/U-Main.jsp";
+		// 테스트용으로 
+		result = "redirect:main.action";
 		
 		return result;
 	}

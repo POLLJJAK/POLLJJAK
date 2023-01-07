@@ -3,7 +3,7 @@
 	- 관심 분야(생활/업무/교통 등)
 */
 
-package com.test.mybatis;
+package com.test.dto;
 
 public class SubjectDTO
 {

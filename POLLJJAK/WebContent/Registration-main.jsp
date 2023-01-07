@@ -222,9 +222,9 @@
 				</div>
 				<div class="input-container btn-wrap">
 					<div class="forget">
-						<a href="<%=cp %>/U-main.jsp" >홈으로</a>
+						<a href="main.aciton" >홈으로</a>
 						<a>|</a>
-						<a href="<%=cp %>/Login.jsp" >로그인으로</a>
+						<a href="loginform.action" >로그인으로</a>
 					</div>
 				</div>
 			</div>
