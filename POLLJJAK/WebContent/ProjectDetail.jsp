@@ -12,8 +12,6 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" /> 
-<script src="/POLLJACK/WebContent/resources/js/ProjectDetail.js"></script> 
-<link rel="stylesheet" href="/POLLJACK/WebContent/resources/css/ProjectDetail.css?after" />
 <script src="<%=cp %>/resources/js/ProjectDetail.js"></script> 
 <link rel="stylesheet" type="text/css" href="<%=cp %>/resources/css/ProjectDetail.css" />
 <!-- 드래그 앤 드랍 -->
