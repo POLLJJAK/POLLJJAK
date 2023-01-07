@@ -17,7 +17,7 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/projectDetail.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
 
 
 <style>

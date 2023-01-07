@@ -16,7 +16,8 @@
 <!-- 현재 페이지 resources import -->
 <script src="<%=cp %>/resources/js/ProjectOpen.js"></script> 
 <script src="<%=cp %>/resources/js/fileUpload.js"></script>
-<link rel="stylesheet" href="<%=cp %>/css/ProjectOpen.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectOpen.css" />
+
 
 <body>
 <c:import url="./common/Nav.jsp" />
