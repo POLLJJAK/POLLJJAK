@@ -7,6 +7,14 @@ package com.test.mybatis;
 
 import java.util.ArrayList;
 
+import com.test.dto.DomainDTO;
+import com.test.dto.PositionDTO;
+import com.test.dto.RegionDTO;
+import com.test.dto.SkillDTO;
+import com.test.dto.SubjectDTO;
+import com.test.dto.TimeDTO;
+import com.test.dto.UserDTO;
+
 public interface IUserDAO
 {
 	// 회원 정보 입력(추가)
