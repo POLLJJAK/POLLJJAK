@@ -5,7 +5,7 @@
 
 <mapper namespace="com.test.mybatis.IInnerProjectTeamManageDAO">
 	
-	<select id="pj_title_info" resultType="com.test.mybatis.InnerProjectTeamManageDTO">
+	<select id="pj_title_info" resultType="com.test.dto.InnerProjectTeamManageDTO">
 		SELECT
 		P3.P_NAME AS P_NAME
 		, P3.PJ_START_DATE AS PJ_START_DATE
@@ -45,7 +45,7 @@
 		  AND P2.P_CODE = P3.P_CODE
 	</select>
 	
-	<select id="pj_team_info" resultType="com.test.mybatis.InnerProjectTeamManageDTO">
+	<select id="pj_team_info" resultType="com.test.dto.InnerProjectTeamManageDTO">
 		SELECT 
 			CASE WHEN (
 				SELECT U_P_APPLY_CODE

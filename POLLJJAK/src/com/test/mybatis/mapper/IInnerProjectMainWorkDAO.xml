@@ -5,7 +5,7 @@
 
 <mapper namespace="com.test.mybatis.IInnerProjectMainWorkDAO">
 	
-	<select id="pj_mainwork_list" resultType="com.test.mybatis.InnerProjectMainWorkDTO">
+	<select id="pj_mainwork_list" resultType="com.test.dto.InnerProjectMainWorkDTO">
 		SELECT PH_MAINWORK_TITLE, PJ_START_DATE, PJ_END_DATE, 
 		(
 			ROUND(NVL(
@@ -57,7 +57,7 @@
 	</select>
 	
 	
-	<select id="pj_mainwork_list_member" resultType="com.test.mybatis.InnerProjectMainWorkDTO" parameterType="map">
+	<select id="pj_mainwork_list_member" resultType="com.test.dto.InnerProjectMainWorkDTO" parameterType="map">
 		SELECT B4.U_NAME
 		FROM
 		(

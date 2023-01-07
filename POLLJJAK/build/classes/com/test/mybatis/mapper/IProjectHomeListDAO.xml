@@ -5,7 +5,7 @@
 
 <mapper namespace="com.test.mybatis.IProjectHomeListDAO">
 	
-	<select id="pj_run_list" resultType="com.test.mybatis.ProjectHomeListDTO">
+	<select id="pj_run_list" resultType="com.test.dto.ProjectHomeListDTO">
 		SELECT T1.P_NAME, T1.USER_CODE,
 			TO_CHAR(T1.PJ_START_DATE, 'YYYY-MM-DD') AS PJ_START_DATE,
 			TO_CHAR(T1.PJ_END_DATE, 'YYYY-MM-DD') AS PJ_END_DATE,
@@ -84,7 +84,7 @@
 	
 	
 	
-	<select id="pj_complete_list" resultType="com.test.mybatis.ProjectHomeListDTO">
+	<select id="pj_complete_list" resultType="com.test.dto.ProjectHomeListDTO">
 		SELECT T1.P_NAME, T1.USER_CODE,
 			   TO_CHAR(T1.PJ_START_DATE, 'YYYY-MM-DD') AS PJ_START_DATE,
 		       TO_CHAR(T1.PJ_END_DATE, 'YYYY-MM-DD') AS PJ_END_DATE,
