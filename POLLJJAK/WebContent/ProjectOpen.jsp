@@ -12,9 +12,10 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<script src="<%=cp %>/resources/js/fileUpload.js"></script>
- 
+
+<!-- 현재 페이지 resources import -->
 <script src="<%=cp %>/resources/js/ProjectOpen.js"></script> 
+<script src="<%=cp %>/resources/js/fileUpload.js"></script>
 <link rel="stylesheet" href="<%=cp %>/css/ProjectOpen.css" />
 
 <body>
@@ -41,8 +42,6 @@
 			</div>
 		</div>
 				
-
-	<!-- <%=cp %>/ProjectDetail.jsp -->
 		<div class="container">
 			<form name="newProduct"  action="papply.action" method="post" enctype="multipart/form-data" onSubmit="return validation()">
 				<div class="form-group row">
