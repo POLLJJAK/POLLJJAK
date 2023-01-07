@@ -5,12 +5,52 @@
 
 <mapper namespace="com.test.mybatis.IMainLoungeListDAO">
 	
-	<select id="list" resultType="com.test.mybatis.MainLoungeListDTO">
-		SELECT SID, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
+	<select id="list" resultType="com.test.dto.MainLoungeListDTO">
+		SELECT SID, POST_CODE, USER_CODE, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
 		FROM L_POST_LIST_VIEW
 		ORDER BY SID DESC
 	</select>
 	
+	<insert id="add">
+		INSERT INTO L_POST(L_POST_CODE, USER_CODE, L_POST_TITLE, L_POST_CONTENT, L_POST_ADD_DATE)
+		VALUES('LP'||LPAD(L_POST_CODE_SEQ.NEXTVAL, 8,'0'), #{user_code}, #{title}, #{summernote}, SYSDATE)
+	</insert>
+		
+	<update id="update">
+		UPDATE L_POST
+		SET L_POST_TITLE = #{title}, L_POST_CONTENT=#{content}, L_POST_UPDATE_DATE=SYSDATE
+		WHERE L_POST_CODE= #{post_code}
+	</update>
 	
+	<delete id="remove">
+		DELETE L_POST
+		WHERE L_POST_CODE=#{post_code}
+	</delete>
+	
+	<select id="postdetail" resultType="com.test.dto.MainLoungeListDTO">
+		SELECT SID, POST_CODE, USER_CODE, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
+		FROM L_POST_LIST_VIEW
+		WHERE POST_CODE=#{post_code}
+	</select>
+	
+	<!-- 좋아요체크여부 -->
+	<select id="likecheck" parameterType="String" resultType="String">
+		SELECT COUNT(*) AS LIKECHECK
+		FROM POST_LIKE
+		WHERE L_POST_CODE=#{post_code}
+		  AND USER_CODE=#{user_code}
+	</select>
+	
+	<!-- 좋아요추가 -->
+	<insert id="likeadd" parameterType="String">
+		INSERT INTO POST_LIKE(POST_LIKE_CODE, L_POST_CODE, USER_CODE,POST_LIKE_DATE)
+		VALUES('LKPS'||LPAD(POST_LIKE_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code}, #{user_code}, SYSDATE)
+	</insert>
+	
+	<!-- 좋아요삭제 -->
+	<delete id="likeRemove">
+		DELETE POST_LIKE
+		WHERE USER_CODE=#{user_code}
+	</delete>
 	
 </mapper>

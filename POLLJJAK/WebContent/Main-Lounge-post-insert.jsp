@@ -66,7 +66,7 @@
 		<div class="container" >
 			<div class="board_wrap">
 			<!-- 작성폼 -->
-			<form >
+			<form method="post" action="mainloungeinsert.action?user_code=U000000003" id="myForm">
 			<div class="board_list_wrap">
 				<div class="meet_wrap mb-3">
 					<table class="table">
@@ -77,13 +77,13 @@
 						</tr>
 						<tr>
 							<th style="font-size: x-large; padding-top: 7px; width: 80px;">제목</th>
-							<td><input type="text" class="form-control" placeholder="제목 입력해주세요." /></td>
+							<td><input type="text" id="title" name="title" class="form-control" placeholder="제목 입력해주세요." /></td>
 						</tr>
 					</table>
 					
 					<!-- 썸머노트 -->
 					<div style="width: 100%; align-content: center;">
-						<div id="summernote"></div>
+						<textarea id="summernote" name="summernote"></textarea>
 					</div>
 			    </div><!-- end meet_wrap mb-3-->
 			    <div style="text-align: center;;">
@@ -133,6 +133,21 @@
 	        /* fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'], */
 	      });
 	
+	 	
+	 	
+	 	//등록버튼 클릭
+	 	$(function()
+		{
+	 		// 유효성 검사
+	 		
+	 		
+	 		$("#submit").click(function()
+			{
+				
+	 			
+	 			$("#myForm").submit();
+			});
+		});
 	</script>
 	
 	

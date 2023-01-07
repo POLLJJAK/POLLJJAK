@@ -59,7 +59,8 @@
 			<div class="board_wrap" >
 				<div class="board-title">
 					<button type="button" class="btn-hover color-9" style=" margin: 1%; margin-left:80%; width: 100px;"
-					 onclick="location.href='<%=cp %>/Main-Lounge-post-insert.jsp';"
+					<%--  onclick="location.href='<%=cp %>/Main-Lounge-post-insert.jsp';" --%>
+					 onclick="location.href='mainloungeinsertform.action?user_code=\'U000000003\'';"
 					 >작성하기</button>
 				</div>
 				
@@ -78,7 +79,7 @@
 									</div>
 									
 									<c:forEach var="list" items="${list}">
-									<div onclick="location.href='<%=cp %>/Main-Lounge-post.jsp';">
+									<div onclick="location.href='postdetail.action?post_code=${list.post_code}';" id="${list.post_code} }">
 										<div class="num">${list.sid }</div>
 										<div class="title">${list.title }</div>
 										<div class="writer">${list.nickname}</div>
