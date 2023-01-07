@@ -63,7 +63,7 @@
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           -->
-				<li><a class="getstarted scrollto" href="U-MyPage-Warning.jsp">로그인</a></li>
+				<li><a class="getstarted scrollto" href="">로그인</a></li>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 		</nav>

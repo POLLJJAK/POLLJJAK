@@ -18,20 +18,6 @@ public class UserController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping(value = "/userlist.action", method = RequestMethod.GET)
-	public String userList(Model model)
-	{
-		String result = null;
-		
-		IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
-		
-		model.addAttribute("list", dao.list());
-		
-		result = "WEB-INF/view/UserList.jsp";
-		
-		return result;
-	}
-	
 	// 회원가입폼으로
 	@RequestMapping(value = "/registrationform.action", method = RequestMethod.GET)
 	public String userInsertForm(Model model)
@@ -62,8 +48,8 @@ public class UserController
 		
 		dao.add(user);
 		
-		result = "redirect:userlist.action";
-		//result = "/WEB-INF/view/U-Main.jsp";
+		// 테스트용으로 
+		result = "redirect:main.action";
 		
 		return result;
 	}

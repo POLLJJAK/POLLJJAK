@@ -13,11 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인</title>
 <script src="https://kit.fontawesome.com/51db22a717.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<!-- <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"> -->
-<!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
 <style type="text/css">
 	@font-face {
@@ -154,12 +152,12 @@
 	}
 	
 	.login-btn-wrap{
-	    margin-top: 40px;
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;
 	}
 	.login-btn-wrap .login-btn{
+	    margin-top: 40px;
 	    width:95px;
 	    height:35px;
 	    color:white;
@@ -257,21 +255,21 @@
 				<p>Team 4, Cheer up guys.<br>We can finish our Final Project in time.<br>Him Eul Nae Yo SUPER POWER.</p>
 			</div>
 			<div class="login-form-left-side">
-				<form action="<%=cp %>/U-main.jsp">
-					<div class="login-top-wrap">
-						<span>계정이 없으신가요?</span>
-						<div class="create-account-btn">
-							<a href="<%=cp %>/Registration-main.jsp">회원가입</a>
-						</div>
+				<div class="login-top-wrap">
+					<span>계정이 없으신가요?</span>
+					<div class="create-account-btn">
+						<a href="<%=cp %>/Registration-main.jsp">회원가입</a>
 					</div>
+				</div>
+				<form method="post" id="login_form">
 					<div class="login-input-container">
 						<div class="login-input-wrap input-id">
 							<i class="fa fa-user"></i>
-							<input placeholder="아이디" type="text">
+							<input placeholder="아이디" type="text" name="u_id">
 						</div>
 						<div class="login-input-wrap input-password">
 							<i class="fas fa-key"></i>
-							<input placeholder="비밀번호" type="password">
+							<input placeholder="비밀번호" type="password" name="u_pw">
 						</div>
 					</div>
 					<div class="radioBtn">
@@ -280,47 +278,57 @@
 					</div>
 					<div class="login-btn-wrap">
 						<input type="submit" class="login-btn" value="로그인">
-						<div class="moveTo">
-							<a href="<%=cp %>/U-main.jsp" >홈으로</a>
-							<a> | </a>
-							<a href="<%=cp %>/ForgetId.jsp" >아이디 찾기</a>
-							<a> | </a>
-							<a href="<%=cp %>/ForgetPw.jsp" >비밀번호 찾기</a>
-						</div>
-					</div>
-					<div class="sosial">
-						<div>
-							<div class="section-title pt-5">
-								<p>소셜 로그인</p>
-							</div>
-						</div>
-						<div class="sosial-image">
-							<div>
-								<div class="google">
-									<a class="btn btn-lg btn-google btn-block btn-outline" href="#/view/signin/oauth/google">
-										<img src="./assets/img/btn_google_signin_light_normal_web.png">
-									</a>
-								</div>
-							</div>
-							<div>
-								<div class="kakao">
-									<a class="btn btn-lg btn-kakao btn-block btn-outline" href="#/view/signin/oauth/kakao">
-										<img src="./assets/img/kakao_login_medium_narrow.png">
-									</a>
-								</div>
-							</div>
-							<div>
-								<div class="naver">
-									<a class="btn btn-lg btn-naver btn-block btn-outline" href="#/view/signin/oauth/naver">
-										<img src="./assets/img/btnG_big.png">
-									</a>
-								</div>
-							</div>
-						</div>
 					</div>
 				</form>
+				<div class="login-btn-wrap">
+					<div class="moveTo">
+						<a href="main.action" >홈으로</a>
+						<a> | </a>
+						<a href="<%=cp %>/ForgetId.jsp" >아이디 찾기</a>
+						<a> | </a>
+						<a href="<%=cp %>/ForgetPw.jsp" >비밀번호 찾기</a>
+					</div>
+				</div>
+				<div class="sosial">
+					<div>
+						<div class="section-title pt-5">
+							<p>소셜 로그인</p>
+						</div>
+					</div>
+					<div class="sosial-image">
+						<div>
+							<div class="google">
+								<a class="btn btn-lg btn-google btn-block btn-outline" href="#/view/signin/oauth/google">
+									<img src="./assets/img/btn_google_signin_light_normal_web.png">
+								</a>
+							</div>
+						</div>
+						<div>
+							<div class="kakao">
+								<a class="btn btn-lg btn-kakao btn-block btn-outline" href="#/view/signin/oauth/kakao">
+									<img src="./assets/img/kakao_login_medium_narrow.png">
+								</a>
+							</div>
+						</div>
+						<div>
+							<div class="naver">
+								<a class="btn btn-lg btn-naver btn-block btn-outline" href="#/view/signin/oauth/naver">
+									<img src="./assets/img/btnG_big.png">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(".login-btn").click(function()
+		{
+			//alert("함수호출확인");
+			$("#login_form").attr("action", "login.action");
+	        $("#login_form").submit();
+		});
+	</script>
 </body>
 </html>

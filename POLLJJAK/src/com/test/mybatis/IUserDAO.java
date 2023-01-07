@@ -9,9 +9,6 @@ import java.util.ArrayList;
 
 public interface IUserDAO
 {
-	// 회원 명단 확인(테스트용 - 나중에 지울 예정)
-	public ArrayList<UserDTO> list();
-	
 	// 회원 정보 입력(추가)
 	public Integer add(UserDTO u);
 		

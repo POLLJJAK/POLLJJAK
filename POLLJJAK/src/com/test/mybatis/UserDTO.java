@@ -10,6 +10,7 @@ public class UserDTO
 	private String u_code, user_code, subject_part_code, region_part_code;
 	private String position_part_code, time_part_code, domain_part_code;
 	private String u_name, u_nickname, u_tel, u_email, u_intro, u_portfolio_url, u_id, u_pw;
+	private String skill_part_code, skill_part_code1, skill_part_code2, skill_part_code3;
 	
 	// getter / setter
 	public String getU_code()
@@ -132,7 +133,38 @@ public class UserDTO
 	{
 		this.u_pw = u_pw;
 	}
-	
+	public String getSkill_part_code()
+	{
+		return skill_part_code;
+	}
+	public void setSkill_part_code(String skill_part_code)
+	{
+		this.skill_part_code = skill_part_code;
+	}
+	public String getSkill_part_code1()
+	{
+		return skill_part_code1;
+	}
+	public void setSkill_part_code1(String skill_part_code1)
+	{
+		this.skill_part_code1 = skill_part_code1;
+	}
+	public String getSkill_part_code2()
+	{
+		return skill_part_code2;
+	}
+	public void setSkill_part_code2(String skill_part_code2)
+	{
+		this.skill_part_code2 = skill_part_code2;
+	}
+	public String getSkill_part_code3()
+	{
+		return skill_part_code3;
+	}
+	public void setSkill_part_code3(String skill_part_code3)
+	{
+		this.skill_part_code3 = skill_part_code3;
+	}
 	
 	
 }
