@@ -12,8 +12,8 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" /> 
-<script src="<%=cp %>/resources/js/projectDetail.js"></script> 
-<link rel="stylesheet" href="<%=cp %>/resources/css/projectDetail.css" />
+<script src="<%=cp %>/resources/js/ProjectDetail.js"></script> 
+<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
 <!-- 드래그 앤 드랍 -->
 <script>
 	$( function() {
