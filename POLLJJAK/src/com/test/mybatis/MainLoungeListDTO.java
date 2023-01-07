@@ -9,6 +9,10 @@ public class MainLoungeListDTO
 {
 	//SID, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
 	private String sid, title, content, nickname, postDate, postLike;
+	
+	private String post_code, user_code, summernote;
+	
+	private String likecheck;
 
 	public String getSid()
 	{
@@ -68,6 +72,46 @@ public class MainLoungeListDTO
 	public void setPostLike(String postLike)
 	{
 		this.postLike = postLike;
+	}
+
+	public String getPost_code()
+	{
+		return post_code;
+	}
+
+	public void setPost_code(String post_code)
+	{
+		this.post_code = post_code;
+	}
+
+	public String getUser_code()
+	{
+		return user_code;
+	}
+
+	public void setUser_code(String user_code)
+	{
+		this.user_code = user_code;
+	}
+
+	public String getSummernote()
+	{
+		return summernote;
+	}
+
+	public void setSummernote(String summernote)
+	{
+		this.summernote = summernote;
+	}
+
+	public String getLikecheck()
+	{
+		return likecheck;
+	}
+
+	public void setLikecheck(String likecheck)
+	{
+		this.likecheck = likecheck;
 	}
 	
 	
