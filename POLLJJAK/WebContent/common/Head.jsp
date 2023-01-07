@@ -67,10 +67,14 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+<<<<<<< HEAD
     
     <!-- 좋아요 아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     
     
     
+=======
+   
+>>>>>>> 477d0532f0cd35767550130c5d262ed9b1c33b9f
 </head>
