@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IProjectOpenDAO">
+	
+	<!-- 완료 프로젝트 개수 조회  레벨산정-->
+	<select id="searchLevel" resultType="java.lang.Integer">
+		SELECT COUNT(DISTINCT PE.P_END_CODE) AS PROJECT_COMPLETE  
+		FROM P_END PE , P_END_CONDITION PEC, P_TEAM_CONFIRM PTC
+   		, P P, P_POSITION PP, U_P_APPLY UPA, P_OUT PO, U U, P_LEADER PL
+		WHERE PE.P_END_CONDITION_CODE = PEC.P_END_CONDITION_CODE
+      		 AND PE.P_END_CONDITION_CODE = 'PEC0000001'
+		     AND PTC.P_TEAM_CONFIRM_CODE = PE.P_TEAM_CONFIRM_CODE
+		     AND PTC.P_CODE = P.P_CODE
+		     AND P.P_CODE = PP.P_CODE
+		     AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
+		     AND UPA.U_P_APPLY_DATE IS NOT NULL
+		     AND UPA.U_P_APPLY_CODE != PO.P_OUT_CODE
+             AND U.USER_CODE = 'U000000001'
+             AND U.USER_CODE = P.USER_CODE
+	</select>
+	
+	
+	
+</mapper>
