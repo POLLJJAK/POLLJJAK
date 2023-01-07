@@ -9,6 +9,8 @@ package com.test.mybatis;
 
 import java.util.ArrayList;
 
+import com.test.dto.ProjectHomeListDTO;
+
 public interface IProjectHomeListDAO
 {
 	public ArrayList<ProjectHomeListDTO> pj_run_list(String user_code);

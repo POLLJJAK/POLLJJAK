@@ -3,6 +3,8 @@ package com.test.mybatis;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.test.dto.InnerProjectMainWorkDTO;
+
 public interface IInnerProjectMainWorkDAO
 {
 	public ArrayList<InnerProjectMainWorkDTO> pj_mainwork_list(String u_p_apply_code);
