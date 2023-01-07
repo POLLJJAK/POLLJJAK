@@ -52,8 +52,8 @@
     <link href="<%=cp %>/resources/common/css/radioBtn.css" rel="stylesheet">
     
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
-   <link href="<%=cp %>/resources/common/css/calendar.css" rel="stylesheet">
-   
+
+	<link href="<%=cp %>/resources/common/css/calendar.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">

@@ -1,4 +1,3 @@
-
     /*<!-- 탭박스 JS  -->*/
     $(document).ready(function(){
       
