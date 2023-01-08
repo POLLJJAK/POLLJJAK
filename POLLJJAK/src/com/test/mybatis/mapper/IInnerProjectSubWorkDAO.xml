@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IInnerProjectSubWorkDAO">
+	
+	<select id="mainwork_title" resultType="com.test.dto.InnerProjectSubWorkDTO">
+		SELECT PH_MAINWORK_TITLE
+		, TO_CHAR(PH_MAINWORK_START_DATE, 'YYYY-MM-DD') AS PH_MAINWORK_START_DATE
+		, TO_CHAR(PH_MAINWORK_END_DATE, 'YYYY-MM-DD') AS PH_MAINWORK_END_DATE
+		FROM PH_MAINWORK
+		WHERE PH_MAINWORK_CODE = #{ph_mainwork_code}
+	</select>
+	
+	
+	<select id="mainwork_team" resultType="com.test.dto.InnerProjectSubWorkDTO">
+		SELECT A4.U_NAME AS main_u_name
+		FROM PH_MAINWORK A1, PH_MAINWORK_MEMBER A2, U_P_APPLY A3, U A4
+		WHERE A1.PH_MAINWORK_CODE = #{ph_mainwork_code}
+		  AND A1.PH_MAINWORK_CODE = A2.PH_MAINWORK_CODE
+		  AND A2.U_P_APPLY_CODE = A3.U_P_APPLY_CODE
+		  AND A3.USER_CODE = A4.USER_CODE
+	</select>
+	
+	
+	<select id="mainwork_percent" resultType="java.lang.Integer">
+		 SELECT 
+		 (
+			ROUND(NVL(
+					(SELECT COUNT(*)
+					FROM PH_SUBWORK 
+					WHERE PH_MAINWORK_CODE =C1.PH_MAINWORK_CODE)
+			/ DECODE(
+					(SELECT COUNT(*)
+					FROM PH_SUBWORK_COMPLETE 
+					WHERE PH_SUBWORK_CODE IN (
+						SELECT PH_SUBWORK_CODE
+						FROM PH_SUBWORK 
+						WHERE PH_MAINWORK_CODE =C1.PH_MAINWORK_CODE
+					))
+			, 0, NULL ,(
+					SELECT COUNT(*)
+					FROM PH_SUBWORK_COMPLETE 
+					WHERE PH_SUBWORK_CODE IN (
+						SELECT PH_SUBWORK_CODE
+						FROM PH_SUBWORK 
+						WHERE PH_MAINWORK_CODE =C1.PH_MAINWORK_CODE
+			)
+			)), 0)*100, 0)
+		) AS MAINWORK_PERCENT
+		FROM PH_MAINWORK C1
+		WHERE PH_MAINWORK_CODE = #{ph_mainwork_code}
+	</select>
+	
+	
+	
+	
+	<select id="subwork_list" resultType="com.test.dto.InnerProjectSubWorkDTO">
+		SELECT A3.U_NAME, A1.PH_SUBWORK_TITLE
+		, TO_CHAR(A1.PH_SUBWORK_START_DATE, 'YYYY-MM-DD') AS PH_SUBWORK_START_DATE
+		, TO_CHAR(A4.PH_SUBWORK_COMPLETE, 'YYYY-MM-DD') AS PH_SUBWORK_COMPLETE_DATE
+		, A1.PH_SUBWORK_DETAIL
+		, A1.PH_SUBWORK_CODE AS SWLISTCODE
+		FROM PH_SUBWORK A1, U_P_APPLY A2, U A3, PH_SUBWORK_COMPLETE A4
+		WHERE PH_MAINWORK_CODE = #{ph_mainwork_code}
+		  AND A1.U_P_APPLY_CODE = A2.U_P_APPLY_CODE
+		  AND A2.USER_CODE = A3.USER_CODE
+		  AND A1.PH_SUBWORK_CODE = A4.PH_SUBWORK_CODE 
+	</select>
+	
+	
+		
+	<select id="subwork_teamComment" resultType="com.test.dto.InnerProjectSubWorkDTO">
+		SELECT A6.U_NAME AS TC_U_NAME
+		, A4.PH_S_COMMENT_CONTENT 
+		, A2.PH_SUBWORK_CODE AS SCSBCODE
+		FROM PH_MAINWORK A1 FULL OUTER JOIN PH_SUBWORK A2
+		  ON (A1.PH_MAINWORK_CODE = A2.PH_MAINWORK_CODE)
+		  FULL OUTER JOIN PH_SUBWORK_COMPLETE A3
+		  ON (A2.PH_SUBWORK_CODE = A3.PH_SUBWORK_CODE)
+		  FULL OUTER JOIN PH_S_COMMENT A4
+		  ON (A3.PH_SUBWORK_COMPLETE_CODE = A4.PH_SUBWORK_COMPLETE_CODE)
+		  FULL OUTER JOIN U_P_APPLY A5
+		  ON (A4.U_P_APPLY_CODE = A5.U_P_APPLY_CODE)
+		  FULL OUTER JOIN U A6
+		  ON (A5.USER_CODE = A6.USER_CODE)
+		WHERE A1.PH_MAINWORK_CODE = #{ph_mainwork_code}
+	</select>
+	
+	
+	
+	
+</mapper>

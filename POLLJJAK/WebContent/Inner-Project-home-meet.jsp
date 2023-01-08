@@ -14,7 +14,7 @@ String cp = request.getContextPath();
 <link href="assets/css/Inner-Project-home.css" rel="stylesheet">
 <c:import url="./common/Head.jsp" />
 <!-- 내 프로젝트 홈 css 파일 -->
-<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 <body>
 	<!-- 위로 가는 버튼 -->

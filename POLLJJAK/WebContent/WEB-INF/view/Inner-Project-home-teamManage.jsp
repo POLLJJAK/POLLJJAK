@@ -120,7 +120,17 @@
 
 										<c:forEach var="pj_team_info" items="${pj_team_info}">
 											<tr>
-												<th scope="row">${pj_team_info.team_role }</th>
+											
+												<c:choose>
+													<c:when test="${pj_team_info.team_role == '팀장' }">
+														<th scope="row"><div class="leaderLabel">${pj_team_info.team_role }</div></th>
+													</c:when>
+												
+													<c:otherwise>
+														<th scope="row">${pj_team_info.team_role }</th>
+													</c:otherwise>
+												</c:choose>
+												
 												<td>${pj_team_info.u_name }</td>
 												<td>${pj_team_info.position_part }</td>
 												<td>${pj_team_info.contribute }%</td>
@@ -138,7 +148,7 @@
 							<div class="p-2 row justify-content-between">
 								<div class="p-1 col-md-12 col-lg-2 text-center align-self-center">
 									<div class="p-2 border rounded ">
-									전체 팀원 : ${pj_team_count }
+									전체 팀원 : ${pj_team_count } / ${pj_team_now_count } 
 									</div>
 								</div>
 
@@ -203,137 +213,10 @@
 		    </div>
 		 </div>
 	</div>
-	
-	
-	
 
 
 </body>
 
-
-<!-- css 스타일 적용 -->
-<style>
-	.projectView {
-		border: 1px solid gray;
-		border-radius: 6px;
-	}
-	
-	.projectStatus {
-		background: #EEEEEE;
-	}
-
-	.pj-title {
-		font-size: 14px;
-		font-weight: bold;
-		background: #BDBDBD;
-	}
-	.pj-date {
-		font-size: 12px;
-	}
-	.stopBtn {
-		float: right;
-		font-size: 14px;
-		color: white;
-		background: #EC5454;
-		border: 0px solid;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.stopBtn:hover {
-		background: #C74B4B;
-	}
-	
-	.scoreBtn {
-		float: right;
-		font-size: 14px;
-		color: black;
-		background: #fff;
-		border: 1px dotted;
-		border-radius: 5px;
-		transition: 0.3s;
-		transition: ease-in-out 0.3s;
-	}
-	.scoreBtn:hover {
-		color: white;
-		background: #5e5e5e;
-	}
-	.scrollme {
-		overflow-x: auto;
-	}
-
-
-	/* 팀원 평가 별점 기능css*/
-	.scoreSelect1 {
-	    padding: 15px 10px;
-	}
-	.scoreSelect1 input[type=radio]{
-	    display: none;
-	}
-	.scoreSelect1 input[type=radio]+label{
-	    display: inline-block;
-	    cursor: pointer;
-	    height: 40px;
-	    width: 40px;
-	    border: 1px solid #E8E7DA;
-	    border-radius: 100%;
-	    line-height: 40px;
-	    text-align: center;
-	    font-weight:bold;
-	    font-size:12px;
-	}
-	.scoreSelect1 input[type=radio]+label{
-	    background-color: #fff;
-	    color: #333;
-	}
-	.scoreSelect1 input[type=radio]:checked+label{
-	    background-color: #FFE400;
-	    border: 1px solid #FFE400;
-	    color: #fff;
-	}
-	
-	/* 프로젝트 홈 메뉴*/
-	.pj_nav {
-	  padding: 0;
-	}
-	
-	.pj_nav ul {
-	  margin: 0;
-	  padding: 0;
-	  display: flex;
-	  list-style: none;
-	  align-items: center;
-	}
-	
-	.pj_nav li {
-	  position: relative;
-	}
-	
-	.pj_nav a,
-	.pj_nav a:focus {
-	  display: flex;
-	  align-items: center;
-	  justify-content: space-between;
-	  padding: 0 15px 0 15px;
-	  font-size: 0.9rem;
-	  font-weight: 400;
-	  color: #555555;
-	  white-space: nowrap;
-	}
-	
-	.pj_nav a:hover,
-	.pj_nav .active,
-	.pj_nav .active:focus,
-	.pj_nav li:hover>a {
-	  color: #3498db;
-	}
-	
-</style>
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script>
-
-</script>
 
 
 

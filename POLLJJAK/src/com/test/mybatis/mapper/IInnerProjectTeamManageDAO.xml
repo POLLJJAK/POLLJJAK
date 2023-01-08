@@ -173,7 +173,20 @@
 		)
 		  AND P1.P_CODE = P2.P_CODE
 		  AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
+		  AND P3.U_P_READY_DATE IS NOT NULL
 	</select>
+	
+
+	<select id="pj_team_now_count" resultType="java.lang.Integer">
+		SELECT SUM(P_POSITION_COUNT) AS TEAM_MEMBER_COUNT
+		FROM P_POSITION
+		WHERE P_CODE = (SELECT A3.P_CODE
+		FROM U_P_APPLY A1, P_POSITION A2, P A3
+		WHERE U_P_APPLY_CODE = #{u_p_apply_code}
+		  AND A1.P_POSITION_CODE = A2.P_POSITION_CODE
+		  AND A2.P_CODE = A3.P_CODE)
+	</select>
+	
 	
 	
 </mapper>

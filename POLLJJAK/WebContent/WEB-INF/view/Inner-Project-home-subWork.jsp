@@ -14,7 +14,7 @@ String cp = request.getContextPath();
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 <!-- 내 프로젝트 홈 css 파일 -->
-<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 
 <body>
@@ -29,7 +29,7 @@ String cp = request.getContextPath();
 	<main id="main">
 
 		<!-- 빈칸 여백 -->
-		<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
+		<section class="pb-2"></section>
 
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
@@ -37,65 +37,57 @@ String cp = request.getContextPath();
 				<!-- 상단 현재 보고있는 프로젝트 표시바 -->
 				<div class="projectView container col-lg-12">
 					<div class="row">
-
+					
 						<div class="projectStatus p-3 pb-0 border rounded-top">
 							<div class="container text-center">
 								<div class="row justify-content-center">
-
+								
 									<div class="col-md-0 col-lg-2"></div>
 									<div class="col-md-0 col-lg-2"></div>
-
+									
 									<!-- 프로젝트 정보 (제목, 진행기간, 전체 진척도)-->
 									<div class="col-md-12 col-lg-4 mb-4">
 										<div>
-											<div class="pj-title p-0 md-2 rounded">진행중인 프로젝트 제목1</div>
+											<div class="pj-title p-0 md-2 rounded">${pj_title_info.p_name }</div>
 										</div>
-
+										
 										<div>
-											<div class="pj-date p-0 mt-1 mb-1">2022-12-24 ~
-												2022-12-25</div>
+											<div class="pj-date p-0 mt-1 mb-1">${pj_title_info.pj_start_date } ~ ${pj_title_info.pj_end_date }</div>
 										</div>
-
+										
 										<div>
-											<div class="progress p-0"
-												style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar"
-													style="width: 75%; background-color: #81EC81"
-													aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #37417C" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
 											</div>
 										</div>
 									</div>
-
+									
 									<div class="col-md-0 col-lg-2"></div>
 									<div class="col-md-0 col-lg-2"></div>
-
-
 
 								</div>
 							</div>
 						</div>
-
-						<!-- 프로젝트 홈 메뉴 -->
+						
+						
+							<!-- 프로젝트 홈 메뉴 -->
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
-								<ul class="justify-content-center">
-									<li><a class="nav-link pb-0 scrollto"
-										href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-									<li><a class="nav-link pb-0 scrollto active"
-										href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-									<li><a class="nav-link pb-0 scrollto"
-										href="Inner-Project-home-meet.jsp">회의록</a></li>
-									<li><a class="nav-link pb-0 scrollto"
-										href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-									<li><a class="nav-link pb-0 scrollto "
-										href="Inner-Project-home-Lounge.jsp">라운지</a></li>
-								</ul>
+							   <ul class="justify-content-center">
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							   </ul>
 							</nav>
 						</div>
 
+						
 						<div class="container">
-							<hr class="p-3" style="color: #333;">
+						   <hr>
 						</div>
+
 
 
 						<!-- 컨텐츠 란 -->
@@ -103,10 +95,11 @@ String cp = request.getContextPath();
 							<h5 class="p-2 m-0 fw-bolder align-self-center">업무 관리</h5>
 							<div class="p-2 pe-0 ms-auto align-self-center">
 								<button type="button" class="btn btn-light"
-									onClick="location.href = '<%=cp %>/Inner-Project-home-mainWork.jsp'">주요
-									업무 목록 돌아가기</button>
+									onClick="location.href = 'inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}'">주요 업무 목록 돌아가기</button>
 							</div>
 						</div>
+
+
 
 
 
@@ -114,31 +107,30 @@ String cp = request.getContextPath();
 							<div class="subWork-box">
 								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 									<div class="d-flex justify-content-between">
-										<div style="font-size: 1.0rem; font-weight: bold;">주요업무1</div>
-										<div class="mb-2" style="font-size: 1.0rem;">2022-11-18
-											~ 2022-12-03</div>
+										<div style="font-size: 1.0rem; font-weight: bold;">${mainwork_title.ph_mainwork_title}</div>
+										<div class="mb-2" style="font-size: 1.0rem;">
+											${mainwork_title.ph_mainwork_start_date} ~ ${mainwork_title.ph_mainwork_end_date}
+										</div>
 									</div>
 									<div class="d-flex">
 										<div class="align-self-center pt-1 pb-1 pr-1"
 											style="font-size: 0.8rem; font-weight: bold;">
-											진척도 <span>80%</span>
+											진척도 <span>${mainwork_percent}%</span>
 										</div>
 										<div class="progress align-self-center"
-											style="width: 75%; height: 10px;">
+											style="width: 70%; height: 10px;">
 											<div class="progress-bar" role="progressbar"
-												style="width: 80%; background-color: #81EC81"
-												aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+												style="width: ${mainwork_percent}%; background-color: #81EC81"
+												aria-valuenow="${mainwork_percent}" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
-										<div class="d-flex ms-auto align-self-center">
-											<div class="teamIcon">팀원1</div>
-											<div class="teamIcon">팀원2</div>
-											<div class="teamIcon">팀원3</div>
-											<div class="teamIcon">팀원4</div>
+										<div class="d-flex ms-auto text-center align-self-center">
+											<c:forEach var="mainwork_team" items="${mainwork_team }">
+												<div class="teamIcon">${mainwork_team.main_u_name}</div>
+											</c:forEach>
 										</div>
 									</div>
 
-									<!-- 구분선 -->
-									<hr style="color: #333;">
+									<hr>
 
 									<!-- 업무 목록 -->
 									<div class="container d-flex justify-content-between p-0">
@@ -151,34 +143,34 @@ String cp = request.getContextPath();
 									</div>
 
 
-
+									<c:forEach var="subwork_list" items="${subwork_list }">
+									<c:set var="i" value="${i+1 }"/>
+									
 									<div class="d-flex justify-content-between mb-3">
-
-										<div class="accordion" style="width: 95%;"
-											id="accordionExample">
-
+										<div class="accordion" style="width: 95%;" id="accordionExample">
 											<div class="accordion-item">
-												<div class="accordion-header" id="heading1">
+											
+												<div class="accordion-header" id="heading${i}">
 													<button class="accordion-button collapsed p-2"
 														type="button" data-bs-toggle="collapse"
-														data-bs-target="#collapse" aria-expanded="false"
+														data-bs-target="#collapse${i}" aria-expanded="false"
 														aria-controls="collapse">
-														<div class="col-lg-1">작성팀원</div>
-														<div class="col-lg-5">세부업무제목</div>
-														<div class="col-lg-2">등록일자</div>
-														<div class="col-lg-1">완료일자</div>
+														<div class="col-lg-1">${subwork_list.u_name }</div>
+														<div class="col-lg-5">${subwork_list.ph_subwork_title }</div>
+														<div class="col-lg-2">${subwork_list.ph_subwork_start_date }</div>
+														<div class="col-lg-1">${subwork_list.ph_subwork_complete_date }</div>
 													</button>
 												</div>
-												<div id="collapse" class="accordion-collapse collapse"
-													aria-labelledby="heading1"
+												
+												<div id="collapse${i}" class="accordion-collapse collapse"
+													aria-labelledby="heading${i}"
 													data-bs-parent="#accordionExample">
 													<div class="accordion-body">
 														<div style="font-size: 1.0rem; font-weight: bold;">세부
 															업무 설명</div>
 														<hr>
 														<div>
-															해당 내용은 세부 업무에 대하여 설명하는 란입니다.<br> 세부 업무에 대하여 추가 정보가
-															있으면 적으셔도 좋습니다.
+															${subwork_list.ph_subwork_detail}
 														</div>
 
 														<hr>
@@ -195,13 +187,18 @@ String cp = request.getContextPath();
 															코멘트</div>
 
 														<hr>
+														
+														<c:forEach var="subwork_teamComment" items="${subwork_teamComment }">
+															
+															<c:if test="${subwork_list.swlistcode == subwork_teamComment.scsbcode}">
+																<div class="mb-3">
+																	<div class="fw-bolder">${subwork_teamComment.tc_u_name }</div>
+																	<div>${subwork_teamComment.ph_s_comment_content }</div>
+																</div>
+															</c:if>
 
-														<div>
-															<div class="fw-bolder">팀원1</div>
-															<div>세부 내용이 빠져있습니다. 수정해주세요.</div>
-														</div>
-
-
+														</c:forEach>
+														
 													</div>
 												</div>
 											</div>
@@ -212,94 +209,28 @@ String cp = request.getContextPath();
 												<div class="bi bi-check-lg"></div>
 											</button>
 										</div>
-
 										<div class="ps-1">
 											<button class="p-2 btn btn-danger">
 												<div class="bi bi-trash3-fill"></div>
 											</button>
 										</div>
-
 									</div>
-
-
-									<div class="d-flex justify-content-between mb-3">
-
-										<div class="accordion" style="width: 95%;"
-											id="accordionExample2">
-
-											<div class="accordion-item">
-												<div class="accordion-header" id="heading2">
-													<button class="accordion-button collapsed p-2"
-														type="button" data-bs-toggle="collapse"
-														data-bs-target="#collapse2" aria-expanded="false"
-														aria-controls="collapse2">
-														<div class="col-lg-1">팀원2</div>
-														<div class="col-lg-5">프로젝트 주제 아이디어 예시</div>
-														<div class="col-lg-2">2022-11-25</div>
-														<div class="col-lg-1">2022-11-28</div>
-													</button>
-												</div>
-
-												<div id="collapse2" class="accordion-collapse collapse"
-													aria-labelledby="heading2"
-													data-bs-parent="#accordionExample2">
-													<div class="accordion-body">
-														<div style="font-size: 1.0rem; font-weight: bold;">세부
-															업무 설명</div>
-														<hr>
-														<div>
-															해당 내용은 세부 업무에 대하여 설명하는 란입니다.<br> 세부 업무에 대하여 추가 정보가
-															있으면 적으셔도 좋습니다.
-														</div>
-
-														<hr>
-
-														<div>
-															<textarea class="form-control" rows="3"></textarea>
-															<div class="text-end mt-2">
-																<button type="button" class="btn btn-primary"
-																	onClick="javascript:addReply();">코멘트 작성</button>
-															</div>
-														</div>
-
-														<div style="font-size: 1.0rem; font-weight: bold;">팀원
-															코멘트</div>
-
-														<hr>
-
-														<div>
-															<div class="fw-bolder">팀원1</div>
-															<div>세부 내용이 빠져있습니다. 수정해주세요.</div>
-														</div>
-
-
-
-													</div>
-												</div>
-
-
-											</div>
-										</div>
-
-										<div class="ps-1">
-											<button class="p-2 btn btn-success">
-												<div class="bi bi-check-lg"></div>
-											</button>
-										</div>
-
-										<div class="ps-1">
-											<button class="p-2 btn btn-danger">
-												<div class="bi bi-trash3-fill"></div>
-											</button>
-										</div>
-
-									</div>
+									
+									</c:forEach>
+									
+									
+									
+									
 
 									<!-- 구분선 -->
-									<hr class="p-2" style="color: #333;">
+									<hr class="p-2">
 
 									<!-- 파일 업로드 -->
 									<div class="mb-3" style="font-size: 1.0rem; font-weight: bold;">파일 업로드</div>
+
+
+
+
 
 
 
@@ -339,9 +270,7 @@ String cp = request.getContextPath();
 									</div>
 
 
-
-									<!-- 구분선 -->
-									<hr style="color: #333;">
+									<hr>
 
 								</div>
 							</div>
@@ -397,14 +326,9 @@ String cp = request.getContextPath();
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
-	
-
 
 </body>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script>
 
-</script>
 
 </html>

@@ -8,8 +8,16 @@ public class InnerProjectTeamManageDTO
 	
 	private String team_member_count;
 	
+	private String team_member_now_count;
 	
-	
+	public String getTeam_member_now_count()
+	{
+		return team_member_now_count;
+	}
+	public void setTeam_member_now_count(String team_member_now_count)
+	{
+		this.team_member_now_count = team_member_now_count;
+	}
 	public String getP_name()
 	{
 		return p_name;

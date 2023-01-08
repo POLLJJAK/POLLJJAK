@@ -2,12 +2,10 @@
 
 
 /* 내 프로젝트 홈  목록 */
-
 .form-control
 {
 	align-content: center;
 }
-
 
 /* 진행 프로젝트 목록 박스 */
 .projectHome-list-now .pj-box {
@@ -19,6 +17,7 @@
 	color: #37417C;
 	cursor: pointer;
 	font-size: 14px;
+	transition: all 0.4s ease-in-out;
 }
 
 .pj-box-title {
@@ -31,25 +30,26 @@
 }
 
 .projectHome-list-now .pj-box:hover {
-  background: #60A7F7;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   color: #fff;
+  background: #60A7F7;
+  box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
 }
  
 /* 완료 프로젝트 목록 박스 */
 .projectHome-list-complete .pj-box {
 	background: #F3F4F6;
-	transition: 0.3s;
-	transition: ease-in-out 0.4s;
 	border-radius: 5px;
 	color: #37417C;
 	font-size: 14px;
+	transition: 0.3s;
+	transition: all 0.4s ease-in-out;
+	
 }
 
 .projectHome-list-complete .pj-box:hover {
-	background: #37417C;
-	color: #fff;
-  	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.4);
+	box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.3);
+	transform: translateY(-10px);
 }
 
 .no-pj-title {
@@ -61,12 +61,17 @@
 }
 
 
+/* 팀장 라벨 */
+.leaderLabel {
+	background: #37417C;
+	border: 1px solid #F3F4F6;
+	border-radius: 20px;
+	color: #F3F4F6;
+}
 
 
 
-
-
-/* 내 프로젝트 홈 (주요 업무, 세부업무 박스) */
+/* 내 프로젝트 홈 상단 타이틀 틀 */
 
 .projectView {
 	border: 1px solid #F3F4F6;
@@ -79,12 +84,12 @@
 
 
 .subWork-box {
-	border: 1px solid gray;
-	border-radius: 6px;
+	border: 1px solid #F3F4F6;
+	border-radius: 5px;
 }
 .subWork-todoBox {
 	border: 1px solid gray;
-	border-radius: 6px;
+	border-radius: 5px;
 	background: #BDBDBD;
 }
 
@@ -275,19 +280,25 @@
 
  	
 
-/* 내 프로젝트 홈 - 세부 업무 (파일박스, 팀아이콘) */
+/* 내 프로젝트 홈 - 세부 업무 (파일박스) */
 .filelistBox {
-	border: 1px solid gray;
-	border-radius: 8px;
 	padding: 3px;
 	font-size: 14px;
-	background: #EEEEEE;
+	background: #F3F4F6;
+	
+	border: 1px solid #F3F4F6;
+	border-radius: 5px;
+	color: #37417C;
+	cursor: pointer;
+	
+	
+	
 }
 
-
+/* 팀 원 아이콘 */
 .teamIcon {
 	width: 55px;
-	font-size: 10px;
+	font-size: 12px;
 	margin-left: 5px;
 	padding: 2px;
 	border-radius: 20px;
