@@ -12,14 +12,13 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
+
 <!-- 내 프로젝트 홈 css 파일 -->
-<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 
 <body>
-	<!-- 올라가기 스크롤 버튼 -->
-	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center">
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
 		<i class="bi bi-arrow-up-short"></i>
 	</a>
 
@@ -117,23 +116,40 @@
 									<div class="flex-fill pj-box">
 										<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 											<div class="d-flex justify-content-between">
-												<div style="font-size: 1.0rem; font-weight: bold;">${pj_mainwork_list.ph_mainwork_title }</div>
-												<div class="mb-2" style="font-size: 1.0rem;">${pj_mainwork_list.pj_start_date } ~ ${pj_mainwork_list.pj_end_date }</div>
+												<div class="pj-box-title">${pj_mainwork_list.ph_mainwork_title }</div>
+												<div class="mb-2 pj-box-date">${pj_mainwork_list.pj_start_date } ~ ${pj_mainwork_list.pj_end_date }</div>
 											</div>
+											
 											<div class="d-flex">
-												<div class="align-self-center pt-1 pb-1 pr-1" style="font-size: 0.8rem; font-weight: bold;">진척도 ${pj_mainwork_list.mainwork_percent }%</div>
-												<div class="progress align-self-center" style="width: 75%; height: 10px;">
-													<div class="progress-bar" role="progressbar" style="width: ${pj_mainwork_list.mainwork_percent }%; background-color: #81EC81" aria-valuenow="${pj_mainwork_list.mainwork_percent }" aria-valuemin="0" aria-valuemax="100"></div>
+												<div class="align-self-center pt-1 pb-1 pr-1" style="font-size: 14px; font-weight: bold;">진척도 ${pj_mainwork_list.mainwork_percent }%</div>
+												
+													<c:choose>
+														<c:when test="${pj_mainwork_list.mainwork_percent == 100 }">
+															<div class="progress align-self-center" style="width: 65%; height: 10px; margin-left: 5px;">
+																<div class="progress-bar" role="progressbar" style="width: ${pj_mainwork_list.mainwork_percent }%; background-color: #0094F8" aria-valuenow="${pj_mainwork_list.mainwork_percent }" aria-valuemin="0" aria-valuemax="100"></div>
+															</div>
+														</c:when>
+														<c:otherwise>
+															<div class="progress align-self-center" style="width: 65%; height: 10px; margin-left: 5px;">
+																<div class="progress-bar" role="progressbar" style="width: ${pj_mainwork_list.mainwork_percent }%; background-color: black" aria-valuenow="${pj_mainwork_list.mainwork_percent }" aria-valuemin="0" aria-valuemax="100"></div>
+															</div>	
+														</c:otherwise>
+													</c:choose>
+												
+												<div class="d-flex ms-auto">
+													<c:forEach var="member_list" items="${member_list }">
+														<c:if test="${pj_mainwork_list.ph_mainwork_title == member_list.ph_mainwork_title }">
+														
+															<div class="align-self-center text-center">
+																<div class="teamIcon">${member_list.u_name }</div>
+															</div>
+															
+														</c:if>
+													</c:forEach>
 												</div>
 												
-												<c:forEach var="pj_mainwork_list_member" items="${pj_mainwork_list_member }">
-													<div class="d-flex ms-auto align-self-center">
-														<div class="teamIcon">${pj_mainwork_list_member.u_name }</div>
-													</div>
-												</c:forEach>
-												
-												
 											</div>
+											
 										</div>
 									</div>
 								</div>

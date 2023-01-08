@@ -16,7 +16,10 @@
 <link rel="stylesheet" href="<%=cp %>/resources/css/Main-Lounge.css" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
 <style>
-    
+    .form-control
+    {
+    	align-content: center;
+    }
 	.info {
 	    padding: 10px;
 	    border-bottom: 1px solid #999;

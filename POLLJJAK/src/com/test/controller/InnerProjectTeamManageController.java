@@ -30,7 +30,7 @@ public class InnerProjectTeamManageController
 		model.addAttribute("pj_team_info", dao.pj_team_info(u_p_apply_code));
 		model.addAttribute("pj_team_count", dao.pj_team_count(u_p_apply_code));
 		
-		result = "/Inner-Project-home-teamManage.jsp";
+		result = "WEB-INF/view/Inner-Project-home-teamManage.jsp";
 		
 		return result;
 	}

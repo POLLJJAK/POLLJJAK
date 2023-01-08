@@ -1,24 +1,34 @@
 @charset "UTF-8";
 
-/* 내 프로젝트 홈 (진행 프로젝트, 완료 프로젝트 목록)*/
-    .form-control
-    {
-    	align-content: center;
-    }
+
+/* 내 프로젝트 홈  목록 */
+
+.form-control
+{
+	align-content: center;
+}
+
+
+/* 진행 프로젝트 목록 박스 */
 .projectHome-list-now .pj-box {
 	background: #fff;
 	transition: 0.3s;
 	transition: ease-in-out 0.3s;
-	border: 1px solid gray;
+	border: 1px solid #F3F4F6;
 	border-radius: 5px;
+	color: #37417C;
+	cursor: pointer;
+	font-size: 14px;
 }
 
-.no-pj-title {
-	font-size: 1.3rem;
-	font-weight: bold;	
-	color: #E8E8E8;
+.pj-box-title {
+	font-size: 16px;
+	font-weight: bold;
 }
 
+.pj-box-date {
+	font-size: 14px;
+}
 
 .projectHome-list-now .pj-box:hover {
   background: #60A7F7;
@@ -26,28 +36,45 @@
   color: #fff;
 }
  
+/* 완료 프로젝트 목록 박스 */
 .projectHome-list-complete .pj-box {
-	background: #D8D8D8;
+	background: #F3F4F6;
 	transition: 0.3s;
 	transition: ease-in-out 0.4s;
 	border-radius: 5px;
-	color: #28313D;
+	color: #37417C;
+	font-size: 14px;
 }
 
 .projectHome-list-complete .pj-box:hover {
-	background: #8E8E8E;
-  	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+	background: #37417C;
+	color: #fff;
+  	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.4);
+}
+
+.no-pj-title {
+	font-size: 1.3rem;
+	font-weight: bold;	
+	color: #E8E8E8;
+	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 
-/* 내 프로젝트 홈 (프로젝트 목록 박스) */
+
+
+
+
+
+/* 내 프로젝트 홈 (주요 업무, 세부업무 박스) */
+
 .projectView {
-	border: 1px solid gray;
+	border: 1px solid #F3F4F6;
 	border-radius: 6px;
 }
 
 .projectStatus {
-	background: #EEEEEE;
+	background: #F3F4F6;
 }
 
 
@@ -65,9 +92,8 @@
 .pj-title {
 	font-size: 14px;
 	font-weight: bold;
-	background: #BDBDBD;
+	background: #C8CDD8;
 }
-
 
 .pj-date {
 	font-size: 12px;
@@ -258,13 +284,18 @@
 	background: #EEEEEE;
 }
 
+
 .teamIcon {
-	font-size: 0.8rem;
+	width: 55px;
+	font-size: 10px;
 	margin-left: 5px;
 	padding: 2px;
-	border: 1px solid gray;
-	border-radius: 5px;
-	background: #EEEEEE;
+	border-radius: 20px;
+	background: #F3F4F6;
+	color: #37417C;
+}
+.teamIcon:hover {
+	color: #0094F8;
 }
 
 

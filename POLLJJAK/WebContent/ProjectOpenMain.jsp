@@ -9,13 +9,13 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+	<!-- 해당 페이지 관련 css 및 js import 영역 -->
+	<link href="<%=cp %>/resources/css/ProjectOpenMain.css" rel="stylesheet">
+	<script src="<%=cp %>/resources/js/ProjectOpenMain.js"></script>
 
 	<!-- head import (css imported)-->
 	<c:import url="./common/Head.jsp" />
 	
-	<!-- 해당 페이지 관련 css 및 js import 영역 -->
-	<link href="<%=cp %>/resources/css/ProjectOpenMain.css" rel="stylesheet">
-	<script src="<%=cp %>/resources/js/ProjectOpenMain.js"></script>
 
 	<script type="text/javascript">
 		document.getElementById("myProjectHome").className = "nav-link scrollto active";
