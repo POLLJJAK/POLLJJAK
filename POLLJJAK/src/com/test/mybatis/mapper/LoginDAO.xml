@@ -6,8 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.test.mybatis.ILoginDAO">
 	
 	<select id="login" resultType="com.test.dto.UserDTO">
-		SELECT U_ID, U_PW
+		SELECT U_ID, U_NAME
 		FROM U
+		WHERE U_ID = #{u_id}
+  		  AND U_PW = CRYPTPACK.ENCRYPT(#{u_pw}, #{u_pw})
 	</select>
 
 </mapper>

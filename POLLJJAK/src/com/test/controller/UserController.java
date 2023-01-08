@@ -43,7 +43,7 @@ public class UserController
 	
 	// 회원가입(회원 정보 추가)
 	@RequestMapping(value = "/registration.action", method = RequestMethod.POST)
-	public String studentInsert(UserDTO user)
+	public String userInsert(UserDTO user)
 	{
 		String result = null;
 		
@@ -58,7 +58,7 @@ public class UserController
 	}
 	
 	@RequestMapping(value = "/userupdateform.action", method = RequestMethod.GET)
-	public String studentUpdateFrom(ModelMap model, UserDTO user)
+	public String userUpdateForm(ModelMap model, UserDTO user)
 	{
 		String result = null;
 		
