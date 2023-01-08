@@ -17,10 +17,16 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
 
 
 <style>
+	.form-control
+    {
+    	align-content: center;
+    }
+    
 	title{width: 2000px; text-align: left;}
 </style>
 <body>
