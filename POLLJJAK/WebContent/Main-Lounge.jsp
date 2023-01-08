@@ -96,6 +96,7 @@
 									</c:forEach>
 									
 								</div>
+								
 						<div class="board_page">
 							<ul class="pagination justify-content-center">
 							    <li class="page-item">

@@ -1,6 +1,7 @@
 package com.test.controller;
 
-import java.util.HashMap;
+
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -36,19 +37,12 @@ public class IInnerProjectMainWorkController
 		
 		IInnerProjectMainWorkDAO dao = sqlSession.getMapper(IInnerProjectMainWorkDAO.class);
 		
-		
-		
-		
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("u_p_apply_code", u_p_apply_code);
-		map.put("ph_mainwork_code", "PHMW0000001");
-
+		List<Map<String, String>> member_list = dao.member_list(u_p_apply_code);
 		
 		model.addAttribute("pj_mainwork_list", dao.pj_mainwork_list(u_p_apply_code));
-		model.addAttribute("pj_mainwork_list_member", dao.pj_mainwork_list_member(map));
+		model.addAttribute("member_list", member_list);
 		
-		result = "/Inner-Project-home-mainWork.jsp";
+		result = "WEB-INF/view/Inner-Project-home-mainWork.jsp";
 		
 		return result;
 	}

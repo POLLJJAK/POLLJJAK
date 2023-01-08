@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-    <title>플젝폴짝</title>
+    <title>플젝폴짝 : 개발자 프로젝트 모집 관리 플랫폼</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -34,7 +34,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  
+   
      <!-- Calendar -->
      <!-- calendar.css 보다 윗 줄에 작성되어야 함 -->
      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>

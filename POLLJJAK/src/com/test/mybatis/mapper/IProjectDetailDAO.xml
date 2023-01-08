@@ -8,10 +8,10 @@
 	<!-- 완료 프로젝트 개수 조회  레벨산정-->
 	<select id="getProjectDetail" resultType="com.test.dto.ProjectDetailDTO">
 		SELECT  P.P_NAME, 
-				P.P_START_DATE, 
-				P.P_END_DATE, 
-				P.PJ_START_DATE, 
-				P.PJ_END_DATE, 
+				TO_CHAR(P.P_START_DATE, 'YYYY-MM-DD') AS P_START_DATE, 
+				TO_CHAR(P.P_END_DATE, 'YYYY-MM-DD') AS P_END_DATE, 
+				TO_CHAR(P.PJ_START_DATE, 'YYYY-MM-DD') AS PJ_START_DATE, 
+				TO_CHAR(P.PJ_END_DATE, 'YYYY-MM-DD') AS  PJ_END_DATE,
 				P.P_INFO_CONTENT,
 				P.P_INFO_REFO, 
 				P.P_UPDATE_DATE, 
@@ -37,6 +37,7 @@
 		  AND P.SUBJECT_PART_CODE = SP.SUBJECT_PART_CODE
 	</select> 
 	
+	<!-- 프로젝트 지원 분야 및 정원 가져오기  -->
 	<select id="getProjectPosition" resultType="com.test.dto.ProjectDetailDTO">
 		SELECT PPP.POSITION_PART,
 			   COUNT(*) AS P_APPLY_COUNT,
@@ -51,36 +52,53 @@
 		GROUP BY POSITION_PART, P_POSITION_COUNT
 	</select> 
 	
+	<!-- 프로젝트 지원자 가져오기(일반유저는 레디된 상태만 볼 수 있어야 함) -->
 	<select id="getProjectApplicant" resultType="com.test.dto.ProjectDetailDTO">
-		SELECT  P.P_NAME, 
-				P.P_START_DATE, 
-				P.P_END_DATE, 
-				P.PJ_START_DATE, 
-				P.PJ_END_DATE, 
-				P.P_INFO_CONTENT,
-				P.P_INFO_REFO, 
-				P.P_UPDATE_DATE, 
-				U.U_NICKNAME,
-				RP.REGION_PART,
-				PP.PLATFORM_PART,
-				SP.SKILL_PART,
-				DP.DEPARTMENT_PART,
-				SP.SUBJECT_PART
-		FROM P P,
-			 U U,
-			 REGION_PART RP,
-			 PLATFORM_PART PP,
-			 SKILL_PART SP,
-			 DEPARTMENT_PART DP,
-			 SUBJECT_PART SP
-		WHERE P.P_CODE = #{p_code}
-		  AND P.USER_CODE = U.USER_CODE
-		  AND P.REGION_PART_CODE = RP.REGION_PART_CODE
-		  AND P.PLATFORM_PART_CODE = PP.PLATFORM_PART_CODE
-		  AND P.SKILL_PART_CODE = SP.SKILL_PART_CODE
-		  AND P.DEPARTMENT_PART_CODE = DP.DEPARTMENT_PART_CODE
-		  AND P.SUBJECT_PART_CODE = SP.SUBJECT_PART_CODE
+		SELECT PPP.POSITION_PART, 
+			   U.U_NICKNAME, 
+			   TO_CHAR(UPA.U_P_APPLY_DATE, 'YYYY-MM-DD') AS U_P_APPLY_DATE, 
+			   UPA. U_P_APPLY_REASON, 
+			   P.P_CODE
+		FROM U_P_APPLY UPA, 
+		     U U, 
+		     P P, 
+		     P_POSITION PP, 
+		     POSITION_PART PPP
+	   WHERE P.P_CODE = PP.P_CODE
+      	AND PP.POSITION_PART_CODE = PPP.POSITION_PART_CODE
+      	AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
+      	AND UPA.USER_CODE = U.USER_CODE
+      	AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
+      	AND P.P_CODE = #{p_code}
+	  ORDER BY U_P_APPLY_DATE
 	</select> 
+	
+	
+	<!-- 프로젝트 리더 정보 가져오기 -->
+	<select id="getProjectLeader" resultType="com.test.dto.ProjectDetailDTO">
+		SELECT  DISTINCT U.U_NICKNAME, 
+			    U.U_PORTFOLIO_URL, 
+				U.U_INTRO, 
+				USP.U_SKILL_PART, 
+				SP.SKILL_PART
+		FROM USER_MAIN UM, 
+			 U U, 
+			 P P, 
+			 U_SKILL US, 
+			 U_SKILL_PART USP, 
+			 SKILL_PART SP
+		WHERE U.USER_CODE = P.USER_CODE
+      	  AND P.P_CODE = #{p_code}
+      	  AND U.USER_CODE = US.USER_CODE
+      	  AND US.SKILL_PART_CODE = SP.SKILL_PART_CODE
+      	  AND US.U_SKILL_PART_CODE = USP.U_SKILL_PART_CODE
+      	ORDER BY 4
+	</select> 
+	
+	
+	
+	
+	
 	
 	
 	
