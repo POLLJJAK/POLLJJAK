@@ -35,14 +35,16 @@ public class ProjectDetailController
 	
 		model.addAttribute("pInfo", dao.getProjectDetail(p_code));
 		model.addAttribute("pPositionInfo", dao.getProjectPosition(p_code));
-		//model.addAttribute("pApplicantInfo", dao.getProjectApplicant(p_code));
+		model.addAttribute("pLeaderInfo", dao.getProjectLeader(p_code));
+		model.addAttribute("pApplicantInfo", dao.getProjectApplicant(p_code));
 	
-		ProjectDetailDTO dto = new ProjectDetailDTO();
-		
 		result = "/ProjectDetail.jsp";
 	
 		return result;
 	}
+	
+	
+	
 	 
 	
 	

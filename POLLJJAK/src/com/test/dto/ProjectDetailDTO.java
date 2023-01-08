@@ -21,11 +21,36 @@ public class ProjectDetailDTO {
 	
 	
 	// 지원자 및 확정멤버, 지원분야 정보
-	private String u_nickname;
+	private String u_nickname;	//리더, 지원자
 	private String u_p_apply_date;
 	private String u_p_apply_reason;
 	private String p_position_count;
 	private String position_part;
+	
+	// 프로젝트 리더 추가 정보 
+	private String u_portfolio_url;
+	private String u_skill_part;
+	private String u_intro;
+	
+	
+	public String getU_intro() {
+		return u_intro;
+	}
+	public void setU_intro(String u_intro) {
+		this.u_intro = u_intro;
+	}
+	public String getU_portfolio_url() {
+		return u_portfolio_url;
+	}
+	public void setU_portfolio_url(String u_portfolio_url) {
+		this.u_portfolio_url = u_portfolio_url;
+	}
+	public String getU_skill_part() {
+		return u_skill_part;
+	}
+	public void setU_skill_part(String u_skill_part) {
+		this.u_skill_part = u_skill_part;
+	}
 	
 	
 	public String getP_apply_count() {

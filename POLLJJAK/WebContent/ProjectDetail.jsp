@@ -111,7 +111,7 @@
             <img src="assets/img/UserIcon/User-Icon.png" alt=""
                   style="width: 60px; height: 60px; padding: 10px;"> <br>
             
-            은영공주<br>
+            ${pLeaderInfo[0].u_nickname}<br>
             <p style="color: #007aff;">★★★★★</p>
             <button class="btn-hover color-9">프로필</button>
             <br><br><hr>
@@ -154,19 +154,24 @@
             
             <div class="project-allmember">
             <h5><strong>확정멤버</strong></h5>
-            	<div class="member" id="member1" style="border: 3px solid #25aae1;">
-            		<table>
+            	<c:forEach var="applicantInfo" items="${pApplicantInfo }" varStatus="status" begin = "1">
+            	<div class="member" id="member${status.index}" style="border: 3px solid #25aae1;">
+					<table >
             			<tr>
-            			<th>모집분야1</th>
-            			<th style="float: right;">
-            			<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""
-                  		style="float: right; width: 15px; height: 15px; "></a></th>
+            			<th colspan = "2">${applicantInfo.position_part}</th>
             			</tr>
+            			<th >${applicantInfo.u_nickname}</th>
+            			<!-- <th style="float: right;"> -->
+            			<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""style="float: right; width: 15px; height: 15px; "></a></th>
             			<tr>
-            			<td colspan="2">서른아잉교</td>
+            			<%-- <td colspan = "2">${applicantInfo.u_nickname}</td> --%>
+            			<td colspan = "2">${applicantInfo.u_p_apply_reason}</td>
             			</tr>
+            			<td>${applicantInfo.u_p_apply_date}</td>
             		</table>
             	</div>
+				</c:forEach>
+            	<!-- 
             	<div class="member" style="border: 3px solid gray;">
             		<table>
             			<tr>
@@ -179,27 +184,17 @@
             			<td colspan="2">도딤도딤빵</td>
             		</table>
             	</div>
-            	<div class="member" style="border: 3px solid #25aae1;">
-            		<table>
-            			<tr>
-            			<th>모집분야1</th>
-            			<th style="float: right;">
-            			<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""
-                  		style="float: right; width: 15px; height: 15px; "></a></th>
-            			</tr>
-            			<tr>
-            			<td colspan="2">혼자사는박또기</td>
-            		</table>
-            	</div>
-            </div><br><br><br><br>
+            	-->
+            </div>
+            <br>
             <hr>
             <!-- 지원사유 -->
-            <div class="apply-reason">
+            <!-- <div class="apply-reason">
             	<div id="reason1">
             	<p>지원사유1번</p>
             	</div>
             </div>
-            <hr>
+            <hr> -->
             
             <div class="project-info">
             	<div class="part">
@@ -369,15 +364,24 @@
             <div class="portfolio-info">
                 <h3>Project Leader</h3>
               <ul>
-                <li><strong>은영공주</strong><br>
+                <li><strong>  ${pLeaderInfo[0].u_nickname}</strong><br>
                 	<p style="color: #007aff;">★★★★★</p>
                 </li>
                 <hr>
-                <li><strong>프로젝트 진행기간</strong><br>
-                	2022.11.11 ~ 2023.01.18</li>
+                <li><strong> 포트폴리오 URL</strong><br>
+                	${pLeaderInfo[0].u_portfolio_url}</li>
                 <hr>
-                <li><strong>리더 주요 기술 </strong>: JAVA</li>
-                <li>부가기술 : Spring, Linux, AWS</li>
+                <li><strong> 자기소개</strong><br>
+                	${pLeaderInfo[0].u_intro}</li>
+                <hr>
+                <li><strong> 리더 ${pLeaderInfo[0].u_skill_part} 기술</strong><br>
+                	[ ${pLeaderInfo[0].skill_part} ]</li>
+                <hr>
+                <li><strong> 리더 ${pLeaderInfo[1].u_skill_part} 기술</strong><br>
+                	<c:forEach var="leaderInfo" items="${pLeaderInfo}" varStatus="status" begin="1">
+                		[ ${leaderInfo.skill_part} ]
+					</c:forEach></li>
+                <hr>
               </ul>
             </div>
             <!-- <div class="portfolio-description">

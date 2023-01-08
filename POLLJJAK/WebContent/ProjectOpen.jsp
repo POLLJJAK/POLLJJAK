@@ -44,7 +44,7 @@
 		</div>
 				
 		<div class="container">
-			<form name="newProduct"  action="papply.action" method="post" enctype="multipart/form-data" onSubmit="return validation()">
+			<form name="newProduct"  action="createproject.action" method="post" enctype="multipart/form-data" onSubmit="/*return validation()*/">
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">프로젝트 명<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
