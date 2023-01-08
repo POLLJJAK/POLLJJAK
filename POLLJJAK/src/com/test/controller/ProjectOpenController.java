@@ -4,6 +4,8 @@
 
 package com.test.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,16 +40,36 @@ public class ProjectOpenController
 	};
 	
 	// 프로젝트 등록
-	@RequestMapping(value="/papply.action", method=RequestMethod.POST)
-	public String projectCompletelist(ProjectOpenDTO dto) 
+	@RequestMapping(value="/createproject.action", method=RequestMethod.POST)
+	public String createProject(ProjectOpenDTO dto, HttpServletRequest request) 
 	{
+		String projectId = request.getParameter("projectId");
+		
+		System.out.println("sds" + projectId);
+		/*
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		request.getParameter(name);
+		*/
+		
 		String result = null;
 		
-		IProjectOpenDAO dao = sqlSession.getMapper(IProjectOpenDAO.class);
+		///IProjectOpenDAO dao = sqlSession.getMapper(IProjectOpenDAO.class);
 		
-		dao.openProject(dto);
+		//dao.openProject(dto);
 		
-		result ="/ProjectOpen.jsp?";
+		//result ="/ProjectOpen.jsp?";
 		
 		return result;
 	};
