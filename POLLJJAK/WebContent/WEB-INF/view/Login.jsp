@@ -289,9 +289,9 @@
 					<div class="moveTo">
 						<a href="main.action" >홈으로</a>
 						<a> | </a>
-						<a href="<%=cp %>/ForgetId.jsp" >아이디 찾기</a>
+						<a href="forgetidform.action" >아이디 찾기</a>
 						<a> | </a>
-						<a href="<%=cp %>/ForgetPw.jsp" >비밀번호 찾기</a>
+						<a href="forgetpwform.action" >비밀번호 찾기</a>
 					</div>
 				</div>
 				<div class="sosial">

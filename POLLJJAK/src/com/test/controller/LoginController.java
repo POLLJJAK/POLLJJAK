@@ -138,5 +138,39 @@ public class LoginController
 		return result;
 	}
 	
+	// 아이디 찾기 폼으로
+	@RequestMapping(value = "/forgetidform.action", method = RequestMethod.GET)
+	public String ForgetIdForm()
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/ForgetId.jsp";
+		
+		return result;
+	}
+	
+	// 아이디 찾기 폼으로
+	@RequestMapping(value = "/forgetid.action", method = RequestMethod.GET)
+	public String ForgetId()
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/ForgetId.jsp";
+		
+		return result;
+	}
+	
+	// 비번 찾기 폼으로
+	@RequestMapping(value = "/forgetpwform.action", method = RequestMethod.GET)
+	public String ForgetPwForm()
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/ForgetPw.jsp";
+		
+		return result;
+	}
+	
+	
 	
 }
