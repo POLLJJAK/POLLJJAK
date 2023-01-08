@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -26,7 +25,7 @@ String cp = request.getContextPath();
 
 	<c:import url="./common/Nav.jsp" />
 
-	<main id="main">
+	<main id="main" class="main-container">
 
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section>
@@ -70,13 +69,13 @@ String cp = request.getContextPath();
 						</div>
 						
 						
-							<!-- 프로젝트 홈 메뉴 -->
+						<!-- 프로젝트 홈 메뉴 -->
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
 							   <ul class="justify-content-center">
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>

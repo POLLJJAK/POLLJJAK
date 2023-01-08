@@ -15,7 +15,13 @@
 <c:import url="./common/Head.jsp" />
 
 <!-- 내 프로젝트 홈 css 파일 -->
-<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">t">
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
+
+
+<!-- 게시판 썸머노트 lite 버전  -->
+<script src="<%=cp %>/resources/js/summernote-lite.js"></script>
+<script src="<%=cp %>/resources/js/summernote-ko-KR.js"></script>
+<link href="<%=cp %>/resources/css/summernote-lite.css" rel="stylesheet">
 
 <body>
 
@@ -26,7 +32,7 @@
 
 	<c:import url="./common/Nav.jsp" />
 
-	<main id="main">
+	<main id="main" class="main-container">
 
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section>
@@ -69,19 +75,19 @@
 							</div>
 						</div>
 						
+						
 						<!-- 프로젝트 홈 메뉴 -->
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
 							   <ul class="justify-content-center">
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
-						
 						
 						<div class="container">
 						   <hr>
@@ -94,8 +100,6 @@
 						</div>
 						
 						
-						
-
 						
 						
 	
@@ -191,10 +195,6 @@
 	<c:import url="./common/Footer.jsp" />
 
 </body>
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
-
 
 
 

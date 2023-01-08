@@ -24,7 +24,7 @@
 
 	<c:import url="./common/Nav.jsp" />
 
-	<main id="main">
+	<main id="main" class="main-container">
 
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section>
@@ -60,18 +60,28 @@
 									</div>
 									
 									<div class="col-md-0 col-lg-2"></div>
-									
+
 									<!-- 중단요청 버튼, 팀원평가 버튼 -->
 									<div class="m-0 col-md-12 col-lg-2">
 										<div class="row justify-content-center">
-											<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#stopProject">
-												<button class="stopBtn mb-2">중단요청</button>
-											</div>
-											<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#teamEvaluation">
-												<button class="scoreBtn mb-2">
-													팀원평가
-												</button>
-											</div>
+											<c:choose>
+												<c:when test="${pj_title_info.pj_code == upa_p_code.p_code}">
+												</c:when>
+												<c:otherwise>
+													<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject_leader">
+														<button class="L-stopBtn mb-2">중단하기</button>
+													</div>
+													
+													<div class="row col-md-12 col-lg-12">
+														<div class="col-lg-6 ps-0 pe-0" data-bs-toggle="modal" data-bs-target="#teamEvaluation">
+															<button class="L-scoreBtn mb-2">팀원평가</button>
+														</div>
+														<div class="col-lg-6 ps-0 pe-0">
+															<button type="button" class="projectEndBtn mb-2">마감처리</button>
+														</div>
+													</div>
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 									
@@ -85,7 +95,7 @@
 							   <ul class="justify-content-center">
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
@@ -151,6 +161,16 @@
 									전체 팀원 : ${pj_team_count } / ${pj_team_now_count } 
 									</div>
 								</div>
+								
+								<c:choose>
+									<c:when test="${pj_title_info.pj_code == upa_p_code.p_code}">
+									</c:when>
+									<c:otherwise>
+										<div class="p-1 col-lg-2" data-bs-toggle="modal" data-bs-target="#inviteTeamBtn">
+											<button class="p-2 gradientBtn color-9" style="float: right;">팀원초대</button>
+										</div>
+									</c:otherwise>
+								</c:choose>
 
 							</div>
 						</div>
@@ -209,6 +229,127 @@
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
 		        	<button type="button" class="gradientBtn color-9">팀원평가 완료</button>
+		      	</div>
+		    </div>
+		 </div>
+	</div>
+	
+
+	<!-- 팀원 초대 모달창 -->
+	<div class="modal fade" id="inviteTeamBtn" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title">팀원 초대</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		      	<div class="modal-body row mb-3 justify-content-center">
+		      		<div class="mb-2">새로운 팀원을 초대하세요.</div>
+		      		
+					<div class="input-group mb-3">
+					  <label class="input-group-text" for="inputGroupSelect01">초대 직무</label>
+					  <select class="form-select" id="inputGroupSelect01">
+					    <option selected>직무</option>
+					    <option value="frond-end">백엔드 개발자</option>
+					    <option value="back-end">프론트 개발자</option>
+					    <option value="designer">UI/UX 디자이너</option>
+					  </select>
+					</div>
+					
+					<div class="input-group mb-3">
+					  <input type="text" class="form-control" aria-describedby="button-addon2" readonly value="링크 생성되면 값들어가는 곳">
+					  <button class="btn btn-outline-secondary" type="button" id="button-addon2">링크 생성</button>
+					</div>
+					
+		      	</div>
+		      	<div class="modal-footer justify-content-center">
+		        	<button type="button" class="gradientBtn color-9" id="submitStopBtn">링크 복사하기</button>
+		      	</div>
+		    </div>
+		 </div>
+	</div>
+
+
+	<!-- 팀원 방출 모달창 -->
+	<div class="modal fade" id="outTeamBtn" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title">팀원 방출</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		      	<div class="modal-body row mb-3 justify-content-center">
+		      		<div class="mb-2">팀원 방출 사유를 입력하세요.</div>
+		      		
+					<div class="input-group mb-3">
+					  <label class="input-group-text" for="inputGroupSelect01">방출 사유</label>
+					  <select class="form-select" id="inputGroupSelect01">
+					    <option selected>방출 사유</option>
+					    <option value="out-notparticipate">참여도 저조</option>
+					    <option value="out-bad">욕설 및 비방</option>
+					    <option value="out-notlogin">로그인 기록 없음</option>
+					    <option value="out-etc">기타</option>
+					  </select>
+					</div>
+
+					
+		      	</div>
+		      	<div class="modal-footer justify-content-center">
+		        	<button type="button" class="btn btn-danger" id="submitStopBtn">방출하기</button>
+		      	</div>
+		    </div>
+		 </div>
+	</div>
+
+
+
+	<!-- 팀원용 중단 요청 모달창 -->
+	<div class="modal fade" id="stopProject_member" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title">중단 요청</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		      	<div class="modal-body row mb-3 justify-content-center">
+		      		<div>중단하시겠습니까?</div>
+		      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다.</div>
+		      		
+		      		<div class="form-group">
+						<textarea class="form-control" rows="2" placeholder="중단 사유를 입력해주세요."></textarea>
+						<div style="float: right; font-size: 12px;">(최대 500자)</div>
+					</div>
+					
+		      	</div>
+		      	<div class="modal-footer justify-content-center">
+		        	<button type="button" class="btn btn-danger" id="submitStopBtn">중단하기</button>
+		        	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소하기</button>
+		      	</div>
+		    </div>
+		 </div>
+	</div>
+
+	<!-- 팀장용 중단 요청 모달창 -->
+	<div class="modal fade" id="stopProject_leader" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title">중단 요청</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		      	<div class="modal-body row mb-3 justify-content-center">
+		      		<div>중단하시겠습니까?</div>
+		      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다.</div>
+		      		
+		      		<div class="form-group">
+						<textarea class="form-control" rows="2" placeholder="중단 사유를 입력해주세요."></textarea>
+						<div style="float: right; font-size: 12px;">(최대 500자)</div>
+					</div>
+					
+		      	</div>
+		      	<div class="modal-footer justify-content-center">
+		        	<button type="button" class="btn btn-danger" id="submitStopBtn">중단하기</button>
+		        	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소하기</button>
 		      	</div>
 		    </div>
 		 </div>

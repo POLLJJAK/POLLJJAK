@@ -39,6 +39,7 @@
 		     AND I3.PH_SUBWORK_CODE = I4.PH_SUBWORK_CODE
 	    )), 0)*100, 0)
 	    AS ALL_PERCENT
+	    , P3.P_CODE AS PJ_CODE
 	    FROM U_P_APPLY P1, P_POSITION P2, P P3
         WHERE P1.U_P_APPLY_CODE = #{u_p_apply_code}
 		  AND P1.P_POSITION_CODE = P2.P_POSITION_CODE
@@ -186,6 +187,24 @@
 		  AND A1.P_POSITION_CODE = A2.P_POSITION_CODE
 		  AND A2.P_CODE = A3.P_CODE)
 	</select>
+	
+	<select id="upa_p_code" resultType="com.test.dto.InnerProjectTeamManageDTO">
+		 SELECT A2.P_CODE AS P_CODE
+		 FROM U_P_APPLY A1, P_POSITION A2, P_TEAM_CONFIRM A3, P_END A4
+		WHERE A1.U_P_APPLY_CODE = #{u_p_apply_code}
+		  AND A1.P_POSITION_CODE = A2.P_POSITION_CODE
+		  AND A2.P_CODE = A3.P_CODE 
+		  AND A3.P_TEAM_CONFIRM_CODE = A4.P_TEAM_CONFIRM_CODE
+	</select>
+	
+	
+	
+
+
+	
+	
+	
+	
 	
 	
 	

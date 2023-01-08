@@ -24,7 +24,7 @@
 
 	<c:import url="./common/Nav.jsp" />
 
-	<main id="main">
+	<main id="main" class="main-container">
 
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section>

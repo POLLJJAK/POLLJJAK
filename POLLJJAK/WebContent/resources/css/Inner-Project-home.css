@@ -7,6 +7,12 @@
 	align-content: center;
 }
 
+
+.main-container {
+	margin-top: 50px;
+	margin-bottom: 150px;
+}
+
 /* 진행 프로젝트 목록 박스 */
 .projectHome-list-now .pj-box {
 	background: #fff;
@@ -44,7 +50,7 @@
 	font-size: 14px;
 	transition: 0.3s;
 	transition: all 0.4s ease-in-out;
-	
+	cursor: pointer;
 }
 
 .projectHome-list-complete .pj-box:hover {
@@ -352,6 +358,8 @@
 
 
 
+
+
 /* 회의록 게시판 */
 .meet_wrap{
 	width: 75%;
@@ -450,6 +458,66 @@
 }
 
 
+
+
+
+/* 회의록 게시판 ( 새로운 디자인 ) */
+.meetBoard {
+	width: 75%;
+}
+
+.post-box {
+	border-top: 1px solid #ddd;
+}
+
+.post-line-box {
+	border-bottom: 1px solid #ddd;
+	margin-top: 20px;
+}
+
+.post-writer {
+	font-size: 14px;
+	margin-right: 10px;
+}
+
+.post-date {
+	font-size: 14px;
+}
+
+.post-title {
+	font-size: 16px;
+	color: #111827;
+}
+
+.post-subTitle {
+	font-size: 12px;
+	color: #0090F9;
+	background-color: #F0F6Fa;
+	padding: 3px 5px 3px 5px;
+	border: 0px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.post-updateDate {
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 회의록 포스트 파일 목록 박스*/
 
 .meet-member {
@@ -500,5 +568,13 @@
 	border-radius: 6px;
 	padding: 10px;
 }
+
+
+
+
+
+
+
+
 
 

@@ -16,11 +16,6 @@ String cp = request.getContextPath();
 <!-- 내 프로젝트 홈 css 파일 -->
 <link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
-
-  	<!-- 게시판 썸머노트 lite 버전(cdn아님)  -->
-	<script src="assets/js/summernote-lite.js"></script>
-  	<script src="assets/js/summernote-ko-KR.js"></script>
-	<link href="assets/css/summernote-lite.css" rel="stylesheet">
 	
 
 
