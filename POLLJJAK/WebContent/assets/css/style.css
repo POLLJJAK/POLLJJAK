@@ -1650,23 +1650,15 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #fff;
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  background: #F3F4F6;
   padding: 30px 0;
-  color: #222222;
+  color: #37417C;
   font-size: 14px;
   
 }
 
-#footer .credits {
-  font-size: 13px;
-  padding-top: 5px;
-  color: #222222;
-}
-
 #footer .footer-links a {
-  color: #222222;
-  padding-left: 15px;
+  color: #374151;
 }
 
 #footer .footer-links a:first-child {
@@ -1676,6 +1668,53 @@ section {
 #footer .footer-links a:hover {
   color: #3498db;
 }
+
+
+.footer-logoImg {
+	width: 120px;
+}
+
+.footer-subtitle {
+	font-size: 14px;
+	font-weight: 300;
+	color: #6B7280;
+}
+
+.footer-icon {
+	font-size: 23px;
+	color: #6B7280;
+}
+
+.footer-navbar {
+	font-size: 14px;
+	color: #6B7280;
+}
+
+.footer-navtextline {
+	height: 12px;
+	border-left: 1px solid #6B7280;
+	
+}
+
+.footer-ownerInfo {
+	font-size: 12px;
+	color: #374151;
+}
+
+.footer-ownerInfo > div {
+	margin-top: 5px;
+}
+
+.footer-createBy {
+	font-size: 14px;
+	color: #374151;
+	text-align: right;
+}
+
+.footer-logoImgbox, .footer-img {
+	float:right;
+}
+
 
 /*--------------------------------------------------------------
 # Custom
