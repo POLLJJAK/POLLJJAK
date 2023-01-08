@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <link href="assets/img/pol-favicon.png" rel="icon">
+
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
    <div class="container d-flex align-items-center justify-content-between">
@@ -76,7 +77,10 @@
 		            <li><a class="getstarted scrollto" href="loginform.action">로그인</a></li>
 				</c:when>
 				<c:otherwise>
-		            <li><a class="getstarted scrollto" href="logout.action">로그아웃</a></li>
+					<!-- 										┏비동기 로그아웃 -->
+		            <li><a class="getstarted scrollto" id="logout_btn">로그아웃</a></li>
+					<!-- 										┏일반 로그아웃 -->
+ 		        <!-- <li><a class="getstarted scrollto" href="logout.action">로그아웃</a></li> -->
 					<li>${loginCheck.u_name }</li>
 				</c:otherwise>
 			</c:choose>
@@ -87,5 +91,19 @@
       <!-- .navbar -->
 
    </div>
+   <script type="text/javascript">
+   		/* 로그아웃 비동기 방식 */
+   		$("#logout_btn").click(function()
+		{
+			$.ajax({
+				type:"GET"
+				, url:"logout.action"
+				, success:function(data){
+					document.location.reload();
+				}
+			});
+		});
+   </script>
 </header>
+
 <!-- End Header -->

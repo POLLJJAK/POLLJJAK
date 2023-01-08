@@ -170,6 +170,7 @@ hr {
   margin-left: 30px;
   border-radius: 50px;
   color: #fff;
+  cursor: pointer;
 }
 
 .navbar .getstarted:hover,
