@@ -5,11 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.test.mybatis.ILoginDAO">
 	
-	<select id="login" resultType="com.test.dto.UserDTO">
+	<select id="userLogin" resultType="com.test.dto.UserDTO">
 		SELECT U_ID, U_NAME
 		FROM U
-		WHERE U_ID = #{u_id}
-  		  AND U_PW = CRYPTPACK.ENCRYPT(#{u_pw}, #{u_pw})
+		WHERE U_ID = #{id}
+  		  AND U_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+	</select>
+	
+	<select id="companyLogin" resultType="com.test.dto.CompanyDTO">
+		SELECT C_ID, C_NAME
+		FROM C
+		WHERE C_ID = #{id}
+  		  AND C_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
 	</select>
 
 </mapper>

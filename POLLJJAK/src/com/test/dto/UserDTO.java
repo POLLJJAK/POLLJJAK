@@ -1,5 +1,6 @@
 /*====================
  	UserDTO.java
+ 	- 일반 유저
 =====================*/
 
 package com.test.dto;
@@ -9,8 +10,9 @@ public class UserDTO
 	// 주요 속성 구성
 	private String u_code, user_code, subject_part_code, region_part_code;
 	private String position_part_code, time_part_code, domain_part_code;
-	private String u_name, u_nickname, u_tel, u_email, u_intro, u_portfolio_url, u_id, u_pw;
+	private String u_name, u_nickname, u_tel, u_email, u_intro, u_portfolio_url;
 	private String skill_part_code, skill_part_code1, skill_part_code2, skill_part_code3;
+	private String id, pw;
 	
 	// getter / setter
 	public String getU_code()
@@ -117,21 +119,21 @@ public class UserDTO
 	{
 		this.u_portfolio_url = u_portfolio_url;
 	}
-	public String getU_id()
+	public String getId()
 	{
-		return u_id;
+		return id;
 	}
-	public void setU_id(String u_id)
+	public void setId(String id)
 	{
-		this.u_id = u_id;
+		this.id = id;
 	}
-	public String getU_pw()
+	public String getPw()
 	{
-		return u_pw;
+		return pw;
 	}
-	public void setU_pw(String u_pw)
+	public void setPw(String pw)
 	{
-		this.u_pw = u_pw;
+		this.pw = pw;
 	}
 	public String getSkill_part_code()
 	{

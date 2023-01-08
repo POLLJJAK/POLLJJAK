@@ -35,29 +35,32 @@
 				<hr>
 				<!-- End InnerNav -->
 				<div class = "row justify-content-end">
-					<form class="form-horizontal">
+					<form action="companyregistration.action" method="post" class="form-horizontal">
 				  		<fieldset>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
 								<label for="id" class="col-sm-2 col-form-label">아이디</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="id" value = "kimmosea">
+									<input type="text" class="form-control" name="id">
 								</div>
+								<!-- 
 								<div class = "col-sm-3">
 									<button type="button" class="id_check"
 									style="margin-top: 4px; color: white; background-color: #3498db; border: 1px solid #3498db; border-radius: 3px;
 									font-size: 13px; font-weight: bold;">
 									ID 중복검사</button>
 								</div>
+								 -->
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
 								<label for="pw" class="col-sm-2 col-form-label">비밀번호</label>
 								<div class="col-sm-4">
-									<input type="password" class="form-control" id="pw" value = "0000">
+									<input type="password" class="form-control" name="pw">
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
+							<!-- 
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
 								<label for="pw_check" class="col-sm-2 col-form-label">비밀번호 확인</label>
@@ -66,32 +69,28 @@
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
+							 -->
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="company" class="col-sm-2 col-form-label">기업명</label>
+								<label for="name" class="col-sm-2 col-form-label">기업명</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="company" value = "SIST">
+									<input type="text" class="form-control" name="c_company_name">
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="companyNum" class="col-sm-2 col-form-label">사업자등록번호</label>
+								<label for="nickName" class="col-sm-2 col-form-label">담당자명</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="companyNum" value ="123-123-123">
+									<input type="text" class="form-control" name="c_name">
 								</div>
-								<div class = "col-sm-3">
-									<button type="button" class="companyNum_check"
-									style="margin-top: 4px; color: white; background-color: #3498db; border: 1px solid #3498db; border-radius: 3px;
-									font-size: 13px; font-weight: bold;">
-									사업자 등록 인증</button>
-								</div>
+								<div class = "col-sm-3"></div>
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="name" class="col-sm-2 col-form-label">담당자 이름</label>
+								<label for="nickName" class="col-sm-2 col-form-label">담당자직책</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="name" value = "김모씨">
+									<input type="text" class="form-control" name="c_position">
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -99,74 +98,62 @@
 								<div class = "col-sm-3"></div>
 								<label for="email" class="col-sm-2 col-form-label">이메일</label>
 								<div class="col-sm-4">
-									<input type="email" class="form-control" id="email" value = "hgd@test.com">
+									<input type="text" class="form-control" name="c_email">
+									<select class="form-select" id="domain" name="domain_part_code">
+										<option value="none">도메인 선택</option>
+									<c:forEach var="domain" items="${domainList }">
+										<option value="${domain.domain_part_code }">${domain.domain_part }</option>
+									</c:forEach>
+									</select>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="position" class="col-sm-2 col-form-label">직책</label>
+								<label for="telephone" class="col-sm-2 col-form-label">사업자 등록번호</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="position" value = "대리">
+									<input type="text" class="form-control" name="c_business_number">
+								</div>
+								<!-- 
+								<div class = "col-sm-3">
+									<button type="button" class="c-business-number"
+									style="margin-top: 4px; color: white; background-color: #3498db; border: 1px solid #3498db; border-radius: 3px;
+									font-size: 13px; font-weight: bold;">
+									사업자 등록번호 체크(?)</button>
+								</div>
+								 -->
+							</div>
+							<div class="row mb-3">
+								<div class = "col-sm-3"></div>
+								<label for="intro" class="col-sm-2 col-form-label">자기소개</label>
+								<div class="col-sm-4">
+									<textarea class="form-control" name="c_intro" rows="5"></textarea>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="intro" class="col-sm-2 col-form-label">기업소개</label>
+								<label for="intro" class="col-sm-2 col-form-label">인재상</label>
 								<div class="col-sm-4">
-									<textarea class="form-control" id="intro" rows="5">안녕하세요 착한기업입니다</textarea>
+									<textarea class="form-control" name="c_ideal" rows="5"></textarea>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="injesang" class="col-sm-2 col-form-label">인재상</label>
+								<label for="pf" class="col-sm-2 col-form-label">진행 프로젝트</label>
 								<div class="col-sm-4">
-									<textarea class="form-control" id="injesang" rows="5">우린 이런 사람 찾습니다</textarea>
+									<input type="text" class="form-control" id="pf" name="c_project">
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
-							<div class="row mb-3">
-								<div class = "col-sm-3"></div>
-								<label for="company-project" class="col-sm-2 col-form-label">기업 진행프로젝트</label>
-								<div class="col-sm-4">
-									<textarea class="form-control" id="company-project" rows="5">우린 이런거 합니다</textarea>
-								</div>
-								<div class = "col-sm-3"></div>
+							<div style = "text-align: center;">
+								<button type = "submit" class ="btn btn-primary" id ="" 
+								style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
+								가입하기</button>
 							</div>
-							<div class="row mb-3">
-								<div class = "col-sm-3"></div>
-								<label for="persnal-skill" class="col-sm-2 col-form-label">기업 주요기술</label>
-								<div class="col-sm-4">
-									<select class="form-select" id="persnal-skill">
-									<option value="none">기술 선택</option>
-									<option value="Java" selected>Java</option>
-									<option value="Spring">Spring</option>
-									<option value="React">React</option>
-									<option value="Python">Python</option>
-									<option value="C">C</option>
-									<option value="C++">C++</option>
-									<option value="Kotlin">Kotlin</option>
-									<option value="Angular">Angular</option>
-									<option value="TypeScript">TypeScript</option>
-									<option value="NodeJs">NodeJs</option>
-									<option value="Linux">Linux</option>
-									<option value="Docker">Docker</option>
-									<option value="Perl">Perl</option>
-									<option value="Kubernetes">Kubernetes</option>
-									<option value="AWS">AWS</option>
-								</select>
-								</div>
-								<div class = "col-sm-3"></div>
-							</div>
-					</fieldset>
-				</form>
-				</div>
-				<div style = "text-align: center;">
-					<button type = "submit" class ="btn btn-primary" id = "registration_done" 
-					style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
-					가입하기</button>
+						</fieldset>
+					</form>
 				</div>
 			</div>
 			<hr>
@@ -202,17 +189,11 @@
 		{
 			alert("존재하는 아이디 입니다.");
 		});
-		$(".companyNum_check").click(function()
+		$(".c_business_number").click(function()
 		{
 			alert("사업자등록번호 api 사용 예정");
 		});
-		
-		$("#registration_done").click(function()
-		{
-			alert("회원가입이 완료되었습니다.");
-			$(location).attr("href", "/POLLJJAK/U-MyPage-Info.jsp");
-		});
-		
+		 
 	});
 			
 	

@@ -211,11 +211,11 @@
 				<div class="input-container btn-wrap">
 					<div class="user-type">
 						<button class="outline" type="button" 
-						onclick="location.href='registrationform.action';" >
+						onclick="location.href='userregistrationform.action';" >
 							<i class="fa fa-users"></i>일반회원
 						</button>
 						<button class="outline" type="button" 
-						onclick="location.href='<%=cp %>/Registration-company.jsp';" >
+						onclick="location.href='companyregistrationform.action';" >
 							<i class="fa fa-building"></i>기업회원
 						</button>
 					</div>
