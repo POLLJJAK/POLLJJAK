@@ -10,7 +10,9 @@
    <div class="container d-flex align-items-center justify-content-between">
       <div class="logo">
          <h1>
-            <a href="U-main.jsp">플젝폴짝</a>
+            <a href="U-main.jsp">
+            	<img alt="플젝폴짝로고" src="assets/img/logo.png">
+            </a>
          </h1>
          <!-- Uncomment below if you prefer to use an image logo -->
          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->

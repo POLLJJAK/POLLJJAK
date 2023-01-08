@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -13,15 +12,13 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<!-- 내 프로젝트 홈 css 파일 -->
-<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
 
-	
+<!-- 내 프로젝트 홈 css 파일 -->
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 <body>
 
-	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center">
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
 		<i class="bi bi-arrow-up-short"></i>
 	</a>
 
@@ -30,7 +27,7 @@
 	<main id="main">
 
 		<!-- 빈칸 여백 -->
-		<section class="pb-2"></section><!-- <div class="mt-5"></div> -->
+		<section class="pb-2"></section>
 
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
@@ -57,7 +54,7 @@
 										
 										<div>
 											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #81EC81" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
+												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #37417C" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
 											</div>
 										</div>
 									</div>
@@ -107,7 +104,7 @@
 						
 						
 						<div style="overflow-x:auto;">
-								<table class="table table-hover text-center align-middle">
+								<table class="mt-3 mb-3 table table-hover text-center align-middle">
 									<thead>
 										<tr>
 											<th scope="col">권한</th>
@@ -126,7 +123,7 @@
 												<th scope="row">${pj_team_info.team_role }</th>
 												<td>${pj_team_info.u_name }</td>
 												<td>${pj_team_info.position_part }</td>
-												<td>${pj_team_info.contribute }</td>
+												<td>${pj_team_info.contribute }%</td>
 												<td>${pj_team_info.last_login_date }</td>
 												<td><button class="btn btn-danger"><div class="bi bi-person-x"></div></button></td>
 												<td><button class="btn btn-light" onclick="location.href='./U-MyPage-Warning.jsp';">Profile</button></td>								

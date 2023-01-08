@@ -18,7 +18,7 @@
 <c:import url="./common/Head.jsp" />
 
 <!-- 내 프로젝트 홈 css 파일 -->
-<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 <body>
 
@@ -27,14 +27,7 @@
 		<i class="bi bi-arrow-up-short"></i>
 	</a>
 
-
-	<!-- Template Main JS File -->
-	<script src="assets/js/main.js"></script>
-
-
-
 	<c:import url="./common/Nav.jsp" />
-
 
 
 	<main id="main">
@@ -67,10 +60,11 @@
 								</div>
 							</div>
 						</c:when>
+						
 						<c:otherwise>
 							<c:forEach var="pj_run_list" items="${pj_run_list}">
 								<div onclick="location.href='inner-project-home-teammanage.action?u_p_apply_code=${pj_run_list.u_p_apply_code }'">
-									<div class="container mb-3">
+									<div class="container pe-0 ps-0 mb-3">
 										<div class="pj-box">
 											<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 												<div class="h5 fw-bolder">${pj_run_list.p_name }</div>
@@ -116,17 +110,15 @@
 						<c:otherwise>
 							<c:forEach var="pj_complete_list" items="${pj_complete_list}">
 								<div onclick="location.href='inner-project-home-teammanage.action?u_p_apply_code=${pj_complete_list.u_p_apply_code }'">
-									<div class="container mb-3">
+									<div class="container pe-0 ps-0 mb-3">
 										<div class="pj-box">
 											<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 												<div class="h5 fw-bolder">${pj_complete_list.p_name }</div>
 												<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
 												<div class="mb-1">전체 진척도 ${pj_complete_list.all_percent }%</div>
 												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: ${pj_complete_list.all_percent }%; background-color: #5E5E5E" aria-valuenow="${pj_complete_list.all_percent }" aria-valuemin="0" aria-valuemax="100"></div>
+													<div class="progress-bar" role="progressbar" style="width: ${pj_complete_list.all_percent }%; background-color: #37417C" aria-valuenow="${pj_complete_list.all_percent }" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>		
-												<%-- ${pj_complete_list.p_code }
-												${pj_complete_list.u_p_apply_code }	 --%>					
 											</div>
 										</div>
 									</div>
@@ -139,11 +131,15 @@
 			</div>
 		</section>
 	</main>
-	
-	
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
+
+
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
 
 </body>
 </html>

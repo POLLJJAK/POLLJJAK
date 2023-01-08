@@ -37,7 +37,7 @@ public class ProjectHomeListController
 		model.addAttribute("pj_run_list", dao.pj_run_list(u_code));
 		model.addAttribute("pj_complete_list", dao.pj_complete_list(u_code));
 		
-		result ="/Project-home.jsp";
+		result ="WEB-INF/view/Project-home.jsp";
 		
 		return result;
 	};

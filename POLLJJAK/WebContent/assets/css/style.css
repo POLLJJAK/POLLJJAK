@@ -8,8 +8,17 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
   color: #444444;
 }
 
@@ -29,7 +38,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
 }
 
 hr {
@@ -376,7 +385,7 @@ hr {
 }
 
 #hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -624,7 +633,7 @@ section {
 }
 
 .about .content .btn-learn-more {
-  font-family: "Raleway", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 1px;
@@ -692,7 +701,7 @@ section {
 .counts .content .count-box p {
   padding: 15px 0 0 0;
   margin: 0 0 0 50px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
   font-size: 14px;
   color: #484848;
 }
@@ -1313,7 +1322,7 @@ section {
   font-size: 42px;
   color: #3498db;
   font-weight: 500;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
   margin-bottom: 20px;
 }
 
@@ -1366,7 +1375,7 @@ section {
   color: #3498db;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Raleway", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -1413,7 +1422,7 @@ section {
   line-height: 26px;
   font-weight: 500;
   margin: 0 0 10px 32px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
 }
 
 .faq .faq-item p {
@@ -1436,7 +1445,7 @@ section {
 .contact .contact-about p {
   font-size: 14px;
   line-height: 24px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Pretendard-Regular", "Open Sans", sans-serif;
   color: #888;
 }
 
@@ -1645,6 +1654,7 @@ section {
   padding: 30px 0;
   color: #222222;
   font-size: 14px;
+  
 }
 
 #footer .credits {
