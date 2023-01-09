@@ -22,6 +22,8 @@ public interface IUserDAO
 		
 	// 일반회원 정보 확인(user_code 를 활용하여 회원 정보 검색)
 	public UserDTO search(UserDTO dto);
+	// 일반회원의 부가스킬 정보 확인
+	public String searchSkill(UserDTO dto);
 	
 	// 일반회원 정보 수정
 	public int update(UserDTO dto);

@@ -14,8 +14,8 @@
           , #{c_ideal, mode=IN, jdbcType=VARCHAR}
           , #{c_project, mode=IN, jdbcType=VARCHAR}
           , #{c_position, mode=IN, jdbcType=VARCHAR}
-          , #{c_name, mode=IN, jdbcType=VARCHAR}
-          , #{c_email, mode=IN, jdbcType=VARCHAR}
+          , #{name, mode=IN, jdbcType=VARCHAR}
+          , #{email, mode=IN, jdbcType=VARCHAR}
           , #{id, mode=IN, jdbcType=VARCHAR}
           , #{pw, mode=IN, jdbcType=VARCHAR}
           )}

@@ -84,7 +84,7 @@
 							<c:if test="${userType.equals(\"user\") }">
 								<span class="avatar avatar-sm fa fa-users fa-2x" style=" margin: 0 5px 0 10px;"></span>
 								<div class="d-none d-xl-block ps-2">
-									<div>${loginCheck.u_name }</div>
+									<div>${loginCheck.name }</div>
 									<!-- 권한별로 나타나는 글씨 바꾸기 : 일반/기업/관리자 -->
 									<div class="mt-1 small text-muted">일반</div>
 								</div>
@@ -92,7 +92,7 @@
 							<c:if test="${userType.equals(\"company\") }">
 								<span class="avatar avatar-sm fa fa-building fa-2x" style=" margin: 0 5px 0 10px;"></span>
 								<div class="d-none d-xl-block ps-2">
-									<div>${loginCheck.c_name }</div>
+									<div>${loginCheck.name }</div>
 									<div class="mt-1 small text-muted">기업</div>
 								</div>
 							</c:if>
@@ -101,7 +101,7 @@
 						<!-- 프로필 사진 누르면 나오는 드롭다운 -->
 						<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 							<!-- 		┏U-MyPage-Warning.jsp를 거치고 들어가야 함 -->
-							<button type="button" class="btn-modify dropdown-item" value="${user.user_code }">마이페이지</button> 
+							<button type="button" class="btn-modify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> 
 <!-- 							<a href="userupdateform.action" class="dropdown-item">마이페이지</a>  -->
 							
 							<!-- 		┏관리자 로그인이라면 -->

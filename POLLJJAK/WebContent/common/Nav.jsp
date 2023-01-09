@@ -84,7 +84,7 @@
 		            <li><a class="getstarted scrollto" id="logout_btn">로그아웃</a></li>
 					<!-- 										┏일반 로그아웃 -->
  		        <!-- <li><a class="getstarted scrollto" href="logout.action">로그아웃</a></li> -->
-					<%-- <li>${loginCheck.u_name }</li> --%>
+					<%-- <li>${loginCheck.name }</li> --%>
 				<%-- </c:otherwise> --%>
 			<%-- </c:choose> --%>
 			

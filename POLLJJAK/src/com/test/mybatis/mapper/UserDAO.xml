@@ -24,10 +24,10 @@
           , #{position_part_code, mode=IN, jdbcType=VARCHAR}
           , #{time_part_code, mode=IN, jdbcType=VARCHAR}
           , #{domain_part_code, mode=IN, jdbcType=VARCHAR}
-          , #{u_name, mode=IN, jdbcType=VARCHAR}
+          , #{name, mode=IN, jdbcType=VARCHAR}
           , #{u_nickname, mode=IN, jdbcType=VARCHAR}
           , #{u_tel, mode=IN, jdbcType=VARCHAR}
-          , #{u_email, mode=IN, jdbcType=VARCHAR}
+          , #{email, mode=IN, jdbcType=VARCHAR}
           , #{u_intro, mode=IN, jdbcType=VARCHAR}
           , #{u_portfolio_url, mode=IN, jdbcType=VARCHAR}
           , #{id, mode=IN, jdbcType=VARCHAR}
@@ -70,15 +70,24 @@
 	</select>
 	
 	<select id="search" resultType="com.test.dto.UserDTO">
-		SELECT U.U_ID, U_NICKNAME, U.U_NAME, U.U_PW
-             , U.U_EMAIL, U.DOMAIN_PART_CODE, U.U_TEL
-             , U.POSITION_PART_CODE, U.REGION_PART_CODE, U.TIME_PART_CODE, U.SUBJECT_PART_CODE
-             , U_INTRO, U.U_PORTFOLIO_URL, US.SKILL_PART_CODE
-        FROM U_SKILL US, U U
-        WHERE US.USER_CODE = U.USER_CODE
+        SELECT U.U_ID AS id, U.U_NAME AS name, U.U_NICKNAME, U.U_EMAIL AS email
+             , U.U_TEL, U.POSITION_PART_CODE, U.REGION_PART_CODE, U.TIME_PART_CODE
+             , U.SUBJECT_PART_CODE, U.U_INTRO, U.U_PORTFOLIO_URL
+             , US.SKILL_PART_CODE AS skill_part_code, U.DOMAIN_PART_CODE
+        FROM U, U_SKILL US
+        WHERE U.USER_CODE = US.USER_CODE
           AND U.USER_CODE = #{user_code}
+          AND U_SKILL_PART_CODE = 'USPT000001'
 	</select>
-	
+	<select id="searchSkill" resultType="java.lang.String">
+		SELECT LISTAGG(SKILL_PART_CODE, ', ') WITHIN GROUP (ORDER BY SKILL_PART_CODE) AS skill_part_code4  
+		FROM SKILL_PART_CODE_VIEW
+		WHERE U_SKILL_PART_CODE IN ('USPT000001', 'USPT000002')
+		  AND U_SKILL_PART_CODE = 'USPT000002'
+		  AND USER_CODE = #{user_code}
+		GROUP BY U_SKILL_PART_CODE
+	</select>
+		
 	<update id="update">
 		
 	</update>

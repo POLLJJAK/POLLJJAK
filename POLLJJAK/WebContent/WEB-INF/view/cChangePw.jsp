@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>비밀번호찾기</title>
+<title>비밀번호변경</title>
 <script src="https://kit.fontawesome.com/51db22a717.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,23 +20,12 @@
 <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-	/* 
-	$(function(){
-		$(".input-email").click(function()
-		{
-			alert("인증번호가 발송되었습니다.");
-		});
-		$(".input-tel").click(function()
-		{
-			alert("인증번호가 발송되었습니다.");
-		});
-		$(".input-authentic").click(function()
-		{
-			alert("인증번호가 일치합니다.");
-		});
-		
+$(function(){
+	$(".pw-reset").click(function()
+	{
+		alert("비밀번호 재설정 완료.");
 	});
-	 */
+});
 </script>
 <style type="text/css">
 	@font-face {
@@ -109,7 +98,7 @@
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;
-	    padding:80px;
+	    padding:180px;
 	    /* background: rgb(255,255,255); */
 		background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
 	}
@@ -151,9 +140,6 @@
 	    color: #3498db;
 	    line-height: 45px;
 	}
-	.input-container .input-wrap .fa-phone{
-		transform: scaleX(-1);
-	}
 	.input-container .input-wrap .btn{
 	    width:95px;
 	    height:17px;
@@ -162,13 +148,14 @@
 	    border-radius: 4px;
 	    background-color: #3498db;
 	    cursor: pointer;
-	    font-family: Cafe24Ssurround;
 	}
 	
 	.input-container .input-wrap input{
 	    background: none;
 	    border: none;
-	    width:130px;
+	    line-height: 45px;
+	    padding-left:10px;
+	    width:170px;
 	}
 	.input-container .input-wrap input:focus{
 	    outline: none;
@@ -186,68 +173,50 @@
 	}
 	
 	.btn-wrap{
-	    margin-top: 40px;
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;;
 	}
 	.btn-wrap .btn{
-	    width:95px;
+	    width:110px;
 	    height:35px;
 	    color:white;
 	    border: 0;
 	    border-radius: 4px;
 	    background-color: #3498db;
 	    cursor: pointer;
+	    margin: 40px 0 10px 0;
+	    font-family: Cafe24Ssurround;
 	}
+
 	.btn-wrap a{
 	    margin-top:10px;
 	    text-decoration: none;
 	    font-size: 11px;
 	    color: gray;
 	}
-		.radioBtn {
-		 padding-top: 45px; 
-		 text-align: center;
-	}
-	 
-	.radioBtn input[type=radio]
-	{
-	    display: none;
+	
+	/* new title  */
+	.section-title p {
+	  position: relative;
+	  color: gray;
 	}
 	
-	.radioBtn input[type=radio] + label
-	{
-	    display: inline-block;
-	    cursor: pointer;
-	    height: 28px;
-	    width: 90px;
-	    border: 1px solid #A6A6A6;
-	    border-radius:3px;
-	    line-height: 24px;
-	    text-align: center;
-	    font-size:13px;
-	    transition:all 0.5s;
-	    background-color: #fff;
-	    color: gray;
+	.section-title p::before,
+	.section-title p::after {
+	  content: "";
+	  width: 100px;
+	  height: 1.5px;
+	  background: #3498db;
+	  display: inline-block;
 	}
 	
-	.radioBtn input[type=radio]:checked + label
-	{
-	    background-color: #3498db;
-	    color: #fff;
-	    border: 1px solid #3498db;
+	.section-title p::before {
+	  margin: 0 10px 3px 0;
 	}
 	
-	.empty-view{
-		width: 300px;
-		height: 260px;
-		padding: 10px 0 10px 0;
-		text-align: center;
-		font-size: 18px;
-	}
-	.moveTo{
-		margin: 5px 0 5px 0;
+	.section-title p::after {
+	  margin: 0 0 3px 10px;
 	}
 	
 </style>
@@ -257,56 +226,36 @@
 		<div class="form-container shadow">
 			<div class="form-right-side">
 				<div class="top-logo-wrap"></div>
-				<h1>비밀번호 찾기</h1>
+				<h1>비밀번호 변경</h1>
 				<p>Team 4, Cheer up guys.<br>We can finish our Final Project in time.<br>Him Eul Nae Yo SUPER POWER.</p>
 			</div>
 			<div class="form-left-side">
-				<form action="forgetpw.action" method="post">
-					<div class="input-container email-view">
-						<div class="radioBtn">
-							<input type="radio" id="user" name="userType" value="user" checked="checked"><label for="user">일반</label>
-							<input type="radio" id="company" name="userType" value="company"><label for="company">기업</label>
+				<form action="cchangepw.action" method="post">
+					<div class="input-container">
+						<div class="input-wrap input-id">
+							<i class="fas fa-user"></i>
+							<input type="text" id="id" name="id" value="${user.id }" readonly="readonly">
 						</div>
-						<div class="input-wrap">
-							<i class="fa fa-user"></i>
-							<input placeholder="아이디" type="text" id="id" name="id">
-						</div>
-						<div class="input-wrap input-name">
-							<i class="fa fa-user-o"></i>
-							<input placeholder="이름" type="text" id="name" name="name">
-						</div>
-						<div class="input-wrap">
-							<i class="fa fa-envelope"></i>
-							<input placeholder="이메일" type="text" id="email" name="email">
-							<!-- <button type="button" class="input-email btn">인증번호 받기</button> -->
-							<select class="form-select" id="domain" name="domain_part_code">
-								<option value="none">도메인 선택</option>
-							<c:forEach var="domain" items="${domainList }">
-								<option value="${domain.domain_part_code }">${domain.domain_part }</option>
-							</c:forEach>
-							</select>
+						<div class="input-wrap input-password">
+							<i class="fas fa-key"></i>
+							<input placeholder="비밀번호" type="password" id="pw" name="pw">
 						</div>
 						<!-- 
-						<div class="input-wrap">
-							<i class="fas fa-unlock-alt"></i>
-							<input placeholder="인증번호" type="text">
-							<button type="button" class="input-authentic btn">확인</button>
+						<div class="input-wrap input-password">
+							<i class="fas fa-key"></i>
+							<input placeholder="비밀번호 확인" type="password" id="pw" name="pw">
 						</div>
 						 -->
 					</div>
 					<div class="input-container btn-wrap">
-						<input type="submit" class="btn" value="다음">
+						<input type="submit" class="changePw btn" value="비밀번호 재설정">
+						<div style="margin: 5px 0 5px 0;">
+							<a href="main.action" >홈으로</a>
+							<a>|</a>
+							<a href="loginform.action" >로그인으로</a>
+						</div>
 					</div>
 				</form>
-				<div class="input-container btn-wrap">
-					<div class="moveTo">
-						<a href="main.action" >홈으로</a>
-						<a> | </a>
-						<a href="forgetidform.action" >아이디 찾기</a>
-						<a> | </a>
-						<a href="loginform.action" >로그인으로</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
