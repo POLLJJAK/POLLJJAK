@@ -6,7 +6,8 @@
 <mapper namespace="com.test.mybatis.IInnerProjectMeetDAO">
 
 	<select id="meetBoardList" resultType="com.test.dto.InnerProjectMeetDTO">
-		SELECT A1.PH_MEET_TITLE, A1.PH_MEET_SUBTITLE
+		SELECT A1.PH_MEET_TITLE
+		, A1.PH_MEET_SUBTITLE
 		, A3.U_NAME AS PH_MEET_WRITER
 		, TO_CHAR(A1.PH_MEET_START_DATE, 'YYYY-MM-DD') AS MEET_START_DATE
 		, TO_CHAR(A1.PH_MEET_END_DATE,'YYYY-MM-DD') AS MEET_END_dATE
@@ -16,6 +17,7 @@
 		  ELSE TO_CHAR(A1.PH_MEET_UPDATE_DATE, 'YYYY-MM-DD HH24:MI:SS')
 		  END AS MEET_UPDATE_DATE
 		, TO_DATE(A1.PH_MEET_DATE) AS MEET_DATE
+		, A1.PH_MEET_CODE
 		FROM 
 		(
 			SELECT PH_MEET_TITLE, PH_MEET_SUBTITLE
@@ -25,6 +27,7 @@
 			, PH_MEET_CONTENT
 			, PH_MEET_DATE 
 			, PH_MEET_UPDATE_DATE
+			, PH_MEET_CODE
 			FROM PH_MEET
 			WHERE U_P_APPLY_CODE IN (
 				SELECT P3.U_P_APPLY_CODE
@@ -45,5 +48,64 @@
 		WHERE A1.U_P_APPLY_CODE = A2.U_P_APPLY_CODE
 		AND A2.USER_CODE = A3.USER_CODE
 	</select>
+	
+	<select id="meetInsertForm_memberlist" resultType="com.test.dto.InnerProjectMeetDTO">
+		SELECT 
+		P3.U_P_APPLY_CODE AS UPA_CODE,
+		P5.U_NAME AS INSERT_MEMBER
+		FROM P P1, P_POSITION P2, U_P_APPLY P3, P_REJECT P4, U P5
+		WHERE P1.P_CODE = (
+			SELECT T3.P_CODE
+			FROM U_P_APPLY T1, P_POSITION T2, P T3
+			WHERE T1.U_P_APPLY_CODE = #{u_p_apply_code}
+			  AND T1.P_POSITION_CODE = T2.P_POSITION_CODE
+			  AND T2.P_CODE = T3.P_CODE
+		)  
+		AND P1.P_CODE = P2.P_CODE
+		AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
+		AND NOT P3.U_P_APPLY_CODE = P4.U_P_APPLY_CODE
+		AND P3.USER_CODE = P5.USER_CODE
+	</select>
+	
+	
+	<insert id="meetInsert">
+		INSERT INTO PH_MEET(
+		PH_MEET_CODE
+		, U_P_APPLY_CODE
+		, PH_MEET_SUBTITLE
+		, PH_MEET_TITLE
+		, PH_MEET_START_DATE
+		, PH_MEET_END_DATE
+		, PH_MEET_CONTENT
+		, PH_MEET_DATE
+		, PH_MEET_UPDATE_DATE)
+		VALUES('PHM'||LPAD(PH_MEET_CODE_SEQ.NEXTVAL,7,'0')
+		, #{u_p_apply_code}
+		, #{ph_meet_subtitle}
+		, #{ph_meet_title}
+		, TO_DATE(#{meet_start_date}, 'YYYY-MM-DD HH24:MI:SS')
+		, TO_DATE(#{meet_start_date}, 'YYYY-MM-DD HH24:MI:SS')
+		, #{summernote}
+		, SYSDATE
+		, NULL)
+	</insert>
+	
+	
+	<insert id="meetMemberInsert" parameterType="String">
+		INSERT INTO PH_MEET_MEMBER (PH_MEET_MEMBER_CODE, PH_MEET_CODE, U_P_APPLY_CODE)
+		SELECT  ('PHMM'||LPAD(PH_MEET_MEMBER_CODE_SEQ.NEXTVAL,6,'0'))
+		, (SELECT MAX(PH_MEET_CODE) FROM PH_MEET)
+		, A.* 
+		FROM (
+		<foreach collection="list" item="item"  index="index" separator=" UNION ALL ">
+		SELECT #{item} AS U_P_APPLY_CODE
+		FROM DUAL
+		</foreach>
+		) A
+	</insert>
+	
+	
+	
+	
 
 </mapper>
