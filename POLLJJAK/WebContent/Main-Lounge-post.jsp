@@ -13,8 +13,9 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/Main-Lounge.css" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css"/>
+
 <style>
     .form-control
     {
@@ -100,7 +101,7 @@
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar_" class="navbar inner-nav"> 
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto" href="#" style="margin-right: 100px;">공지사항</a></li>
+						<li><a class="nav-link scrollto" href="mainnotice.action" style="margin-right: 100px;">공지사항</a></li>
 						<li><a class="nav-link scrollto active" href="mainlounge.action" >자유게시판</a></li>
 					</ul>
 				</nav>
@@ -205,6 +206,33 @@
 				</c:choose> --%>
 				
 				
+				<!-- 댓글작성 영역 -->
+				<div class="board_cmt">
+				    <div class="tit" style="margin-left: 6px;"><em id="totalCmt" class="bico_comment"></em>Comments</div>
+				     <div class="board_cmt_write">
+				         <div class="bx"> 
+				             <textarea id="cmtContent" placeholder="소중한 댓글을 작성해주세요^^" maxlength="150"></textarea>
+				         </div>
+				        <button id="btn_insert_cmt">등록</button>
+				     </div>
+				</div>
+				<!-- 댓글 목록 영역 -->
+				<div class="board_cmt_list" id="board_cmt_list" style="margin-left:6px;"></div>
+				<div style="text-align: center; margin: 20px 0px;" id="div_cmt_more">
+				 <!-- 더보기 글자 hover 띄우기 -->
+				    <span class="cmt_more_guide" id="cmt_more_guide" style="display: none; position: absolute;"></span>
+				    <a href='javascript:void(0);' id='btn_cmt_more' style='position: relative;'>
+				        <img src="/home/img/ico_cmt_more_before.png" id="imgMore" style="cursor:pointer; width: 20px;">
+				    </a>
+				</div>
+				<!-- 더보기 눌렀을때 추가 되는 댓글 영역 -->
+				<div class="board_cmt_list" id="cmtMore" style="display:none;"></div>
+				<div style="text-align: center; display:none; margin: 20px 0px;" id="div_cmt_back">
+				    <span class="cmt_back_guide" id="cmt_back_guide" style="display: none; position: absolute;"></span>
+				    <a href='javascript:void(0);' id='btn_cmt_back' style='position: relative;'>
+				        <img src="/home/img/ico_cmt_back_before.png" id="imgBack" style="cursor:pointer; width: 20px;">
+				    </a>
+				</div>
 				
 				
 				
@@ -233,7 +261,7 @@
 	<script type="text/javascript">
 	
 	
-	
+	var post_code =  ${postdetail.post_code };
 	
 	
 	// 로그인 한 상태에서 하트를 클릭했을 때 (로그인한 상태인 하트의 <a></a> class명: heart-click)
@@ -242,19 +270,20 @@
 	    // 현재 좋아요 수
 	    //let no = $(this).attr('postLike');
 	    //console.log("heart-click");
-		let user_code="";
-		let post_code="";
+		//let user_code="";
+		//let post_code="";
 	    // 빈하트를 눌렀을때
 	    if($(this).children('svg').attr('class') == "bi bi-suit-heart"){
 	        console.log("빈하트 클릭" + no);
 
 	        $.ajax({
-	            url : 'likeinsert.action',
-	            type : 'post',
+	            type : "POST",
+	            url : "likeinsert.action",
 	            data : {
-	            	user_code = 'U000000003',
-	            	post_code = 'LP00000035'
+	            	"post_code" : post_code,
+	            	"user_code" : U000000003,
 	            },
+	            contentType: "application/json; charset=UTF-8",
 	            success : function(data) {
 	                //페이지 새로고침
 	                //document.location.reload(true);
@@ -266,7 +295,7 @@
 	                console.log("하트추가 성공");
 	            },
 	            error : function() {
-	                alert('서버 에러');
+	                alert("서버 에러");
 	            }
 	        });
 	        console.log("꽉찬하트로 바껴라!");

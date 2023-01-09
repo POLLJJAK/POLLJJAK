@@ -23,7 +23,7 @@
   	<script src="resources/js/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="<%=cp %>/resources/css/summernote-lite.css"/>
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css"/>
 
 
 <style>
@@ -49,7 +49,7 @@
 					<div class="d-flex justify-content-center col" style="width: 50%;">
 						<div class="section-title pt-4">
 							<h6>라운지</h6>
-							<div>Let's talk about your project!</div>
+							<div>Check the notice!</div>
 						</div>
 					</div>
 				</div>
@@ -65,8 +65,8 @@
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar_" class="navbar inner-nav"> 
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto" href="mainnotice.action" style="margin-right: 100px;">공지사항</a></li>
-						<li><a class="nav-link scrollto active" href="mainlounge.action" >자유게시판</a></li>
+						<li><a class="nav-link scrollto active" href="mainnotice.action" style="margin-right: 100px;">공지사항</a></li>
+						<li><a class="nav-link scrollto" href="mainlounge.action" >자유게시판</a></li>
 					</ul>
 				</nav>
 				<hr>
@@ -77,7 +77,7 @@
 		<div class="container" >
 			<div class="board_wrap">
 			<!-- 작성폼 -->
-			<form method="post" action="mainloungeinsert.action?user_code=U000000003" id="myForm">
+			<form method="post" action="mainnoticeupdate.action?a_code=${notice.a_code }&notice_code=${notice.notice_code}" id="myForm">
 			<div class="board_list_wrap">
 				<div class="meet_wrap mb-3">
 					<table class="table">
@@ -88,16 +88,16 @@
 						</tr>
 						<tr>
 							<th style="font-size: x-large; padding-top: 7px; width: 80px;">제목</th>
-							<td><input type="text" id="title" name="title" class="form-control" placeholder="제목 입력해주세요." /></td>
+							<td><input type="text" id="title" name="title" class="form-control" value="${notice.title }"/></td>
 						</tr>
 					</table>
 					
 					<!-- 썸머노트 -->
 					<div style="width: 100%; align-content: center;">
-						<textarea id="summernote" name="summernote"></textarea>
+						<textarea id="summernote" name="summernote">${notice.content}</textarea>
 					</div>
 			    </div><!-- end meet_wrap mb-3-->
-			    <div style="text-align: center;;">
+			    <div style="text-align: center;">
 				    <button type="reset" class="btn-hover color-9" style="margin-top: 5%; width: 10%;" id="reset">취소</button>
 				    <button type="submit" class="btn-hover color-9" style="margin-top: 5%; width: 10%;" id="submit">등록</button>
 				</div>
@@ -152,21 +152,22 @@
 	 		// 유효성 검사
 	 		
 	 		
+	 		
+	 		
+	 		//서브밋버튼클릭
 	 		$("#submit").click(function()
 			{
 				
 	 			
 	 			$("#myForm").submit();
+			});
+	 		
+	 		//리셋버튼클릭
+	 		$("#reset").click(function()
+			{
+				
 	 			
-	 			
-	 			
-	 			//리셋버튼클릭
-		 		$("#reset").click(function()
-				{
-					
-		 			
-		 			$("#summernote").summernote("reset");
-				});
+	 			$("#summernote").summernote("reset");
 			});
 		});
 	</script>

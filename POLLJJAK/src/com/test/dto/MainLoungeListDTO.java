@@ -1,5 +1,5 @@
 /*=============================
-	ProjectHomeListDTO.java 
+	MainLoungeListDTO.java 
  	- 메인라운지 자유게시판
 =============================== */
 

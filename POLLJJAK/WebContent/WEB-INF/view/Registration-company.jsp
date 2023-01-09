@@ -13,6 +13,11 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
+
+<!-- 현재 페이지 resources import -->
+<script src="<%=cp %>/resources/js/Registration.js"></script>
+<link rel="stylesheet" href="resources/css/Registration.css" />
+
 <body>
 
 	<c:import url="./common/Nav.jsp" />
@@ -41,7 +46,8 @@
 								<div class = "col-sm-3"></div>
 								<label for="id" class="col-sm-2 col-form-label">아이디</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="id">
+									<input type="text" class="form-control" id="id" name="id" autofocus="autofocus">
+									<span class="err" id="errId"></span> 
 								</div>
 								<!-- 
 								<div class = "col-sm-3">
@@ -56,7 +62,8 @@
 								<div class = "col-sm-3"></div>
 								<label for="pw" class="col-sm-2 col-form-label">비밀번호</label>
 								<div class="col-sm-4">
-									<input type="password" class="form-control" name="pw">
+									<input type="password" class="form-control" id="pw" name="pw">
+									<span class="err" id="errPw"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -74,7 +81,8 @@
 								<div class = "col-sm-3"></div>
 								<label for="name" class="col-sm-2 col-form-label">기업명</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="c_company_name">
+									<input type="text" class="form-control" id="cName" name="c_company_name">
+									<span class="err" id="errCName"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -82,7 +90,8 @@
 								<div class = "col-sm-3"></div>
 								<label for="nickName" class="col-sm-2 col-form-label">담당자명</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="c_name">
+									<input type="text" class="form-control" id="name" name="c_name">
+									<span class="err" id="errName"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -90,7 +99,8 @@
 								<div class = "col-sm-3"></div>
 								<label for="nickName" class="col-sm-2 col-form-label">담당자직책</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="c_position">
+									<input type="text" class="form-control" id="position" name="c_position">
+									<span class="err" id="errPosition"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -98,21 +108,23 @@
 								<div class = "col-sm-3"></div>
 								<label for="email" class="col-sm-2 col-form-label">이메일</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="c_email">
+									<input type="text" class="form-control" id="email" name="c_email">
 									<select class="form-select" id="domain" name="domain_part_code">
 										<option value="none">도메인 선택</option>
 									<c:forEach var="domain" items="${domainList }">
 										<option value="${domain.domain_part_code }">${domain.domain_part }</option>
 									</c:forEach>
 									</select>
+									<span class="err" id="errEmail"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="telephone" class="col-sm-2 col-form-label">사업자 등록번호</label>
+								<label for="companyNum" class="col-sm-2 col-form-label">사업자 등록번호</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="c_business_number">
+									<input type="text" class="form-control" id="companyNum" name="c_business_number">
+									<span class="err" id="errCNum"></span>
 								</div>
 								<!-- 
 								<div class = "col-sm-3">
@@ -125,9 +137,10 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="intro" class="col-sm-2 col-form-label">자기소개</label>
+								<label for="intro" class="col-sm-2 col-form-label">기업소개</label>
 								<div class="col-sm-4">
-									<textarea class="form-control" name="c_intro" rows="5"></textarea>
+									<textarea class="form-control" id="intro" name="c_intro" rows="5"></textarea>
+									<span class="err" id="errIntro"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -147,9 +160,8 @@
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
-							<div style = "text-align: center;">
-								<button type = "submit" class ="btn btn-primary" id ="" 
-								style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
+							<div style="text-align: center;">
+								<button type="submit" class="btn btn-primary" id="registration_done" >
 								가입하기</button>
 							</div>
 						</fieldset>
@@ -181,24 +193,5 @@
 	<script src="assets/js/main.js"></script>
 
 </body>
-
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$(".id_check").click(function()
-		{
-			alert("존재하는 아이디 입니다.");
-		});
-		$(".c_business_number").click(function()
-		{
-			alert("사업자등록번호 api 사용 예정");
-		});
-		 
-	});
-			
-	
-			
-
-</script>
 
 </html>

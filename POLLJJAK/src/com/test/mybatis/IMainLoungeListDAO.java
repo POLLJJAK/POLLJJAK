@@ -36,7 +36,7 @@ public interface IMainLoungeListDAO
 	public String likecheck(@Param("post_code") String post_code,@Param("user_code") String user_code);
 	
 	// 좋아요추가
-	public int likeadd(MainLoungeListDTO dto);
+	public int likeadd(@Param("post_code") String post_code,@Param("user_code") String user_code);
 	
 	// 좋아요삭제
 	public int likeremove(String user_code);
