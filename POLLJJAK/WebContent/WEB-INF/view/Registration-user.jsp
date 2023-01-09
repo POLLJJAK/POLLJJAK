@@ -35,13 +35,13 @@
 				<hr>
 				<!-- End InnerNav -->
 				<div class = "row justify-content-end">
-					<form action="registration.action" method="post" class="form-horizontal">
+					<form action="userregistration.action" method="post" class="form-horizontal">
 				  		<fieldset>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
 								<label for="id" class="col-sm-2 col-form-label">아이디</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="u_id">
+									<input type="text" class="form-control" name="id">
 								</div>
 								<!-- 
 								<div class = "col-sm-3">
@@ -56,7 +56,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="pw" class="col-sm-2 col-form-label">비밀번호</label>
 								<div class="col-sm-4">
-									<input type="password" class="form-control" name="u_pw">
+									<input type="password" class="form-control" name="pw">
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>

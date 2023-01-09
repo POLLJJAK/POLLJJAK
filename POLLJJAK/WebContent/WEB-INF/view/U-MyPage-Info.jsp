@@ -128,7 +128,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="email" class="col-sm-2 col-form-label">이메일</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="u_email" value="hgd">
+									<input type="text" class="form-control" name="u_email" value="${user.u_email }">
 									<select class="form-select" id="domain" name="domain_part_code">
 										<option value="none">도메인 선택</option>
 									<c:forEach var="domain" items="${domainList }">
@@ -142,7 +142,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="telephone" class="col-sm-2 col-form-label">전화번호</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="telephone" value = "${user.u_tel }">
+									<input type="text" class="form-control" id="telephone" value="${user.u_tel }">
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>

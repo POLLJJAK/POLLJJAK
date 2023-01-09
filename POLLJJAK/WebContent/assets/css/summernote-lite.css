@@ -15,11 +15,11 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: auto;
-	src: url(../../assets/font/summernote.eot);
-	src: url(../../assets/font/summernote.eot?#iefix) format("embedded-opentype"),
-		 url(../../assets/font/summernote.woff2) format("woff2"),
-		 url(../../assets/font/summernote.woff) format("woff"),
-		 url(../../assets/font/summernote.ttf) format("truetype")
+	src: url(../font/summernote.eot);
+	src: url(../font/summernote.eot?#iefix) format("embedded-opentype"),
+		 url(../font/summernote.woff2) format("woff2"),
+		 url(../font/summernote.woff) format("woff"),
+		 url(../font/summernote.ttf) format("truetype")
 }
 
 [class^=note-icon]:before, [class*=" note-icon"]:before {

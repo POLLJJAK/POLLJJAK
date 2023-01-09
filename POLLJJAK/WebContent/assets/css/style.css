@@ -158,6 +158,19 @@ hr {
   transition: 0.3s;
 }
 
+.navbar button,
+.navbar button:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #555555;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
 .navbar a i,
 .navbar a:focus i {
   font-size: 12px;
@@ -179,7 +192,6 @@ hr {
   margin-left: 30px;
   border-radius: 50px;
   color: #fff;
-  cursor: pointer;
 }
 
 .navbar .getstarted:hover,
@@ -251,6 +263,7 @@ hr {
     left: -100%;
   }
 }
+
 
 /**
 * Mobile Navigation 

@@ -75,18 +75,18 @@
 			</li>
 			 -->
 			<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-			<c:choose>
-				<c:when test="${loginCheck.u_id == null }">
+			<%-- <c:choose> --%>
+				<%-- <c:when test="${loginCheck.u_id == null }"> --%>
 		            <li><a class="getstarted scrollto" href="loginform.action">로그인</a></li>
-				</c:when>
-				<c:otherwise>
+				<%-- </c:when> --%>
+				<%-- <c:otherwise> --%>
 					<!-- 										┏비동기 로그아웃 -->
 		            <li><a class="getstarted scrollto" id="logout_btn">로그아웃</a></li>
 					<!-- 										┏일반 로그아웃 -->
  		        <!-- <li><a class="getstarted scrollto" href="logout.action">로그아웃</a></li> -->
-					<li>${loginCheck.u_name }</li>
-				</c:otherwise>
-			</c:choose>
+					<%-- <li>${loginCheck.u_name }</li> --%>
+				<%-- </c:otherwise> --%>
+			<%-- </c:choose> --%>
 			
          </ul>
          <i class="bi bi-list mobile-nav-toggle"></i>

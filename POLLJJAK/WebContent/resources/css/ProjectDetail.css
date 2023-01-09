@@ -47,7 +47,7 @@
    
    .fullbtn
    {
-       width: 30%;
+       width: 100%;
        font-size: 12px;
        font-weight: 600;
        color: gray;
@@ -72,9 +72,9 @@
     .member
     {
        margin: 5px;
-       width: 20%;
+       width: 100%;
        height: 20%;
-       float: left;
+       /* float: left;  */
        padding: 10px;
        border-radius: 12px;
     }
