@@ -122,7 +122,7 @@ public class MainNoticeController
 		model.addAttribute("notice", dao.noticedetail(notice_code));
 		
 		
-		result = "Main-Notice-post-updateform.jsp";
+		result = "/Main-Notice-post-updateform.jsp";
 		
 		return result;
 	}

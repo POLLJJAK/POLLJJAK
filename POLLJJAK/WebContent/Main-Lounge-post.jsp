@@ -13,7 +13,6 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css"/>
 
 <style>
@@ -152,9 +151,15 @@
 						</div>
 					</div>
 			    </div><!-- end meet_wrap mb-3-->
-			    <div style="text-align: center;;">
-				    <button type="button" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">수정</button>
-				    <button type="button" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">삭제</button>
+			    
+			    <!-- =======================================작성자만 보이게=========================================== -->
+			    <div style="text-align: center;">
+				    <button type="button" class="btn-hover color-9" style="margin-top: 5%; width: 10%;"
+				    onclick="location.href='mainloungeupdateform.action?post_code=${postdetail.post_code}';"
+				    >수정</button>
+				    <button type="button" class="btn-hover color-9" style="margin-top: 5%; width: 10%;"
+				    onclick="location.href='mainloungedelete.action?post_code=${postdetail.post_code}';"
+				    >삭제</button>
 				</div>
 				
 				
