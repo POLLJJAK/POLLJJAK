@@ -13,6 +13,9 @@ public class MainLoungeListDTO
 	private String post_code, user_code, summernote;
 	
 	private String likecheck;
+	
+	//페이징
+	private String start, end;
 
 	public String getSid()
 	{
@@ -112,6 +115,26 @@ public class MainLoungeListDTO
 	public void setLikecheck(String likecheck)
 	{
 		this.likecheck = likecheck;
+	}
+
+	public String getStart()
+	{
+		return start;
+	}
+
+	public void setStart(String start)
+	{
+		this.start = start;
+	}
+
+	public String getEnd()
+	{
+		return end;
+	}
+
+	public void setEnd(String end)
+	{
+		this.end = end;
 	}
 	
 	

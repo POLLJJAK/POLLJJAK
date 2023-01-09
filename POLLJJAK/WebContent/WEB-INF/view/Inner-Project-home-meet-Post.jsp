@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -16,10 +16,6 @@ String cp = request.getContextPath();
 <!-- 내 프로젝트 홈 css 파일 -->
 <link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
-	
-
-
-
 <body>
 
 	<a href="#"
@@ -29,7 +25,7 @@ String cp = request.getContextPath();
 
 	<c:import url="./common/Nav.jsp" />
 
-	<main id="main">
+	<main id="main" class="main-container">
 
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section>
@@ -37,9 +33,11 @@ String cp = request.getContextPath();
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
 			
+			
 				<!-- 상단 현재 보고있는 프로젝트 표시바 -->
 				<div class="projectView container col-lg-12">
 					<div class="row">
+					
 						<div class="projectStatus p-3 pb-0 border rounded-top">
 							<div class="container text-center">
 								<div class="row justify-content-center">
@@ -50,41 +48,41 @@ String cp = request.getContextPath();
 									<!-- 프로젝트 정보 (제목, 진행기간, 전체 진척도)-->
 									<div class="col-md-12 col-lg-4 mb-4">
 										<div>
-											<div class="pj-title p-0 md-2 rounded">진행중인 프로젝트 제목1</div>
+											<div class="pj-title p-0 md-2 rounded">${pj_title_info.p_name }</div>
 										</div>
 										
 										<div>
-											<div class="pj-date p-0 mt-1 mb-1">2022-12-24 ~ 2022-12-25</div>
+											<div class="pj-date p-0 mt-1 mb-1">${pj_title_info.pj_start_date } ~ ${pj_title_info.pj_end_date }</div>
 										</div>
 										
 										<div>
 											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: 75%; background-color: #81EC81" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #37417C" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
 											</div>
 										</div>
 									</div>
 									
 									<div class="col-md-0 col-lg-2"></div>
 									<div class="col-md-0 col-lg-2"></div>
-									
 
 								</div>
 							</div>
 						</div>
 						
+						
 						<!-- 프로젝트 홈 메뉴 -->
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
 							   <ul class="justify-content-center">
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
-						
+
 						
 						<div class="container">
 						   <hr>
@@ -105,50 +103,23 @@ String cp = request.getContextPath();
 								<hr>
 								<div class="row justify-content-between m-0 mb-3 p-0">
 									<div class="m-0 col-8">
-										<div style="font-size: 1.0rem; font-weight: bold;">팀원1</div>
-										<div class="meet-member">이번 회의에 참석한 사람은 팀원2, 팀원3 입니다.</div>
+										<div class="meet-writer">${meetBoardPost.ph_meet_writer }</div>
+										<div class="meet-member">이번 회의에 참석한 사람은
+										 <c:forEach var="meetMemberList" items="${meetMemberList }">
+										 	${meetMemberList.insert_member}
+										 </c:forEach>
+										 입니다.</div>
 									</div>
-									<div class="m-0 col-4">
-										<div style="font-size: 1.0rem; text-align: right">2023-01-03 ~ 2023-01-03</div>
+									<div class="m-0 pe-0 col-4">
+										<div class="post-date">${meetBoardPost.meet_start_date } ~ ${meetBoardPost.meet_end_date }</div>
 									</div>
 								</div>
 								
-								<h1 class="mb-3">회의록 제목입니다.</h1>
+								<h1 class="meet-title mb-5">${meetBoardPost.ph_meet_title }</h1>
 								
 								<!-- 본문 내용 -->
-								<div class="mb-3">
-									오늘 회의에서는 이러이러하고 이러이러한 일을 진행하였습니다.<br>
-									근데 뭐 들으세요?<br>
-									아 뉴진스의 하입뽀이요~<br>
-									Baby, got me looking so crazy
-									빠져버리는 daydream
-									Got me feeling you
-									너도 말해줄래
-									누가 내게 뭐라든
-									남들과는 달라 넌
-									Maybe you could be the one
-									날 믿어봐 한 번
-									I'm not looking for just fun
-									Maybe I could be the one
-									Oh baby
-									예민하대 나 lately
-									너 없이는 매일 매일이 yeah
-									재미없어 어쩌지
-									I just want you
-									Call my phone right now
-									I just wanna hear you're mine
-									'Cause I know what you like boy
-									You're my chemical hype boy
-									내 지난 날들은
-									눈 뜨면 잊는 꿈
-									Hype boy 너만 원해
-									Hype boy 내가 전해
-									And we can go high
-									말해봐 yeah 느껴봐 mm mm
-									Take him to the sky
-									You know I hype you boy
-									눈을 감아
-									말해봐 yeah 느껴봐 mm mm
+								<div class="post-content mb-4">
+									${meetBoardPost.ph_meet_content }
 								</div>
 								<hr>
 								<div class="meet-post-fileTitle mb-3">첨부파일</div>
@@ -160,18 +131,40 @@ String cp = request.getContextPath();
 								</div>
 								<hr>
 							</div>
-							
-							
 					    </div>
 						
-					
 						<div class="container d-flex justify-content-end pe-0 mb-3" style="width: 75%;">
 							<div class="d-flex p-2 pe-0 align-self-center">
-								<button type="button" class="meet-post-deleteBtn" onclick="location.href='<%=cp %>/Inner-Project-home-meet.jsp'">삭제</button>
+								<button type="button" class="meet-post-backBtn"
+								 onclick="location.href='inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}'">목록으로</button>
+							</div>
+							<div class="d-flex p-2 pe-0 align-self-center">
+								<button type="button" class="meet-post-deleteBtn"
+								 onclick="location.href='inner-project-home-meet-delete.action'">삭제</button>
 							</div>
 							<div class="d-flex p-2 pe-0 me-0 align-self-center">
 								<button type="button" class="gradientBtn color-9">수정하기</button>
 							</div>
+							
+							<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+							<div class="toast-container position-fixed bottom-0 end-0 p-3">
+	 							<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+									 <div class="toast-body">
+									 <span class="bi bi-x-circle-fill align-self-center"></span> 해당 회의록 "제목" 을 삭제하시겠습니까?
+									    <div class="mt-2 pt-2 border-top">
+									      <button type="button" class="btn btn-primary btn-sm">삭제</button>
+									      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">닫기</button>
+									    </div>
+									  </div>
+								</div>
+							
+							</div>
+							
+
+							
+							
+							
 						</div>
 						
 					</div>
@@ -182,17 +175,26 @@ String cp = request.getContextPath();
 		
 	</main>
 	
+	
+	<script type="text/javascript">
+		const toastTrigger = document.getElementById('liveToastBtn')
+		const toastLiveExample = document.getElementById('liveToast')
+		if (toastTrigger) {
+		  toastTrigger.addEventListener('click', () => {
+		    const toast = new bootstrap.Toast(toastLiveExample)
+	
+		    toast.show()
+		  })
+		}
+	
+	</script>
+	
+	
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
 	
-
-
 </body>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script>
-
-</script>
 
 </html>

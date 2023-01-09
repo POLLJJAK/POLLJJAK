@@ -13,7 +13,7 @@ import com.test.dto.MainLoungeListDTO;
 public interface IMainLoungeListDAO
 {
 	// 자유게시만 글 목록
-	public ArrayList<MainLoungeListDTO> list();
+	public ArrayList<MainLoungeListDTO> list(MainLoungeListDTO dto);
 	
 	// 글작성Form
 	public String loungeInsertForm();
@@ -25,7 +25,10 @@ public interface IMainLoungeListDAO
 	public int update(MainLoungeListDTO dto);
 	
 	// 글 삭제
-	public int remove(String user_code);
+	public int remove(String post_code);
+	
+	// 게시판 총 갯수
+	public int listCount();
 	
 	// post_code로 글찾기
 	public MainLoungeListDTO postdetail(String post_code);

@@ -12,7 +12,7 @@
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css"/>
-<link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css"/>
+<link rel="stylesheet" href="<%=cp %>/resources/css/PostList.css"/>
 
 <style type="text/css">
     
@@ -72,7 +72,7 @@
 		<div class="container">
 			<div class="board_wrap" >
 				<div class="board-title">
-					<table style="margin-left: 13%;">
+					<table style="margin-left: 13%; width: 75%;">
 						<tr>
 							<th>
 							<select id="cntPerPage" name="sel" onchange="selChange()">
@@ -86,9 +86,9 @@
 									<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
 							</select>
 							</th>
-							<th>
-							<!-- 관리자만 보이게... 해야함.. -->
-							<button type="button" class="btn-hover color-9" style=" margin: 1%; margin-left:630px; width: 100px;"
+							<th align="right">
+							<!-- ====================관리자만 보이게 ============================-->
+							<button type="button" class="btn-hover color-9" style=" margin: 1%; float:right; width: 100px;"
 							<%--  onclick="location.href='<%=cp %>/Main-Lounge-post-insert.jsp';" --%>
 							 onclick="location.href='mainnoticeinsertform.action?a_code=AD00000001';"
 							 >작성하기</button>

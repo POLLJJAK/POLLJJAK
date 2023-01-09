@@ -26,7 +26,6 @@ public class MainNoticeController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	
 	@RequestMapping(value = "/mainnotice.action", method = RequestMethod.GET)
 	public String mainNoticeList(ModelMap model, ArticlePage vo
 			,@RequestParam(value="nowPage" , required=false) String nowPage
@@ -123,7 +122,7 @@ public class MainNoticeController
 		model.addAttribute("notice", dao.noticedetail(notice_code));
 		
 		
-		result = "Main-Notice-post-updateform.jsp";
+		result = "/Main-Notice-post-updateform.jsp";
 		
 		return result;
 	}

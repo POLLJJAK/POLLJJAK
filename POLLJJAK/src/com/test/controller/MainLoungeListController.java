@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.dto.ArticlePage;
 import com.test.dto.MainLoungeListDTO;
 import com.test.mybatis.IMainLoungeListDAO;
 
@@ -28,12 +29,43 @@ public class MainLoungeListController
 	
 	
 	@RequestMapping(value = "/mainlounge.action", method = RequestMethod.GET)
-	public String mainLoungeList(ModelMap model)
+	public String mainLoungeList(ModelMap model, ArticlePage vo
+			,@RequestParam(value="nowPage" , required=false) String nowPage
+			,@RequestParam(value="cntPerPage", required=false) String cntPerPage)
 	{
 		String result = null;
-		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-		model.addAttribute("list", dao.list());
-		result = "/Main-Lounge.jsp";
+		
+		try
+		{
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			int total = dao.listCount();
+			
+			if (nowPage == null && cntPerPage == null) 
+			{
+				nowPage = "1";
+				cntPerPage = "10";
+			} else if (nowPage == null) 
+			{
+				nowPage = "1";
+			} else if (cntPerPage == null) 
+			{ 
+				cntPerPage = "10";
+			}
+			
+			vo = new ArticlePage(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+			MainLoungeListDTO dto = new MainLoungeListDTO();
+			dto.setStart(Integer.toString(vo.getStart()));
+			dto.setEnd(Integer.toString(vo.getEnd()));
+			model.addAttribute("list", dao.list(dto));
+			model.addAttribute("paging", vo);
+			
+			result = "/Main-Lounge.jsp";
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 		return result;
 	}
 	
@@ -45,7 +77,7 @@ public class MainLoungeListController
 		String user_code = request.getParameter("user_code");
 		model.addAttribute("user_code", user_code);
 		
-		result = "/Main-Lounge-post-insert.jsp";
+		result = "/Main-Lounge-post-insertform.jsp";
 		
 		
 		return result;
@@ -60,7 +92,7 @@ public class MainLoungeListController
 		dao.add(dto);
 		
 		// 리스트가 아니라 해당글상세로 보내야할거같은데..
-		result = "redirect:/Main-Lounge-post.jsp";
+		result = "redirect:mainlounge.action";
 		
 		
 		return result;
@@ -83,6 +115,53 @@ public class MainLoungeListController
 		
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/mainloungeupdateform.action", method=RequestMethod.GET)
+	public String mainLoungeUpdateForm(HttpServletRequest request, Model model)
+	{
+		String result = "";
+		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+		
+		String post_code = request.getParameter("post_code");
+		
+		model.addAttribute("post", dao.postdetail(post_code));
+		
+		result = "/Main-Lounge-post-updateform.jsp";
+		
+		
+		return result;
+				
+	}
+	
+	@RequestMapping(value = "/mainloungeupdate.action", method = RequestMethod.POST)
+	public String mainLoungeUpdate(MainLoungeListDTO dto)
+	{
+		String result = null;
+		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+		dao.update(dto);
+		
+		result = "redirect:mainlounge.action";
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/mainloungedelete.action", method = RequestMethod.GET)
+	public String mainLoungeRemove(String post_code)
+	{
+		String result = null;
+		
+		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+		dao.remove(post_code);
+		result = "redirect:mainlounge.action";
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	// 좋아요추가
 	@RequestMapping(value = "/likeinsert.action", method = RequestMethod.GET)

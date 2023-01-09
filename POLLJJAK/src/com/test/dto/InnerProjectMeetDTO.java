@@ -13,6 +13,98 @@ public class InnerProjectMeetDTO
 	private String meet_start_date, meet_end_date, ph_meet_content, ph_meet_date, meet_update_date;
 	
 	private String meet_date;
+	
+	private String ph_meet_code;
+	private String u_p_apply_code;
+
+	private String upa_code, insert_member;
+
+	
+	private String summernote;
+	
+	//페이징
+	private String meet_sid;
+	public String getMeet_sid()
+	{
+		return meet_sid;
+	}
+
+	public void setMeet_sid(String meet_sid)
+	{
+		this.meet_sid = meet_sid;
+	}
+
+	private String start, end;
+	
+	public String getStart()
+	{
+		return start;
+	}
+
+	public void setStart(String start)
+	{
+		this.start = start;
+	}
+
+	public String getEnd()
+	{
+		return end;
+	}
+
+	public void setEnd(String end)
+	{
+		this.end = end;
+	}
+
+	public String getUpa_code()
+	{
+		return upa_code;
+	}
+
+	public void setUpa_code(String upa_code)
+	{
+		this.upa_code = upa_code;
+	}
+
+	public String getU_p_apply_code()
+	{
+		return u_p_apply_code;
+	}
+
+	public void setU_p_apply_code(String u_p_apply_code)
+	{
+		this.u_p_apply_code = u_p_apply_code;
+	}
+
+	public String getSummernote()
+	{
+		return summernote;
+	}
+
+	public void setSummernote(String summernote)
+	{
+		this.summernote = summernote;
+	}
+
+	public String getInsert_member()
+	{
+		return insert_member;
+	}
+
+	public void setInsert_member(String insert_member)
+	{
+		this.insert_member = insert_member;
+	}
+
+	public String getPh_meet_code()
+	{
+		return ph_meet_code;
+	}
+
+	public void setPh_meet_code(String ph_meet_code)
+	{
+		this.ph_meet_code = ph_meet_code;
+	}
 
 	public String getPh_meet_title()
 	{

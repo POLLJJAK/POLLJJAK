@@ -76,6 +76,8 @@
 		<section class="pt-5 pb-5" >
 		<div class="container" >
 			<div class="board_wrap">
+				
+				
 			<!-- 작성폼 -->
 			<form method="post" action="mainnoticeinsert.action?a_code=${a_code }" id="myForm">
 			<div class="board_list_wrap">
@@ -88,7 +90,7 @@
 						</tr>
 						<tr>
 							<th style="font-size: x-large; padding-top: 7px; width: 80px;">제목</th>
-							<td><input type="text" id="title" name="title" class="form-control" placeholder="제목 입력해주세요." /></td>
+							<td><input type="text" id="title" name="title" class="form-control" placeholder="제목 입력해주세요." maxlength='33'/></td>
 						</tr>
 					</table>
 					
@@ -96,10 +98,16 @@
 					<div style="width: 100%; align-content: center;">
 						<textarea id="summernote" name="summernote"></textarea>
 					</div>
+					<div class="col-xs-12 text-right" style="text-align: right; font-size: small; font-weight: bold;">
+				      <span id="maxContentPost"></span>
+				    </div>
+					<span style="font-size: small; color:red; display: none; "id="err" ></span>
 			    </div><!-- end meet_wrap mb-3-->
-			    <div style="text-align: center;;">
-				    <button type="reset" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">취소</button>
-				    <button type="submit" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">등록</button>
+			    
+			    
+			    <div style="text-align: center;">
+				    <button type="reset" class="btn-hover color-9" style="margin-top: 5%; width: 10%;" id="reset">취소</button>
+				    <button type="submit" class="btn-hover color-9" style="margin-top: 5%; width: 10%;" id="submit">등록</button>
 				</div>
 			</div><!-- end board_list_wrap -->
 			
@@ -117,47 +125,125 @@
   </main><!-- End #main -->
 	<!-- 썸머노트 스크립트 -->
 	<script type="text/javascript">
-	 	$('#summernote').summernote({
-	        height: 400,
-	 		lang: "ko-KR",
-	        placeholder: '내용을 입력해주세요.',
-	        tabsize: 2,
-	        toolbar: [
-	          // 글꼴 설정
-	          /* ['fontname', ['fontname']], */
-	          // 글자 크기 설정
-	          /* ['fontsize', ['fontsize']], */
-	          // 굵기, 기울임꼴, 밑줄, 취소 선, 서식지우기 설정 가능
-	          ['style', ['style']],
-	          ['font', ['bold', 'italic', 'underline','strikethrough']],
-	          // 글자색
-	          /* ['color', ['color']], */
-	          // 글머리 기호, 번호 매기기, 문단 정렬
-	          ['para', ['ul', 'ol']],
-	          // 표 만들기
-	          ['table', ['table']],
-	          // 그림첨부, 링크만들기, 동영상 첨부
-	          ['insert', ['link', 'picture','video', 'hr']],
-	          // 코드보기, 확대해서 보기, 도움말
-	          ['view', ['codeview']]
-	        ],
-	        /* fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'], */
-	      });
+		
 	
-	 	
-	 	
-	 	//등록버튼 클릭
+	
+		  function registerSummernote(element, placeholder, max, callbackMax) {
+			    $('#summernote').summernote({
+			    	height: 400,
+					lang: "ko-KR",
+				    tabsize: 2,
+			        toolbar: [
+			         ['style', ['style']],
+			         ['font', ['bold', 'italic', 'underline','strikethrough']],
+			     	 // 글자색
+			         ['color', ['forecolor','color']],
+			         // 글머리 기호, 번호 매기기, 문단 정렬
+			         ['para', ['ul', 'ol', 'paragraph']],
+			         // 표 만들기
+			         ['table', ['table']],
+			         // 그림첨부, 링크만들기, 동영상 첨부
+			         ['insert', ['link', 'picture','video', 'hr']],
+			         // 코드보기, 확대해서 보기, 도움말
+			         ['view', ['codeview']]
+			     	 ],
+			      placeholder,
+			      callbacks: {
+			        onKeydown: function(e) {
+			          var t = e.currentTarget.innerText;
+			          if (t.length >= max) {
+			        	  e.preventDefault();
+			            if (e.keyCode != 8)
+			              e.preventDefault();
+			            // add other keys ...
+			          }
+			        },
+			        onKeyup: function(e) {
+			          var t = e.currentTarget.innerText;
+			          if (typeof callbackMax == 'function') {
+			            callbackMax(max - t.length);
+			          }
+			        },
+			        onPaste: function(e) {
+			          var t = e.currentTarget.innerText;
+			          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+			          e.preventDefault();
+			          var all = t + bufferText;
+			          document.execCommand('insertText', false, all.trim().substring(0, 1000));
+			          if (typeof callbackMax == 'function') {
+			            callbackMax(max - t.length);
+			          }
+			        }
+			      }
+			    });
+			  }
 	 	$(function()
+	 	{
+	 		registerSummernote('.summernote', '내용을 입력해주세요.', 1000, function(max) 
+	 		{
+	 		    $('#maxContentPost').text(max+"자/ 최대1000자");
+	 		    $("#err").css("display","none");
+	 		});
+	 	});
+	 	
+	 	
+	 	
+ 		$(function()
 		{
+ 			
+ 			$("#err").css("display","none");
+ 			
 	 		// 유효성 검사
 	 		
+	 		// 제목 글자수 제한
+	 		$("#title").keyup(function(e) {
+		 		
+		 		var content = $(this).val();
+				if (content.length == 33 ) 
+				{
+					$("#err").css("display","inline").html("제목 최대 글자수를 초과했습니다.");
+					$(this).val(content.substring(0, 33));
+					//return false;
+				}
+				else if (content.length <= 32 ) {
+					$("#err").css("display","none");
+				} 
+	 		});
 	 		
+	 		
+	 		
+ 			//리셋버튼클릭
+	 		$("#reset").click(function()
+			{
+	 			$("#summernote").summernote("reset");
+			});
+	 		
+	 		
+	 		//서브밋버튼클릭
 	 		$("#submit").click(function()
 			{
+	 			if ($("#title").val()=="")
+				{
+					$("#title").focus();
+					$("#err").css("display","inline").html("제목을 입력해주세요.");
+	 				return false;
+				}
+	 			
+	 			if ($("#summernote").summernote('isEmpty'))
+				{
+	 				$("#summernote").summernote({ focus: true });
+					$("#err").css("display","inline").html("내용을 입력해주세요.");
+	 				return false;
+				}
 				
 	 			
-	 			$("#myForm").submit();
+	 			//$("#myForm").submit();
+	 			
+	 			
+	 			
 			});
+	 		
+	 		
 		});
 	</script>
 	

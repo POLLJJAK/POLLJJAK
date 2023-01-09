@@ -5,14 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
 <html lang="ko">
 
-<link href="assets/css/Inner-Project-home.css" rel="stylesheet">
 <c:import url="./common/Head.jsp" />
+
 <!-- 내 프로젝트 홈 css 파일 -->
 <link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
@@ -34,9 +34,6 @@ String cp = request.getContextPath();
 
 		<section class="projectHome-list-now pb-2">
 			<div class="container">
-			
-				<div class="projectView container col-lg-12">
-					<div class="row">
 			
 				<!-- 상단 현재 보고있는 프로젝트 표시바 -->
 				<div class="projectView container col-lg-12">
@@ -96,22 +93,23 @@ String cp = request.getContextPath();
 						<!-- 컨텐츠 란 -->
 						<div class="container mb-2 d-flex justify-content-between" style="width: 75%;">
 							<h5 class="p-2 m-0 fw-bolder align-self-center">회의록</h5>
+							
+							
 							<div class="p-2 ms-auto align-self-center">
-								<button type="button" class="gradientBtn color-9" onclick="location.href='<%=cp %>/Inner-Project-home-meet-Post-Insert.jsp'">
+								<button type="button" class="gradientBtn color-9"
+								 onclick="location.href='inner-project-home-meet-post-insertform.action?u_p_apply_code=${u_p_apply_code}'">
 								작성하기</button>
 							</div>
 						</div>
 						
 
-
-
 	
 						<!-- 게시판 글 목록 -->
-						<div class="container meetBoard">
+						<div class="container meetBoard mb-3">
 							<div class="post-box row justify-content-center">
-							
 								<c:forEach var="meetBoardList" items="${meetBoardList }">
-									<div class="mb-3 post-line-box">
+								<div onclick="location.href='inner-project-home-meet-post.action?u_p_apply_code=${u_p_apply_code}&ph_meet_code=${meetBoardList.ph_meet_code}'">
+									<div class="mb-2 post-line-box">
 										<div class="d-flex">
 											<div class="post-writer align-self-center">${meetBoardList.ph_meet_writer }</div>
 											<div class="post-date align-self-center">${meetBoardList.meet_date }</div>
@@ -122,6 +120,7 @@ String cp = request.getContextPath();
 											<div class="post-updateDate ms-auto align-self-center">${meetBoardList.meet_update_date }</div>
 										</div>
 									</div>
+								</div>
 								</c:forEach>
 								
 							</div>
@@ -129,26 +128,42 @@ String cp = request.getContextPath();
 								
 
 						
+						
+						<!-- 페이징처리 -->
 						<div class="board_page">
 							<ul class="pagination justify-content-center">
+							    <c:if test="${paging.startPage != 1 }">
 							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Previous">
+							      <a class="page-link" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}&nowPage=${paging.startPage-1 }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
 							        <span aria-hidden="true">&laquo;</span>
 							      </a>
 							    </li>
+							    </c:if>
 							    
-							    <li class="page-item"><a class="page-link" href="#">1</a></li>
-							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-							    <li class="page-item"><a class="page-link" href="#">3</a></li>
+							    <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+							    	<c:choose>
+							    		<c:when test="${p == paging.nowPage }">
+							    			<li class="page-item"><a class="page-link" href="#">${p }</a></li>
+							    		</c:when>
+							    		<c:when test="${p != paging.nowPage }">
+							    			<li class="page-item"><a class="page-link" 
+							    			href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+							    		</c:when>
+							    	</c:choose>
+							    </c:forEach>
 							    
+							    <c:if test="${ paging.endPage != paging.lastPage }">
 							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Next">
+							      <a class="page-link" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}&nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}" aria-label="Next">
 							        <span aria-hidden="true">&raquo;</span>
 							      </a>
 							    </li>
-						  	</ul>
-						</div>
-
+							    </c:if>
+					  		</ul>
+						</div><!-- end board_page-->
+						
+						
+						
 						
 						
 					</div>
@@ -158,14 +173,19 @@ String cp = request.getContextPath();
 		
 	</main>
 	
+	<script type="text/javascript">
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}&nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+
+	</script>
+	
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
 	
-
-
 </body>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 </html>
