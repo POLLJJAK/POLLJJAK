@@ -27,6 +27,7 @@
 
 
 <style>
+	
 	.form-control
     {
     	align-content: center;
@@ -130,9 +131,9 @@
 		         ['style', ['style']],
 		         ['font', ['bold', 'italic', 'underline','strikethrough']],
 		         // 글자색
-		         /* ['color', ['color']], */
+		         ['color', ['forecolor','color']],
 		         // 글머리 기호, 번호 매기기, 문단 정렬
-		         ['para', ['ul', 'ol']],
+		         ['para', ['ul', 'ol', 'paragraph']],
 		         // 표 만들기
 		         ['table', ['table']],
 		         // 그림첨부, 링크만들기, 동영상 첨부

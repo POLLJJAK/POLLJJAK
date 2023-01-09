@@ -23,7 +23,7 @@
   	<script src="resources/js/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="<%=cp %>/resources/css/summernote-lite.css"/>
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css" />
 
 
 <style>
@@ -133,10 +133,10 @@
 	        toolbar: [
 	         ['style', ['style']],
 	         ['font', ['bold', 'italic', 'underline','strikethrough']],
-	         // 글자색
-	         /* ['color', ['color']], */
+	      	 // 글자색
+	         ['color', ['forecolor','color']],
 	         // 글머리 기호, 번호 매기기, 문단 정렬
-	         ['para', ['ul', 'ol']],
+	         ['para', ['ul', 'ol', 'paragraph']],
 	         // 표 만들기
 	         ['table', ['table']],
 	         // 그림첨부, 링크만들기, 동영상 첨부

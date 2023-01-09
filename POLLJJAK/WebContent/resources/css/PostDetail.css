@@ -160,4 +160,5 @@
 	font-size: small;
 }
 
-   
+ /* summernote 드롭다운 두개뜨는거 수정 */
+   .dropdown-toggle::after { display: none; }  
