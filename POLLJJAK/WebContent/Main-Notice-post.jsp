@@ -13,7 +13,6 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css"/>
 
 <style>
