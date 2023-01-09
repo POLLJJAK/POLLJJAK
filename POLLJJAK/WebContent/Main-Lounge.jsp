@@ -53,7 +53,7 @@
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar_" class="navbar inner-nav" data-aos="fade-up"> 
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto" href="#" style="margin-right: 100px;">공지사항</a></li>
+						<li><a class="nav-link scrollto" href="mainnotice.action" style="margin-right: 100px;">공지사항</a></li>
 						<li><a class="nav-link scrollto active" href="<%=cp %>/mainlounge.action" >자유게시판</a></li>
 					</ul>
 				</nav>

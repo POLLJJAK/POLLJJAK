@@ -43,8 +43,8 @@
 	
 	<!-- 좋아요추가 -->
 	<insert id="likeadd" parameterType="String">
-		INSERT INTO POST_LIKE(POST_LIKE_CODE, L_POST_CODE, USER_CODE,POST_LIKE_DATE)
-		VALUES('LKPS'||LPAD(POST_LIKE_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code}, #{user_code}, SYSDATE)
+		INSERT INTO POST_LIKE(POST_LIKE_CODE, L_POST_CODE, USER_CODE, POST_LIKE_DATE)
+		VALUES('LKPS'||LPAD(POST_LIKE_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code, jdbcType=VARCHAR}, #{user_code,jdbcType=VARCHAR}, SYSDATE)
 	</insert>
 	
 	<!-- 좋아요삭제 -->
