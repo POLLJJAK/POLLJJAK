@@ -26,7 +26,6 @@ public class MainNoticeController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	
 	@RequestMapping(value = "/mainnotice.action", method = RequestMethod.GET)
 	public String mainNoticeList(ModelMap model, ArticlePage vo
 			,@RequestParam(value="nowPage" , required=false) String nowPage
