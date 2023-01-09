@@ -4,6 +4,8 @@
 
 package com.test.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.test.dto.MainLoungeListDTO;
 import com.test.mybatis.IMainLoungeListDAO;
@@ -83,17 +86,20 @@ public class MainLoungeListController
 	
 	// 좋아요추가
 	@RequestMapping(value = "/likeinsert.action", method = RequestMethod.GET)
-	public String likeInsert(HttpServletRequest request, Model model)
+	public String likeInsert(HttpServletRequest request, @RequestParam Map<String, Object> param)
 	{
 		String result = null;
-		String post_code = request.getParameter("post_code");
-		String user_code = request.getParameter("user_code");
+		//String post_code = request.getParameter("post_code");
+		//String user_code = request.getParameter("user_code");
 		
-		MainLoungeListDTO dto = new MainLoungeListDTO();
-		dto.setPost_code(post_code);
-		dto.setUser_code(user_code);
+		String user_code = (String) param.get("user_code");
+		String post_code = (String) param.get("post_code");
+		
+		//MainLoungeListDTO dto = new MainLoungeListDTO();
+		//dto.setPost_code(post_code);
+		//dto.setUser_code(user_code);
 		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-		dao.likeadd(dto);
+		dao.likeadd(post_code, user_code);
 		
 		
 		// 리스트가 아니라 해당글상세로 보내야할거같은데..

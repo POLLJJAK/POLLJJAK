@@ -23,7 +23,7 @@
   	<script src="resources/js/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="<%=cp %>/resources/css/summernote-lite.css"/>
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css"/>
 
 
 <style>
@@ -49,7 +49,7 @@
 					<div class="d-flex justify-content-center col" style="width: 50%;">
 						<div class="section-title pt-4">
 							<h6>라운지</h6>
-							<div>Let's talk about your project!</div>
+							<div>Check the notice!</div>
 						</div>
 					</div>
 				</div>
@@ -65,8 +65,8 @@
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar_" class="navbar inner-nav"> 
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto" href="mainnotice.action" style="margin-right: 100px;">공지사항</a></li>
-						<li><a class="nav-link scrollto active" href="mainlounge.action" >자유게시판</a></li>
+						<li><a class="nav-link scrollto active" href="mainnotice.action" style="margin-right: 100px;">공지사항</a></li>
+						<li><a class="nav-link scrollto" href="mainlounge.action" >자유게시판</a></li>
 					</ul>
 				</nav>
 				<hr>
@@ -77,7 +77,7 @@
 		<div class="container" >
 			<div class="board_wrap">
 			<!-- 작성폼 -->
-			<form method="post" action="mainloungeinsert.action?user_code=U000000003" id="myForm">
+			<form method="post" action="mainnoticeinsert.action?a_code=${a_code }" id="myForm">
 			<div class="board_list_wrap">
 				<div class="meet_wrap mb-3">
 					<table class="table">
@@ -98,8 +98,8 @@
 					</div>
 			    </div><!-- end meet_wrap mb-3-->
 			    <div style="text-align: center;;">
-				    <button type="reset" class="btn-hover color-9" style="margin-top: 5%; width: 10%;" id="reset">취소</button>
-				    <button type="submit" class="btn-hover color-9" style="margin-top: 5%; width: 10%;" id="submit">등록</button>
+				    <button type="reset" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">취소</button>
+				    <button type="submit" class="btn-hover color-9" style="margin-top: 5%; width: 10%;">등록</button>
 				</div>
 			</div><!-- end board_list_wrap -->
 			
@@ -146,7 +146,7 @@
 	
 	 	
 	 	
-	 	
+	 	//등록버튼 클릭
 	 	$(function()
 		{
 	 		// 유효성 검사
@@ -157,16 +157,6 @@
 				
 	 			
 	 			$("#myForm").submit();
-	 			
-	 			
-	 			
-	 			//리셋버튼클릭
-		 		$("#reset").click(function()
-				{
-					
-		 			
-		 			$("#summernote").summernote("reset");
-				});
 			});
 		});
 	</script>
