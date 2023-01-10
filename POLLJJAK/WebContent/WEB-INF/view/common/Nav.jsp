@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <link href="assets/img/pol-favicon.png" rel="icon">
 
 <!-- ======= Header ======= -->
@@ -14,14 +15,15 @@
             	<img alt="플젝폴짝로고" src="assets/img/logo.png">
             </a>
          </h1>
-         
+         <!-- Uncomment below if you prefer to use an image logo -->
+         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
       
       <nav id="navbar" class="navbar">
          <ul>
             <!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트
                   조회/지원</a></li> -->
-            <li><a class="nav-link scrollto" href="userupdateform.action">프로젝트 조회/지원</a></li>
+            <li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp">프로젝트 조회/지원</a></li>
             <li><a class="nav-link scrollto" href="ProjectOpenMain.jsp">프로젝트 개설</a></li>
             
             <!-- 테스트로 지금 김태민 유저코드를 넣고 진입 가능하게 만들어둔 상태이다. -->
