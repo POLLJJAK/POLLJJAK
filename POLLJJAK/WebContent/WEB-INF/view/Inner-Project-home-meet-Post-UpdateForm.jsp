@@ -13,8 +13,15 @@
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
+
 <!-- 내 프로젝트 홈 css 파일 -->
 <link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
+
+
+<!-- 게시판 썸머노트 lite 버전  -->
+<script src="<%=cp %>/resources/js/summernote-lite.js"></script>
+<script src="<%=cp %>/resources/js/summernote-ko-KR.js"></script>
+<link href="<%=cp %>/resources/css/summernote-lite.css" rel="stylesheet">
 
 <body>
 
@@ -89,7 +96,6 @@
 						</div>
 
 
-
 						<!-- 컨텐츠 란 -->
 						<div class="container" style="width:75%;">
 							<h5 class="p-2 ps-0 m-0 mb-3 fw-bolder align-self-center">회의록</h5>
@@ -97,74 +103,59 @@
 						
 						
 						
-						<!-- 포스트 상세보기 -->
-						<div class="container" style="width: 75%;">
-							<div class="row justify-content-center">
-								<hr>
-								<div class="row justify-content-between m-0 mb-3 p-0">
-									<div class="m-0 col-8">
-										<div class="meet-writer">${meetBoardPost.ph_meet_writer }</div>
-										<div class="meet-member">이번 회의에 참석한 사람은
-										 <c:forEach var="meetMemberList" items="${meetMemberList }">
-										 	${meetMemberList.insert_member}
-										 </c:forEach>
-										 입니다.</div>
-									</div>
-									<div class="m-0 pe-0 col-4">
-										<div class="post-date">${meetBoardPost.meet_start_date } ~ ${meetBoardPost.meet_end_date }</div>
+						<form method="post" action="inner-project-home-meet-post-update.action?u_p_apply_code=${u_p_apply_code}&ph_meet_code=${meetBoardPost.ph_meet_code}"
+						 id="updateMeetPostForm"></form>
+							<div class="container" style="width:75%;">
+								<div>
+									<div>회의주제</div>
+									<input type="text" id="ph_meet_subtitle" name="ph_meet_subtitle" class="form-control mb-2"
+									 placeholder="주제를 입력해주세요." maxlength="10"
+									 value="${meetBoardPost.ph_meet_subtitle}">
+								</div>
+			
+			
+								<div>
+									<div>제목</div>
+									<input type="text" id="ph_meet_title" name="ph_meet_title" class="form-control mb-2" placeholder="제목을 입력해주세요."
+									value="${meetBoardPost.ph_meet_title}">
+								</div>
+								
+								<div class="mb-3">
+									<div>회의일시</div>
+									<div class="form-group mb-3">
+								        <input type="text" id="meet_start_date" name="meet_start_date" class="datepicker inp" placeholder="회의시작"
+								        value="${meetBoardPost.meet_start_date }"> 
+										<input type="text" id="meet_end_date" name="meet_end_date"  class="datepicker inp" placeholder="회의종료"
+										value="${meetBoardPost.meet_end_date }">
 									</div>
 								</div>
 								
-								<h1 class="meet-title mb-5">${meetBoardPost.ph_meet_title }</h1>
-								
-								<!-- 본문 내용 -->
-								<div class="post-content mb-4">
-									${meetBoardPost.ph_meet_content }
+								<div class="mb-3">
+									<!-- 참석인원 재설정 -->
 								</div>
-								<hr>
-								<div class="meet-post-fileTitle mb-3">첨부파일</div>
-								<div class="meet-post-filebox mb-3">
-									<ul class="meet-file-ul">
-										<li class="meet-file-li">첨부된 파일명1</li>
-										<li class="meet-file-li">첨부된 파일명2</li>
-									</ul>
+							</div>
+	
+							
+							<!-- 포스트 상세보기 -->
+							<div class="container d-flex justify-content-center">
+								<div style="width: 75%">
+									<textarea id="summernote" name="summernote">${meetBoardPost.ph_meet_content }</textarea>
 								</div>
-								<hr>
-							</div>
-					    </div>
-						
-						<div class="container d-flex justify-content-end pe-0 mb-3" style="width: 75%;">
-							<div class="d-flex p-2 pe-0 align-self-center">
-								<button type="button" class="meet-post-backBtn"
-								 onclick="location.href='inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}'">목록으로</button>
-							</div>
-
-							<div class="d-flex p-2 pe-0 align-self-center">
-								<button type="button" class="meet-post-deleteBtn" id="DeleteViewBtn">삭제</button>
-							</div>
+						    </div>
 							
-							<div class="d-flex p-2 pe-0 me-0 align-self-center">
-								<button type="button" class="gradientBtn color-9"
-								onclick="location.href='inner-project-home-meet-post-updateform.action?u_p_apply_code=${u_p_apply_code }&ph_meet_code=${meetBoardPost.ph_meet_code }'">수정하기</button>
-							</div>
-							
-
-							<div class="toast-container position-fixed bottom-0 end-0 p-3">
-	 							<div id="DeleteView" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-									 <div class="toast-body">
-									 <span class="bi bi-x-circle-fill align-self-center"></span> 해당 회의록 "${meetBoardPost.ph_meet_title }"를 <br>삭제하시겠습니까?
-									    <div class="mt-2 pt-2 border-top">
-									      <button type="button" class="btn btn-danger btn-sm"
-									      onclick="location.href='inner-project-home-meet-post-delete.action?u_p_apply_code=${u_p_apply_code }&ph_meet_code=${meetBoardPost.ph_meet_code}'">예</button>
-									      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">아니오</button>
-									    </div>
-									  </div>
+							<!-- 버튼 -->
+							<div class="container d-flex justify-content-end" style="width: 75%;">
+								<div class="d-flex p-2 align-self-center">
+									<button type="button" class="btn btn-light"
+									 onclick="location.href='inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}'">
+									 취소</button>
+								</div>
+								<div class="d-flex p-2 pe-0 align-self-center">
+									<button type="button" id="meetUpdateBtn" class="gradientBtn color-9"
+									value="${meetBoardPost.ph_meet_code}">수정하기</button>
 								</div>
 							</div>
 							
-							
-							
-						</div>
 						
 					</div>
 				</div>
@@ -175,27 +166,62 @@
 	</main>
 	
 	
+	<!-- 썸머노트 스크립트 -->
 	<script type="text/javascript">
 	
-		// 삭제 버튼 토스트창 표시
-		const toastTrigger = document.getElementById('DeleteViewBtn')
-		const toastLiveExample = document.getElementById('DeleteView')
-		if (toastTrigger) {
-		  toastTrigger.addEventListener('click', () => {
-		    const toast = new bootstrap.Toast(toastLiveExample)
-	
-		    toast.show()
-		  })
-		}
+		$(function() {
+			$('#meetUpdateBtn').click(function() {
+				
+				/*
+				if ($('#ph_meet_subTitle'))
+				{
+					ph_meet_title
+					meet_startDate
+					meet_endDate
+				}
+				*/
+				
+				$('#updateMeetPostForm').submit();
+				
+			});
+			
+		
+		 	$('#summernote').summernote({
+		        height: 400,
+		 		lang: "ko-KR",
+		        placeholder: '내용을 입력해주세요.',
+		        tabsize: 2,
+		        toolbar: [
+		          // 글꼴 설정
+		          /* ['fontname', ['fontname']], */
+		          // 글자 크기 설정
+		          /* ['fontsize', ['fontsize']], */
+		          // 굵기, 기울임꼴, 밑줄, 취소 선, 서식지우기 설정 가능
+		          ['style', ['style']],
+		          ['font', ['bold', 'italic', 'underline','strikethrough']],
+		          // 글자색
+		          /* ['color', ['color']], */
+		          // 글머리 기호, 번호 매기기, 문단 정렬
+		          ['para', ['ul', 'ol']],
+		          // 표 만들기
+		          ['table', ['table']],
+		          // 그림첨부, 링크만들기, 동영상 첨부
+		          ['insert', ['link', 'picture','video', 'hr']],
+		          // 코드보기, 확대해서 보기, 도움말
+		          ['view', ['codeview']]
+		        ],
+		        /* fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'], */
+		      });
+		 	
+		});
 	
 	</script>
-	
-	
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
-	
+
 </body>
+
 
 
 </html>
