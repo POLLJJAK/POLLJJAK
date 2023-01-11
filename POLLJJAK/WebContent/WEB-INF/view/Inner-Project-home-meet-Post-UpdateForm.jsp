@@ -63,9 +63,19 @@
 										</div>
 										
 										<div>
-											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #37417C" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
-											</div>
+											<c:choose>
+												<c:when test="${pj_title_info.pj_end_check == '종료' }">
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #37417C" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #4EE193" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
+													</div>
+												</c:otherwise>
+											</c:choose>
+											
 										</div>
 									</div>
 									
@@ -77,6 +87,7 @@
 						</div>
 						
 						
+						
 						<!-- 프로젝트 홈 메뉴 -->
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
@@ -84,11 +95,12 @@
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
+						
 
 						
 						<div class="container">
@@ -104,7 +116,7 @@
 						
 						
 						<form method="post" action="inner-project-home-meet-post-update.action?u_p_apply_code=${u_p_apply_code}&ph_meet_code=${meetBoardPost.ph_meet_code}"
-						 id="updateMeetPostForm"></form>
+						 id="updateMeetPostForm">
 							<div class="container" style="width:75%;">
 								<div>
 									<div>회의주제</div>
@@ -151,11 +163,11 @@
 									 취소</button>
 								</div>
 								<div class="d-flex p-2 pe-0 align-self-center">
-									<button type="button" id="meetUpdateBtn" class="gradientBtn color-9"
-									value="${meetBoardPost.ph_meet_code}">수정하기</button>
+									<button type="button" id="meetUpdateBtn" class="gradientBtn color-9">수정하기</button>
 								</div>
 							</div>
 							
+						</form>
 						
 					</div>
 				</div>

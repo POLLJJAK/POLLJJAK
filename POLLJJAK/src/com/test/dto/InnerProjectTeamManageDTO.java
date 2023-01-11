@@ -4,7 +4,8 @@ public class InnerProjectTeamManageDTO
 {
 	private String p_name, pj_start_date, pj_end_date, all_percent, pj_code;
 	
-	private String team_role, position_part, u_name, last_login_date, contribute;
+	private String team_role, position_part, u_name, last_login_date;
+	private String contribute;
 	
 	private String team_member_count;
 	
@@ -12,10 +13,18 @@ public class InnerProjectTeamManageDTO
 	
 	private String p_code;
 	
-
+	private String pj_end_check;
 	
 	
 	
+	public String getPj_end_check()
+	{
+		return pj_end_check;
+	}
+	public void setPj_end_check(String pj_end_check)
+	{
+		this.pj_end_check = pj_end_check;
+	}
 	public String getPj_code()
 	{
 		return pj_code;
