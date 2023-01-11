@@ -8,8 +8,10 @@
 	<!-- 완료 프로젝트 개수 조회  레벨산정-->
 	<select id="searchLevel" resultType="java.lang.Integer">
 		SELECT COUNT(DISTINCT PE.P_END_CODE) AS PROJECT_COMPLETE  
+		  
 		FROM P_END PE , P_END_CONDITION PEC, P_TEAM_CONFIRM PTC
-   		, P P, P_POSITION PP, U_P_APPLY UPA, P_OUT PO, U U, P_LEADER PL
+   		, P P, P_POSITION PP, U_P_APPLY UPA, P_OUT PO, U U, P_LEADER PL  
+   		
 		WHERE PE.P_END_CONDITION_CODE = PEC.P_END_CONDITION_CODE
       		 AND PE.P_END_CONDITION_CODE = 'PEC0000001'
 		     AND PTC.P_TEAM_CONFIRM_CODE = PE.P_TEAM_CONFIRM_CODE
@@ -18,10 +20,123 @@
 		     AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
 		     AND UPA.U_P_APPLY_DATE IS NOT NULL
 		     AND UPA.U_P_APPLY_CODE != PO.P_OUT_CODE
-             AND U.USER_CODE = 'U000000001'
+             AND U.USER_CODE = #{user_code}
              AND U.USER_CODE = P.USER_CODE
 	</select>
 	
+	<!-- 프로젝트 정보 등록 (직무데이터, 파일 제외) -->
+	<insert id="openProject" parameterType="com.test.dto.ProjectOpenDTO">
+		INSERT INTO P
+		(P_CODE, 
+		USER_CODE, 
+		REGION_PART_CODE, 
+		PLATFORM_PART_CODE, 
+		SKILL_PART_CODE, 
+		DEPARTMENT_PART_CODE, 
+		SUBJECT_PART_CODE,
+		P_NAME, 
+		P_START_DATE, 
+		P_END_DATE, 
+		PJ_START_DATE, 
+		PJ_END_DATE, 
+		P_INFO_CONTENT, 
+		P_INFO_REFO, 
+		P_UPDATE_DATE, 
+		TIME_PART_CODE)
+		VALUES('P'||LPAD(P_CODE_SEQ.NEXTVAL, 9, '0'),
+		#{user_code},
+		#{region_part_code},
+		#{platform_part_code},
+		#{skill_part_code},
+		#{department_part_code},
+		#{subject_part_code},
+		#{p_name},
+		SYSDATE,
+		TO_DATE(#{p_end_date},'YYYY-MM-DD HH24:MI:SS'),
+		TO_DATE(#{pj_start_date},'YYYY-MM-DD HH24:MI:SS'), 
+		TO_DATE(#{pj_end_date},'YYYY-MM-DD HH24:MI:SS'),
+		#{p_info_content},
+		#{p_info_refo},
+		 NULL,
+		#{time_part_code})
+		<selectKey resultType="string" keyProperty="p_code" order="AFTER">
+			SELECT ('P'||LPAD(P_CODE_SEQ.CURRVAL, 9, '0')) FROM dual
+		</selectKey>
+	</insert>
 	
+	<!-- 프로젝트 직무정보 등록 -->
+	<insert id="insertPosition" parameterType="java.util.HashMap">
+		INSERT INTO P_POSITION
+			(P_POSITION_CODE,
+			 POSITION_PART_CODE, 
+			 P_CODE, 
+			 P_POSITION_COUNT)
+		VALUES 
+		 	('PP'||LPAD(P_POSITION_CODE_SEQ.NEXTVAL, 8, '0'),
+		 	 #{position_part},
+		     #{p_code},
+		 	 #{position_part_count}
+		    ) 
+		 <selectKey resultType="java.util.HashMap" keyProperty="P_POSITION_CODE" order="AFTER">
+			SELECT ('PP'||LPAD(P_POSITION_CODE_SEQ.CURRVAL, 8, '0')) AS P_POSITION_CODE
+			FROM dual
+		</selectKey>
+	</insert>
+	
+	<!-- 프로젝트 대표이미지 첨부파일 등록-->
+	<insert id="insertFileImage" parameterType="com.test.dto.ProjectOpenDTO">
+			INSERT INTO P_FILE
+					   (P_FILE_CODE, 
+					    P_CODE, 
+					    P_FILE_PATH, 
+					    P_FILE_NAME, 
+					    P_FILE_SIZE, 
+					    P_FILE_DATE)
+			VALUES(
+					('PF'||LPAD(P_FILE_CODE_SEQ.NEXTVAL, 8, '0')),
+					 #{p_code}, 
+					 #{p_file_path}, 
+					 #{p_file_name}, 
+					 #{p_file_size}, 
+					 SYSDATE)
+	</insert>
+	
+	 <!-- 프로젝트 팀장 지원 등록 -->
+	<insert id="applyProject" parameterType="com.test.dto.ProjectOpenDTO">
+		INSERT INTO U_P_APPLY
+				   (U_P_APPLY_CODE, 
+				   P_POSITION_CODE, 
+				   USER_CODE, 
+				   U_P_APPLY_REASON, 
+				   U_P_APPLY_DATE, 
+				   U_P_READY_DATE)
+		VALUES
+				('UPA'||LPAD(U_P_APPLY_CODE_SEQ.NEXTVAL, 7, '0'),
+				 #{p_position_code}, 
+				 #{user_code},
+				  NULL, 
+				  TO_DATE(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
+				  TO_DATE(SYSDATE,'YYYY-MM-DD HH24:MI:SS'))
+		<selectKey resultType="string" keyProperty="u_p_apply_code" order="AFTER">
+			SELECT ('UPA'||LPAD(U_P_APPLY_CODE_SEQ.CURRVAL, 7, '0')) AS U_P_APPLY_CODE
+			FROM dual
+		</selectKey>
+	</insert>
+	
+	
+	<!-- 프로젝트 팀장 권한 등록 -->
+	<insert id="addLeaderPermission" parameterType="com.test.dto.ProjectOpenDTO">
+		INSERT INTO P_LEADER
+				    (P_LEADER_CODE,
+				     U_P_APPLY_CODE,
+				     P_LEADER_DATE,
+				     P_LEADER_REASON)
+		VALUES
+			('PL'||LPAD(P_LEADER_CODE_SEQ.NEXTVAL, 8, '0'),
+		    #{u_p_apply_code}, 
+			TO_DATE(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
+			'프로젝트 개설자 초기 팀장 권한 부여'
+			)
+	</insert>
 	
 </mapper>

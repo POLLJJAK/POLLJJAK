@@ -4,6 +4,9 @@
 
 package com.test.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -37,7 +40,9 @@ public class ProjectDetailController
 		model.addAttribute("pPositionInfo", dao.getProjectPosition(p_code));
 		model.addAttribute("pLeaderInfo", dao.getProjectLeader(p_code));
 		model.addAttribute("pApplicantInfo", dao.getProjectApplicant(p_code));
-	
+		
+		
+		System.out.println();
 		result = "/ProjectDetail.jsp";
 	
 		return result;

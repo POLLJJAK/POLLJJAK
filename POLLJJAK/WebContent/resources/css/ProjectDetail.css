@@ -34,6 +34,10 @@
        -webkit-transition: all .4s ease-in-out;
        transition: all .4s ease-in-out;
    }
+   .apply
+   {
+   		width: 100%;
+   }
    
    .btn-hover:focus 
    {

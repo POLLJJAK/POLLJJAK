@@ -5,7 +5,7 @@
 
 <mapper namespace="com.test.mybatis.IProjectDetailDAO">
 	
-	<!-- 완료 프로젝트 개수 조회  레벨산정-->
+	<!-- 프로젝트 정보 조회 -->
 	<select id="getProjectDetail" resultType="com.test.dto.ProjectDetailDTO">
 		SELECT  P.P_NAME, 
 				TO_CHAR(P.P_START_DATE, 'YYYY-MM-DD') AS P_START_DATE, 
@@ -39,19 +39,19 @@
 	
 	<!-- 프로젝트 지원 분야 및 정원 가져오기  -->
 	<select id="getProjectPosition" resultType="com.test.dto.ProjectDetailDTO">
-		SELECT PPP.POSITION_PART,
-			   COUNT(*) AS P_APPLY_COUNT,
-			   PP.P_POSITION_COUNT
-		FROM P_POSITION PP, 
-			 POSITION_PART PPP, 
-			 U_P_APPLY UPA
-		WHERE PP.P_CODE = #{p_code}
-  		  AND PP.POSITION_PART_CODE = PPP.POSITION_PART_CODE
-  		  AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
-  		  AND UPA.U_P_READY_DATE IS NOT NULL
-		GROUP BY POSITION_PART, P_POSITION_COUNT
+		SELECT PPT.POSITION_PART, 
+			   PP.P_POSITION_COUNT,
+        	   NVL((SELECT COUNT(UPA.P_POSITION_CODE)
+         			FROM  U_P_APPLY UPA
+         			WHERE UPA.U_P_READY_DATE IS NOT NULL
+            		AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
+         			GROUP BY PP.POSITION_PART_CODE),0) AS P_APPLY_COUNT
+		FROM P_POSITION PP, POSITION_PART PPT
+		WHERE PP.POSITION_PART_CODE = PPT.POSITION_PART_CODE
+      		AND PP.P_CODE = #{p_code}
 	</select> 
 	
+	<!-- 이상무  -->
 	<!-- 프로젝트 지원자 가져오기(일반유저는 레디된 상태만 볼 수 있어야 함) -->
 	<select id="getProjectApplicant" resultType="com.test.dto.ProjectDetailDTO">
 		SELECT PPP.POSITION_PART, 
@@ -73,7 +73,7 @@
 	  ORDER BY U_P_APPLY_DATE
 	</select> 
 	
-	
+	<!--  이상 무 -->
 	<!-- 프로젝트 리더 정보 가져오기 -->
 	<select id="getProjectLeader" resultType="com.test.dto.ProjectDetailDTO">
 		SELECT  DISTINCT U.U_NICKNAME, 
