@@ -54,9 +54,19 @@
 										</div>
 										
 										<div>
-											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #37417C" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
-											</div>
+											<c:choose>
+												<c:when test="${pj_title_info.pj_end_check == '종료' }">
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #37417C" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #4EE193" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
+													</div>
+												</c:otherwise>
+											</c:choose>
+											
 										</div>
 									</div>
 									
@@ -77,7 +87,7 @@
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
 							</nav>
@@ -131,7 +141,7 @@
 														</c:when>
 														<c:otherwise>
 															<div class="progress align-self-center" style="width: 65%; height: 10px; margin-left: 5px;">
-																<div class="progress-bar" role="progressbar" style="width: ${pj_mainwork_list.mainwork_percent }%; background-color: black" aria-valuenow="${pj_mainwork_list.mainwork_percent }" aria-valuemin="0" aria-valuemax="100"></div>
+																<div class="progress-bar" role="progressbar" style="width: ${pj_mainwork_list.mainwork_percent }%; background-color: #4EE193" aria-valuenow="${pj_mainwork_list.mainwork_percent }" aria-valuemin="0" aria-valuemax="100"></div>
 															</div>	
 														</c:otherwise>
 													</c:choose>

@@ -7,6 +7,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
+	String post_code = request.getParameter("post_code");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +68,23 @@
 	    color: #777;
 	}
 	
+	.board_cmt
+	{
+		width: 100%;
+		
+		margin: auto; 
+	}
+	.board_cmt_write
+	{
+		width: 90%;
+		font-size: small;;
+	}
 	.content {padding: 10px; padding-top: 50px; padding-bottom: 50px;}
+	
+	.cmt-content{float: left; width: 90%;}
+	.cmt-btn{float: right; width: 10%; padding-left: 3%;}
+	
+	.cmt-contentlist{ border: 1px solid black;}
 	
 </style>
 <body>
@@ -150,19 +168,16 @@
 						${postdetail.content }
 						</div>
 					</div>
-			    </div><!-- end meet_wrap mb-3-->
 			    
 			    <!-- =======================================작성자만 보이게=========================================== -->
-			    <div style="text-align: center;">
-				    <button type="button" class="btn-hover color-9" style="margin-top: 5%; width: 10%;"
-				    onclick="location.href='mainloungeupdateform.action?post_code=${postdetail.post_code}';"
-				    >수정</button>
-				    <button type="button" class="btn-hover color-9" style="margin-top: 5%; width: 10%;"
-				    onclick="location.href='mainloungedelete.action?post_code=${postdetail.post_code}';"
-				    >삭제</button>
-				</div>
-				
-				
+			    <div>
+			    <div>
+				    <img src="assets/img/comment-icon.png" alt="" style="width: 40px; height: 40px; padding: 10px; float: left; margin-bottom:10%;" >6
+			    </div>
+			    <div>
+			    
+			    
+			    
 				<!-- 좋아요처리 테스트 -->
 				<%-- <c:choose>
 				    로그인 상태일때 - 하트 클릭 되게
@@ -210,27 +225,67 @@
 				    </c:otherwise>
 				</c:choose> --%>
 				
+			    
+			    
+			    
+			    </div>
+				    <button type="button" class="btn-hover color-9" style="margin:1%; width: 10%; float: right;"
+				    onclick="location.href='mainloungeupdateform.action?post_code=${postdetail.post_code}';"
+				    >수정</button>
+				    <button type="button" class="btn-hover color-9" style="margin:1%; width: 10%; float: right;"
+				    onclick="location.href='mainloungedelete.action?post_code=${postdetail.post_code}';"
+				    >삭제</button>
+				</div>
+			    </div><!-- end meet_wrap mb-3-->
 				
-				<!-- 댓글작성 영역 -->
+				
+				
+				<!-- 댓글============================================================================================ -->
+				<!-- ===================================== 로그인시 보이게 ========================================== -->
+				<!-- 댓글 목록 -->
+				
 				<div class="board_cmt">
-				    <div class="tit" style="margin-left: 6px;"><em id="totalCmt" class="bico_comment"></em>Comments</div>
+					<div class="cmt-list">
+						<div>
+		        		<img src="assets/img/UserIcon/User-Icon.png" alt="" style="width: 60px; height: 60px; padding: 10px;">
+						</div>
+						<div class="cmt-contentlist">
+							어찌구 저찌구  / 날짜  / 작성자 
+							<span id="commentlist-content"></span>
+						</div>
+				
+					</div>
+				
+				
+				
+				
+				<!-- 댓글 작성 영역 -->
 				     <div class="board_cmt_write">
-				         <div class="bx"> 
-				             <textarea id="cmtContent" placeholder="소중한 댓글을 작성해주세요^^" maxlength="150"></textarea>
+				         <div class="cmt-content">
+				         <input type="text" class="form-control" maxlength="150" placeholder="소중한 댓글을 작성해주세요^^" id="cmt-content">
 				         </div>
-				        <button id="btn_insert_cmt">등록</button>
+				         <div class="cmt-btn">
+				         <button type="submit" id="cmtSubmit" class="btn-hover color-9" style="width: 100%;"
+				         onclick="fn_comment()"
+				         >등록</button>
+				         </div>
 				     </div>
 				</div>
-				<!-- 댓글 목록 영역 -->
+				
+				
+				
+				<!-- 
+				댓글 목록 영역
 				<div class="board_cmt_list" id="board_cmt_list" style="margin-left:6px;"></div>
 				<div style="text-align: center; margin: 20px 0px;" id="div_cmt_more">
-				 <!-- 더보기 글자 hover 띄우기 -->
+				 더보기 글자 hover 띄우기
 				    <span class="cmt_more_guide" id="cmt_more_guide" style="display: none; position: absolute;"></span>
+				    <div class="tit" style="margin-left: 6px;"><em id="nickname" class="bico_comment"></em>유림이</div>
 				    <a href='javascript:void(0);' id='btn_cmt_more' style='position: relative;'>
 				        <img src="/home/img/ico_cmt_more_before.png" id="imgMore" style="cursor:pointer; width: 20px;">
 				    </a>
 				</div>
-				<!-- 더보기 눌렀을때 추가 되는 댓글 영역 -->
+				더보기 눌렀을때 추가 되는 댓글 영역
 				<div class="board_cmt_list" id="cmtMore" style="display:none;"></div>
 				<div style="text-align: center; display:none; margin: 20px 0px;" id="div_cmt_back">
 				    <span class="cmt_back_guide" id="cmt_back_guide" style="display: none; position: absolute;"></span>
@@ -239,7 +294,7 @@
 				    </a>
 				</div>
 				
-				
+				 -->
 				
 				
 				
@@ -266,9 +321,66 @@
 	<script type="text/javascript">
 	
 	
-	var post_code =  ${postdetail.post_code };
+	let post_code = "<%=post_code%>";
+	
+	var commentHtml = "김";
+				
+	$(document).ready(function(post_code)
+	{
+		//alert(post_code);
+		//댓글 리스트 
+		$.ajax({
+			url:"postcommentlist.action",
+			type:"post",
+			data: {
+				post_code : post_code
+			},
+			dataType : 'json',
+			contentType : false,
+			processData : false,
+			success : function (data)
+			{
+				 //console.log(JSON.stringify(data));
+				//var no = data.no;
+				for (var i in data)
+				{
+					let comment_code = data[i].comment_code;
+					/* 
+	                let bno = data[i].post_code;
+	                let grp = data[i].cgroup;
+	                let grps = data[i].commentdate;
+	                let grpl = data[i].cdepth;
+	                let writer = data[i].nickname;
+	                let content = data[i].content;
+	                let wdate = data[i].commentdate;
+	                 */
+				}
+	                commentHtml += comment_code;
+			},
+			error : function ()
+			{
+				alert("error");
+			}
+			
+		}); 
+			 $("#commentlist-content").html(commentHtml);
+			 //$("#commentlist-content").html("이건들어가지");
+	});
 	
 	
+	// 댓글 등록
+	function fn_comment(post_code)
+	{
+		
+	}
+	
+	
+	
+	
+	
+	//var post_code =  ${postdetail.post_code };
+	
+	/* 
 	// 로그인 한 상태에서 하트를 클릭했을 때 (로그인한 상태인 하트의 <a></a> class명: heart-click)
 	$(".heart-click").click(function() {
 
@@ -342,7 +454,7 @@
 
 
 	});
-
+ */
 
 	// 로그인 안한 상태에서 하트를 클릭하면 로그인해야한다는 alter
 	// (로그인한 상태인 하트의 <a></a> class명: heart-notlogin)

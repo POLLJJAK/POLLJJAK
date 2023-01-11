@@ -130,6 +130,82 @@ public class IInnerProjectMeetController
 	}
 	
 	
+	@RequestMapping(value="/inner-project-home-meet-post-delete.action", method=RequestMethod.GET)
+	public String meetBoardDelete(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code, @RequestParam("ph_meet_code") String ph_meet_code)
+	{
+		String result = null;
+		
+		model.addAttribute("u_p_apply_code", u_p_apply_code);
+		model.addAttribute("ph_meet_code", ph_meet_code);
+		
+		// 일단 ph_meet 테이블 데이터 지우고
+		// 연관된 참석자 ph_meet_member 테이블에서도 싹 지워야 된다.
+		// 자식 레코드를 먼저 삭제한 후 부모레코드를 삭제하도록하자.
+		IInnerProjectMeetDAO dao = sqlSession.getMapper(IInnerProjectMeetDAO.class);
+		
+		
+		dao.meetMemberRemove(ph_meet_code);
+		dao.meetRemove(ph_meet_code);
+		
+		result = "redirect:inner-project-home-meet.action";
+		
+		return result;
+	}
+	
+	
+	
+	@RequestMapping(value="/inner-project-home-meet-post-updateform.action", method=RequestMethod.GET)
+	public String meetBoardUpdateForm(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code, @RequestParam("ph_meet_code") String ph_meet_code) {
+		String result = null;
+		
+		model.addAttribute("u_p_apply_code", u_p_apply_code);
+		model.addAttribute("ph_meet_code", ph_meet_code);
+		
+		// 프로젝트 타이틀 불러오기
+		IInnerProjectTeamManageDAO pj_title_dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+		model.addAttribute("pj_title_info", pj_title_dao.pj_title_info(u_p_apply_code));
+	
+		
+		IInnerProjectMeetDAO dao = sqlSession.getMapper(IInnerProjectMeetDAO.class);
+		
+		model.addAttribute("meetBoardPost", dao.meetBoardPost(ph_meet_code));
+		
+		
+		result = "WEB-INF/view/Inner-Project-home-meet-Post-UpdateForm.jsp";
+		
+		return result;
+	}
+	
+	
+	@RequestMapping(value="/inner-project-home-meet-post-update.action", method=RequestMethod.POST)
+	public String meetBoardUpdate(Model model
+			, @RequestParam("u_p_apply_code") String u_p_apply_code
+			, @RequestParam("ph_meet_code") String ph_meet_code
+			, InnerProjectMeetDTO meetDto) {
+		
+		String result = null;
+		
+		try
+		{
+			model.addAttribute("u_p_apply_code", u_p_apply_code);
+			model.addAttribute("ph_meet_code", ph_meet_code);
+			
+			IInnerProjectMeetDAO meetDao = sqlSession.getMapper(IInnerProjectMeetDAO.class);
+			meetDao.meetUpdate(meetDto);
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+			System.out.println(meetDto.getPh_meet_subtitle());
+			System.out.println(meetDto.getU_p_apply_code());
+		}
+
+		
+		result = "redirect:inner-project-home-meet.action";
+		
+		return result;
+	}
+	
 	
 	
 	

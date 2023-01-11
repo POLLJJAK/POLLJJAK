@@ -56,9 +56,19 @@
 										</div>
 										
 										<div>
-											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #37417C" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
-											</div>
+											<c:choose>
+												<c:when test="${pj_title_info.pj_end_check == '종료' }">
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #37417C" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #4EE193" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
+													</div>
+												</c:otherwise>
+											</c:choose>
+											
 										</div>
 									</div>
 									
@@ -70,6 +80,7 @@
 						</div>
 						
 						
+						
 						<!-- 프로젝트 홈 메뉴 -->
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
@@ -77,11 +88,12 @@
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
+						
 
 						
 						<div class="container">
@@ -138,30 +150,29 @@
 								<button type="button" class="meet-post-backBtn"
 								 onclick="location.href='inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}'">목록으로</button>
 							</div>
+
 							<div class="d-flex p-2 pe-0 align-self-center">
-								<button type="button" class="meet-post-deleteBtn"
-								 onclick="location.href='inner-project-home-meet-delete.action'">삭제</button>
-							</div>
-							<div class="d-flex p-2 pe-0 me-0 align-self-center">
-								<button type="button" class="gradientBtn color-9">수정하기</button>
+								<button type="button" class="meet-post-deleteBtn" id="DeleteViewBtn">삭제</button>
 							</div>
 							
-							<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+							<div class="d-flex p-2 pe-0 me-0 align-self-center">
+								<button type="button" class="gradientBtn color-9"
+								onclick="location.href='inner-project-home-meet-post-updateform.action?u_p_apply_code=${u_p_apply_code }&ph_meet_code=${meetBoardPost.ph_meet_code }'">수정하기</button>
+							</div>
+							
 
 							<div class="toast-container position-fixed bottom-0 end-0 p-3">
-	 							<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+	 							<div id="DeleteView" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 									 <div class="toast-body">
-									 <span class="bi bi-x-circle-fill align-self-center"></span> 해당 회의록 "제목" 을 삭제하시겠습니까?
+									 <span class="bi bi-x-circle-fill align-self-center"></span> 해당 회의록 "${meetBoardPost.ph_meet_title }"를 <br>삭제하시겠습니까?
 									    <div class="mt-2 pt-2 border-top">
-									      <button type="button" class="btn btn-primary btn-sm">삭제</button>
-									      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">닫기</button>
+									      <button type="button" class="btn btn-danger btn-sm"
+									      onclick="location.href='inner-project-home-meet-post-delete.action?u_p_apply_code=${u_p_apply_code }&ph_meet_code=${meetBoardPost.ph_meet_code}'">예</button>
+									      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">아니오</button>
 									    </div>
 									  </div>
 								</div>
-							
 							</div>
-							
-
 							
 							
 							
@@ -177,8 +188,10 @@
 	
 	
 	<script type="text/javascript">
-		const toastTrigger = document.getElementById('liveToastBtn')
-		const toastLiveExample = document.getElementById('liveToast')
+	
+		// 삭제 버튼 토스트창 표시
+		const toastTrigger = document.getElementById('DeleteViewBtn')
+		const toastLiveExample = document.getElementById('DeleteView')
 		if (toastTrigger) {
 		  toastTrigger.addEventListener('click', () => {
 		    const toast = new bootstrap.Toast(toastLiveExample)

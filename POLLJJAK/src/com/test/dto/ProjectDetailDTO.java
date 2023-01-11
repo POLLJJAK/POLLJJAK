@@ -17,14 +17,16 @@ public class ProjectDetailDTO {
 	private String p_info_content;
 	private String p_info_refo;
 	private String p_update_date;
-	private String p_apply_count;
+	//private String p_apply_count;
+	private int p_apply_count;
 	
 	
 	// 지원자 및 확정멤버, 지원분야 정보
 	private String u_nickname;	//리더, 지원자
 	private String u_p_apply_date;
 	private String u_p_apply_reason;
-	private String p_position_count;
+	//private String p_position_count;
+	private int p_position_count;
 	private String position_part;
 	
 	// 프로젝트 리더 추가 정보 
@@ -33,32 +35,6 @@ public class ProjectDetailDTO {
 	private String u_intro;
 	
 	
-	public String getU_intro() {
-		return u_intro;
-	}
-	public void setU_intro(String u_intro) {
-		this.u_intro = u_intro;
-	}
-	public String getU_portfolio_url() {
-		return u_portfolio_url;
-	}
-	public void setU_portfolio_url(String u_portfolio_url) {
-		this.u_portfolio_url = u_portfolio_url;
-	}
-	public String getU_skill_part() {
-		return u_skill_part;
-	}
-	public void setU_skill_part(String u_skill_part) {
-		this.u_skill_part = u_skill_part;
-	}
-	
-	
-	public String getP_apply_count() {
-		return p_apply_count;
-	}
-	public void setP_apply_count(String p_apply_count) {
-		this.p_apply_count = p_apply_count;
-	}
 	public String getP_code() {
 		return p_code;
 	}
@@ -143,6 +119,12 @@ public class ProjectDetailDTO {
 	public void setP_update_date(String p_update_date) {
 		this.p_update_date = p_update_date;
 	}
+	public int getP_apply_count() {
+		return p_apply_count;
+	}
+	public void setP_apply_count(int p_apply_count) {
+		this.p_apply_count = p_apply_count;
+	}
 	public String getU_nickname() {
 		return u_nickname;
 	}
@@ -161,10 +143,10 @@ public class ProjectDetailDTO {
 	public void setU_p_apply_reason(String u_p_apply_reason) {
 		this.u_p_apply_reason = u_p_apply_reason;
 	}
-	public String getP_position_count() {
+	public int getP_position_count() {
 		return p_position_count;
 	}
-	public void setP_position_count(String p_position_count) {
+	public void setP_position_count(int p_position_count) {
 		this.p_position_count = p_position_count;
 	}
 	public String getPosition_part() {
@@ -173,6 +155,27 @@ public class ProjectDetailDTO {
 	public void setPosition_part(String position_part) {
 		this.position_part = position_part;
 	}
+	public String getU_portfolio_url() {
+		return u_portfolio_url;
+	}
+	public void setU_portfolio_url(String u_portfolio_url) {
+		this.u_portfolio_url = u_portfolio_url;
+	}
+	public String getU_skill_part() {
+		return u_skill_part;
+	}
+	public void setU_skill_part(String u_skill_part) {
+		this.u_skill_part = u_skill_part;
+	}
+	public String getU_intro() {
+		return u_intro;
+	}
+	public void setU_intro(String u_intro) {
+		this.u_intro = u_intro;
+	}
+	
+	
+	
 	
 	
 	

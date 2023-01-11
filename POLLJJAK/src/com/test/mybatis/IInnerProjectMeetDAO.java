@@ -28,6 +28,9 @@ public interface IInnerProjectMeetDAO
 	// 회의록 삭제
 	public int meetRemove(String ph_meet_code);
 	
+	// 회의록 멤버 삭제
+	public int meetMemberRemove(String ph_meet_code);
+	
 	// 회의록 총 갯수
 	public int meetListCount(String u_p_apply_code);
 	

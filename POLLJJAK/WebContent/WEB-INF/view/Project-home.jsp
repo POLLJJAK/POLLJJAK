@@ -115,9 +115,9 @@
 											<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 												<div class="h5 fw-bolder">${pj_complete_list.p_name }</div>
 												<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
-												<div class="mb-1">전체 진척도 ${pj_complete_list.all_percent }%</div>
+												<div class="mb-1">전체 진척도 100%</div>
 												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: ${pj_complete_list.all_percent }%; background-color: #37417C" aria-valuenow="${pj_complete_list.all_percent }" aria-valuemin="0" aria-valuemax="100"></div>
+													<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #37417C" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>		
 											</div>
 										</div>
@@ -126,7 +126,6 @@
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
-					
 				</div>
 			</div>
 		</section>
