@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IPostCommentDAO">
+	
+	<insert id="addComment">
+		INSERT INTO L_POST_COMMENT(L_POST_COMMENT_CODE, L_POST_CODE, USER_CODE
+                    , L_POST_COMMENT_CONTENT, L_POST_COMMENT_DATE, L_POST_COMMENT_DEPTH) 
+		VALUES('LPC'||LPAD(L_POST_COMMENT_CODE_SEQ.NEXTVAL, 7,'0'), #{post_code}, #{user_code}
+                    , #{content}, SYSDATE, '0');	
+	
+	</insert>
+	
+	<insert id="addReComment">
+		INSERT INTO L_POST_COMMENT(L_POST_COMMENT_CODE, L_POST_CODE, USER_CODE, L_POST_COMMENT_CODE2
+                    , L_POST_COMMENT_CONTENT, L_POST_COMMENT_DATE, L_POST_COMMENT_DEPTH) 
+		VALUES('LPC'||LPAD(L_POST_COMMENT_CODE_SEQ.NEXTVAL, 7,'0'), #{post_code}, #{user_code}, #{comment_code}
+                    , #{content}, SYSDATE, '1');
+	</insert>
+	
+	<select id="list" resultType="com.test.dto.PostCommentDTO" parameterType="com.test.dto.PostCommentDTO">
+		SELECT COMMENT_CODE, POST_CODE, USER_CODE, NICKNAME, CONTENT, COMMENTDATE, COMMENTDATE, CGROUP, CDEPTH
+		FROM L_POST_COMMENT_LIST_VIEW
+		WHERE POST_CODE=#{post_code}
+	</select>
+	
+	
+	
+</mapper>
