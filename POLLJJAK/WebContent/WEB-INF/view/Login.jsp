@@ -124,7 +124,7 @@
 	.login-input-container .login-input-wrap{
 	    width:300px;
 	    height: 45px;
-	    margin-top: 20px;
+	    margin-top: 10px;
 	    border-radius: 2px;
 	    border-bottom: solid 2px #3498db;
 	   
@@ -200,8 +200,9 @@
 	.section-title p::after {
 	  	margin: 0 0 3px 10px;
 	}
+	
 	.radioBtn {
-		 padding-top: 10px; 
+		 padding-top: 45px; 
 		 text-align: center;
 	}
 	 
@@ -267,6 +268,10 @@
 					</div>
 				</div>
 				<form method="post" id="login_form">
+					<div class="radioBtn">
+						<input type="radio" id="user" name="userType" value="user" checked="checked"><label for="user">일반</label>
+						<input type="radio" id="company" name="userType" value="company"><label for="company">기업</label>
+					</div>
 					<div class="login-input-container">
 						<div class="login-input-wrap input-id">
 							<i class="fa fa-user"></i>
@@ -276,10 +281,6 @@
 							<i class="fas fa-key"></i>
 							<input placeholder="비밀번호" type="password" name="pw">
 						</div>
-					</div>
-					<div class="radioBtn">
-						<input type="radio" id="user" name="userType" value="user" checked="checked"><label for="user">일반</label>
-						<input type="radio" id="company" name="userType" value="company"><label for="company">기업</label>
 					</div>
 					<div class="login-btn-wrap">
 						<input type="submit" class="login-btn" value="로그인">

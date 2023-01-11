@@ -67,12 +67,19 @@ public class UserController
 		
 		dao.search(user);
 		model.addAttribute("user", dao.search(user));
-//		model.addAttribute("domainList", dao.domainList());
-//		model.addAttribute("positionList", dao.positionList());
-//		model.addAttribute("regionList", dao.regionList());
-//		model.addAttribute("timeList", dao.timeList());
-//		model.addAttribute("subjectList", dao.subjectList());
-//		model.addAttribute("skillList", dao.skillList());
+		
+		String skills = dao.searchSkill(user);
+		String[] arrSkills = skills.split(", ");
+		model.addAttribute("arrSkills1", arrSkills[0]);
+		model.addAttribute("arrSkills2", arrSkills[1]);
+		model.addAttribute("arrSkills3", arrSkills[2]);
+		
+		model.addAttribute("domainList", dao.domainList());
+		model.addAttribute("positionList", dao.positionList());
+		model.addAttribute("regionList", dao.regionList());
+		model.addAttribute("timeList", dao.timeList());
+		model.addAttribute("subjectList", dao.subjectList());
+		model.addAttribute("skillList", dao.skillList());
 		
 		result = "/WEB-INF/view/U-MyPage-Info.jsp";
 		

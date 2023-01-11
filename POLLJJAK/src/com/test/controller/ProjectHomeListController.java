@@ -34,7 +34,15 @@ public class ProjectHomeListController
 
 		IProjectHomeListDAO dao = sqlSession.getMapper(IProjectHomeListDAO.class);
 		
+		
+		
+		
 		model.addAttribute("pj_run_list", dao.pj_run_list(u_code));
+		
+		
+		
+		
+		
 		model.addAttribute("pj_complete_list", dao.pj_complete_list(u_code));
 		
 		result ="WEB-INF/view/Project-home.jsp";

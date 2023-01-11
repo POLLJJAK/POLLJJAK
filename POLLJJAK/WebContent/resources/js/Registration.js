@@ -160,9 +160,10 @@ $(document).ready(function()
 			return;
 		}
 		
+		// 위의 모든 확인 과정 통과 했으면
+		// 폼 submit 액션 처리 수행
+		$("#registrationForm").submit();
 		
-		
-		alert("회원가입이 완료되었습니다.");
 		
 	}); 
 

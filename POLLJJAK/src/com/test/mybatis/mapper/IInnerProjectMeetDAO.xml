@@ -6,15 +6,21 @@
 <mapper namespace="com.test.mybatis.IInnerProjectMeetDAO">
 
 	<select id="meetBoardList" resultType="com.test.dto.InnerProjectMeetDTO">
-		SELECT A1.PH_MEET_TITLE
+		SELECT MEET_SID, PH_MEET_TITLE, PH_MEET_SUBTITLE, PH_MEET_WRITER, MEET_START_DATE, MEET_END_DATE, PH_MEET_CONTENT, 
+		PH_MEET_DATE, MEET_UPDATE_DATE, MEET_DATE, PH_MEET_CODE
+		FROM
+		(
+		SELECT 
+		ROWNUM AS MEET_SID
+		, A1.PH_MEET_TITLE
 		, A1.PH_MEET_SUBTITLE
 		, A3.U_NAME AS PH_MEET_WRITER
-		, TO_CHAR(A1.PH_MEET_START_DATE, 'YYYY-MM-DD') AS MEET_START_DATE
-		, TO_CHAR(A1.PH_MEET_END_DATE,'YYYY-MM-DD') AS MEET_END_dATE
+		, TO_CHAR(A1.PH_MEET_START_DATE, 'YY-MM-DD') AS MEET_START_DATE
+		, TO_CHAR(A1.PH_MEET_END_DATE,'YY-MM-DD') AS MEET_END_DATE
 		, A1.PH_MEET_CONTENT
 		, TO_DATE(A1.PH_MEET_DATE) AS PH_MEET_DATE
-		, CASE WHEN TO_CHAR(A1.PH_MEET_UPDATE_DATE, 'YYYY-MM-DD HH24:MI:SS') IS NULL THEN '최종 수정일자 없음'
-		  ELSE TO_CHAR(A1.PH_MEET_UPDATE_DATE, 'YYYY-MM-DD HH24:MI:SS')
+		, CASE WHEN TO_CHAR(A1.PH_MEET_UPDATE_DATE, 'YY-MM-DD HH24:MI:SS') IS NULL THEN '최종 수정일자 없음'
+		  ELSE TO_CHAR(A1.PH_MEET_UPDATE_DATE, 'YY-MM-DD HH24:MI:SS')
 		  END AS MEET_UPDATE_DATE
 		, TO_DATE(A1.PH_MEET_DATE) AS MEET_DATE
 		, A1.PH_MEET_CODE
@@ -36,17 +42,19 @@
 					SELECT T3.P_CODE
 					FROM U_P_APPLY T1, P_POSITION T2, P T3
 					WHERE T1.U_P_APPLY_CODE = #{u_p_apply_code}
-						  AND T1.P_POSITION_CODE = T2.P_POSITION_CODE
-						  AND T2.P_CODE = T3.P_CODE
-					)  
-					 AND P1.P_CODE = P2.P_CODE
-					 AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
-					 AND NOT P3.U_P_APPLY_CODE = P4.U_P_APPLY_CODE
-			)
-			ORDER BY PH_MEET_CODE DESC
-		) A1, U_P_APPLY A2, U A3
-		WHERE A1.U_P_APPLY_CODE = A2.U_P_APPLY_CODE
-		AND A2.USER_CODE = A3.USER_CODE
+							  AND T1.P_POSITION_CODE = T2.P_POSITION_CODE
+							  AND T2.P_CODE = T3.P_CODE
+						)  
+						 AND P1.P_CODE = P2.P_CODE
+						 AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
+						 AND NOT P3.U_P_APPLY_CODE = P4.U_P_APPLY_CODE
+				)
+				ORDER BY PH_MEET_CODE DESC
+			) A1, U_P_APPLY A2, U A3
+			WHERE A1.U_P_APPLY_CODE = A2.U_P_APPLY_CODE
+			AND A2.USER_CODE = A3.USER_CODE
+		)
+		WHERE MEET_SID BETWEEN #{start} AND #{end}
 	</select>
 	
 	<select id="meetInsertForm_memberlist" resultType="com.test.dto.InnerProjectMeetDTO">
@@ -91,7 +99,7 @@
 	</insert>
 	
 	
-	<insert id="meetMemberInsert" parameterType="String">
+	<insert id="meetMemberInsert">
 		INSERT INTO PH_MEET_MEMBER (PH_MEET_MEMBER_CODE, PH_MEET_CODE, U_P_APPLY_CODE)
 		SELECT  ('PHMM'||LPAD(PH_MEET_MEMBER_CODE_SEQ.NEXTVAL,6,'0'))
 		, (SELECT MAX(PH_MEET_CODE) FROM PH_MEET)
@@ -104,6 +112,79 @@
 		) A
 	</insert>
 	
+	
+	<delete id="meetMemberRemove">
+		DELETE
+		FROM PH_MEET_MEMBER
+		WHERE PH_MEET_CODE = #{ph_meet_code}
+	</delete>
+	
+	<delete id="meetRemove">
+		DELETE
+		FROM PH_MEET
+		WHERE PH_MEET_CODE = #{ph_meet_code}
+	</delete>
+	
+
+	
+	<select id="meetBoardPost" resultType="com.test.dto.InnerProjectMeetDTO">
+		SELECT A1.PH_MEET_CODE
+		, A1.U_P_APPLY_CODE
+		, A3.U_NAME AS PH_MEET_WRITER
+		, A1.PH_MEET_TITLE
+		, A1.PH_MEET_SUBTITLE
+		, TO_CHAR(A1.PH_MEET_START_DATE, 'YY-MM-DD HH24:MI') AS MEET_START_DATE
+		, TO_CHAR(A1.PH_MEET_END_DATE, 'YY-MM-DD HH24:MI') AS MEET_END_DATE
+		, A1.PH_MEET_CONTENT
+		, A1.PH_MEET_DATE
+		, CASE WHEN TO_CHAR(PH_MEET_UPDATE_DATE, 'YY-MM-DD HH24:MI:SS') IS NULL THEN '최종 수정일자 없음'
+		  ELSE TO_CHAR(PH_MEET_UPDATE_DATE, 'YY-MM-DD HH24:MI:SS')
+		  END AS MEET_UPDATE_DATE
+		FROM PH_MEET A1, U_P_APPLY A2, U A3
+		WHERE A1.PH_MEET_CODE = #{ph_meet_code}
+		  AND A1.U_P_APPLY_CODE = A2.U_P_APPLY_CODE
+		  AND A2.USER_CODE = A3.USER_CODE
+	</select>
+	
+	
+	
+	<select id="meetMemberList" resultType="com.test.dto.InnerProjectMeetDTO">
+		SELECT A3.U_NAME AS INSERT_MEMBER
+		FROM PH_MEET_MEMBER A1, U_P_APPLY A2, U A3
+		WHERE A1.PH_MEET_CODE = #{ph_meet_code}
+		  AND A1.U_P_APPLY_CODE = A2.U_P_APPLY_CODE
+		  AND A2.USER_CODE = A3.USER_CODE
+	</select>
+	
+	
+	<select id="meetListCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM PH_MEET 
+		WHERE u_p_apply_code IN (
+		SELECT P3.U_P_APPLY_CODE
+		FROM P P1, P_POSITION P2, U_P_APPLY P3, P_REJECT P4
+		WHERE P1.P_CODE = (
+			SELECT T3.P_CODE
+			FROM U_P_APPLY T1, P_POSITION T2, P T3
+			WHERE T1.U_P_APPLY_CODE = #{u_p_apply_code}
+			  AND T1.P_POSITION_CODE = T2.P_POSITION_CODE
+			  AND T2.P_CODE = T3.P_CODE
+		)  
+		AND P1.P_CODE = P2.P_CODE
+		AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
+		AND NOT P3.U_P_APPLY_CODE = P4.U_P_APPLY_CODE)
+	</select>
+	
+	
+	
+	<update id="meetUpdate" parameterType="com.test.dto.InnerProjectMeetDTO">
+		UPDATE PH_MEET 
+		SET PH_MEET_SUBTITLE = #{ph_meet_subtitle}, PH_MEET_TITLE = #{ph_meet_title},
+		PH_MEET_START_DATE = #{meet_start_date}, PH_MEET_END_DATE = #{meet_end_date},
+		PH_MEET_CONTENT = #{summernote}, PH_MEET_DATE = TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS'), PH_MEET_UPDATE_DATE = TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS')
+		WHERE U_P_APPLY_CODE = #{u_p_apply_code}
+		  AND PH_MEET_CODE = #{ph_meet_code}
+	</update>
 	
 	
 	

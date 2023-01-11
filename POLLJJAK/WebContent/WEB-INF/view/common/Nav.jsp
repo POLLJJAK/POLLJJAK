@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <link href="assets/img/pol-favicon.png" rel="icon">
 
 <!-- ======= Header ======= -->
@@ -14,14 +15,15 @@
             	<img alt="플젝폴짝로고" src="assets/img/logo.png">
             </a>
          </h1>
-         
+         <!-- Uncomment below if you prefer to use an image logo -->
+         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
       
       <nav id="navbar" class="navbar">
          <ul>
             <!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트
                   조회/지원</a></li> -->
-            <li><a class="nav-link scrollto" href="userupdateform.action">프로젝트 조회/지원</a></li>
+            <li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp">프로젝트 조회/지원</a></li>
             <li><a class="nav-link scrollto" href="ProjectOpenMain.jsp">프로젝트 개설</a></li>
             
             <!-- 테스트로 지금 김태민 유저코드를 넣고 진입 가능하게 만들어둔 상태이다. -->
@@ -84,7 +86,7 @@
 							<c:if test="${userType.equals(\"user\") }">
 								<span class="avatar avatar-sm fa fa-users fa-2x" style=" margin: 0 5px 0 10px;"></span>
 								<div class="d-none d-xl-block ps-2">
-									<div>${loginCheck.u_name }</div>
+									<div>${loginCheck.name }</div>
 									<!-- 권한별로 나타나는 글씨 바꾸기 : 일반/기업/관리자 -->
 									<div class="mt-1 small text-muted">일반</div>
 								</div>
@@ -92,7 +94,7 @@
 							<c:if test="${userType.equals(\"company\") }">
 								<span class="avatar avatar-sm fa fa-building fa-2x" style=" margin: 0 5px 0 10px;"></span>
 								<div class="d-none d-xl-block ps-2">
-									<div>${loginCheck.c_name }</div>
+									<div>${loginCheck.name }</div>
 									<div class="mt-1 small text-muted">기업</div>
 								</div>
 							</c:if>
@@ -101,7 +103,7 @@
 						<!-- 프로필 사진 누르면 나오는 드롭다운 -->
 						<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 							<!-- 		┏U-MyPage-Warning.jsp를 거치고 들어가야 함 -->
-							<button type="button" class="btn-modify dropdown-item" value="${user.user_code }">마이페이지</button> 
+							<button type="button" class="btn-modify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> 
 <!-- 							<a href="userupdateform.action" class="dropdown-item">마이페이지</a>  -->
 							
 							<!-- 		┏관리자 로그인이라면 -->

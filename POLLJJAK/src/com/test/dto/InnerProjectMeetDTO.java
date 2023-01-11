@@ -7,16 +7,48 @@ import com.test.mybatis.Time;
 public class InnerProjectMeetDTO
 {
 	private String ph_meet_title, ph_meet_subtitle;
-	
 	private String ph_meet_writer;
-	
-	private String meet_start_date, meet_end_date, ph_meet_content, ph_meet_date, meet_update_date;
-	
-	private String meet_date;
-	
+	private String meet_start_date, meet_end_date, ph_meet_content, ph_meet_date, meet_update_date, meet_date;
 	private String ph_meet_code;
-
+	private String u_p_apply_code;
 	private String upa_code, insert_member;
+	private String summernote;
+
+	
+	//페이징
+	private String meet_sid;
+	private String start, end;
+	
+	public String getMeet_sid()
+	{
+		return meet_sid;
+	}
+
+	public void setMeet_sid(String meet_sid)
+	{
+		this.meet_sid = meet_sid;
+	}
+
+	
+	public String getStart()
+	{
+		return start;
+	}
+
+	public void setStart(String start)
+	{
+		this.start = start;
+	}
+
+	public String getEnd()
+	{
+		return end;
+	}
+
+	public void setEnd(String end)
+	{
+		this.end = end;
+	}
 
 	public String getUpa_code()
 	{
@@ -27,11 +59,6 @@ public class InnerProjectMeetDTO
 	{
 		this.upa_code = upa_code;
 	}
-
-	private String summernote;
-	
-	private String u_p_apply_code;
-
 
 	public String getU_p_apply_code()
 	{

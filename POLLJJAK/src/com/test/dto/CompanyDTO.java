@@ -10,8 +10,8 @@ public class CompanyDTO
 	// 주요 속성 구성
 	private String c_code, user_code, domain_part_code;
 	private String c_business_number, c_intro, c_ideal, c_project;
-	private String c_position, c_name, c_email;
-	private String id, pw, c_company_name;
+	private String c_position, c_company_name;
+	private String id, pw, email, name;
 	
 	// getter / setter
 	public String getC_code()
@@ -78,21 +78,21 @@ public class CompanyDTO
 	{
 		this.c_position = c_position;
 	}
-	public String getC_name()
+	public String getName()
 	{
-		return c_name;
+		return name;
 	}
-	public void setC_name(String c_name)
+	public void setName(String name)
 	{
-		this.c_name = c_name;
+		this.name = name;
 	}
-	public String getC_email()
+	public String getEmail()
 	{
-		return c_email;
+		return email;
 	}
-	public void setC_email(String c_email)
+	public void setEmail(String email)
 	{
-		this.c_email = c_email;
+		this.email = email;
 	}
 	public String getId()
 	{

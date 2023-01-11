@@ -40,7 +40,7 @@
 				<hr>
 				<!-- End InnerNav -->
 				<div class = "row justify-content-end">
-					<form action="companyregistration.action" method="post" class="form-horizontal">
+					<form action="companyregistration.action" method="post" id="registrationForm" class="form-horizontal">
 				  		<fieldset>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
@@ -90,7 +90,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="nickName" class="col-sm-2 col-form-label">담당자명</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="name" name="c_name">
+									<input type="text" class="form-control" id="name" name="name">
 									<span class="err" id="errName"></span>
 								</div>
 								<div class = "col-sm-3"></div>
@@ -108,7 +108,7 @@
 								<div class = "col-sm-3"></div>
 								<label for="email" class="col-sm-2 col-form-label">이메일</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="email" name="c_email">
+									<input type="text" class="form-control" id="email" name="email">
 									<select class="form-select" id="domain" name="domain_part_code">
 										<option value="none">도메인 선택</option>
 									<c:forEach var="domain" items="${domainList }">
@@ -161,7 +161,7 @@
 								<div class = "col-sm-3"></div>
 							</div>
 							<div style="text-align: center;">
-								<button type="submit" class="btn btn-primary" id="registration_done" >
+								<button type="button" class="btn btn-primary" id="registration_done" >
 								가입하기</button>
 							</div>
 						</fieldset>

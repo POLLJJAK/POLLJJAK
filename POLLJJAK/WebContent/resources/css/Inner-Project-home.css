@@ -384,6 +384,7 @@
 
 .post-date {
 	font-size: 14px;
+	float: right;
 }
 
 .post-title {
@@ -414,21 +415,32 @@
 	margin-bottom: 20px;
 }
 
+.post-content {
+	font-size: 14px;
+	
+}
 
-
-
-
-
-
-
-
-
-
+.paging-selectBox {
+	font-size: 14px;
+	fl
+	
+}
 
 
 
 
 /* 회의록 포스트 파일 목록 박스*/
+.meet-title {
+	font-size: 25px;
+	color: #111827;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+.meet-writer {
+	font-size: 16px;
+	margin-right: 10px;
+	cursor: pointer;
+}
 
 .meet-member {
 	font-size: 0.8rem;
@@ -451,7 +463,7 @@
 	font-size: 12px;
 	margin: 0 10px 0 0;
 	padding: 3px 10px 3px 10px;
-	background: #dedede;
+	background: #F3F4F6;
 	border: 0px;
 	border-radius: 6px;
 	float: left;
@@ -459,14 +471,31 @@
 
 .meet-post-deleteBtn {
 	font-size: 0.8rem;
-	background-color: #dedede;
-	color: #eee;
+	background-color: #F3F4F6;
+	color: #37417C;
 	border: 0px;
 	border-radius: 6px;
 	padding: 10px;
 	transition: 0.3s;
 	transition: ease-in-out 0.3s;
-	
+}
+.meet-post-backBtn {
+	font-size: 0.8rem;
+	background-color: #F3F4F6;
+	color: #37417C;
+	border: 0px;
+	border-radius: 6px;
+	padding: 10px;
+	transition: 0.3s;
+	transition: ease-in-out 0.3s;
+}
+.meet-post-backBtn:hover {
+	font-size: 0.8rem;
+	background-color: #5e5e5e;
+	color: #fff;
+	border: 0px;
+	border-radius: 6px;
+	padding: 10px;
 }
 
 
