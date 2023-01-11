@@ -82,5 +82,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET C_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
 		WHERE C_ID = #{id}
 	</update>
-
+	
 </mapper>

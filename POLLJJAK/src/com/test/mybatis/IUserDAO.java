@@ -19,14 +19,6 @@ public interface IUserDAO
 {
 	// 일반회원 정보 입력(추가)
 	public Integer add(UserDTO u);
-		
-	// 일반회원 정보 확인(user_code 를 활용하여 회원 정보 검색)
-	public UserDTO search(UserDTO dto);
-	// 일반회원의 부가스킬 정보 확인
-	public String searchSkill(UserDTO dto);
-	
-	// 일반회원 정보 수정
-	public int update(UserDTO dto);
 	
 	// 도메인 출력
 	public ArrayList<DomainDTO> domainList();
@@ -45,5 +37,19 @@ public interface IUserDAO
 	
 	// 주요기술 출력
 	public ArrayList<SkillDTO> skillList();
+	
+	// 마이페이지 입장 전에 회원 정보 띄우기
+	public UserDTO uWarning(UserDTO dto);
+	
+	// 마이페이지 입장 전 비밀번호 체크
+	public int pwCheck(UserDTO dto);
+	
+	// 일반회원 정보 확인(user_code 를 활용하여 회원 정보 검색)
+	public UserDTO search(UserDTO dto);
+	// 일반회원의 부가스킬 정보 확인
+	public String searchSkill(UserDTO dto);
+	
+	// 일반회원 정보 수정
+	public int update(UserDTO dto);
 	
 }

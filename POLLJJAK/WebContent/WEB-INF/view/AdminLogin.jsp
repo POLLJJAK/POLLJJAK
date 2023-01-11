@@ -93,7 +93,7 @@
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;
-	    padding:40px;
+	    padding:190px;
 	    /* background: rgb(255,255,255); */
 		background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
 	}
@@ -201,52 +201,8 @@
 	  	margin: 0 0 3px 10px;
 	}
 	
-	.radioBtn {
-		 padding-top: 45px; 
-		 text-align: center;
-	}
-	 
-	.radioBtn input[type=radio]
-	{
-	    display: none;
-	}
-	
-	.radioBtn input[type=radio] + label
-	{
-	    display: inline-block;
-	    cursor: pointer;
-	    height: 28px;
-	    width: 90px;
-	    border: 1px solid #A6A6A6;
-	    border-radius:3px;
-	    line-height: 24px;
-	    text-align: center;
-	    font-size:13px;
-	    transition:all 0.5s;
-	    background-color: #fff;
-	    color: gray;
-	}
-	
-	.radioBtn input[type=radio]:checked + label
-	{
-	    background-color: #3498db;
-	    color: #fff;
-	    border: 1px solid #3498db;
-	}
-	
 	.moveTo{
 		margin: 5px 0 5px 0;
-	}
-	.sosial{
-		 padding: 10px;
-		 text-align: center;
-	}
-	.sosial-image{
-		padding-top: 10px;
-	}
-	.naver img{
-		 width: 186px; 
-		 height: 45px;
 	}
 	
 </style>
@@ -257,83 +213,41 @@
 			<div class="login-form-right-side">
 				<div class="top-logo-wrap"></div>
 				<!-- <h1>Do you know POLLJJACK?</h1> -->
-				<h1>플젝폴짝이라고<br> 알고 있니?</h1>
-				<p>Team 4, Cheer up guys.<br>We can finish our Final Project in time.<br>Him Eul Nae Yo SUPER POWER.</p>
+				<h1>관리자 로그인</h1>
 			</div>
 			<div class="login-form-left-side">
 				<div class="login-top-wrap">
-					<span>계정이 없으신가요?</span>
 					<div class="create-account-btn">
-						<a href="registraionmainform.action">회원가입</a>
 					</div>
 				</div>
 				<form method="post" id="login_form">
-					<div class="radioBtn">
-						<input type="radio" id="user" name="userType" value="user" checked="checked"><label for="user">일반</label>
-						<input type="radio" id="company" name="userType" value="company"><label for="company">기업</label>
-					</div>
 					<div class="login-input-container">
 						<div class="login-input-wrap input-id">
 							<i class="fa fa-user"></i>
-							<input placeholder="아이디" type="text" name="id">
+							<input placeholder="아이디" type="text" name="a_id">
 						</div>
 						<div class="login-input-wrap input-password">
 							<i class="fas fa-key"></i>
-							<input placeholder="비밀번호" type="password" name="pw">
+							<input placeholder="비밀번호" type="password" name="a_pw">
 						</div>
 					</div>
 					<div class="login-btn-wrap">
-						<button type="button" class="login-btn">로그인</button>
+						<input type="submit" class="login-btn" value="로그인">
 					</div>
 				</form>
 				<div class="login-btn-wrap">
 					<div class="moveTo">
 						<a href="main.action" >홈으로</a>
-						<a> | </a>
-						<a href="forgetidform.action" >아이디 찾기</a>
-						<a> | </a>
-						<a href="forgetpwform.action" >비밀번호 찾기</a>
 					</div>
 				</div>
-				<div class="sosial">
-					<div>
-						<div class="section-title pt-5">
-							<p>소셜 로그인</p>
-						</div>
-					</div>
-					<div class="sosial-image">
-						<div>
-							<div class="google">
-								<a class="btn btn-lg btn-google btn-block btn-outline" href="#/view/signin/oauth/google">
-									<img src="./assets/img/btn_google_signin_light_normal_web.png">
-								</a>
-							</div>
-						</div>
-						<div>
-							<div class="kakao">
-								<a class="btn btn-lg btn-kakao btn-block btn-outline" href="#/view/signin/oauth/kakao">
-									<img src="./assets/img/kakao_login_medium_narrow.png">
-								</a>
-							</div>
-						</div>
-						<div>
-							<div class="naver">
-								<a class="btn btn-lg btn-naver btn-block btn-outline" href="#/view/signin/oauth/naver">
-									<img src="./assets/img/btnG_big.png">
-								</a>
-							</div>
-						</div>
-					</div> <!-- 소셜로그인 이미지 -->
-				</div> <!-- 소셜로그인 -->
-			</div> <!-- 왼쪽 파트 -->
+			</div>
 		</div>
-	</div> <!-- 전체 공간 -->
-
+	</div>
 	<script type="text/javascript">
 		$(".login-btn").click(function()
 		{
 			//alert("함수호출확인");
-			$("#login_form").attr("action", "login.action");
+			$("#login_form").attr("action", "adminlogin.action");
 	        $("#login_form").submit();
 		});
 	</script>
