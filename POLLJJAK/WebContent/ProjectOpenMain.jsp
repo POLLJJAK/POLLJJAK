@@ -12,6 +12,7 @@
 	<!-- 해당 페이지 관련 css 및 js import 영역 -->
 	<link href="<%=cp %>/resources/css/ProjectOpenMain.css" rel="stylesheet">
 	<script src="<%=cp %>/resources/js/ProjectOpenMain.js"></script>
+	<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 	<!-- head import (css imported)-->
 	<c:import url="./common/Head.jsp" />
@@ -59,26 +60,34 @@
 							<div>
 							<h5 class="container-lg mb-3 fw-bolder">
 								개설 진행 중
-								<!-- <input type="button" class="btn btn-primary" value="새로운 프로젝트 개설" 
-								onclick="location.href='<%=cp %>/ProjectOpen.jsp';" 
-								style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
-								 -->
-								 <input type="button" class="btn btn-primary" value="새로운 프로젝트 개설" 
-								onclick="location.href='projectopen.action';"
-								style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
+								<c:if test="${empty uProjectInfo.p_code}">
+									 <input type="button" class="btn btn-primary" value="새로운 프로젝트 개설" 
+									onclick="location.href='projectopen.action?user_code=${user_code}'"
+									style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
+								</c:if>
 							</h5>
 							</div>
 						</form>
 						<hr />
-						
-						<div class="container-lg mb-3" onclick="location.href='<%=cp %>/ProjectDetail.jsp';" style="cursor: pointer;">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<div class="h5 fw-bolder">프로젝트 제목1[모집중]</div>
-									<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
+						<c:choose>
+							<c:when test="${empty uProjectInfo.p_code}">
+								<div class="container mb-3">
+									<div class="mt-1 mb-1 p-1 d-flex justify-content-center">
+										<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
+									</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+							<div class="container-lg mb-3" onclick="location.href='projectDetail.action?p_code=${uProjectInfo.p_code}'" style="cursor: pointer;">
+								<div class="pj-box">
+									<div class="pj-box-body p-3 col-xs-12 col-lg-12">
+										<div class="h5 fw-bolder">${uProjectInfo.p_name} [모집중] </div>
+										<div class="mb-2">${uProjectInfo.p_start_date} ~ ${upInfo.p_end_date}</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</section>
@@ -88,41 +97,32 @@
 					<div class="row">
 					
 						<h5 class="h5 container-lg mb-3 fw-bolder">
-						지난 모집 내역
+						모집 실패 내역
 						</h5>
-					
-						<div class="container-lg mb-3">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList1" 
-									style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
-									<div class="h5 fw-bolder">프로젝트 제목1[모집 실패]</div>
-									<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
+						<hr>
+						<c:choose>
+							<c:when test="${empty uProjectFailedInfo[0].p_name}">
+							<div class="container mb-3">
+									<div class="mt-1 mb-1 p-1 d-flex justify-content-center">
+										<div class="no-pj-title">모집 실패 프로젝트가 존재하지 않습니다.</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					
-						<div class="container-lg mb-3">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList2" 
-									style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
-									<div class="h5 fw-bolder">프로젝트 제목1[모집 삭제]</div>
-									<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="failedInfo" items="${uProjectFailedInfo }" varStatus="status">
+								<div class="container-lg mb-3">
+									<div class="pj-box">
+										<div class="pj-box-body p-3 col-xs-12 col-lg-12" onclick="location.href='projectDetail.action?p_code=${failedInfo.p_code}'">
+											<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList1" 
+											style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
+											<div class="h5 fw-bolder">${failedInfo.p_name} [모집 실패]</div>
+											<div class="mb-2">${failedInfo.p_start_date} ~ ${failedInfo.p_end_date}</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					         
-						<div class="container-lg mb-3">
-							<div class="pj-box">
-								<div class="pj-box-body p-3 col-xs-12 col-lg-12">
-									<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList3" 
-									style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
-									<div class="h5 fw-bolder">프로젝트 제목1[모집 삭제]</div>
-									<div class="mb-2">2022-12-24 ~ 2022-12-25</div>
-								</div>
-							</div>
-						</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</section>
