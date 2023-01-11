@@ -15,9 +15,7 @@
 
 <!-- 현재 페이지 resources import -->
 <script src="<%=cp %>/resources/js/ProjectOpen.js"></script> 
-<%-- <script src="<%=cp %>/resources/js/fileUpload.js"></script> --%>
 <link rel="stylesheet" href="resources/css/ProjectOpen.css" />
-
 
 <body>
 <c:import url="./common/Nav.jsp" />
@@ -43,12 +41,14 @@
 			</div>
 		</div>
 				
+		<!--   -->		
+				
 		<div class="container">
-			<form name="newProduct"  action="createproject.action" method="post" enctype="multipart/form-data" onSubmit="/*return validation()*/">
+			<form id="form" action="createproject.action" method="post" enctype="multipart/form-data" accept-charset="UTF-8"  onsubmit="return false">
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">프로젝트 명<em style="color: red;"> * </em></label>
 					<div class="com-sm-3">
-						<input type="text" id="projectId" name="projectId" class="form-control" placeholder="프로젝트 명을 입력해주세요.">
+						<input type="text" id="p_name" name="p_name" class="form-control" placeholder="프로젝트 명을 입력해주세요.">
 					</div>
 				</div>
 				<hr>
@@ -86,7 +86,6 @@
 				<hr>
 				
 				<div class="form-group row">
-					<!--  -->
 					<div id="root">
 					<label class="col-sm-4 form-label">대표이미지</label>
 						<div class="contents">
@@ -94,24 +93,24 @@
 								<div id="drop-file" class="drag-file">
 									<img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
 									<p class="message">파일을 드래그 해주세요.</p>
-									<img src="" alt="미리보기 이미지" class="preview">
+									<img src="" alt="미리보기 이미지" class="preview" >
 								</div>
 							<label><em style="color: red;"> * </em>저작권에 위배되지 않는 파일만 업로드해주세요.</label>
 							<label class="file-label" for="chooseFile">파일 선택</label>
-							<input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
+							<input class="file" id="chooseFile" name="img" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
 							</div>
 						</div>
 					</div>
-					<!--  -->
 				</div>
 				<hr>
+				
 				
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">지역<em style="color: red;"> * </em></label>
 					<div class="radioBtn" id="location">
-						<input type="radio" id="location1" name="location" value="all"><label for="location1">모두 가능</label>
-						<input type="radio" id="location2" name="location" value="online"><label for="location2">온라인</label>
-						<input type="radio" id="location3" name="location" value="offline"><label for="location3">오프라인</label>
+						<input type="radio" id="location1" name="time" value="TPT0000001"><label for="location1">모두 가능</label>
+						<input type="radio" id="location2" name="time" value="TPT0000002"><label for="location2">온라인</label>
+						<input type="radio" id="location3" name="time" value="TPT0000003"><label for="location3">오프라인</label>
 					</div>
 						<div>
 							<select class="form-select form-select-sm w-25 mt-2" id = "region_part" name = "region_part">
@@ -135,7 +134,7 @@
 				  <label class="col-sm-4 form-label">팀장 직무<em style="color: red;"> * </em></label>
 					<table>
 						<tr>
-							<td><select class="form-select form-select-sm mb-4 " id="leader_position" name = "leader_position">
+							<td><select class="form-select form-select-sm mb-4 " id="leader_position" name = "position">
 									<option value="">팀장 직무 선택</option>
 									<option value="PSPT000001">UI/UX</option>
 									<option value="PSPT000002">게임</option>
@@ -163,9 +162,9 @@
 									<option value="PSPT000024">전략/컨설팅</option>
 									<option value="PSPT000025">투자/고문</option>
 							</select></td>
+							<td><input type="text" id="countLeader" name="count" value="1" style = "display: none;"/></td>
 						</tr>
 					</table>
-
 
 				<label class="col-sm-4 form-label">팀원 직무<em style="color: red;"> * </em></label>
 				<table>
@@ -222,7 +221,7 @@
 				<div class="form-group row">
 					<label class="col-sm-4 form-label">출시 플랫폼<em style="color: red;"> * </em></label>
 					<div class="radioBtn" id = "platform" >
-						<input type="radio" id="platform1" name="platform" value="RPT000001"><label for="platform1">웹</label>
+						<input type="radio" id="platform1" name="platform" value="RLPT000001"><label for="platform1">웹</label>
 						<input type="radio" id="platform2" name="platform" value="RLPT000002"><label for="platform2">앱</label>
 						<input type="radio" id="platform3" name="platform" value="RLPT000003"><label for="platform3">프로그램</label>	
 						<input type="radio" id="platform4" name="platform" value="RLPT000004"><label for="platform4">미정</label>
@@ -292,7 +291,7 @@
 				
 				<div class="form-group row">
 					<div >
-						<input type="submit" class="btn btn-primary" value="등록"  id = "add"
+						<input type="submit" class="btn btn-primary" value="등록"  id = "formSubmit"
 						style="background-color: #3498db; border-color: #3498db; float: right;">
 					</div>
 				</div>
@@ -305,5 +304,7 @@
 <!-- footer import (js imported)-->
 <c:import url="./common/Footer.jsp" />
 
+
 </body>
+<script src="<%=cp %>/resources/lib/fileUpload.js"></script>
 </html>

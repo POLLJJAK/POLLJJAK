@@ -12,8 +12,7 @@ $().ready(function(){
 				for(i = 0; i < appendedPartCnt; i++)
 				{
 					var totalCount = 0;
-					totalCount += $("input[name='count']").eq(i).attr("value");
-					
+					totalCount += $("input[name='count']").eq(i).val();
 					
 				}
 				return;
@@ -56,13 +55,15 @@ $().ready(function(){
 					</td>
 					<td>
 						<button type="button" onclick="fnCalCount('-', this);" style="background-color:white; border: none;">-</button>
-						<input type="text" id="count${appendedPartCnt}" name="count" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;"/>
+						<input type="text" id="count${appendedPartCnt}+2" name="count" value="1" readonly="readonly" style="text-align:center; width: 15px; border: none;"/>
 						<button type ="button" onclick="fnCalCount('+',this);" style="background-color:white; border: none;">+</button>
 					</td>
 					<td>
 						<input type="button" class="btn btn-primary remove${appendedPartCnt}" value="삭제" style="background-color: #3498db; border-color: #3498db;">
 					</td>
 				</tr>`
+				
+				name="ext'+extcnt+'"
 	
 				
 			$("#positionAppendSpot").append(add);
@@ -75,190 +76,139 @@ $().ready(function(){
 		});
 		
 		
-		//END OF VALIDATION ------------------------------------------------
+		$("#formSubmit").click(function(){
+			
+			//VALIDATION ------------------------------------------------------
+			//alert("확인");
+			if(!$("#p_name").val())
+			{
+				alert("프로젝트 명을 입력하세요");
+				$("#p_name").focus();
+				
+				var offset = $("#p_name").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+				return;			
+			}
+			if(!$("input:radio[name='subject']:checked").val())
+			{
+				alert("프로젝트 주제를 선택하세요");
+				$("#subject_part").focus();
+				
+				var offset = $("#subject_part").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+				return;
+			}
+			if(!$("input:radio[name='detail']:checked").val())
+			{
+				alert("프로젝트 세부분야를 선택하세요");
+				$("#department_part").focus();
+				
+				var offset = $("#department_part").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+				return;
+			}
+			
+			if(!$("input:radio[name='time']:checked").val())
+			{
+				alert("모임이 가능한 유형을 선택하세요");
+				$("#time").focus();
+				
+				var offset = $("#time").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+				return;
+			}
+			
+			if(!$("#region_part").val())
+			{
+			    alert("모임이 가능한 지역을 선택하세요.");
+			    $("#region_part").focus();
+			    
+			    var offset = $("#region_part").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+			    return;
+			}
+			if(!$("#position").val())
+			{
+				alert("팀장 및 팀원의 직무를 선택해주세요.");
+			    $("#position").focus();
+			    
+			    var offset = $("#position").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+			    return;
+				
+			}
+			if(!$("input:radio[name='platform']:checked").val())
+			{
+				alert("출시 플랫폼을 선택하세요");
+				$("#platform").focus();
+				
+				var offset = $("#platform").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+				return;
+			}
+			if(!$("#description").val())
+			{
+			    alert("프로젝트 설명을 입력하세요.");
+			    $("#description").focus();
+			    
+			    var offset = $("#description").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+			    
+			    return;
+			}
+			if(!$("#persnal-skill").val())
+			{
+				alert("프로젝트의 주요 기술을 선택하세요.");
+			    $("#persnal-skill").focus();
+			    
+			    var offset = $("#persnal-skill").offset(); 
+				$("html, body").animate({scrollTop: offset.top},400); 
+				
+			    return;
+			}
+			
+			if(!$("#deadLine").val())
+			{
+				alert("모집 마감일을 선택하세요");
+			    $("#deadLine").focus();
+			
+			    return;
+			}
+			
+			if(!$("#startDate").val())
+			{
+				alert("프로젝트 시작일을 선택하세요");
+			    $("#startDate").focus();
+			    
+			    return;
+			}
+			if(!$("#endDate").val())
+			{
+				alert("프로젝트 시작일을 선택하세요");
+			    $("#endDate").focus();
+			    return;
+			}
+			
+			$("#form").attr("action","createproject.action");
+			$("#form").attr("method", "POST");
+			$("#form").attr("encoding", "multipart/form-data");
+			$("#form").attr("accept-charset", "UTF-8");
+			$("#form").attr("onSubmit", "return true");
+			$("#form").submit();
+			
+		});
 		
-		
-		//SET PARAM---------------------------------------------------------
-		/*
-		projectId		//프로젝트 명
-
-		subject - 라디오	//주제
-
-		detail - 라디오		//세부분야
-
-		//파일 -나중에		//대표이미지
-
-		location - 라디오	//지역
-
-		region_part		//지역
-
-		position		//모집분야
-		...
-		...
-		...
-
-		*/
-		
-		
-		
-		//END OF SET PARAM--------------------------------------------------
-		
-		
-		//SEND REQUEST------------------------------------------------------
-		
-		
-		
-		
-		//END OF SEND REQUEST-----------------------------------------------
 		
 	});
 
 
-function validation()
-{
-	
-	//VALIDATION ------------------------------------------------------
-	//alert("확인");
-	if(!$("#projectId").val())
-	{
-		alert("프로젝트 명을 입력하세요");
-		$("#projectId").focus();
-		
-		var offset = $("#projectId").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-		return false;			
-	}
-	if(!$("input:radio[name='subject']:checked").val())
-	{
-		alert("프로젝트 주제를 선택하세요");
-		$("#subject_part").focus();
-		
-		var offset = $("#subject_part").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-		return false;
-	}
-	if(!$("input:radio[name='detail']:checked").val())
-	{
-		alert("프로젝트 세부분야를 선택하세요");
-		$("#department_part").focus();
-		
-		var offset = $("#department_part").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-		return false;
-	}
-	
-	if(!$("input:radio[name='location']:checked").val())
-	{
-		alert("모임이 가능한 유형을 선택하세요");
-		$("#location").focus();
-		
-		var offset = $("#location").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-		return false;
-	}
-	
-	if(!$("#region_part").val())
-	{
-	    alert("모임이 가능한 지역을 선택하세요.");
-	    $("#region_part").focus();
-	    
-	    var offset = $("#region_part").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-	    return false;
-	}
-	
-	if(!$("#leader_position").val())
-	{
-		alert("팀장(개설자)의 직무를 선택하세요.");
-	    $("#leader_position").focus();
-	    
-	    var offset = $("#leader_position").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-	    return false;
-		
-	}
-	
-	if(!$("#position").val())
-	{
-		alert("팀원의 직무를 선택해주세요.");
-	    $("#position").focus();
-	    
-	    var offset = $("#position").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-	    return false;
-		
-	}
-	
-	if(!$("input:radio[name='platform']:checked").val())
-	{
-		alert("출시 플랫폼을 선택하세요");
-		$("#platform").focus();
-		
-		var offset = $("#platform").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-		return false;
-	}
-	
-	if(!$("#description").val())
-	{
-	    alert("프로젝트 설명을 입력하세요.");
-	    $("#description").focus();
-	    
-	    var offset = $("#description").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-	    
-	    return false;
-	}
-	
-	if(!$("#persnal-skill").val())
-	{
-		alert("프로젝트의 주요 기술을 선택하세요.");
-	    $("#persnal-skill").focus();
-	    
-	    var offset = $("#persnal-skill").offset(); 
-		$("html, body").animate({scrollTop: offset.top},400); 
-		
-	    return false;
-	}
-	
-	if(!$("#deadLine").val())
-	{
-		alert("모집 마감일을 선택하세요");
-	    $("#deadLine").focus();
-	    
-	    return false;
-		
-	}
-	
-	if(!$("#startDate").val())
-	{
-		alert("프로젝트 시작일을 선택하세요");
-	    $("#startDate").focus();
-	    
-	    return false;
-		
-	}
-	
-	if(!$("#endDate").val())
-	{
-		alert("프로젝트 시작일을 선택하세요");
-	    $("#endDate").focus();
-	    return false;
-	    
-	}
-	
-	return true;
-	
-};
-	
 	function levelCheck()
 	{
 		var level = 1;
@@ -298,15 +248,3 @@ function validation()
 			
 	}
 	
-
-
-
-
-
-
-
-
-
-
-
-
