@@ -59,9 +59,10 @@
 
 					<p>최근 로그인 날짜 : 2022-12-09</p>
 				</div>
-				<hr>
 
 				<!-- ====== InnerNav ====== -->
+				<!-- 
+				<hr>
 				<nav id="navbar" class="navbar" >
 					<ul style="margin-left: auto; margin-right: auto;">
 						<li><a class="nav-link scrollto" href="companyupdateform.action">정보</a></li>
@@ -72,6 +73,7 @@
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
 				<hr>
+				 -->
 				<!-- End InnerNav -->
 
 				<!-- title -->
@@ -94,7 +96,9 @@
 							value="${company.user_code }" disabled="disabled" hidden="hidden">
 							<input type="password" class="form-control" id="pw" name="pw" 
 							autofocus="autofocus" placeholder="비밀번호를 입력하세요">
-							<span class="err" id="err"></span>
+							<div class="mt-2">
+								<span class="err" id="err"></span>
+							</div>
 							<button type="button" class="btn btn-default btn-Modify"
 								style="background-color: #3498db; color:white; border-radius: 50px; margin-top: 20px; width: 300px;">
 								확인</button>

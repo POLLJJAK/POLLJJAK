@@ -112,6 +112,7 @@
 										</select>
 									</div>
 									<span class="err" id="errEmail"></span>
+									<span class="err" id="errDomain"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>

@@ -69,9 +69,10 @@
 
 					<p>최근 로그인 날짜 : 2022-12-09</p>
 				</div>
-				<hr>
 
 				<!-- ====== InnerNav ====== -->
+				<!-- 
+				<hr>
 				<nav id="navbar" class="navbar" >
 					<ul style="margin-left: auto; margin-right: auto;">
 						<li><a class="nav-link scrollto" href="userupdateform.action">정보</a></li>
@@ -81,6 +82,7 @@
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
+				 -->
 				<hr>
 				<!-- End InnerNav -->
 

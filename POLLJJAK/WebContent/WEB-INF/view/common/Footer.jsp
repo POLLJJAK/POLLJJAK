@@ -3,19 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
-   request.setCharacterEncoding("UTF-8");
-   String cp = request.getContextPath();
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
 %>
-
-
-
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
 	<div class="container">
-	
 		<div class="row d-flex">
-		
 			<div class="col-md-12 col-lg-2">
 				<img class="footer-logoImg" alt="플젝폴짝로고" src="assets/img/logo.png">
 				<div class="footer-subtitle">Creative Developers!</div>
@@ -48,15 +43,12 @@
 						</div>
 					</nav>
 				</div>
-			
 				<div class="mt-4 footer-ownerInfo">
 					<div>쌍용강북교육센터 4조 | 한은영 김인교 김유림 박원석</div>
 					<div>주소 : 서울특별시 마포구 월드컵북로 21 풍성빌딩 2층 B강의장</div>
 					<div>@ 2023 (주) 플젝폴짝, Inc. All rights reserved.</div>
 				</div>
 			</div>
-			
-			
 			
 			<div class="col-md-12 col-lg-2">
 				<div class="footer-createBy">
@@ -71,33 +63,24 @@
 					</div>
 				</div>
 			</div>
-			
-		</div>
-	
-	</div>
-</footer>
-  <!-- End Footer -->
+		</div> <!-- .d-flex -->
+	</div> <!-- .container -->
+</footer> <!-- End Footer -->
 
 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="resources/common/js/calendar.js"></script>
-  
-  
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  
-  
-  
-  
-  
-  
+<!-- Vendor JS Files -->
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="resources/common/js/calendar.js"></script>
+
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
   

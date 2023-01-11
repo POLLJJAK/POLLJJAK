@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+@font-face {
+		
+	    font-family: 'Pretendard-Regular';
+	    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+	    font-weight: 400;
+	    font-style: normal;
+	}
+	@font-face {
+		
+	    font-family: 'Cafe24Ssurround';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+	*{
+	    padding: 0;
+	    margin: 0;
+	    box-sizing: border-box;
+	    /* font-family: 'Alata', sans-serif; */
+	    /* font-family: 'Noto Sans KR', sans-serif; */
+	    /* font-family: 'Cafe24Ssurround'; */
+	    /* font-family: 'Pretendard-Regular'; */
+	}
+	
+	.page-container{
+	    width: 100vw;
+	    height: 100vh;
+	    background: #eff0f2;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	
+	}
+	.shadow{
+	    -webkit-box-shadow: 27px 43px 43px -26px rgba(89,89,89,0.39);
+	    -moz-box-shadow: 27px 43px 43px -26px rgba(89,89,89,0.39);
+	    box-shadow: 27px 43px 43px -26px rgba(89,89,89,0.39);
+	}
+	
+	.form-container{
+	    background:#f5f5f5 ;
+	    width:860px;
+	    height: 580px;
+	    display: flex;
+	    flex-direction: row;
+	    box-shadow: 10px black;
+	    border-radius: 10px;
+	
+	}
+	.form-right-side{
+		font-family: 'Cafe24Ssurround';
+	    width: 50%; 
+	    border-radius: 10px 0px 0px 10px;
+	    padding:75px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	    color: white;
+	    background-image: radial-gradient(ellipse farthest-corner at 0 140%, #70A9FF 0%, #3585FF 70%, #4A92FF 70%);
+	}
+	.form-right-side h1{
+	    color: white;
+	    width:100%;
+	    text-align: right;
+	    opacity: 0.9;
+	}
+	.form-right-side p{
+	    padding: 50px 0 0 30px;
+	    font-size:12px;
+	    text-align: right;
+	    opacity: 0.8;
+	}
+	.form-left-side{
+		font-family: 'Pretendard-Regular';
+	    width: 50%;
+	    border-radius: 0px 10px 10px 0px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    padding:40px;
+	    /* background: rgb(255,255,255); */
+		background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
+	}
+	.form-left-side .top-wrap{
+	    display: flex;
+	    justify-content: flex-end;
+	    align-items: center;
+	    width:100%;
+	}
+	.form-left-side .top-wrap span{
+	    color: gray;
+	    font-size: 11px;
+	    padding-right:20px;
+	
+	}
+	.create-account-btn a{
+	    text-decoration: none;
+	    font-size: 11px;
+	    color: gray;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	}
+	.input-container{
+	    width:300px;
+	}
+	.input-container .input-wrap{
+	    height: 45px;
+	    margin-top: 10px;
+	    border-radius: 2px;
+	    border-bottom: solid 2px #3498db;
+	   
+	}
+	.input-container .input-wrap i{
+	    color: #3498db;
+	    line-height: 45px;
+	}
+	.input-container .input-wrap input{
+	    background: none;
+	    border: none;
+	    line-height: 45px;
+	    padding-left:10px;
+	    width:267px;
+	}
+	.input-container .input-wrap input:focus{
+	    outline: none;
+	}
+	.input-container .input-wrap .email{
+		width: 140px;
+	}
+	
+	.input-wrap .input-id .idcheck
+	{
+		width: 200px;
+	}
+	
+	/* 특정 글꼴이 암호화 특수기호를 지원하지 않아 
+	   입력 시 글씨가 보이지 않는 현상이 생김.
+	   따라서, placeholder 일 때와 비밀번호를 입력할 때의
+	   폰트를 다르게 적용시켜야 함. */
+	input[type=password]::placeholder {
+		font-family: 'Pretendard-Regular';
+	}
+	input[type=password]{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.btn-wrap{
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	}
+	.btn-wrap .btn{
+	    margin-top: 20px;
+	    width:95px;
+	    height:35px;
+	    color:white;
+	    border: 0;
+	    border-radius: 4px;
+	    background-color: #3498db;
+	    cursor: pointer;
+	}
+	.btn-wrap a{
+	    margin-top:10px;
+	    text-decoration: none;
+	    font-size: 11px;
+	    color: gray;
+	}
+	
+	/* new title  */
+	.section-title p {
+	  position: relative;
+	  color: gray;
+	}
+	
+	.section-title p::before,
+	.section-title p::after {
+	  content: "";
+	  width: 100px;
+	  height: 1.5px;
+	  background: #3498db;
+	  display: inline-block;
+	}
+	
+	.section-title p::before {
+	  	margin: 0 10px 3px 0;
+	}
+	
+	.section-title p::after {
+	  	margin: 0 0 3px 10px;
+	}
+	
+	.radioBtn {
+		 padding-top: 45px; 
+		 text-align: center;
+	}
+	 
+	.radioBtn input[type=radio]
+	{
+	    display: none;
+	}
+	
+	.radioBtn input[type=radio] + label
+	{
+	    display: inline-block;
+	    cursor: pointer;
+	    height: 28px;
+	    width: 90px;
+	    border: 1px solid #A6A6A6;
+	    border-radius:3px;
+	    line-height: 24px;
+	    text-align: center;
+	    font-size:13px;
+	    transition:all 0.5s;
+	    background-color: #fff;
+	    color: gray;
+	}
+	
+	.radioBtn input[type=radio]:checked + label
+	{
+	    background-color: #3498db;
+	    color: #fff;
+	    border: 1px solid #3498db;
+	}
+	
+	.moveTo{
+		margin: 5px 0 5px 0;
+	}
+	.sosial{
+		 padding: 10px;
+		 text-align: center;
+	}
+	.sosial-image{
+		padding-top: 10px;
+	}
+	.naver img{
+		 width: 186px; 
+		 height: 45px;
+	}
+	
+	.err
+	{
+		color: red; 
+		font-weight: bold;
+		display: none;
+		width: 100%;
+	}
+	
+	.domain-select
+	{
+		font-family: 'Pretendard-Regular';
+		color: gray;
+		border: none;
+		border-bottom: solid 2px #3498db;
+		background: url(../) no-repeat 80% 50%;
+	}
+	
+	.empty
+	{
+		margin:30px;
+	}
+	.empty-more
+	{
+		margin:60px;
+	}
+	.errStyle
+	{
+		margin-top: 10px;
+	}

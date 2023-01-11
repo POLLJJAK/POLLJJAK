@@ -13,6 +13,9 @@ public interface ILoginDAO
 	public ArrayList<DomainDTO> domainList();
 	
 	// 일반
+	// 로그인 정보 유무 체크
+	public int userIdCheck(UserDTO dto);
+	
 	// 회원정보를 통해 로그인
 	public UserDTO userLogin(UserDTO dto);
 	
@@ -25,6 +28,9 @@ public interface ILoginDAO
 
 	
 	// 기업
+	// 로그인 정보 유무 체크
+	public int companyIdCheck(CompanyDTO dto);
+
 	// 회원정보를 통해 로그인
 	public CompanyDTO companyLogin(CompanyDTO dto);
 	
