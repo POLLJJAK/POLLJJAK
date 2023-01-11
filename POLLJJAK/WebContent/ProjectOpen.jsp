@@ -295,6 +295,7 @@
 						style="background-color: #3498db; border-color: #3498db; float: right;">
 					</div>
 				</div>
+			<input type = "text" id = "user_code"  name = "user_code" value = "${user_code}" style = "display:none"/>
 			</form>
 			<input type = "text" id = "level"  name = "level" value = "${levelInfo}" style = "display:none"/>
 		</div>

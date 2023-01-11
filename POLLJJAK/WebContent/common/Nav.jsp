@@ -24,7 +24,7 @@
             <!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트
                   조회/지원</a></li> -->
             <li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp">프로젝트 조회/지원</a></li>
-            <li><a class="nav-link scrollto" href="ProjectOpenMain.jsp">프로젝트 개설</a></li>
+            <li><a class="nav-link scrollto" href="projectopenmain.action?user_code=U000000011">프로젝트 개설</a></li>
             
             <!-- 테스트로 지금 김태민 유저코드를 넣고 진입 가능하게 만들어둔 상태이다. -->
             <li><a class="nav-link scrollto" href="projecthomelist.action?u_code=U000000001">내 프로젝트 홈</a></li>
@@ -84,7 +84,8 @@
 						<a href="#" class="nav-link d-flex lh-1 text-reset p-0 show" data-bs-toggle="dropdown" aria-label="Open user menu" aria-expanded="true"> 
 							<!-- 일반이면 유저/ 기업이면 빌딩/ 관리자면 ?? 아이콘 띄우기 -->
 							<c:if test="${userType.equals(\"user\") }">
-								<span class="avatar avatar-sm fa fa-users fa-2x" style=" margin: 0 5px 0 10px;"></span>
+								<!-- <span class="avatar avatar-sm fa fa-users fa-2x" style=" margin: 0 5px 0 10px;"></span> -->
+								<img src="assets/img/UserIcon/User-Icon.png" alt="" style="width: 60px; height: 60px; padding: 10px 0 10px 20px;">  
 								<div class="d-none d-xl-block ps-2">
 									<div>${loginCheck.name }</div>
 									<!-- 권한별로 나타나는 글씨 바꾸기 : 일반/기업/관리자 -->
@@ -92,8 +93,8 @@
 								</div>
 							</c:if>
 							<c:if test="${userType.equals(\"company\") }">
-								<span class="avatar avatar-sm fa fa-building fa-2x" style=" margin: 0 5px 0 10px;"></span>
-								<div class="d-none d-xl-block ps-2">
+								<img src="assets/img/UserIcon/Company-Icon.png" alt="" style="width: 60px; height: 60px; padding: 10px 0 10px 10px;">  
+								<div class="d-none d-xl-block">
 									<div>${loginCheck.name }</div>
 									<div class="mt-1 small text-muted">기업</div>
 								</div>
@@ -124,13 +125,13 @@
       </nav>
       <!-- .navbar -->
    </div>
-   
-   
+
+					
    
    <script type="text/javascript">
-		/* 로그아웃 비동기 방식 */
-		/* 
-		$("#logout_btn").click(function()
+   		/* 로그아웃 비동기 방식 */
+   		/* 
+   		$("#logout_btn").click(function()
 		{
 			$.ajax({
 				type:"GET"
@@ -140,9 +141,9 @@
 				}
 			});
 		});
-		 */
-		
-		$(function()
+   		 */
+   		 
+   		$(function()
 		{
 			$(".btn-modify").click(function()
 			{

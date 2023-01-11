@@ -8,6 +8,7 @@ import com.test.dto.UserDTO;
 
 public interface ILoginDAO
 {
+	// 공통
 	// 도메인 출력
 	public ArrayList<DomainDTO> domainList();
 	
@@ -23,7 +24,6 @@ public interface ILoginDAO
 	public int uModifyPW(UserDTO dto);
 
 	
-	
 	// 기업
 	// 회원정보를 통해 로그인
 	public CompanyDTO companyLogin(CompanyDTO dto);
@@ -34,4 +34,5 @@ public interface ILoginDAO
 	
 	// 비번 수정
 	public int cModifyPW(CompanyDTO dto);
+	
 }

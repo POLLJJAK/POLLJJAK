@@ -117,49 +117,74 @@
 								<table class = "table">
 									<c:forEach var="position" items="${pPositionInfo }" varStatus="status">
 									<tr>
-										<td>모집분야${status.index+1}</td>
-										<td>${position.position_part }</td>
-										<td>${position.p_apply_count}/${position.p_position_count }</td>
-										<c:set var = "count" value = "${position.p_position_count - position.p_apply_count}"></c:set>
-										 <c:if test="${count == 0}"> 
-											<td>
-												<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
-													<button class="fullbtn" >지원하기</button>
-												</div>
-											</td>
-										</c:if>
-										<c:if test="${count > 0}"> 
-						          			<td>
-						          				<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#apply">
-												<button class="apply btn-hover color-9">지원하기</button>
-												</div>
-											</td>
-										</c:if>
-									</tr>
-									</c:forEach>
+									<c:choose>
+										<c:when test="${status.index == 0}">
+											<td>팀장 </td>
+										</c:when>
+										<c:otherwise>
+											<td>모집분야${status.index}</td>
+										</c:otherwise>
+									</c:choose>
+									<td>${position.position_part }</td>
+									<td>${position.p_apply_count}/${position.p_position_count }</td>
+									<c:set var = "count" value = "${position.p_position_count - position.p_apply_count}"></c:set>
+									 <c:if test="${status.index == 0}"> 
+										<td>
+											<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
+												<button class="fullbtn" style= "display: none;"></button>
+											</div>
+										</td>
+									</c:if>
+									 <c:if test="${count == 0 && status.index != 0 }"> 
+										<td>
+											<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
+												<button class="fullbtn" >지원하기</button>
+											</div>
+										</td>
+									</c:if>
+									<c:if test="${count > 0}"> 
+					          			<td>
+					          				<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#apply">
+											<button class="apply btn-hover color-9">지원하기</button>
+											</div>
+										</td>
+									</c:if>
+								</tr>
+								</c:forEach>
 								</table>
 						</div>
 		          
 		          
 		          		<div class="project-allmember">
 							<h5><strong>확정멤버</strong></h5>
-							<c:forEach var="applicantInfo" items="${pApplicantInfo }" varStatus="status" begin = "1">
-								<div class="member" id="member${status.index}" style="border: 3px solid #25aae1;">
-									<table>
-										<tr>
-											<th colspan = "2">${applicantInfo.position_part}</th>
-										</tr>
-										<th >${applicantInfo.u_nickname}</th>
-										<!-- <th style="float: right;"> -->
-										<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""style="float: right; width: 15px; height: 15px; "></a></th>
-										<tr>
-										<%-- <td colspan = "2">${applicantInfo.u_nickname}</td> --%>
-										<td colspan = "2">${applicantInfo.u_p_apply_reason}</td>
-										</tr>
-										<td>${applicantInfo.u_p_apply_date}</td>
-									</table>
-								</div>
-							</c:forEach>
+								<c:choose>
+									<c:when test="${empty pApplicantInfo[1].position_part}">
+										<div class="container mb-3">
+											<div class="mt-5 mb-1 p-1 d-flex justify-content-center">
+												<div class="no-pj-title">아직 확정 멤버가 없습니다! 서둘러 지원하세요!</div>
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="applicantInfo" items="${pApplicantInfo }" varStatus="status" begin = "1">
+											<div class="member" id="member${status.index}" style="border: 3px solid #25aae1;">
+												<table>
+													<tr>
+														<th colspan = "2">${applicantInfo.position_part}</th>
+													</tr>
+													<th >${applicantInfo.u_nickname}</th>
+													<!-- <th style="float: right;"> -->
+													<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""style="float: right; width: 15px; height: 15px; "></a></th>
+													<tr>
+													<%-- <td colspan = "2">${applicantInfo.u_nickname}</td> --%>
+													<td colspan = "2">${applicantInfo.u_p_apply_reason}</td>
+													</tr>
+													<td>${applicantInfo.u_p_apply_date}</td>
+												</table>
+											</div>
+										</c:forEach>
+									</c:otherwise>
+							</c:choose>
 		          	<!-- 
 		          	<div class="member" style="border: 3px solid gray;">
 		          		<table>
@@ -336,7 +361,7 @@
 		  
 		  <!-- 리더 프로필 -->
 		        <div class="col-lg-4">
-		          <div class="portfolio-info">
+		          <div class="portfolio-info" data-aos="fade-up">
 		              <h3>Project Leader</h3>
 		            <ul>
 		              <li><strong>  ${pLeaderInfo[0].u_nickname}</strong><br>
