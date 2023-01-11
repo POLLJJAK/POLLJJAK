@@ -1,10 +1,11 @@
 package com.test.mybatis;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.List;
+
+import com.test.dto.InnerProjectTodoDTO;
+
 
 public interface IInnerProjectTodoDAO
 {
-	public ArrayList<Calendar> calList();
-
+	List<InnerProjectTodoDTO> tdm(String u_p_apply_code);
 }

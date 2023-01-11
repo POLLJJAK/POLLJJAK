@@ -17,14 +17,6 @@ String cp = request.getContextPath();
 <!-- 내 프로젝트 홈 css 파일 -->
 <link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
-<!-- 내 프로젝트 홈 → 일정 관리 → 캘린더 -->
-<!-- fullcalendar CDN -->
-<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-
-<!-- fullcalendar 언어 CDN -->
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
-
 
 <body>
 
@@ -103,6 +95,7 @@ String cp = request.getContextPath();
 						
 						
 						<div class="d-inline-flex">
+						
 							<div class="flex-fill">
 								<!-- calendar 태그 -->
 								<div id='calendar-wrap'>
@@ -111,32 +104,91 @@ String cp = request.getContextPath();
 							</div>
 							
 							
-							<!-- 드래그 박스 -->
+							<!-- 일정 목록 박스 -->
 							<div id='external-events'>
-								<div class="p-2" style="font-size: 1.0rem; font-weight: bold;">주요 업무</div>	
-								<hr>
-								
-								<div id='external-events-list'>
-								</div>
-								
-								<hr>
-								
-								<div class="p-2" style="font-size: 1.0rem; font-weight: bold;">주요 일정</div>	
+								<div class="pe-2" style="font-size: 1.0rem; font-weight: bold;">주요 일정</div>	
 								<hr>
 								
 							    <div class="fc-event">회의 일정</div>
+						    	<div class="notEvent">등록된 회의 일정이 없습니다.</div>
+							    	
 							    <div class="fc-event">공통 업무</div>
+								<div class="notEvent">등록된 공통 업무가 없습니다.</div>
 
+							    <hr>
 								
+								    
+								<div class="d-flex p-2 pe-0 me-0 align-self-center">
+									<button type="button" class="gradientBtn color-9" id="addtoDo">일정 등록</button>
+								</div>
 								
-							    <p>
-							      <input type="checkbox" id="drop-remove">
-							      <label for="drop-remove">드랍 후 제거</label>
-							    </p>
+							
+	
+								<div class="toast-container position-fixed bottom-0 end-0 p-3">
+		 							<div id="addtoDoView" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+			 							 <div class="toast-header">
+										    <strong class="me-auto">일정 등록</strong>
+										    <small>일정을 추가해주세요</small>
+										    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+										 </div>
+										  
+										 <div class="toast-body">
+										   	<div class="p-1">
+										   		<div class="mb-1">제목</div>
+										   		<input type="text" class="toDoInputBox" maxlength="30" >
+										   	</div>
+										   	<div class="p-1">
+										   		<div class="mb-1">종류</div>
+										   			<div class="radioBtn" id="cpt">
+														<input type="radio" id="cpt1" name="cpt" value="CPT0000001"><label for="cpt1">회의</label>
+														<input type="radio" id="cpt2" name="cpt" value="CPT0000002"><label for="cpt2">공통업무</label>
+													</div>
+													
+										   	</div>
+		 									<div class="p-1">
+												<div class="mb-1">시작일</div>
+												<div>
+													<input type="text" class="toDoInputBox2" id="start_schedule" name="todoStartDate">
+													<select name="start_time">
+														<c:forEach var="hour" begin="0" end="23">
+															<option value="<c:if test="${hour < 10}">0</c:if>${hour}"><c:if test="${hour < 10}">0</c:if>${hour}
+														</c:forEach>
+													</select> 시
+													
+													<select>
+														<c:forEach var="min" begin="0" end="59">
+															<option value="<c:if test="${min < 10}">0</c:if>${min}"><c:if test="${min < 10}">0</c:if>${min}
+														</c:forEach>
+													</select> 분
+													
+												</div>
+												
+												<div class="mb-1">종료일</div>
+												<div>
+													<input type="text" class="toDoInputBox2" id="end_schedule" name="todoEndDate">
+													<select name="end_time">
+														<c:forEach var="hour" begin="0" end="23">
+															<option value="<c:if test="${hour < 10}">0</c:if>${hour}"><c:if test="${hour < 10}">0</c:if>${hour}
+														</c:forEach>
+													</select> 시
+													
+													<select>
+														<c:forEach var="min" begin="0" end="59">
+															<option value="<c:if test="${min < 10}">0</c:if>${min}"><c:if test="${min < 10}">0</c:if>${min}
+														</c:forEach>
+													</select> 분
+												</div>
+											</div>
+											
+										    <div class="mt-2 pt-2 border-top">
+										      <button type="button" class="gradientBtn color-9" onclick="click_todoAdd()">등록하기</button>
+										    </div>
+										  </div>
+										  
+										  
+									</div>
+								</div>
 							    
-							    <div class="p-2 row" data-bs-toggle="modal" data-bs-target="#calendarEventAdd">
-							    	<button class="gradientBtn color-9">일정 등록</button>
-							    </div>
 							    
 							</div>
 						</div>
@@ -156,53 +208,6 @@ String cp = request.getContextPath();
 		
 	</main>
 	
-	
-		
-	<!-- 일정 등록 모달창 (공통업무, 회의 일정)-->
-	<div class="modal fade" id="calendarEventAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-		    	<div class="modal-header">
-		        	<h5 class="modal-title">일정 등록</h5>
-		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      	</div>
-		      	<div class="modal-body row mb-3 justify-content-center">
-		      	
-					<div class="form-group mb-3 row">
-						<label class="col-sm-4 form-label">일정 제목</label>
-						<div class="com-sm-3">
-							<input type="text" name="mainWorkTitle" class="form-control" placeholder="제목을 입력해주세요">
-						</div>
-					</div>
-
-					
-					<div class="form-group mb-3 row">
-						<label class="col-sm-4 form-label">일정 분류</label>
-						<div class="checkbox">
-							<input type="checkbox" id="memberUpdate1" name="memberUpdate" value="memberUpdate1"><label for="memberUpdate1">회의</label>
-							<input type="checkbox" id="memberUpdate2" name="memberUpdate" value="memberUpdate2"><label for="memberUpdate2">공통업무</label>
-						</div>
-					</div>
-
-					
-					<div class="form-group mb-3 row">
-						<label class="col-sm-6 form-label">일정 날짜</label>
-						<div class="com-sm-3">
-							<div class="com-sm-3">
-						        <input type="text" name="startDate" value="" class="datepicker inp" placeholder="진행날짜" readonly="readonly"/> 
-							</div>
-						</div>
-					</div>
-
-					
-		      	</div>
-		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="gradientBtn color-9" onclick="location.href='<%=cp %>/Inner-Project-home-mainWork-Leader.jsp';" style="cursor: pointer;">등록하기</button>
-		      	</div>
-		    </div>
-		 </div>
-	</div>
-	
 
 
 	<!-- footer import (js imported)-->
@@ -213,66 +218,134 @@ String cp = request.getContextPath();
 </body>
 
 
+<!-- 내 프로젝트 홈 → 일정 관리 → 캘린더 -->
+<!-- fullcalendar CDN -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+<!-- fullcalendar 언어 CDN -->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+
+
 
 <script>
+	$(function() {
+			// calendar element 취득
+			var calendarEl = $('#calendar')[0];
+			
+			// full-calendar 생성하기
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				
+				// 해더에 표시할 툴바
+				headerToolbar : {
+					left : 'prev,next today',
+					center : 'title',
+					/* right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek' */
+				},
+				/* initialDate : '2022-12-25', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.) */
+				timeZone: 'Asia/Seoul',
+				locale : 'ko', // 한국어 설정
+				editable : true, // 수정 가능
+				selectable: true,
+				/*
+				드래그하면 마지막 날짜가 지정한 날짜의 다음날까지 포함해서 출력된다.
+		        ex) 2022-08-20 ~ 2022-08-21 까지 캘린더에 드래그하면 결과값은 2022-08-20 ~ 2022-08-22
+		        우리가 의도했던 결과와 다르므로 결과값을 임의로 조정해주어야 한다.  
+		        */
+		        select: function (info) {
+		            changeDateFormat(info);
+		        },
+				//================ajax 데이터 불러올 부분 ========================//
+				events: function(info, successCallback, failureCallback) {
+					
+					$.ajax({
+						url:"calendar.action?u_p_apply_code=" + '${u_p_apply_code}',
+						type:"GET",
+						dataType: "json",
+						success: function(data) {
+							alert("성공:" + data);
+/* 							var events = [];
+							if (json.length > 0) {
+								$.each(json, function(index, item) {
+									events.push({
+										todoCode: item.title,
+										todoPartCode: item.start,
+										todoUserCode: item.end,
+										todoTitle: item.end,
+										todoStartDate: item.end,
+										todoEndDate: item.end,
+										todoInsertDate: item.end,
+									});
+								})								
+							}
+							successCallback(events); */
+						},
+						error: function(data) {
+							alert("error:"+ data);
+						}
+					});
+					
+				}
 
-	$(function()
-	{
-		// 드래그 박스 취득
-		var containerEl = $('#external-events-list')[0];
-		var checkbox = document.getElementById('drop-remove');
-		
-		// 설정하기
-		new FullCalendar.Draggable(containerEl, {
-			itemSelector : '.fc-event',
-			eventData : function(eventEl)
-			{
-				return {
-					title : eventEl.innerText.trim()
-				};
-			}
+			});
+			// 캘린더 랜더링
+			calendar.render();
 		});
 		
-		// 드래그 아이템 추가하기(반복문으로 추가되는 구조 )
-		for (var i = 1; i <= 8; i++)
-		{
-			var $div = $("<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'></div>");
-			
-			$event = $("<div class='fc-event-main'></div>").text("Event " + i);
-			
-			$('#external-events-list').append($div.append($event));
-		}
 		
-		// calendar element 취득
-		var calendarEl = $('#calendar1')[0];
-		// full-calendar 생성하기
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			// 해더에 표시할 툴바
-			headerToolbar : {
-				left : 'prev,next today',
-				center : 'title',
-				right : 'dayGridMonth,listWeek'
-				/* right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek' */
-			},
-			/* initialDate : '2022-12-25', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.) */
-			timeZone: 'Asia/Seoul',
-			locale : 'ko', // 한국어 설정
-			editable : true, // 수정 가능
-			droppable : true, // 드래그 가능
-			drop : function(info)
-			{ 
-				// 드래그 엔 드롭 성공시
-			  	// 드래그 박스에서 아이템을 삭제한다.
-			  	if(checkbox.checked) {
-					info.draggedEl.parentNode.removeChild(info.draggedEl);
-			  	}
-			}
-		});
-		// 캘린더 랜더링
-		calendar.render();
+		
+		
+
+
+ 
+	function changeDateFormat(info) {
+	    const startDate = info.start; // 시작일자 Date 형식으로 저장
+	    const endDate = new Date(info.end.setDate(info.end.getDate() - 1)); // 마지막 날의 day를 -1하여 Date 형식으로 저장
+	    const startYear = startDate.getFullYear();
+	    const startMonth = startDate.getMonth() + 1;
+	    const startDay = startDate.getDate();
+	    const endYear = endDate.getFullYear();
+	    const endMonth = endDate.getMonth() + 1;
+	    const endDay = endDate.getDate();
+	
+	    // "YYYY-MM-DD" 형식으로 출력하게끔 만든다.
+	    // 한 자리 숫자를 두 자리 숫자로 만들기 위해 한 자리 수 앞에 0을 붙여줘야 한다.
+	    document.getElementById("start_schedule").value = startYear + "-" +
+	        (startMonth >= 10 ? startMonth : "0" + startMonth) +
+	        "-" +
+	        (startDay >= 10 ? startDay : "0" + startDay);
+	    document.getElementById("end_schedule").value =
+	        endYear +
+	        "-" +
+	        (endMonth >= 10 ? endMonth : "0" + endMonth) +
+	        "-" +
+	        (endDay >= 10 ? endDay : "0" + endDay);
+	}
+	
+	
+	
+	
+	
+	// 일정 등록 버튼 토스트창 표시
+	const toastTrigger = document.getElementById('addtoDo')
+	const toastLiveExample = document.getElementById('addtoDoView')
+	if (toastTrigger) {
+	  toastTrigger.addEventListener('click', () => {
+	    const toast = new bootstrap.Toast(toastLiveExample)
+
+	    toast.show()
+	  })
+	}
+	
+
+
+	$(function() {
+		
+		$('#').click(function() {
+		});	
 	});
+	
+	
 </script>
-
 
 
 </html>
