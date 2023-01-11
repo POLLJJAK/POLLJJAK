@@ -178,8 +178,9 @@ public class IInnerProjectMeetController
 	
 	
 	@RequestMapping(value="/inner-project-home-meet-post-update.action", method=RequestMethod.POST)
-	public String meetBoardUpdate(Model model, 
-			@RequestParam("u_p_apply_code") String u_p_apply_code, @RequestParam("ph_meet_code") String ph_meet_code
+	public String meetBoardUpdate(Model model
+			, @RequestParam("u_p_apply_code") String u_p_apply_code
+			, @RequestParam("ph_meet_code") String ph_meet_code
 			, InnerProjectMeetDTO meetDto) {
 		
 		String result = null;
@@ -195,6 +196,8 @@ public class IInnerProjectMeetController
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());
+			System.out.println(meetDto.getPh_meet_subtitle());
+			System.out.println(meetDto.getU_p_apply_code());
 		}
 
 		
