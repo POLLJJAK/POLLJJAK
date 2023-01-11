@@ -17,13 +17,15 @@ import com.test.dto.UserDTO;
 
 public interface IUserDAO
 {
-	// 회원 정보 입력(추가)
+	// 일반회원 정보 입력(추가)
 	public Integer add(UserDTO u);
 		
-	// 회원정보 확인(u_code 를 활용하여 회원 정보 검색)
+	// 일반회원 정보 확인(user_code 를 활용하여 회원 정보 검색)
 	public UserDTO search(UserDTO dto);
+	// 일반회원의 부가스킬 정보 확인
+	public String searchSkill(UserDTO dto);
 	
-	// 회원 정보 수정
+	// 일반회원 정보 수정
 	public int update(UserDTO dto);
 	
 	// 도메인 출력

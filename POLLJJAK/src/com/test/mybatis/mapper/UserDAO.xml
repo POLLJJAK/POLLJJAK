@@ -7,6 +7,7 @@
 
 	<!-- 쿼리문 가져올 때 『;』 제외하고 가져오기!! -->
 	<!-- 테스트용 쿼리문 -->
+	<!-- 
 	<select id="list" resultType="com.test.dto.UserDTO">
 		SELECT U_CODE, USER_CODE, SUBJECT_PART_CODE, REGION_PART_CODE
 			 , POSITION_PART_CODE, TIME_PART_CODE, Domain_Part_Code
@@ -15,21 +16,22 @@
 		FROM U
 		ORDER BY U_CODE
 	</select>
-	
+	 -->
+	 
 	<select id="add" resultType="com.test.dto.UserDTO" statementType="CALLABLE">
-		{CALL REGISTRATION(#{subject_part_code, mode=IN, jdbcType=VARCHAR}
+		{CALL USERREGISTRATION(#{subject_part_code, mode=IN, jdbcType=VARCHAR}
           , #{region_part_code, mode=IN, jdbcType=VARCHAR}
           , #{position_part_code, mode=IN, jdbcType=VARCHAR}
           , #{time_part_code, mode=IN, jdbcType=VARCHAR}
           , #{domain_part_code, mode=IN, jdbcType=VARCHAR}
-          , #{u_name, mode=IN, jdbcType=VARCHAR}
+          , #{name, mode=IN, jdbcType=VARCHAR}
           , #{u_nickname, mode=IN, jdbcType=VARCHAR}
           , #{u_tel, mode=IN, jdbcType=VARCHAR}
-          , #{u_email, mode=IN, jdbcType=VARCHAR}
+          , #{email, mode=IN, jdbcType=VARCHAR}
           , #{u_intro, mode=IN, jdbcType=VARCHAR}
           , #{u_portfolio_url, mode=IN, jdbcType=VARCHAR}
-          , #{u_id, mode=IN, jdbcType=VARCHAR}
-          , #{u_pw, mode=IN, jdbcType=VARCHAR}
+          , #{id, mode=IN, jdbcType=VARCHAR}
+          , #{pw, mode=IN, jdbcType=VARCHAR}
           , #{skill_part_code, mode=IN, jdbcType=VARCHAR}
           , #{skill_part_code1, mode=IN, jdbcType=VARCHAR}
           , #{skill_part_code2, mode=IN, jdbcType=VARCHAR}
@@ -68,28 +70,26 @@
 	</select>
 	
 	<select id="search" resultType="com.test.dto.UserDTO">
-		SELECT SUBJECT_PART_CODE, REGION_PART_CODE
-		, POSITION_PART_CODE, TIME_PART_CODE, DOMAIN_PART_CODE
-     	, U_NAME, U_NICKNAME, U_TEL, U_EMAIL, U_INTRO, U_PORTFOLIO_URL, U_PW
-		FROM U
-		WHERE U_CODE = #{u_code}
+        SELECT U.U_ID AS id, U.U_NAME AS name, U.U_NICKNAME, U.U_EMAIL AS email
+             , U.U_TEL, U.POSITION_PART_CODE, U.REGION_PART_CODE, U.TIME_PART_CODE
+             , U.SUBJECT_PART_CODE, U.U_INTRO, U.U_PORTFOLIO_URL
+             , US.SKILL_PART_CODE AS skill_part_code, U.DOMAIN_PART_CODE
+        FROM U, U_SKILL US
+        WHERE U.USER_CODE = US.USER_CODE
+          AND U.USER_CODE = #{user_code}
+          AND U_SKILL_PART_CODE = 'USPT000001'
 	</select>
-	
+	<select id="searchSkill" resultType="java.lang.String">
+		SELECT LISTAGG(SKILL_PART_CODE, ', ') WITHIN GROUP (ORDER BY SKILL_PART_CODE) AS skill_part_code4  
+		FROM SKILL_PART_CODE_VIEW
+		WHERE U_SKILL_PART_CODE IN ('USPT000001', 'USPT000002')
+		  AND U_SKILL_PART_CODE = 'USPT000002'
+		  AND USER_CODE = #{user_code}
+		GROUP BY U_SKILL_PART_CODE
+	</select>
+		
 	<update id="update">
-		UPDATE U
-		SET SUBJECT_PART_CODE = #{subject_part_code}
-		    , REGION_PART_CODE = #{region_part_code}
-		    , POSITION_PART_CODE = #{position_part_code}
-		    , TIME_PART_CODE = #{time_part_code}
-		    , DOMAIN_PART_CODE = #{domain_part_code}
-		    , U_NAME = #{u_name}
-		    , U_NICKNAME = #{u_nickname}
-		    , U_TEL = #{u_tel}
-		    , U_EMAIL = #{u_email}
-		    , U_INTRO = #{u_intro}
-		    , U_PORTFOLIO_URL = #{u_portfolio_url}
-		    , U_PW = #{u_pw}
-		WHERE U_CODE = #{u_code}
+		
 	</update>
-	
+	 
 </mapper>

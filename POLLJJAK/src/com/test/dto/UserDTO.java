@@ -1,5 +1,6 @@
 /*====================
  	UserDTO.java
+ 	- 일반 유저
 =====================*/
 
 package com.test.dto;
@@ -9,8 +10,14 @@ public class UserDTO
 	// 주요 속성 구성
 	private String u_code, user_code, subject_part_code, region_part_code;
 	private String position_part_code, time_part_code, domain_part_code;
-	private String u_name, u_nickname, u_tel, u_email, u_intro, u_portfolio_url, u_id, u_pw;
-	private String skill_part_code, skill_part_code1, skill_part_code2, skill_part_code3;
+	private String u_nickname, u_tel, u_intro, u_portfolio_url;
+	private String id, pw, email, name;
+	// 회원가입 프로시저에 넘기기 위한 주요기술 담을 변수
+	private String skill_part_code;
+	// 회원가입 프로시저에 넘기기 위한 부가기술 담을 변수
+	private String skill_part_code1, skill_part_code2, skill_part_code3;
+	// 마이페이지에 넘기기 위한 부가기술들 담을 변수
+	private String skill_part_code4;
 	
 	// getter / setter
 	public String getU_code()
@@ -69,13 +76,13 @@ public class UserDTO
 	{
 		this.domain_part_code = domain_part_code;
 	}
-	public String getU_name()
+	public String getName()
 	{
-		return u_name;
+		return name;
 	}
-	public void setU_name(String u_name)
+	public void setName(String name)
 	{
-		this.u_name = u_name;
+		this.name = name;
 	}
 	public String getU_nickname()
 	{
@@ -93,13 +100,13 @@ public class UserDTO
 	{
 		this.u_tel = u_tel;
 	}
-	public String getU_email()
+	public String getEmail()
 	{
-		return u_email;
+		return email;
 	}
-	public void setU_email(String u_email)
+	public void setEmail(String email)
 	{
-		this.u_email = u_email;
+		this.email = email;
 	}
 	public String getU_intro()
 	{
@@ -117,21 +124,21 @@ public class UserDTO
 	{
 		this.u_portfolio_url = u_portfolio_url;
 	}
-	public String getU_id()
+	public String getId()
 	{
-		return u_id;
+		return id;
 	}
-	public void setU_id(String u_id)
+	public void setId(String id)
 	{
-		this.u_id = u_id;
+		this.id = id;
 	}
-	public String getU_pw()
+	public String getPw()
 	{
-		return u_pw;
+		return pw;
 	}
-	public void setU_pw(String u_pw)
+	public void setPw(String pw)
 	{
-		this.u_pw = u_pw;
+		this.pw = pw;
 	}
 	public String getSkill_part_code()
 	{
@@ -164,6 +171,14 @@ public class UserDTO
 	public void setSkill_part_code3(String skill_part_code3)
 	{
 		this.skill_part_code3 = skill_part_code3;
+	}
+	public String getSkill_part_code4()
+	{
+		return skill_part_code4;
+	}
+	public void setSkill_part_code4(String skill_part_code4)
+	{
+		this.skill_part_code4 = skill_part_code4;
 	}
 	
 	

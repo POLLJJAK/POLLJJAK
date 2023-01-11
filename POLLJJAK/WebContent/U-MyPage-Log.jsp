@@ -99,7 +99,7 @@ String cp = request.getContextPath();
 					</div>
 					<hr>
 					<div class="container">
-						<div class="persnal-news row">
+						<div class="personal-news row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
@@ -108,7 +108,7 @@ String cp = request.getContextPath();
 							</div>
 							<div class="col-sm-3"></div>
 						</div>	
-						<div class="persnal-news row">
+						<div class="personal-news row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
@@ -117,7 +117,7 @@ String cp = request.getContextPath();
 							</div>
 							<div class="col-sm-3"></div>
 						</div>	
-						<div class="persnal-news row">
+						<div class="personal-news row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
@@ -126,7 +126,7 @@ String cp = request.getContextPath();
 							</div>
 							<div class="col-sm-3"></div>
 						</div>
-						<div class="persnal-news row">
+						<div class="personal-news row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
@@ -135,7 +135,7 @@ String cp = request.getContextPath();
 							</div>
 							<div class="col-sm-3"></div>
 						</div>	
-						<div class="persnal-news row">
+						<div class="personal-news row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">
@@ -144,7 +144,7 @@ String cp = request.getContextPath();
 							</div>
 							<div class="col-sm-3"></div>
 						</div>	
-						<div class="persnal-news row">
+						<div class="personal-news row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6 news">
 								<p style="margin-bottom : 0px">

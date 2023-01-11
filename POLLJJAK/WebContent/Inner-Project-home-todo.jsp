@@ -15,12 +15,13 @@ String cp = request.getContextPath();
 <c:import url="./common/Head.jsp" />
 
 <!-- 내 프로젝트 홈 css 파일 -->
-<link href="resources/css/Inner-Project-home.css" rel="stylesheet">
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 <!-- 내 프로젝트 홈 → 일정 관리 → 캘린더 -->
 <!-- fullcalendar CDN -->
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+
 <!-- fullcalendar 언어 CDN -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
@@ -76,18 +77,21 @@ String cp = request.getContextPath();
 							</div>
 						</div>
 						
+					
 						<!-- 프로젝트 홈 메뉴 -->
 						<div class="container">
 							<nav id="navbar_" class="mt-5 pj_nav">
 							   <ul class="justify-content-center">
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-teamManage.jsp">팀원 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-mainWork.jsp">업무 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
-							      <li><a class="nav-link pb-0 scrollto active"  href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
+						
+						
 						
 						<div class="container">
 						   <hr>
@@ -158,6 +162,8 @@ String cp = request.getContextPath();
 							});
 						</script>
 						
+						
+						
 						<div class="d-inline-flex">
 							<div class="flex-fill">
 								<!-- calendar 태그 -->
@@ -165,6 +171,7 @@ String cp = request.getContextPath();
 									<div id='calendar1'></div>
 								</div>
 							</div>
+							
 							
 							<!-- 드래그 박스 -->
 							<div id='external-events'>
@@ -195,6 +202,9 @@ String cp = request.getContextPath();
 							    
 							</div>
 						</div>
+
+
+
 
 				
 					</div>
@@ -255,10 +265,7 @@ String cp = request.getContextPath();
 		 </div>
 	</div>
 	
-	
-	
-	
-	
+
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
@@ -267,10 +274,5 @@ String cp = request.getContextPath();
 
 </body>
 
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script>
-
-</script>
 
 </html>

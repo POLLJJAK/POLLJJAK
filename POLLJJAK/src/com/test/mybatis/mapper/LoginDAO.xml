@@ -5,11 +5,82 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.test.mybatis.ILoginDAO">
 	
-	<select id="login" resultType="com.test.dto.UserDTO">
+	<select id="userLogin" resultType="com.test.dto.UserDTO">
+		SELECT U_ID as id, U_NAME as name, USER_CODE
+		FROM U
+		WHERE U_ID = #{id}
+  		  AND U_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+	</select>
+	
+	<select id="companyLogin" resultType="com.test.dto.CompanyDTO">
+		SELECT C_ID as id, C_NAME as name, USER_CODE
+		FROM C
+		WHERE C_ID = #{id}
+  		  AND C_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+	</select>
+	
+	<select id="domainList" resultType="com.test.dto.DomainDTO">
+		SELECT DOMAIN_PART_CODE, DOMAIN_ADDRESS, DOMAIN_PART
+		FROM DOMAIN_PART
+	</select>
+	
+	<select id="uForgetId"  resultType="com.test.dto.UserDTO">
+		SELECT U_ID as id
+		FROM U
+		WHERE U_NAME = #{name}
+ 		  AND U_EMAIL = #{email}
+ 		  AND DOMAIN_PART_CODE = #{domain_part_code}
+<!-- 		
 		SELECT U_ID, U_NAME
 		FROM U
-		WHERE U_ID = #{u_id}
-  		  AND U_PW = CRYPTPACK.ENCRYPT(#{u_pw}, #{u_pw})
+		WHERE U_NAME = #{name}
+ 		  AND U_TEL = #{u_tel} 
+-->
 	</select>
+	
+	<select id="uForgetPw"  resultType="com.test.dto.UserDTO">
+		SELECT U_ID as id
+		FROM U
+		WHERE U_NAME = #{name}
+   		  AND U_EMAIL = #{email}
+ 		  AND DOMAIN_PART_CODE = #{domain_part_code}
+ 		  AND U_ID = #{id}
+<!--   
+		SELECT U_ID, U_NAME
+		FROM U
+		WHERE U_NAME = #{name}
+ 		  AND U_TEL = #{u_tel}
+ 		  AND U_ID = #{id}
+-->  
+	</select>
+	
+	<update id="uModifyPW">
+		UPDATE U 
+		SET U_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw}) 
+		WHERE U_ID = #{id}
+	</update>
+	
+	<select id="cForgetId"  resultType="com.test.dto.CompanyDTO">
+		SELECT C_ID as id
+		FROM C
+		WHERE C_NAME = #{name}
+ 		  AND C_EMAIL = #{email}
+ 		  AND DOMAIN_PART_CODE = #{domain_part_code}
+	</select>
+	
+	<select id="cForgetPw"  resultType="com.test.dto.CompanyDTO">
+		SELECT C_ID as id
+		FROM C
+		WHERE C_NAME = #{name}
+ 		  AND C_EMAIL = #{email}
+ 		  AND DOMAIN_PART_CODE = #{domain_part_code}
+ 		  AND C_ID = #{id}
+	</select>
+	
+	<update id="cModifyPW">
+		UPDATE C
+		SET C_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+		WHERE C_ID = #{id}
+	</update>
 
 </mapper>

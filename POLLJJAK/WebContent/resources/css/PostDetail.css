@@ -1,0 +1,164 @@
+ /*  버튼  */
+    
+    .form-control
+    {
+    	align-content: center;
+    }
+    
+    .buttons 
+    {
+    /* margin: 10%; */
+       text-align: center;
+   }
+   
+   .btn-hover 
+   {
+       width: 30%;
+       font-size: 12px;
+       font-weight: 600;
+       color: #fff;
+       cursor: pointer;
+       /* margin: 10px; */
+       height: 30px;
+       text-align:center;
+       border: none;
+       background-size: 300% 100%;
+   
+       border-radius: 10px;
+       moz-transition: all .4s ease-in-out;
+       -o-transition: all .4s ease-in-out;
+       -webkit-transition: all .4s ease-in-out;
+       transition: all .4s ease-in-out;
+   }
+   
+   .btn-hover:hover 
+   {
+       background-position: 100% 0;
+       moz-transition: all .4s ease-in-out;
+       -o-transition: all .4s ease-in-out;
+       -webkit-transition: all .4s ease-in-out;
+       transition: all .4s ease-in-out;
+   }
+   
+   .btn-hover:focus 
+   {
+       outline: none;
+   }
+    .btn-hover.color-9 
+    {
+       background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+       /* box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75); */
+   }
+   
+   .fullbtn
+   {
+       width: 30%;
+       font-size: 12px;
+       font-weight: 600;
+       color: gray;
+       cursor: pointer;
+       height: 30px;
+       text-align:center;
+       border: none;
+       background-size: 300% 100%;
+   
+       border-radius: 10px;
+      
+   }
+   
+ 
+
+/* 회의록 게시판 */
+.meet_wrap{
+	width: 75%;
+	margin: auto; 
+}
+
+.meet_title{
+	margin-bottom: 30px;
+}
+
+.meet_title strong {
+	font-size: 3rem;
+}
+
+.meet_title p {
+	margin-top: 5px;
+	font-size: 1.4rem;
+}
+
+.meet_list{
+	width: 100%;
+	border-top: 2px solid #000;
+	border-bottom:2px solid #000;
+	font-size: small;;
+}
+
+.meet_list > div {
+	border-bottom: 1px solid #ddd;
+	font-size: small;
+}
+
+.meet_list > div.top{
+	border-color: 1px solid #ddd;
+}
+
+.meet_list > div:last-child{
+	border-color: 1px solid #000;
+}
+
+.meet_list > div > div{
+	display: inline-block;
+	padding15px 0;
+	text-align: center;
+	font-size: medium;
+}
+.meet_list > div.top > div{
+	font-weight: 600;
+}
+
+.meet_list .num{
+	width: 10%;
+	
+}
+.meet_list .title{
+	width: 55%;
+	/* height: 50%; */
+	text-align: left;
+	padding: 1%;
+}
+
+.meet_list .top .title{
+	text-align: center;
+}
+
+.meet_list .writer{
+	width: 10%;
+	font-size: small;
+	text-align: left;
+	
+}
+.meet_list .date{
+	width: 10%;
+	font-size: small;
+	
+}
+.meet_list .countLike{
+	width: 10%;
+	font-size: small;
+	text-align: right;
+	
+}
+.meet_list .topic{
+	width: 10%;
+	
+}
+
+.meet_page{
+	margin-top: 30px;
+	text-align: center;
+	font-size: small;
+}
+
+ /* summernote 드롭다운 두개뜨는거 수정 */
+   .dropdown-toggle::after { display: none; }  

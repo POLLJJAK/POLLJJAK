@@ -2,14 +2,45 @@ package com.test.dto;
 
 public class InnerProjectTeamManageDTO
 {
-	private String p_name, pj_start_date, pj_end_date, all_percent;
+	private String p_name, pj_start_date, pj_end_date, all_percent, pj_code;
 	
 	private String team_role, position_part, u_name, last_login_date, contribute;
 	
 	private String team_member_count;
 	
+	private String team_member_now_count;
+	
+	private String p_code;
+	
+
 	
 	
+	
+	public String getPj_code()
+	{
+		return pj_code;
+	}
+	public void setPj_code(String pj_code)
+	{
+		this.pj_code = pj_code;
+	}
+	
+	public String getP_code()
+	{
+		return p_code;
+	}
+	public void setP_code(String p_code)
+	{
+		this.p_code = p_code;
+	}
+	public String getTeam_member_now_count()
+	{
+		return team_member_now_count;
+	}
+	public void setTeam_member_now_count(String team_member_now_count)
+	{
+		this.team_member_now_count = team_member_now_count;
+	}
 	public String getP_name()
 	{
 		return p_name;

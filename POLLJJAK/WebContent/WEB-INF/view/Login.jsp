@@ -6,6 +6,11 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setHeader("Expires", "0"); // Proxies.
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +124,7 @@
 	.login-input-container .login-input-wrap{
 	    width:300px;
 	    height: 45px;
-	    margin-top: 20px;
+	    margin-top: 10px;
 	    border-radius: 2px;
 	    border-bottom: solid 2px #3498db;
 	   
@@ -195,8 +200,9 @@
 	.section-title p::after {
 	  	margin: 0 0 3px 10px;
 	}
+	
 	.radioBtn {
-		 padding-top: 10px; 
+		 padding-top: 45px; 
 		 text-align: center;
 	}
 	 
@@ -258,23 +264,23 @@
 				<div class="login-top-wrap">
 					<span>계정이 없으신가요?</span>
 					<div class="create-account-btn">
-						<a href="<%=cp %>/Registration-main.jsp">회원가입</a>
+						<a href="registraionmainform.action">회원가입</a>
 					</div>
 				</div>
 				<form method="post" id="login_form">
+					<div class="radioBtn">
+						<input type="radio" id="user" name="userType" value="user" checked="checked"><label for="user">일반</label>
+						<input type="radio" id="company" name="userType" value="company"><label for="company">기업</label>
+					</div>
 					<div class="login-input-container">
 						<div class="login-input-wrap input-id">
 							<i class="fa fa-user"></i>
-							<input placeholder="아이디" type="text" name="u_id">
+							<input placeholder="아이디" type="text" name="id">
 						</div>
 						<div class="login-input-wrap input-password">
 							<i class="fas fa-key"></i>
-							<input placeholder="비밀번호" type="password" name="u_pw">
+							<input placeholder="비밀번호" type="password" name="pw">
 						</div>
-					</div>
-					<div class="radioBtn">
-						<input type="radio" id="company" name="user" value="company"><label for="company">기업</label>
-						<input type="radio" id="general" name="user" value="general"><label for="general">일반</label>
 					</div>
 					<div class="login-btn-wrap">
 						<input type="submit" class="login-btn" value="로그인">
@@ -284,9 +290,9 @@
 					<div class="moveTo">
 						<a href="main.action" >홈으로</a>
 						<a> | </a>
-						<a href="<%=cp %>/ForgetId.jsp" >아이디 찾기</a>
+						<a href="forgetidform.action" >아이디 찾기</a>
 						<a> | </a>
-						<a href="<%=cp %>/ForgetPw.jsp" >비밀번호 찾기</a>
+						<a href="forgetpwform.action" >비밀번호 찾기</a>
 					</div>
 				</div>
 				<div class="sosial">

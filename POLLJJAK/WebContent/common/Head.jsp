@@ -6,13 +6,18 @@
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
 %>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setHeader("Expires", "0"); // Proxies.
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-    <title>플젝폴짝</title>
+    <title>플젝폴짝 : 개발자 프로젝트 모집 관리 플랫폼</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -29,7 +34,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+   
      <!-- Calendar -->
      <!-- calendar.css 보다 윗 줄에 작성되어야 함 -->
      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
@@ -46,12 +51,6 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
    <!-- END OF 부트스트랩 템플릿 관련 라이브러리 -->
 
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-  
-
-
    <!-- 공통사용 스타일 -->   
     <link href="resources/common/css/fileUpload.css" rel="stylesheet">
     <link href="resources/common/css/checkbox.css" rel="stylesheet">
@@ -60,7 +59,9 @@
     <!-- jquery-ui.css 파일호출(calendar.css) 보다 아래에 있어야 합니다 -->
 	<link href="resources/common/css/calendar.css" rel="stylesheet">
 
-
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+  
     <!-- =======================================================
     * Template Name: Vesperr - v4.9.1
     * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/

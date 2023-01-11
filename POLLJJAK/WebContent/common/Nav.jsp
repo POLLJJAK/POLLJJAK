@@ -11,8 +11,7 @@
    <div class="container d-flex align-items-center justify-content-between">
       <div class="logo">
          <h1>
-
-            <a href="main.action">
+			<a href="main.action">
             	<img alt="플젝폴짝로고" src="assets/img/logo.png">
             </a>
          </h1>
@@ -76,15 +75,47 @@
 			 -->
 			<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
 			<c:choose>
-				<c:when test="${loginCheck.u_id == null }">
+				<%-- <c:when test="${loginCheck.u_id == null or loginCheck.c_id == null or loginCheck.a_id == null}"> --%>
+				<c:when test="${loginCheck == null }">
 		            <li><a class="getstarted scrollto" href="loginform.action">로그인</a></li>
 				</c:when>
 				<c:otherwise>
-					<!-- 										┏비동기 로그아웃 -->
-		            <li><a class="getstarted scrollto" id="logout_btn">로그아웃</a></li>
-					<!-- 										┏일반 로그아웃 -->
- 		        <!-- <li><a class="getstarted scrollto" href="logout.action">로그아웃</a></li> -->
-					<li>${loginCheck.u_name }</li>
+				   <div class="nav-item dropdown">
+						<a href="#" class="nav-link d-flex lh-1 text-reset p-0 show" data-bs-toggle="dropdown" aria-label="Open user menu" aria-expanded="true"> 
+							<!-- 일반이면 유저/ 기업이면 빌딩/ 관리자면 ?? 아이콘 띄우기 -->
+							<c:if test="${userType.equals(\"user\") }">
+								<span class="avatar avatar-sm fa fa-users fa-2x" style=" margin: 0 5px 0 10px;"></span>
+								<div class="d-none d-xl-block ps-2">
+									<div>${loginCheck.name }</div>
+									<!-- 권한별로 나타나는 글씨 바꾸기 : 일반/기업/관리자 -->
+									<div class="mt-1 small text-muted">일반</div>
+								</div>
+							</c:if>
+							<c:if test="${userType.equals(\"company\") }">
+								<span class="avatar avatar-sm fa fa-building fa-2x" style=" margin: 0 5px 0 10px;"></span>
+								<div class="d-none d-xl-block ps-2">
+									<div>${loginCheck.name }</div>
+									<div class="mt-1 small text-muted">기업</div>
+								</div>
+							</c:if>
+						</a>
+				
+						<!-- 프로필 사진 누르면 나오는 드롭다운 -->
+						<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+							<!-- 		┏U-MyPage-Warning.jsp를 거치고 들어가야 함 -->
+							<button type="button" class="btn-modify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> 
+<!-- 							<a href="userupdateform.action" class="dropdown-item">마이페이지</a>  -->
+							
+							<!-- 		┏관리자 로그인이라면 -->
+							<a href="#" class="dropdown-item">관리자페이지로</a> 
+							
+							<div class="dropdown-divider"></div>
+									<!-- ┏비동기 로그아웃 -->
+							<a href="logout.action" id="logout_btn" class="dropdown-item" style="cursor: pointer;">로그아웃</a>
+									<!-- ┏일반 로그아웃 -->
+							<!-- <a href="logout.action" class="dropdown-item">Logout</a> -->
+						</div>
+					</div>
 				</c:otherwise>
 			</c:choose>
 			
@@ -92,11 +123,14 @@
          <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
       <!-- .navbar -->
-
    </div>
+   
+   
+   
    <script type="text/javascript">
-   		/* 로그아웃 비동기 방식 */
-   		$("#logout_btn").click(function()
+		/* 로그아웃 비동기 방식 */
+		/* 
+		$("#logout_btn").click(function()
 		{
 			$.ajax({
 				type:"GET"
@@ -104,6 +138,16 @@
 				, success:function(data){
 					document.location.reload();
 				}
+			});
+		});
+		 */
+		
+		$(function()
+		{
+			$(".btn-modify").click(function()
+			{
+				$(location).attr("href", "userupdateform.action?user_code=" + $(this).val());
+
 			});
 		});
    </script>

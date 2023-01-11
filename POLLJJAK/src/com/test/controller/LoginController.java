@@ -4,16 +4,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.test.dto.CompanyDTO;
 import com.test.dto.UserDTO;
 import com.test.mybatis.ILoginDAO;
-import com.test.mybatis.IUserDAO;
 
 @Controller
 public class LoginController
@@ -21,6 +21,7 @@ public class LoginController
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 메인화면으로
 	@RequestMapping(value = "/main.action", method = RequestMethod.GET)
 	public String main()
 	{
@@ -31,21 +32,9 @@ public class LoginController
 		return result;
 	}
 	
-	// 테스트용 (나중에 지울예정)
-//	@RequestMapping(value = "/u_p_apply_main.action", method = RequestMethod.GET)
-//	public String u_p_apply_main()
-//	{
-//		String result = null;
-//		
-//		result = "/WEB-INF/view/U-P-Apply-Main.jsp";
-//		
-//		return result;
-//	}
-	
-	
-	// 로그인폼으로
+	// 회원 로그인폼으로
 	@RequestMapping(value = "/loginform.action", method = RequestMethod.GET)
-	public String userLoginForm()
+	public String loginForm()
 	{
 		String result = null;
 		
@@ -56,31 +45,75 @@ public class LoginController
 	
 	// 세션을 이용한 로그인
 	@RequestMapping(value="/login.action", method = RequestMethod.POST)
-	public String login(UserDTO user, HttpServletRequest request, HttpServletResponse response)
+	public String login(UserDTO user, CompanyDTO company
+						, HttpServletRequest request, HttpServletResponse response)
 	{
 		String result = null;
-		UserDTO loginCheck = null;
+		
 		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
 		
-		loginCheck = dao.login(user);
+		String userType = request.getParameter("userType");
 		
-		if(loginCheck == null)
-		{
-			result = "redirect:loginform.action";
-		}
-		else
-		{
-			HttpSession session = request.getSession();
-			session.setAttribute("loginCheck", loginCheck);
-			result = "redirect:main.action";
-		}
 		
+		if (userType.equals("user"))
+		{
+			UserDTO loginCheck = null;
+			
+			loginCheck = dao.userLogin(user);
+			
+			if(loginCheck == null)
+			{
+				result = "redirect:loginform.action";
+			}
+			else
+			{
+				HttpSession session = request.getSession();
+				session.setAttribute("loginCheck", loginCheck);
+				session.setAttribute("userType", userType);
+				result = "redirect:main.action";
+			}
+//			if (session == null || !request.isRequestedSessionIdValid()) {
+//				System.out.println("일반 세션이 무효화 상태입니다.");
+//			}
+//			else if (session != null)
+//			{
+//				System.out.println("세션이 있는 상태입니다.");
+//				System.out.println("일반 : " + loginCheck.getName());
+//				System.out.println(loginCheck.getId());
+//			}
+		}
+		else //if (userType.equals("company")) 
+		{
+			CompanyDTO loginCheck = null;
+			
+			loginCheck = dao.companyLogin(company);
+			
+			if(loginCheck == null)
+			{
+				result = "redirect:loginform.action";
+			}
+			else
+			{
+				HttpSession session = request.getSession();
+				session.setAttribute("loginCheck", loginCheck);
+				session.setAttribute("userType", userType);
+				result = "redirect:main.action";
+			}
+//			if (session == null || !request.isRequestedSessionIdValid()) {
+//				System.out.println("기업 세션이 무효화 상태입니다.");
+//			}
+//			else if (session != null)
+//			{
+//				System.out.println("세션이 있는 상태입니다.");
+//				System.out.println("기업 : " + loginCheck.getName());
+//			}
+		}
 		return result;
 	}
-	
+
 	// 세션 없애기를 이용해 로그아웃
 	@RequestMapping(value = "/logout.action", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request)
+	public String logout(HttpServletRequest request, HttpServletResponse response)
 	{
 		String result = null;
 				
@@ -93,6 +126,172 @@ public class LoginController
 		return result;
 	}
 	
+	// 회원가입 메인폼으로
+	@RequestMapping(value = "/registraionmainform.action", method = RequestMethod.GET)
+	public String RegistrationMainForm()
+	{
+		String result = null;
+		
+		result = "/WEB-INF/view/Registration-main.jsp";
+		
+		return result;
+	}
 	
+	// 아이디 찾기 폼으로
+	@RequestMapping(value = "/forgetidform.action", method = RequestMethod.GET)
+	public String ForgetIdForm(Model model)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		model.addAttribute("domainList", dao.domainList());
+		
+		result = "/WEB-INF/view/ForgetId.jsp";
+		
+		return result;
+	}
+	
+	// 아이디 찾기
+	@RequestMapping(value = "/forgetid.action", method = RequestMethod.POST)
+	public String ForgetId(UserDTO user, CompanyDTO company, Model model
+							, HttpServletRequest request)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		String userType = request.getParameter("userType");
+		
+		if (userType.equals("user"))
+		{
+			UserDTO uForgetId = null;
+			
+			uForgetId = dao.uForgetId(user);
+			
+			if(uForgetId != null)
+			{
+				model.addAttribute("user", uForgetId);
+				result = "/WEB-INF/view/FindId.jsp";
+			}
+			else
+			{
+				result = "redirect:forgetidform.action";
+			}
+		}
+		else
+		{
+			CompanyDTO cForgetId = null;
+			
+			cForgetId = dao.cForgetId(company);
+			
+			if(cForgetId != null)
+			{
+				model.addAttribute("user", cForgetId);
+				result = "/WEB-INF/view/FindId.jsp";
+			}
+			else
+			{
+				result = "redirect:forgetidform.action";
+			}
+		}
+		
+		return result;
+	}
+	
+	// 비번 찾기 폼으로
+	@RequestMapping(value = "/forgetpwform.action", method = RequestMethod.GET)
+	public String ForgetPwForm(Model model)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		model.addAttribute("domainList", dao.domainList());
+		
+		result = "/WEB-INF/view/ForgetPw.jsp";
+		
+		return result;
+	}
+	
+	// 비번 찾기
+	@RequestMapping(value = "/forgetpw.action", method = RequestMethod.POST)
+	public String ForgetPw(UserDTO user, CompanyDTO company, Model model
+							, HttpServletRequest request)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		String userType = request.getParameter("userType");
+		
+		if (userType.equals("user"))
+		{
+			UserDTO uForgetPw = null;
+			
+			uForgetPw = dao.uForgetPw(user);
+			
+			if(uForgetPw != null)
+			{
+				model.addAttribute("user", uForgetPw);
+				model.addAttribute("userType", userType);
+				result = "/WEB-INF/view/uChangePw.jsp";
+			}
+			else
+			{
+				result = "redirect:forgetpwform.action";
+			}
+		}
+		else
+		{
+			CompanyDTO cForgetPw = null;
+			
+			cForgetPw = dao.cForgetPw(company);
+			
+			if(cForgetPw != null)
+			{
+				model.addAttribute("user", cForgetPw);
+				model.addAttribute("userType", userType);
+				result = "/WEB-INF/view/cChangePw.jsp";
+			}
+			else
+			{
+				result = "redirect:forgetpwform.action";
+			}
+			
+		}
+		
+		return result;
+	}
+	
+	// 일반회원 비번 바꾸기
+	@RequestMapping(value = "/uchangepw.action", method = RequestMethod.POST)
+	public String uChangePw(UserDTO user)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		dao.uModifyPW(user);
+
+		result = "redirect:main.action";
+		
+		return result;
+	}
+	
+	// 기업회원 비번 바꾸기
+	@RequestMapping(value = "/cchangepw.action", method = RequestMethod.POST)
+	public String cChangePw(CompanyDTO company)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		dao.cModifyPW(company);
+		
+		result = "redirect:main.action";
+		
+		return result;
+	}
 	
 }

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+
+.err
+{
+	color: red; 
+	font-weight: bold;
+	display: none;
+	width: 100%;
+}
+
+#registration_done
+{
+	background-color: #3498db; 
+	border-radius: 50px;
+	width: 100px; 
+	border: none; 
+	display: inline-block;
+}

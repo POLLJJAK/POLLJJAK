@@ -5,9 +5,10 @@
 
 <mapper namespace="com.test.mybatis.IMainLoungeListDAO">
 	
-	<select id="list" resultType="com.test.dto.MainLoungeListDTO">
+	<select id="list" resultType="com.test.dto.MainLoungeListDTO" parameterType="String">
 		SELECT SID, POST_CODE, USER_CODE, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
 		FROM L_POST_LIST_VIEW
+		WHERE SID BETWEEN #{start} AND #{end}
 		ORDER BY SID DESC
 	</select>
 	
@@ -18,7 +19,7 @@
 		
 	<update id="update">
 		UPDATE L_POST
-		SET L_POST_TITLE = #{title}, L_POST_CONTENT=#{content}, L_POST_UPDATE_DATE=SYSDATE
+		SET L_POST_TITLE = #{title}, L_POST_CONTENT=#{summernote}, L_POST_UPDATE_DATE=SYSDATE
 		WHERE L_POST_CODE= #{post_code}
 	</update>
 	
@@ -26,6 +27,11 @@
 		DELETE L_POST
 		WHERE L_POST_CODE=#{post_code}
 	</delete>
+	
+	<select id="listCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT 
+		FROM L_POST_LIST_VIEW
+	</select>
 	
 	<select id="postdetail" resultType="com.test.dto.MainLoungeListDTO">
 		SELECT SID, POST_CODE, USER_CODE, TITLE, CONTENT, NICKNAME, POSTDATE, POSTLIKE
@@ -43,8 +49,8 @@
 	
 	<!-- 좋아요추가 -->
 	<insert id="likeadd" parameterType="String">
-		INSERT INTO POST_LIKE(POST_LIKE_CODE, L_POST_CODE, USER_CODE,POST_LIKE_DATE)
-		VALUES('LKPS'||LPAD(POST_LIKE_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code}, #{user_code}, SYSDATE)
+		INSERT INTO POST_LIKE(POST_LIKE_CODE, L_POST_CODE, USER_CODE, POST_LIKE_DATE)
+		VALUES('LKPS'||LPAD(POST_LIKE_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code, jdbcType=VARCHAR}, #{user_code,jdbcType=VARCHAR}, SYSDATE)
 	</insert>
 	
 	<!-- 좋아요삭제 -->

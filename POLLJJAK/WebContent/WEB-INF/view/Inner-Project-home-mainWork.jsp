@@ -24,7 +24,7 @@
 
 	<c:import url="./common/Nav.jsp" />
 
-	<main id="main">
+	<main id="main" class="main-container">
 
 		<!-- 빈칸 여백 -->
 		<section class="pb-2"></section>
@@ -55,7 +55,7 @@
 										
 										<div>
 											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #81EC81" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
+												<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #37417C" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
 											</div>
 										</div>
 									</div>
@@ -76,7 +76,7 @@
 							   <ul class="justify-content-center">
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-meet.jsp">회의록</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
 							   </ul>
@@ -112,7 +112,7 @@
 						<c:forEach var="pj_mainwork_list" items="${pj_mainwork_list}">
 						
 							<div class="d-flex justify-content-between p-0">
-								<div class="container mb-3" onclick="location.href='<%=cp %>/Inner-Project-home-subWork.jsp';" style="cursor: pointer;">
+								<div class="container mb-3" onclick="location.href='inner-project-home-subwork.action?u_p_apply_code=${u_p_apply_code}&ph_mainwork_code=${pj_mainwork_list.ph_mainwork_code}';" style="cursor: pointer;">
 									<div class="flex-fill pj-box">
 										<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 											<div class="d-flex justify-content-between">

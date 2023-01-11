@@ -20,37 +20,23 @@
 <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-	$(".input-email").click(function()
-	{
-		alert("인증번호가 발송되었습니다.");
-	});
-	$(".input-tel").click(function()
-	{
-		alert("인증번호가 발송되었습니다.");
-	});
-	$(".input-authentic").click(function()
-	{
-		alert("인증번호가 일치합니다.");
-	});
-	
-	$(".radioBtn").on('click', function()
-	{
-        var email = $('input[type=radio][id="method-email"]:checked').val();
-		var tel = $('input[type=radio][id="method-tel"]:checked').val();
-		
-		if(email){
-	        $('.email-view').show();
-	        $('.tel-view').hide();
-	        $('.empty-view').hide();
-	    }else if(tel){
-	        $('.tel-view').show();
-	        $('.email-view').hide();
-	        $('.empty-view').hide();
-	    }
+	/* 
+	$(function(){
+		$(".input-email").click(function()
+		{
+			alert("인증번호가 발송되었습니다.");
+		});
+		$(".input-tel").click(function()
+		{
+			alert("인증번호가 발송되었습니다.");
+		});
+		$(".input-authentic").click(function()
+		{
+			alert("인증번호가 일치합니다.");
+		});
 		
 	});
-});
+	 */
 </script>
 <style type="text/css">
 	@font-face {
@@ -182,7 +168,7 @@ $(function(){
 	.input-container .input-wrap input{
 	    background: none;
 	    border: none;
-	    width:170px;
+	    width:130px;
 	}
 	.input-container .input-wrap input:focus{
 	    outline: none;
@@ -220,10 +206,11 @@ $(function(){
 	    font-size: 11px;
 	    color: gray;
 	}
-	
-	.radioBtn {
-	    text-align: center;
+		.radioBtn {
+		 padding-top: 45px; 
+		 text-align: center;
 	}
+	 
 	.radioBtn input[type=radio]
 	{
 	    display: none;
@@ -233,7 +220,8 @@ $(function(){
 	{
 	    display: inline-block;
 	    cursor: pointer;
-	    width: 100px;
+	    height: 28px;
+	    width: 90px;
 	    border: 1px solid #A6A6A6;
 	    border-radius:3px;
 	    line-height: 24px;
@@ -251,9 +239,6 @@ $(function(){
 	    border: 1px solid #3498db;
 	}
 	
-	.email-view, .tel-view{
-		display: none;
-	}
 	.empty-view{
 		width: 300px;
 		height: 260px;
@@ -276,67 +261,52 @@ $(function(){
 				<p>Team 4, Cheer up guys.<br>We can finish our Final Project in time.<br>Him Eul Nae Yo SUPER POWER.</p>
 			</div>
 			<div class="form-left-side">
-				<form action="<%=cp %>/ChangePw.jsp">
-					<div class="radioBtn">
-						<input type="radio" id="method-email" name="forgetId" value="method-email"><label for="method-email">이메일로 찾기</label>
-						<input type="radio" id="method-tel" name="forgetId" value="method-tel"><label for="method-tel">전화번호로 찾기</label>
-					</div>
+				<form action="forgetpw.action" method="post">
 					<div class="input-container email-view">
+						<div class="radioBtn">
+							<input type="radio" id="user" name="userType" value="user" checked="checked"><label for="user">일반</label>
+							<input type="radio" id="company" name="userType" value="company"><label for="company">기업</label>
+						</div>
 						<div class="input-wrap">
 							<i class="fa fa-user"></i>
-							<input placeholder="아이디" type="text">
+							<input placeholder="아이디" type="text" id="id" name="id">
 						</div>
 						<div class="input-wrap input-name">
 							<i class="fa fa-user-o"></i>
-							<input placeholder="이름" type="text">
+							<input placeholder="이름" type="text" id="name" name="name">
 						</div>
 						<div class="input-wrap">
 							<i class="fa fa-envelope"></i>
-							<input placeholder="이메일" type="text">
-							<button type="button" class="input-email btn">인증번호 받기</button>
+							<input placeholder="이메일" type="text" id="email" name="email">
+							<!-- <button type="button" class="input-email btn">인증번호 받기</button> -->
+							<select class="form-select" id="domain" name="domain_part_code">
+								<option value="none">도메인 선택</option>
+							<c:forEach var="domain" items="${domainList }">
+								<option value="${domain.domain_part_code }">${domain.domain_part }</option>
+							</c:forEach>
+							</select>
 						</div>
+						<!-- 
 						<div class="input-wrap">
 							<i class="fas fa-unlock-alt"></i>
 							<input placeholder="인증번호" type="text">
 							<button type="button" class="input-authentic btn">확인</button>
 						</div>
-					</div>
-					<div class="input-container tel-view">
-						<div class="input-wrap">
-							<i class="fa fa-user"></i>
-							<input placeholder="아이디" type="text">
-						</div>
-						<div class="input-wrap input-name">
-							<i class="fa fa-user-o"></i>
-							<input placeholder="이름" type="text">
-						</div>
-						<div class="input-wrap">
-							<i class="fa fa-phone"></i>
-							<input placeholder="전화번호" type="text">
-							<button type="button" class="input-tel btn">인증번호 받기</button>
-						</div>
-						<div class="input-wrap">
-							<i class="fas fa-unlock-alt"></i>
-							<input placeholder="인증번호" type="text">
-							<button type="button" class="input-authentic btn">확인</button>
-						</div>
-					</div>
-					<div class="input-container empty-view">
-						<br><br><br>
-						<span>위의 "이메일로 찾기"<br>혹은 "전화번호로 찾기" 중<br>
-						원하는 수단을 선택해<br>비밀번호를 찾아보세요.</span>	
+						 -->
 					</div>
 					<div class="input-container btn-wrap">
 						<input type="submit" class="btn" value="다음">
-						<div class="moveTo">
-							<a href="<%=cp %>/U-main.jsp" >홈으로</a>
-							<a> | </a>
-							<a href="<%=cp %>/ForgetId.jsp" >아이디 찾기</a>
-							<a> | </a>
-							<a href="<%=cp %>/Login.jsp" >로그인으로</a>
-						</div>
 					</div>
 				</form>
+				<div class="input-container btn-wrap">
+					<div class="moveTo">
+						<a href="main.action" >홈으로</a>
+						<a> | </a>
+						<a href="forgetidform.action" >아이디 찾기</a>
+						<a> | </a>
+						<a href="loginform.action" >로그인으로</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

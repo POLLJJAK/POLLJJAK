@@ -1,5 +1,6 @@
 /*=========================
  	UserController.java
+ 	- 일반
 ==========================*/
 
 package com.test.controller;
@@ -21,8 +22,8 @@ public class UserController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 회원가입폼으로
-	@RequestMapping(value = "/registrationform.action", method = RequestMethod.GET)
+	// 일반 회원가입폼으로
+	@RequestMapping(value = "/userregistrationform.action", method = RequestMethod.GET)
 	public String userInsertForm(Model model)
 	{
 		String result = null;
@@ -41,8 +42,8 @@ public class UserController
 		return result;
 	}
 	
-	// 회원가입(회원 정보 추가)
-	@RequestMapping(value = "/registration.action", method = RequestMethod.POST)
+	// 일반 회원가입(회원 정보 추가)
+	@RequestMapping(value = "/userregistration.action", method = RequestMethod.POST)
 	public String userInsert(UserDTO user)
 	{
 		String result = null;
@@ -51,12 +52,12 @@ public class UserController
 		
 		dao.add(user);
 		
-		// 테스트용으로 
 		result = "redirect:main.action";
 		
 		return result;
 	}
 	
+	// 일반 회원정보 확인
 	@RequestMapping(value = "/userupdateform.action", method = RequestMethod.GET)
 	public String userUpdateForm(ModelMap model, UserDTO user)
 	{
@@ -67,7 +68,20 @@ public class UserController
 		dao.search(user);
 		model.addAttribute("user", dao.search(user));
 		
-		result = "/WEB-INF/view/UserUpdateForm.jsp";
+		String skills = dao.searchSkill(user);
+		String[] arrSkills = skills.split(", ");
+		model.addAttribute("arrSkills1", arrSkills[0]);
+		model.addAttribute("arrSkills2", arrSkills[1]);
+		model.addAttribute("arrSkills3", arrSkills[2]);
+		
+		model.addAttribute("domainList", dao.domainList());
+		model.addAttribute("positionList", dao.positionList());
+		model.addAttribute("regionList", dao.regionList());
+		model.addAttribute("timeList", dao.timeList());
+		model.addAttribute("subjectList", dao.subjectList());
+		model.addAttribute("skillList", dao.skillList());
+		
+		result = "/WEB-INF/view/U-MyPage-Info.jsp";
 		
 		return result;
 	}
@@ -81,7 +95,7 @@ public class UserController
 		
 		dao.update(user);
 		
-		result = "redirect:userlist.action";
+		result = "redirect:userupdateform.action";
 		
 		return result;
 	}

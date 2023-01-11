@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입 메인</title>
+<title>비밀번호변경</title>
 <script src="https://kit.fontawesome.com/51db22a717.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,6 +20,12 @@
 <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+$(function(){
+	$(".pw-reset").click(function()
+	{
+		alert("비밀번호 재설정 완료.");
+	});
+});
 </script>
 <style type="text/css">
 	@font-face {
@@ -92,7 +98,8 @@
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;
-	    padding:110px;
+	    padding:180px;
+	    /* background: rgb(255,255,255); */
 		background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
 	}
 	.form-left-side .top-wrap{
@@ -166,36 +173,51 @@
 	}
 	
 	.btn-wrap{
-	    margin-top: 20px;
 	    display: flex;
 	    flex-direction: column;
 	    align-items: center;;
-	    text-decoration: none;
 	}
-	.btn-wrap .forget {
-	    font-size: 11px;
-	    margin: 5px 0 5px 0;
-	}
-	.btn-wrap .user-type {
-	    font-size: 30px;
-	    text-align: center;
-	}
-	.btn-wrap a{
-	    color: gray;
-	}
-	.outline{
-		margin-top: 20px;
-		width: 200px;
-		line-height: 100px;
-		border-radius: 10px 10px 10px 10px;
-		border: 4px solid #3498db;
-		background-color: white;
-		color: gray;
-		font-size: 30px;
-		padding: 10px;
-		cursor: pointer;
+	.btn-wrap .btn{
+	    width:110px;
+	    height:35px;
+	    color:white;
+	    border: 0;
+	    border-radius: 4px;
+	    background-color: #3498db;
+	    cursor: pointer;
+	    margin: 40px 0 10px 0;
+	    font-family: Cafe24Ssurround;
 	}
 
+	.btn-wrap a{
+	    margin-top:10px;
+	    text-decoration: none;
+	    font-size: 11px;
+	    color: gray;
+	}
+	
+	/* new title  */
+	.section-title p {
+	  position: relative;
+	  color: gray;
+	}
+	
+	.section-title p::before,
+	.section-title p::after {
+	  content: "";
+	  width: 100px;
+	  height: 1.5px;
+	  background: #3498db;
+	  display: inline-block;
+	}
+	
+	.section-title p::before {
+	  margin: 0 10px 3px 0;
+	}
+	
+	.section-title p::after {
+	  margin: 0 0 3px 10px;
+	}
 	
 </style>
 </head>
@@ -204,29 +226,36 @@
 		<div class="form-container shadow">
 			<div class="form-right-side">
 				<div class="top-logo-wrap"></div>
-				<h1>회원가입</h1>
+				<h1>비밀번호 변경</h1>
 				<p>Team 4, Cheer up guys.<br>We can finish our Final Project in time.<br>Him Eul Nae Yo SUPER POWER.</p>
 			</div>
 			<div class="form-left-side">
-				<div class="input-container btn-wrap">
-					<div class="user-type">
-						<button class="outline" type="button" 
-						onclick="location.href='registrationform.action';" >
-							<i class="fa fa-users"></i>일반회원
-						</button>
-						<button class="outline" type="button" 
-						onclick="location.href='<%=cp %>/Registration-company.jsp';" >
-							<i class="fa fa-building"></i>기업회원
-						</button>
+				<form action="uchangepw.action" method="post">
+					<div class="input-container">
+						<div class="input-wrap input-id">
+							<i class="fas fa-user"></i>
+							<input type="text" id="id" name="id" value="${user.id }" readonly="readonly">
+						</div>
+						<div class="input-wrap input-password">
+							<i class="fas fa-key"></i>
+							<input placeholder="비밀번호" type="password" id="pw" name="pw">
+						</div>
+						<!-- 
+						<div class="input-wrap input-password">
+							<i class="fas fa-key"></i>
+							<input placeholder="비밀번호 확인" type="password" id="pw" name="pw">
+						</div>
+						 -->
 					</div>
-				</div>
-				<div class="input-container btn-wrap">
-					<div class="forget">
-						<a href="main.aciton" >홈으로</a>
-						<a>|</a>
-						<a href="loginform.action" >로그인으로</a>
+					<div class="input-container btn-wrap">
+						<input type="submit" class="changePw btn" value="비밀번호 재설정">
+						<div style="margin: 5px 0 5px 0;">
+							<a href="main.action" >홈으로</a>
+							<a>|</a>
+							<a href="loginform.action" >로그인으로</a>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
