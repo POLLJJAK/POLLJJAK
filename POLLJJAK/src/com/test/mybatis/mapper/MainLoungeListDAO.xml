@@ -48,7 +48,7 @@
 	</select>
 	
 	<!-- 좋아요추가 -->
-	<insert id="likeadd" parameterType="String">
+	<insert id="likeadd">
 		INSERT INTO POST_LIKE(POST_LIKE_CODE, L_POST_CODE, USER_CODE, POST_LIKE_DATE)
 		VALUES('LKPS'||LPAD(POST_LIKE_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code, jdbcType=VARCHAR}, #{user_code,jdbcType=VARCHAR}, SYSDATE)
 	</insert>
@@ -58,5 +58,12 @@
 		DELETE POST_LIKE
 		WHERE USER_CODE=#{user_code}
 	</delete>
+	
+	<!-- 해당게시물 좋아요 수  -->
+	<select id="likeCount" resultType="java.lang.Integer" >
+		SELECT COUNT(*) AS COUNT
+		FROM POST_LIKE
+		WHERE L_POST_CODE=#{post_code}
+	</select>
 	
 </mapper>
