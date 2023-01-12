@@ -8,12 +8,12 @@ public class InnerProjectMainWorkDTO
 	private String u_name;
 	
 	
+	
+	
 	public String getPh_mainwork_code()
 	{
 		return ph_mainwork_code;
 	}
-
-
 
 	public void setPh_mainwork_code(String ph_mainwork_code)
 	{
