@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IAdminLoginDAO">
+	
+	<select id="adminLogin" resultType="com.test.dto.AdminDTO">
+		SELECT A_CODE, A_ID, A_SIGNUP_DATE
+		FROM A
+		WHERE A_ID = #{a_id}
+  		  AND A_PW = CRYPTPACK.ENCRYPT(#{a_pw}, #{a_pw})
+	</select>
+	
+</mapper>

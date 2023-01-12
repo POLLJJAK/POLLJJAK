@@ -5,6 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.test.mybatis.ILoginDAO">
 	
+	<select id="userIdCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM U
+		WHERE U_ID = #{id}
+  		  AND U_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+	</select>
+	
+	<select id="companyIdCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM C
+		WHERE C_ID = #{id}
+  		  AND C_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+	</select>
+	
 	<select id="userLogin" resultType="com.test.dto.UserDTO">
 		SELECT U_ID as id, U_NAME as name, USER_CODE
 		FROM U
@@ -82,5 +96,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET C_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
 		WHERE C_ID = #{id}
 	</update>
-
+	
 </mapper>

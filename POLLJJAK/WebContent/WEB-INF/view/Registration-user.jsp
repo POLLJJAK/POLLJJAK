@@ -48,6 +48,7 @@
 								<div class="col-sm-4" >
 									<input type="text" class="form-control" id="id" name="id" autofocus="autofocus">
 									<span class="err" id="errId"></span> 
+									
 								</div>
 								<!-- 
 								<div class = "col-sm-3">
@@ -101,13 +102,17 @@
 								<label for="email" class="col-sm-2 col-form-label">이메일</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="email" name="email">
-									<select class="form-select" id="domain" name="domain_part_code">
-										<option value="none">도메인 선택</option>
-									<c:forEach var="domain" items="${domainList }">
-										<option value="${domain.domain_part_code }">${domain.domain_part }</option>
-									</c:forEach>
-									</select>
+									<div class="input-group">
+										<span class="col-sm-1" style="text-align: center; padding-top: 5px;">@</span>
+										<select class="form-select" id="domain" name="domain_part_code">
+											<option value="none">도메인 선택</option>
+											<c:forEach var="domain" items="${domainList }">
+											<option value="${domain.domain_part_code }">${domain.domain_part }</option>
+											</c:forEach>
+										</select>
+									</div>
 									<span class="err" id="errEmail"></span>
+									<span class="err" id="errDomain"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -133,9 +138,9 @@
 								<div class="col-sm-4">
 									<select class="form-select" id="personal-part" name="position_part_code">
 										<option value="none">주요 직무 선택</option>
-									<c:forEach var="position" items="${positionList }">
+										<c:forEach var="position" items="${positionList }">
 										<option value="${position.position_part_code }">${position.position_part }</option>
-									</c:forEach>
+										</c:forEach>
 									</select>
 									<span class="err" id="errPsp"></span>
 									 <!-- 
@@ -176,9 +181,9 @@
 								<div class="col-sm-4">
 									<select class="form-select" id="region" name="region_part_code">
 										<option value="none">지역 선택</option>
-									<c:forEach var="region" items="${regionList }">
+										<c:forEach var="region" items="${regionList }">
 										<option value="${region.region_part_code }">${region.region_part }</option>
-									</c:forEach>
+										</c:forEach>
 									</select>
 									<span class="err" id="errRegion"></span>
 									<!--  
@@ -218,9 +223,9 @@
 								<div class="col-sm-4">
 									<select class="form-select" id="interests" name="subject_part_code">
 										<option value="none">관심 분야 선택</option>
-									<c:forEach var="subject" items="${subjectList }">
+										<c:forEach var="subject" items="${subjectList }">
 										<option value="${subject.subject_part_code }">${subject.subject_part }</option>
-									</c:forEach>
+										</c:forEach>
 									</select>									
 									<span class="err" id="errInterests"></span>
 									<!-- 

@@ -12,21 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import com.test.dto.DomainDTO;
 import com.test.dto.ProjectOpenDTO;
 import com.test.mybatis.IProjectOpenDAO;
 import com.test.util.FileManager;
@@ -42,14 +35,15 @@ public class ProjectOpenController
 	
 	// 완료 팀장 프로젝트 개수 조회
 	@RequestMapping(value="/projectopen.action", method = RequestMethod.GET)
-	public String searchLevel(Model model) 
+	public String searchLevel(Model model, HttpServletRequest request) 
 	{
-		String user_code = "U000000001";
+		String user_code = request.getParameter("user_code");
 		String result = null;
 		
 		IProjectOpenDAO dao = sqlSession.getMapper(IProjectOpenDAO.class);
 		
 		model.addAttribute("levelInfo", dao.searchLevel(user_code));
+		model.addAttribute("user_code", user_code);
 		
 		result ="/ProjectOpen.jsp";
 		
@@ -75,8 +69,13 @@ public class ProjectOpenController
 		String[] positionCount = m.getParameterValues("count");
 		
 		
+		String user_code = m.getParameter("user_code");
+		
 		// 파라미터 체크
 		/*
+		System.out.println(user_code);
+		
+		
 		System.out.println(m.getParameter("p_name"));
 		System.out.println(m.getParameter("subject"));
 		System.out.println(m.getParameter("detail"));
@@ -99,7 +98,8 @@ public class ProjectOpenController
 		*/
 		
 		//프로젝트 등록 DTO 세팅
-		opendto.setUser_code("U000000001");
+		
+		opendto.setUser_code(user_code);
 		opendto.setP_name(m.getParameter("p_name"));
 		opendto.setSubject_part_code(m.getParameter("subject"));
 		opendto.setDepartment_part_code(m.getParameter("detail"));
@@ -179,6 +179,7 @@ public class ProjectOpenController
 		dao.addLeaderPermission(opendto);
 		
 		return "redirect:projectDetail.action?p_code="+opendto.getP_code();
+		
         
 	}
 }

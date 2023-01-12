@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dto.CompanyDTO;
+import com.test.dto.UserDTO;
 import com.test.mybatis.ICompanyDAO;
+import com.test.mybatis.IUserDAO;
 
 @Controller
 public class CompanyController
@@ -52,7 +54,43 @@ public class CompanyController
 		return result;
 	}
 	
-	@RequestMapping(value = "/companyupdateform.action", method = RequestMethod.GET)
+	// 마이페이지 입장 전 비밀번호 체크폼
+	@RequestMapping(value = "/cmypagewarningform.action", method = RequestMethod.GET)
+	public String pwCheckForm(Model model, CompanyDTO company)
+	{
+		String result = null;
+		
+		ICompanyDAO dao = sqlSession.getMapper(ICompanyDAO.class);
+		
+		CompanyDTO cWarning = dao.cWarning(company);
+		
+		model.addAttribute("company", cWarning);
+		
+		result = "/WEB-INF/view/C-MyPage-Warning.jsp";
+		
+		return result;
+	}
+	
+	// 비밀번호 체크
+	@RequestMapping(value = "/ajaxpwCompany.action", method = RequestMethod.POST)
+	public String pwCheck(CompanyDTO company, Model model)
+	{
+		String result = null;
+		
+		ICompanyDAO dao = sqlSession.getMapper(ICompanyDAO.class);
+		
+		dao.pwCheck(company);
+		//System.out.println("비번일치수 : " + dao.pwCheck(company));
+		
+		model.addAttribute("ajax", dao.pwCheck(company));
+		
+		result = "/WEB-INF/view/Ajax.jsp";
+		
+		return result;
+	}
+	
+	// 기업 회원정보 확인(마이페이지)
+	@RequestMapping(value = "/companyupdateform.action", method = RequestMethod.POST)
 	public String companyUpdateForm(ModelMap model, CompanyDTO company)
 	{
 		String result = null;
@@ -61,8 +99,10 @@ public class CompanyController
 		
 		dao.search(company);
 		model.addAttribute("company", dao.search(company));
+		model.addAttribute("domainList", dao.domainList());
 		
-		result = "/WEB-INF/view/UserUpdateForm.jsp";
+		
+		result = "/WEB-INF/view/C-MyPage-Info.jsp";
 		
 		return result;
 	}

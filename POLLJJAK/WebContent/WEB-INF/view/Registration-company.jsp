@@ -79,7 +79,7 @@
 							 -->
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="name" class="col-sm-2 col-form-label">기업명</label>
+								<label for="cName" class="col-sm-2 col-form-label">기업명</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="cName" name="c_company_name">
 									<span class="err" id="errCName"></span>
@@ -88,7 +88,7 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="nickName" class="col-sm-2 col-form-label">담당자명</label>
+								<label for="name" class="col-sm-2 col-form-label">담당자명</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="name" name="name">
 									<span class="err" id="errName"></span>
@@ -116,6 +116,7 @@
 									</c:forEach>
 									</select>
 									<span class="err" id="errEmail"></span>
+									<span class="err" id="errDomain"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -146,7 +147,7 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="intro" class="col-sm-2 col-form-label">인재상</label>
+								<label for="cIdeal" class="col-sm-2 col-form-label">인재상</label>
 								<div class="col-sm-4">
 									<textarea class="form-control" name="c_ideal" rows="5"></textarea>
 								</div>
@@ -154,9 +155,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="pf" class="col-sm-2 col-form-label">진행 프로젝트</label>
+								<label for="cProject" class="col-sm-2 col-form-label">진행 프로젝트</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="pf" name="c_project">
+									<input type="text" class="form-control" id="cProject" name="c_project">
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>

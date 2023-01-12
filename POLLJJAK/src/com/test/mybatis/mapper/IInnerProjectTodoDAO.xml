@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IInnerProjectTodoDAO">
+
+	<select id="tdm" parameterType = "String" resultType ="com.test.dto.InnerProjectTodoDTO">
+		SELECT PH_CAL_CODE
+		, PH_CAL_PART
+		, U_P_APPLY_CODE
+		, PH_CAL_TITLE
+		, PH_CAL_START_DATE
+		, PH_CAL_END_DATE
+		, PH_CAL_INSERT_DATE
+		
+		FROM PH_CAL PC, PH_CAL_PART PCP
+		WHERE PC.PH_CAL_PART_CODE = PCP.PH_CAL_PART_CODE
+		AND U_P_APPLY_CODE IN (
+			SELECT U_P_APPLY_CODE
+			FROM P_POSITION A1, U_P_APPLY A2
+			WHERE P_CODE = (		    
+				SELECT I3.P_CODE
+				FROM U_P_APPLY I1, P_POSITION I2, P_TEAM_CONFIRM I3
+				WHERE I1.U_P_APPLY_CODE =  #{u_p_apply_code}
+				  AND I1.P_POSITION_CODE = I2.P_POSITION_CODE
+				  AND I2.P_CODE = I3.P_CODE
+			)
+			AND A1.P_POSITION_CODE = A2.P_POSITION_CODE
+			AND U_P_APPLY_CODE NOT IN (SELECT U_P_APPLY_CODE FROM P_REJECT)
+		)
+	</select>
+
+</mapper>

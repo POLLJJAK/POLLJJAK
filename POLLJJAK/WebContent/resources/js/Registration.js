@@ -71,12 +71,19 @@ $(document).ready(function()
 			
 			return;
 		}
-		if ($("#email").val()=="" || $("#domain").val()=="none") 
+		if ($("#email").val()=="") 
 		{
 			$("#errEmail").html("이메일을 입력하세요.");
 			$("#errEmail").css("display", "inline");
 			$("#email").focus();
 			
+			return;
+		}
+		if ($("#domain").val() == "none")
+		{
+			$("#errDomain").html("도메인을 선택해주세요.");
+			$("#errDomain").css("display", "inline");
+			$("#domain").focus();
 			return;
 		}
 		if ($("#tel").val()=="") 
