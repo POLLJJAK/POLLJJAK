@@ -399,10 +399,6 @@
             // 댓글 리스트 부분에 받아온 댓글 리스트를 넣기
             $("#commentlist-content").html(listHtml);
 					
-				
-				
-				
-	                
 			},
 			error : function ()
 			{	
