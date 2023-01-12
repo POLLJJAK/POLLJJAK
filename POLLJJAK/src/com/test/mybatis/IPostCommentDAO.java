@@ -4,6 +4,7 @@
 
 package com.test.mybatis;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.test.dto.PostCommentDTO;
@@ -19,13 +20,15 @@ public interface IPostCommentDAO {
 	
 	// 댓글 리스트
 	//public List<PostCommentDTO> list(String post_code);
-	public String list(String post_code);
+	public ArrayList<PostCommentDTO> list(String post_code);
+	//public String list(String post_code);
 	
 	// 댓글 삭제
 	public PostCommentDTO removeComment(String comment_code);
 	
 	// 댓글 수정
 	public PostCommentDTO modifyComment(String comment_code, String content);
+	
 	
 	
 

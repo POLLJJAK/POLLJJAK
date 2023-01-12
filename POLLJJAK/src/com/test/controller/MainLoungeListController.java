@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.dto.ArticlePage;
 import com.test.dto.MainLoungeListDTO;
@@ -164,27 +166,26 @@ public class MainLoungeListController
 	
 	
 	// 좋아요추가
+	@ResponseBody
 	@RequestMapping(value = "/likeinsert.action", method = RequestMethod.GET)
-	public String likeInsert(HttpServletRequest request, @RequestParam Map<String, Object> param)
+	public int likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
+			,@RequestParam("user_code") String user_code  )
 	{
-		String result = null;
-		//String post_code = request.getParameter("post_code");
-		//String user_code = request.getParameter("user_code");
 		
-		String user_code = (String) param.get("user_code");
-		String post_code = (String) param.get("post_code");
-		
-		//MainLoungeListDTO dto = new MainLoungeListDTO();
-		//dto.setPost_code(post_code);
-		//dto.setUser_code(user_code);
 		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
 		dao.likeadd(post_code, user_code);
 		
+		int count = 0;
+		count = dao.likeCount(post_code) + 1;
+		
 		
 		// 리스트가 아니라 해당글상세로 보내야할거같은데..
-		result = "redirect:/Main-Lounge-post.jsp";
+		//result = "redirect:/Main-Lounge-post.jsp";
 		
+		System.out.println(post_code);
+		System.out.println(user_code);
+		System.out.println(count);
 		
-		return result;
+		return count;
 	}
 }
