@@ -127,14 +127,12 @@
 									<input type="text" class="form-control" id="companyNum" name="c_business_number">
 									<span class="err" id="errCNum"></span>
 								</div>
-								<!-- 
 								<div class = "col-sm-3">
 									<button type="button" class="c-business-number"
 									style="margin-top: 4px; color: white; background-color: #3498db; border: 1px solid #3498db; border-radius: 3px;
 									font-size: 13px; font-weight: bold;">
 									사업자 등록번호 체크(?)</button>
 								</div>
-								 -->
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
