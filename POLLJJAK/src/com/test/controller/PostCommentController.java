@@ -30,6 +30,7 @@ public class PostCommentController
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
 	/*
 	 * @ResponseBody
 	 * 

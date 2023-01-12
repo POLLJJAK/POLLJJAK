@@ -30,5 +30,6 @@ public interface IPostCommentDAO {
 	public PostCommentDTO modifyComment(String comment_code, String content);
 	
 	
+	
 
 }

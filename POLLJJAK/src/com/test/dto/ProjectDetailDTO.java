@@ -17,7 +17,6 @@ public class ProjectDetailDTO {
 	private String p_info_content;
 	private String p_info_refo;
 	private String p_update_date;
-	//private String p_apply_count;
 	private int p_apply_count;
 	
 	
@@ -25,7 +24,6 @@ public class ProjectDetailDTO {
 	private String u_nickname;	//리더, 지원자
 	private String u_p_apply_date;
 	private String u_p_apply_reason;
-	//private String p_position_count;
 	private int p_position_count;
 	private String position_part;
 	
