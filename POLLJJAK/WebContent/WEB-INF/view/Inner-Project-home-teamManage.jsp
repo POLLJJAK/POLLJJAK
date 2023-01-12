@@ -16,6 +16,9 @@
 <!-- 내 프로젝트 홈 css 파일 -->
 <link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
+<!-- js 연결 -->
+<script src="<%=cp %>/resources/js/Inner-Project-home-teamManage.js"></script> 
+
 <body>
 
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
@@ -184,9 +187,20 @@
 												
 												<!-- 중단요청 아이콘 -->
 												<td>
-													<button class="btn btn-danger">
-														<div class="bi bi-person-x"></div>
-													</button>
+													<c:forEach var="p_stop_teamMember_check" items="${p_stop_teamMember_check }">
+														<c:choose>
+															<c:when test="${p_stop_teamMember_check.u_name == p_stop_teamMember_check.u_name}">
+																<button class="btn btn-danger">
+																	<div class="bi bi-person-x"></div>
+																</button>
+															</c:when>
+															<c:otherwise>
+																<button class="btn btn-light">
+																	<div class="bi bi-person-check-fill"></div>
+																</button>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
 												</td>
 												
 												
@@ -370,12 +384,13 @@
 		      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다.</div>
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-danger" id="submitStopBtn">중단요청</button>
+		        	<button type="button" class="btn btn-danger" onclick="location.href='p_stop_member.action?u_p_apply_code=${u_p_apply_code}'">중단요청</button>
 		        	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소하기</button>
 		      	</div>
 		    </div>
 		 </div>
 	</div>
+
 
 	<!-- 팀장용 중단 요청 모달창 -->
 	<div class="modal fade" id="stopProject_leader" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -403,9 +418,7 @@
 		 </div>
 	</div>
 
-
 </body>
-
 
 
 
