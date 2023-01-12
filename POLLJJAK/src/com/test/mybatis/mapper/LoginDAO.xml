@@ -38,6 +38,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM DOMAIN_PART
 	</select>
 	
+	<select id="uIdCheck"  resultType="com.test.dto.UserDTO">
+		SELECT COUNT(*)
+		FROM U
+		WHERE U_NAME = #{name}
+ 		  AND U_EMAIL = #{email}
+ 		  AND DOMAIN_PART_CODE = #{domain_part_code}
+ 	</select>
+ 	
 	<select id="uForgetId"  resultType="com.test.dto.UserDTO">
 		SELECT U_ID as id
 		FROM U
@@ -73,6 +81,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET U_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw}) 
 		WHERE U_ID = #{id}
 	</update>
+	
+	<select id="cIdCheck"  resultType="com.test.dto.CompanyDTO">
+		SELECT COUNT(*)
+		FROM C
+		WHERE C_NAME = #{name}
+ 		  AND C_EMAIL = #{email}
+ 		  AND DOMAIN_PART_CODE = #{domain_part_code}
+ 	</select>
 	
 	<select id="cForgetId"  resultType="com.test.dto.CompanyDTO">
 		SELECT C_ID as id
