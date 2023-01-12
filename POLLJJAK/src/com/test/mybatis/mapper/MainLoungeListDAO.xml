@@ -54,9 +54,10 @@
 	</insert>
 	
 	<!-- 좋아요삭제 -->
-	<delete id="likeRemove">
+	<delete id="likeremove">
 		DELETE POST_LIKE
-		WHERE USER_CODE=#{user_code}
+		WHERE L_POST_CODE=#{post_code, jdbcType=VARCHAR}
+		  AND USER_CODE=#{user_code, jdbcType=VARCHAR}
 	</delete>
 	
 	<!-- 해당게시물 좋아요 수  -->

@@ -346,12 +346,8 @@
 	<script type="text/javascript">
 	
 	
-	<%-- var post_code = "<%=post_code%>"; --%>
-	//alert(post_code);
-	var commentHtml = "김";
-	//var values=[];		
 	var post_code = "<%=post_code%>";
-	var user_code = "U000000004";
+	var user_code = "U000000003";
 	
 	$("#img").click(function()
 	{
@@ -367,46 +363,49 @@
 				post_code : post_code
 			},
 			async : false,
-			//dataType : "json",
-			//contentType : "application/json; charset=UTF-8",
-			//contentType: "text/html; charset=UTF-8",
 			success : function (data)
 			{
-				if (data) 
+				
+				 //alert(data);
+				 /*
+				var listHtml = "";
+				for (var i=0; i<=data.length; i++)
 				{
-		              alert("완료");
-		        } else {
-		              alert("전송된 값 없음");
-		        }
-				/* 
-				let listHtml = "";
-				for (const i in data)
-				{
-					let no = data[i].comment_code;
-	                let bno = data[i].post_code;
-	                let grp = data[i].user_code;
-	                let grps = data[i].nickname;
-	                let grpl = data[i].content;
-	                let writer = data[i].commentdate;
-	                let content = data[i].commentupdate;
-	                let wdate = data[i].cgroup;
-	                let wgap = data[i].cdepth;
+					var no = data.get(i).getComment_code();
+	                var bno = data[i].post_code;
+	                var user_code = data[i].user_code;
+	                var writer = data[i].nickname;
+	                var content = data[i].content;
+	                var grps = data[i].commentdate;
+	                var wdate = data[i].commentupdate;
+	                var grp = data[i].cgroup;
+	                var grp1 = data[i].cdepth;
 	                
-	                alert(grpl);
-					
-				} */
-				//var list = data.list;
-				//var temp = "";
-				/* 
-				for (var i = 0; i < list.length; i++)
+	                listHtml += comment_code + post_code + user_code +nickname;
+				}
+				*/
+				
+				$(data).each(function()
 				{
-					temp += list[i].comment_code;
-				} */
-				//$("#commentlist-crontent").html(temp);
+					alert(this.comment_code);
+				});
+	             
+
+            
+
+            ///////////// 동적으로 넣어준 html에 대한 이벤트 처리는 같은 함수내에서 다 해줘야한다.
+            ///////////// $(document).ready(function(){}); 안에 써주면 안된다.
+
+            // 댓글 리스트 부분에 받아온 댓글 리스트를 넣기
+            $("#commentlist-content").html(listHtml);
+					
+				
+				
+				
 	                
 			},
 			error : function ()
-			{	console.log(data);
+			{	
 				alert("ERR");
 			}
 			
@@ -414,59 +413,12 @@
 	});
 	
 	
-	// 댓글 등록
-	/* function fn_comment(post_code)
-	{
-		
-	} */
-	
-	
-	$(".heart-click").click(function() {
-		
-		polljjakGetAjax("likeinsert.action", {post_code:"post_code", user_code:"user_code"},function(result){
-			
-			if(result == "success"){
-				alert("성공");
-			}
-			if(result == "fail"){
-				alert("실패");
-			}
-			
-		});
-		
-	});
-	
-	function polljjakGetAjax(url, param, callback)
-	{
-		$.ajax({
-			type:"GET"
-			, url:url
-			, data:param
-			,success:callback
-			,error:function(res){
-				alert("에러");
-			},
-			dataType: "test"
-		})
-	}
-	
-	
-	
-	/*
-	
 	// 로그인 한 상태에서 하트를 클릭했을 때 (로그인한 상태인 하트의 <a></a> class명: heart-click)
 	$(".heart-click").click(function() {
 
-	    // 현재 좋아요 수
-	    //let no = $(this).attr('postLike');
-	    //console.log("heart-click");
-		//let user_code="";
-		//let post_code="";
 	    // 빈하트를 눌렀을때
+	    
 	    if($(this).children("svg").attr("class") == "bi bi-suit-heart"){
-	        //console.log("빈하트 클릭" + no);
-			alert(post_code);
-			alert(user_code);
 	        $.ajax({
 	            type : "get",
 	            url : "likeinsert.action",
@@ -476,63 +428,40 @@
 	            },
 	            dataType : "text",
 	            success : function(data) {
-	                //페이지 새로고침
-	                //document.location.reload(true);
-
-					// data=data+1;
-	                // 하트수 갱신
-	                //$('#postLike').text(data);
-	                let likecount = $("#postLike").val();
-	                likecount +=1;
-	                
-	                $("#postLike").attr(data);
-	                console.log("하트추가 성공");
-	                
+	            	
+	                $("#postLike").text(data);
 	            },
 	            error : function() {
-	                alert("서버 에러");
+	                alert("err");
 	            }
 	        });
-	        console.log("꽉찬하트로 바껴라!");
-
-	    // 꽉찬하트로 바꾸기
+	        
 	    
 	    $(this).html("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-suit-heart-fill' viewBox='0 0 16 16'><path d='M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z'/></svg>");
-/* 
+
 	    // 꽉찬 하트를 눌렀을 때
 	    }else if($(this).children("svg").attr("class") == "bi bi-suit-heart-fill"){
-	        //console.log("꽉찬하트 클릭" + no);
-
 	        $.ajax({
 	            url : 'likeremove.action',
-	            type : 'post',
+	            type : 'get',
 	            data : {
-	                no : no,
+	            	post_code : post_code,
+	            	user_code : user_code
 	            },
-	            success : function(pto) {
-	                //페이지 새로고침
-	                //document.location.reload(true);
-
-	                let heart = pto.heart;
-	                // 페이지, 모달창에 하트수 갱신
-	                $('#postLike'+no).text(heart);
-
-	                console.log("하트삭제 성공");
+	            dataType : "text",
+	            success : function(data) {
+	            	$("#postLike").text(data);
 	            },
 	            error : function() {
-	                alert('서버 에러');
+	            	alert("err");
 	            }
 	        });
-	        console.log("빈하트로 바껴라!");
-
 	        // 빈하트로 바꾸기
 	        $(this).html('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16"><path d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" /></svg>');
 
 	    }
-
-
 	});
- */
+ 
 
 	// 로그인 안한 상태에서 하트를 클릭하면 로그인해야한다는 alter
 	// (로그인한 상태인 하트의 <a></a> class명: heart-notlogin)

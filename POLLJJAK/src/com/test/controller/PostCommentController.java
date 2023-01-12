@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -123,6 +124,7 @@ public class PostCommentController
 		
 	}
 	*/
+	
 	@ResponseBody 
 	@RequestMapping(value = "/commentlist.action", method = RequestMethod.POST) 
 	public Map<String, Object> commentList(@RequestParam("post_code") String post_code 
@@ -147,5 +149,28 @@ public class PostCommentController
 		
 		
 	}
-	 
+	
+	/*
+	//@ResponseBody 
+	@RequestMapping(value = "/commentlist.action", method = RequestMethod.POST) 
+	public String commentList(@RequestParam("post_code") String post_code 
+			, HttpSession session, Model model) 
+	{
+		String result = "";
+		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
+		
+		
+		ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
+		cmtList =  dao.list(post_code);
+		
+		
+		model.addAttribute("cmtList", cmtList);
+		
+		result = "/AjaxCmt.jsp";
+		// 왜 리턴을  못하는가.. 
+		return result;
+		
+		
+	}
+	 */
 }
