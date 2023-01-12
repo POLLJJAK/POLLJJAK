@@ -23,7 +23,7 @@
     	align-content: center;
     }
 	.info {
-	    padding: 10px;
+	    padding: 1px;
 	    border-bottom: 1px solid #999;
 	    font-size: 0;
 	}
@@ -31,7 +31,7 @@
 	.info dl {
 	    position: relative;
 	    display: inline-block;
-	    padding: 0 20px;
+	    padding: 0 10px;
 	}
 	
 	.info dl:first-child {
@@ -60,7 +60,7 @@
 	}
 	
 	.info dl dt {
-	
+		padding-left: 9px;
 	}
 	
 	.info dl dd {
@@ -85,6 +85,8 @@
 	.cmt-btn{float: right; width: 10%; padding-left: 3%;}
 	
 	.cmt-contentlist{ border: 1px solid black;}
+	
+	.siren {margin-left: 52%; border-bottom: none; float: right; float: inherit;}
 	
 </style>
 <body>
@@ -159,6 +161,11 @@
 							<dt>좋아요</dt>
 							<dd id="postLike">${postdetail.postLike }</dd>
 						</dl>
+						<div class="info siren">
+						<a href="reportpost.action?post_code='${postdetail.post_code }'">
+				   			<img src="assets/img/siren-icon.png" alt="" style="width: 30px; height: 30px;" >
+						</a>
+						</div>
 					</div>					
 					
 					
@@ -172,7 +179,7 @@
 			    <!-- =======================================작성자만 보이게=========================================== -->
 			    <div>
 			    <div>
-				    <img src="assets/img/comment-icon.png" alt="" style="width: 40px; height: 40px; padding: 10px; float: left; margin-bottom:10%;" >6
+				    <img id="img"src="assets/img/comment-icon.png" alt="" style="width: 40px; height: 40px; padding: 10px; float: left; margin-bottom:10%;" >6
 			    </div>
 			    <div>
 			    
@@ -265,7 +272,7 @@
 				         <input type="text" class="form-control" maxlength="150" placeholder="소중한 댓글을 작성해주세요^^" id="cmt-content">
 				         </div>
 				         <div class="cmt-btn">
-				         <button type="submit" id="cmtSubmit" class="btn-hover color-9" style="width: 100%;"
+				         <button type="button" id="cmtSubmit" class="btn-hover color-9" style="width: 100%;"
 				         onclick="fn_comment()"
 				         >등록</button>
 				         </div>
@@ -321,50 +328,64 @@
 	<script type="text/javascript">
 	
 	
-	let post_code = "<%=post_code%>";
-	
+	<%-- var post_code = "<%=post_code%>"; --%>
+	//alert(post_code);
 	var commentHtml = "김";
-				
-	$(document).ready(function(post_code)
+	//var values=[];		
+	var post_code = "<%=post_code%>";
+	
+	$("#img").click(function()
 	{
-		//alert(post_code);
+		//alert("호출");
+		
+	
+		alert(post_code);
 		//댓글 리스트 
 		$.ajax({
 			url:"postcommentlist.action",
 			type:"post",
 			data: {
-				post_code : post_code
+				"post_code" : post_code
 			},
-			dataType : 'json',
-			contentType : false,
-			processData : false,
+			//dataType : "json",
+			//contentType : "application/json; charset=UTF-8",
 			success : function (data)
 			{
-				 //console.log(JSON.stringify(data));
-				//var no = data.no;
-				for (var i in data)
+				alert("성공");
+				/* 
+				let listHtml = "";
+				for (const i in data)
 				{
-					let comment_code = data[i].comment_code;
-					/* 
+					let no = data[i].comment_code;
 	                let bno = data[i].post_code;
-	                let grp = data[i].cgroup;
-	                let grps = data[i].commentdate;
-	                let grpl = data[i].cdepth;
-	                let writer = data[i].nickname;
-	                let content = data[i].content;
-	                let wdate = data[i].commentdate;
-	                 */
-				}
-	                commentHtml += comment_code;
+	                let grp = data[i].user_code;
+	                let grps = data[i].nickname;
+	                let grpl = data[i].content;
+	                let writer = data[i].commentdate;
+	                let content = data[i].commentupdate;
+	                let wdate = data[i].cgroup;
+	                let wgap = data[i].cdepth;
+	                
+	                alert(grpl);
+					
+				} */
+				//var list = data.list;
+				//var temp = "";
+				/* 
+				for (var i = 0; i < list.length; i++)
+				{
+					temp += list[i].comment_code;
+				} */
+				//$("#commentlist-crontent").html(temp);
+	                
 			},
 			error : function ()
 			{
-				alert("error");
+				console.log(data); 
+				alert("ERR");
 			}
 			
 		}); 
-			 $("#commentlist-content").html(commentHtml);
-			 //$("#commentlist-content").html("이건들어가지");
 	});
 	
 	
