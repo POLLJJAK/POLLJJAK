@@ -14,18 +14,18 @@ public class PostCommentDTO
 	private String cgroup;			// 부모댓글	→ 원댓이면 null
 	private int cdepth;			// 댓글(0) 대댓글(1) 구분
 	
-	/*
-	 * public PostCommentDTO() {}
-	 * 
-	 * public PostCommentDTO(String comment_code,String post_code,String
-	 * user_code,String nickname , String content, String commentdate, String
-	 * commentupdate , String cgroup, int cdepth) { this.comment_code=comment_code;
-	 * this.post_code=post_code; this.user_code=user_code; this.nickname=nickname;
-	 * this.content=content; this.commentdate=commentdate;
-	 * this.commentupdate=commentupdate; this.cgroup=cgroup; this.cdepth=cdepth;
-	 * 
-	 * }
-	 */
+	
+	  public PostCommentDTO() {}
+	  
+	  public PostCommentDTO(String comment_code,String post_code,String
+	  user_code,String nickname , String content, String commentdate, String
+	  commentupdate , String cgroup, int cdepth) { this.comment_code=comment_code;
+	  this.post_code=post_code; this.user_code=user_code; this.nickname=nickname;
+	  this.content=content; this.commentdate=commentdate;
+	  this.commentupdate=commentupdate; this.cgroup=cgroup; this.cdepth=cdepth;
+	  
+	  }
+	 
 	// getter / setter 구성
 	public String getComment_code()
 	{
