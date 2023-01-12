@@ -103,11 +103,21 @@
 																
 															</c:when>
 															<c:otherwise>
+															
+																<c:choose>
+																	<c:when test="${p_stop_upa_check.u_p_apply_code == u_p_apply_code}">
+																		<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject_member">
+																			<button class="L-stopBtn-disabled mb-2" disabled>중단 요청중</button>
+																		</div>
+																	</c:when>
+																	<c:otherwise>
+																		<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject_member">
+																			<button class="L-stopBtn mb-2">중단요청</button>
+																		</div>
+																	</c:otherwise>
+																</c:choose>
 																
-																<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject_member">
-																	<button class="L-stopBtn mb-2">중단요청</button>
-																</div>
-																
+																		
 																<div class="row col-md-12 col-lg-12">
 																	<div class="col-lg-12 ps-0 pe-0" data-bs-toggle="modal" data-bs-target="#teamEvaluation">
 																		<button class="L-scoreBtn mb-2">동료 평가</button>
@@ -188,21 +198,19 @@
 												<!-- 중단요청 아이콘 -->
 												<td>
 													<c:forEach var="p_stop_teamMember_check" items="${p_stop_teamMember_check }">
-														<c:choose>
-															<c:when test="${p_stop_teamMember_check.u_name == p_stop_teamMember_check.u_name}">
-																<button class="btn btn-danger">
-																	<div class="bi bi-person-x"></div>
-																</button>
-															</c:when>
-															<c:otherwise>
-																<button class="btn btn-light">
-																	<div class="bi bi-person-check-fill"></div>
-																</button>
-															</c:otherwise>
-														</c:choose>
+														<c:if test="${pj_team_info.u_name == p_stop_teamMember_check.u_name && p_stop_teamMember_check.member_stop_check >= 1}">
+															<button class="btn btn-danger" onclick="location.href='deletestopcheck.action?u_p_apply_code=${pj_team_info.u_p_apply_code }'">
+																<div class="bi bi-person-x"></div>
+															</button>
+														</c:if>
+														<c:if test="${pj_team_info.u_name == p_stop_teamMember_check.u_name && p_stop_teamMember_check.member_stop_check == 0}">
+															<button class="btn btn-light">
+																<div class="bi bi-person-check-fill"></div>
+															</button>		
+														</c:if>
 													</c:forEach>
+													
 												</td>
-												
 												
 												<td><button class="btn btn-light"
 												 onclick="location.href='inn';">Profile</button></td>								

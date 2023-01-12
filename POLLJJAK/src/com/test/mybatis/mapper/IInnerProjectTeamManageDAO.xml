@@ -274,28 +274,44 @@
 		VALUES ('PSTP'||P_STOP_CODE_SEQ.NEXTVAL, #{u_p_apply_code}, SYSDATE)
 	</insert>
 	
-	
+
+
 	<resultMap type="HashMap" id="member_stop_check_map">
 		<id column="u_name" property="u_name" />
+		<id column="member_stop_check" property="member_stop_check" />
+		<id column="u_p_apply_code" property="u_p_apply_code" />
 	</resultMap>
 
 	<select id="p_stop_teamMember_check" resultMap="member_stop_check_map">
-		SELECT B6.U_NAME
-		FROM P B1, P_POSITION B2, U_P_APPLY B3, P_REJECT B4, P_STOP B5, U B6
+		SELECT B5.U_NAME, (
+			SELECT COUNT(*)
+			FROM P_STOP
+			WHERE U_P_APPLY_CODE = B3.U_P_APPLY_CODE
+		) AS MEMBER_STOP_CHECK
+		, B3.U_P_APPLY_CODE
+		FROM P B1, P_POSITION B2, U_P_APPLY B3, P_REJECT B4, U B5
 		WHERE B1.P_CODE = (
 			SELECT A3.P_CODE
 			FROM U_P_APPLY A1, P_POSITION A2, P A3
-			WHERE A1.U_P_APPLY_CODE = 'UPA0000023'
+			WHERE A1.U_P_APPLY_CODE = #{u_p_apply_code}
 			  AND A1.P_POSITION_CODE = A2.P_POSITION_CODE
 			  AND A2.P_CODE = A3.P_CODE
 		)
 		AND B1.P_CODE = B2.P_CODE 
 		AND B2.P_POSITION_CODE = B3.P_POSITION_CODE
 		AND NOT B3.U_P_APPLY_CODE = B4.U_P_APPLY_CODE
-		AND B3.U_P_APPLY_CODE = B5.U_P_APPLY_CODE
-		AND B3.USER_CODE = B6.USER_CODE
+		AND B3.USER_CODE = B5.USER_CODE
 	</select>
 
+	
+	
+	<select id="p_stop_upa_check" resultType="com.test.dto.InnerProjectTeamManageDTO">
+		SELECT U_P_APPLY_CODE
+		FROM P_STOP
+		WHERE U_P_APPLY_CODE = #{u_p_apply_code}
+	</select>
+
+	
 	
 	
 	
