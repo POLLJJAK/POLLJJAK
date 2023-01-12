@@ -17,6 +17,9 @@ public interface IProjectDetailDAO {
 	
 	// 선택된 프로젝트 리더 정보 조회
 	public ArrayList<ProjectDetailDTO> getProjectLeader(String p_code);
+	
+	// 프로젝트 지원
+	public int applyProject(ProjectDetailDTO applydto);
 
 	
 

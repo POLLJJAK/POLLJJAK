@@ -44,4 +44,7 @@ public interface IMainLoungeListDAO
 	// 좋아요삭제
 	public int likeremove(String user_code);
 	
+	// 좋아요 수 
+	public int likeCount(String post_code);
+	
 }

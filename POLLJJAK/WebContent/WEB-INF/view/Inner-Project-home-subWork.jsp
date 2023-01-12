@@ -175,8 +175,7 @@
 													aria-labelledby="heading${i}"
 													data-bs-parent="#accordionExample">
 													<div class="accordion-body">
-														<div style="font-size: 1.0rem; font-weight: bold;">세부
-															업무 설명</div>
+														<div style="font-size: 1.0rem; font-weight: bold;">세부업무 설명</div>
 														<hr>
 														<div>
 															${subwork_list.ph_subwork_detail}
@@ -192,8 +191,7 @@
 															</div>
 														</div>
 
-														<div style="font-size: 1.0rem; font-weight: bold;">팀원
-															코멘트</div>
+														<div style="font-size: 1.0rem; font-weight: bold;">팀원 코멘트</div>
 
 														<hr>
 														

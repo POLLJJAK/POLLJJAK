@@ -9,22 +9,22 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
+	<!-- head import (css imported)-->
+	<c:import url="./common/Head.jsp" />
+	
 	<!-- 해당 페이지 관련 css 및 js import 영역 -->
 	<link href="<%=cp %>/resources/css/ProjectOpenMain.css" rel="stylesheet">
 	<script src="<%=cp %>/resources/js/ProjectOpenMain.js"></script>
 	<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
-	<!-- head import (css imported)-->
-	<c:import url="./common/Head.jsp" />
-	
-
-	<script type="text/javascript">
+<!--  	<script type="text/javascript">
 		document.getElementById("myProjectHome").className = "nav-link scrollto active";
 		document.getElementById("projectOpen").className = "nav-link scrollto";
 		document.getElementById("projectMake").className = "nav-link scrollto";
 		document.getElementById("Rounge").className = "nav-link scrollto";
 		document.getElementById("viewCompany").className = "nav-link scrollto";
-	</script>
+	</script>-->
 
 	<body>
 
@@ -82,7 +82,7 @@
 								<div class="pj-box">
 									<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 										<div class="h5 fw-bolder">${uProjectInfo.p_name} [모집중] </div>
-										<div class="mb-2">${uProjectInfo.p_start_date} ~ ${upInfo.p_end_date}</div>
+										<div class="mb-2">${uProjectInfo.p_start_date} ~ ${uProjectInfo.p_end_date}</div>
 									</div>
 								</div>
 							</div>
@@ -110,13 +110,15 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="failedInfo" items="${uProjectFailedInfo }" varStatus="status">
-								<div class="container-lg mb-3">
+								<div class="container-lg mb-3 failedInfoContainer">
 									<div class="pj-box">
-										<div class="pj-box-body p-3 col-xs-12 col-lg-12" onclick="location.href='projectDetail.action?p_code=${failedInfo.p_code}'">
-											<input type="button" class="btn btn-primary" value="리스트에서 삭제" id="deleteList1" 
-											style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;" >
-											<div class="h5 fw-bolder">${failedInfo.p_name} [모집 실패]</div>
-											<div class="mb-2">${failedInfo.p_start_date} ~ ${failedInfo.p_end_date}</div>
+										<div class="pj-box-body p-3 col-xs-12 col-lg-12" >
+											<input type="hidden" class="deleteTargetCode" value="${failedInfo.p_code}"/>
+											<input type="button" class="btn btn-primary deleteList" value="리스트에서 삭제" style="background-color: #3498db; border-color: #3498db; float: right; margin: 0 10px 10px 0;">
+											<div onclick="location.href='projectDetail.action?p_code=${failedInfo.p_code}'">
+												<div class="h5 fw-bolder">${failedInfo.p_name} [모집 실패]</div>
+												<div class="mb-2">${failedInfo.p_start_date} ~ ${failedInfo.p_end_date}</div>
+											</div>
 										</div>
 									</div>
 								</div>

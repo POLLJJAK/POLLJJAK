@@ -49,9 +49,9 @@
 		FROM P_POSITION PP, POSITION_PART PPT
 		WHERE PP.POSITION_PART_CODE = PPT.POSITION_PART_CODE
       		AND PP.P_CODE = #{p_code}
+      	ORDER BY PP.P_POSITION_CODE
 	</select> 
 	
-	<!-- 이상무  -->
 	<!-- 프로젝트 지원자 가져오기(일반유저는 레디된 상태만 볼 수 있어야 함) -->
 	<select id="getProjectApplicant" resultType="com.test.dto.ProjectDetailDTO">
 		SELECT PPP.POSITION_PART, 
@@ -73,7 +73,6 @@
 	  ORDER BY U_P_APPLY_DATE
 	</select> 
 	
-	<!--  이상 무 -->
 	<!-- 프로젝트 리더 정보 가져오기 -->
 	<select id="getProjectLeader" resultType="com.test.dto.ProjectDetailDTO">
 		SELECT  DISTINCT U.U_NICKNAME, 

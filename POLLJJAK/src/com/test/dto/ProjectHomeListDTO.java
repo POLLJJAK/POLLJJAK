@@ -9,7 +9,10 @@ package com.test.dto;
 
 public class ProjectHomeListDTO
 {
-	private String p_name, user_code, pj_start_date, pj_end_date;
+	private String p_name, pj_start_date, pj_end_date;
+	
+	private String user_code;
+	
 	private int all_percent;
 	private String p_code;
 	private String u_p_apply_code;
