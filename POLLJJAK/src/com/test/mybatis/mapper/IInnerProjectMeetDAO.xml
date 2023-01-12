@@ -179,9 +179,14 @@
 	
 	<update id="meetUpdate" parameterType="com.test.dto.InnerProjectMeetDTO">
 		UPDATE PH_MEET 
-		SET PH_MEET_SUBTITLE = #{ph_meet_subtitle}, PH_MEET_TITLE = #{ph_meet_title},
-		PH_MEET_START_DATE = #{meet_start_date}, PH_MEET_END_DATE = #{meet_end_date},
-		PH_MEET_CONTENT = #{summernote}, PH_MEET_DATE = SYSDATE, PH_MEET_UPDATE_DATE = SYSDATE
+		SET PH_MEET_SUBTITLE = #{ph_meet_subtitle}
+		, PH_MEET_TITLE = #{ph_meet_title}
+		, PH_MEET_START_DATE = TO_DATE(#{meet_start_date}, 'YYYY-MM-DD HH24:MI:SS')
+		, PH_MEET_END_DATE = TO_DATE(#{meet_end_date}, 'YYYY-MM-DD HH24:MI:SS')
+		, PH_MEET_CONTENT = #{summernote}
+		, PH_MEET_DATE = TO_DATE(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		, PH_MEET_UPDATE_DATE = TO_DATE(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		
 		WHERE U_P_APPLY_CODE = #{u_p_apply_code}
 		  AND PH_MEET_CODE = #{ph_meet_code}
 	</update>

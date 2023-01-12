@@ -109,10 +109,19 @@
 						<div class="container d-flex justify-content-between">
 							<h5 class="p-2 m-0 fw-bolder align-self-center">업무 관리</h5>
 							
+							<%--
+ 							팀장코드 : ${pj_team_leader.u_p_apply_code}<br>
+							유저코드 : ${u_p_apply_code }
+							--%>
 							
-							<div class="p-2 ms-auto align-self-center" data-bs-toggle="modal" data-bs-target="#mainWorkAdd">
-								<button type="button" class="btn btn-light">주요 업무 등록</button>
-							</div>
+							<c:if test="${pj_team_leader.u_p_apply_code == u_p_apply_code }">
+								<div class="p-2 ms-auto align-self-center" data-bs-toggle="modal" data-bs-target="#mainWorkAdd">
+									<button type="button" class="btn btn-light">주요 업무 등록</button>
+								</div>
+							</c:if>
+							
+							
+							
 						</div>
 						
 
@@ -146,17 +155,18 @@
 														</c:otherwise>
 													</c:choose>
 												
-												<div class="d-flex ms-auto">
-													<c:forEach var="member_list" items="${member_list }">
-														<c:if test="${pj_mainwork_list.ph_mainwork_title == member_list.ph_mainwork_title }">
-														
-															<div class="align-self-center text-center">
-																<div class="teamIcon">${member_list.u_name }</div>
-															</div>
+												
+													<div class="d-flex ms-auto">
+														<c:forEach var="member_list" items="${member_list }">
+															<c:if test="${pj_mainwork_list.ph_mainwork_title == member_list.ph_mainwork_title }">
 															
-														</c:if>
-													</c:forEach>
-												</div>
+																<div class="align-self-center text-center">
+																	<div class="teamIcon">${member_list.u_name }</div>
+																</div>
+																
+															</c:if>
+														</c:forEach>
+													</div>
 												
 											</div>
 											
@@ -164,19 +174,25 @@
 									</div>
 								</div>
 								
-								<!-- 버튼 2개 -->
-								<div class="d-flex align-items-start flex-column pe-3 mb-3">
-									<div class="mb-auto" data-bs-toggle="modal" data-bs-target="#mainWorkUpdate">
-										<button class="p-2 btn btn-white" style="background-color: #98E5AE; color: white;">
-											<div class="bi bi-pencil-square"></div>
-										</button>
+								<c:if test="${pj_team_leader.u_p_apply_code == u_p_apply_code }">
+									
+									<!-- 버튼 2개 -->
+									<div class="d-flex align-items-start flex-column pe-3 mb-3">
+										<div class="mb-auto" data-bs-toggle="modal" data-bs-target="#mainWorkUpdate">
+											<button class="p-2 btn btn-white" style="background-color: #98E5AE; color: white;">
+												<div class="bi bi-pencil-square"></div>
+											</button>
+										</div>
+										<div class="mt-auto">
+											<button class="p-2 btn btn-danger">
+												<div class="bi bi-trash3-fill"></div>
+											</button>
+										</div>
 									</div>
-									<div class="mt-auto">
-										<button class="p-2 btn btn-danger">
-											<div class="bi bi-trash3-fill"></div>
-										</button>
-									</div>
-								</div>
+								</c:if>
+								
+								
+								
 							</div>
 							
 						</c:forEach>
