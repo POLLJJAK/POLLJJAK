@@ -272,7 +272,7 @@
 				         <input type="text" class="form-control" maxlength="150" placeholder="소중한 댓글을 작성해주세요^^" id="cmt-content">
 				         </div>
 				         <div class="cmt-btn">
-				         <button type="submit" id="cmtSubmit" class="btn-hover color-9" style="width: 100%;"
+				         <button type="button" id="cmtSubmit" class="btn-hover color-9" style="width: 100%;"
 				         onclick="fn_comment()"
 				         >등록</button>
 				         </div>
@@ -376,7 +376,7 @@
 				{
 					temp += list[i].comment_code;
 				} */
-				//$("#commentlist-content").html(temp);
+				//$("#commentlist-crontent").html(temp);
 	                
 			},
 			error : function ()

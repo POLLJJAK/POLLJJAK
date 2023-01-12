@@ -18,8 +18,8 @@ public interface IPostCommentDAO {
 	public PostCommentDTO addReComment(String user_code, String post_code, String comment_code);
 	
 	// 댓글 리스트
-	public List<PostCommentDTO> list(String post_code);
-	//public String list(String post_code);
+	//public List<PostCommentDTO> list(String post_code);
+	public String list(String post_code);
 	
 	// 댓글 삭제
 	public PostCommentDTO removeComment(String comment_code);

@@ -47,42 +47,51 @@ public class PostCommentController
 	 * }
 	 */
 	
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "/postcommentlist.action", method =
-	 * RequestMethod.POST) public Map<String, Object>
-	 * commentList(@RequestParam("post_code") String post_code, HttpSession session)
-	 * {
-	 * 
-	 * Map<String, Object> map = new HashMap<String, Object>();
-	 * 
-	 * IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-	 * List<PostCommentDTO> list = new ArrayList<PostCommentDTO>(); list =
-	 * dao.list(post_code);
-	 * 
-	 * map.put("cmtList", list);
-	 * 
-	 * return map;
-	 * 
-	 * }
-	 */
 	
-	@ResponseBody
-	@RequestMapping(value = "/postcommentlist.action", method = RequestMethod.POST)
-	public List<PostCommentDTO> commentList(@RequestParam("post_code") String post_code
-			 , HttpSession session)
-	{ 
-		
-		//Map<String, Object> map = new HashMap<String, Object>();
-		
-		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-		List<PostCommentDTO> list = new ArrayList<PostCommentDTO>();
-		list = dao.list(post_code);
-		
-		//map.put("cmtList", list);
-		
-		return list;
-		
-	}
+	  @ResponseBody
+	  
+	  @RequestMapping(value = "/postcommentlist.action", method =RequestMethod.POST) 
+	  public String commentList(@RequestParam("post_code") String post_code
+			  					, HttpSession session)
+	  {
+	  
+		  Map<String, Object> map = new HashMap<String, Object>();
+		  
+		  IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
+		  
+		  List<PostCommentDTO> list = new ArrayList<PostCommentDTO>(); 
+		  
+		  String result = dao.list(post_code);
+		  
+		  System.out.println(list);
+		  
+		  
+		  
+		  map.put("cmtList", list.get(0));
+		  
+		  
+		  return (String)list.get(0);
+	  
+	  }
+	 
+		/*
+		 * @ResponseBody
+		 * 
+		 * @RequestMapping(value = "/postcommentlist.action", method =
+		 * RequestMethod.POST) public List<PostCommentDTO>
+		 * commentList(@RequestParam("post_code") String post_code , HttpSession
+		 * session) {
+		 * 
+		 * //Map<String, Object> map = new HashMap<String, Object>();
+		 * 
+		 * IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
+		 * List<PostCommentDTO> list = new ArrayList<PostCommentDTO>(); list =
+		 * dao.list(post_code);
+		 * 
+		 * //map.put("cmtList", list);
+		 * 
+		 * return list;
+		 * 
+		 * }
+		 */
 }
