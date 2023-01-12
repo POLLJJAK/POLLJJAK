@@ -121,7 +121,7 @@
 														<th colspan = "2">${applicantInfo.position_part}</th>
 													</tr>
 													<th >${applicantInfo.u_nickname}</th>
-													<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""style="float: right; width: 15px; height: 15px; "></a>
+													<!-- <a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""style="float: right; width: 15px; height: 15px; "></a>-->
 													</th>
 													<tr>
 													<%-- <td colspan = "2">${applicantInfo.u_nickname}</td> --%>

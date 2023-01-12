@@ -48,16 +48,7 @@ public class ProjectOpenMainController
 		return result;
 	}
 	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/*
 	
 	// 실패 프로젝트 리스트에서 삭제
 	@ResponseBody
@@ -86,7 +77,7 @@ public class ProjectOpenMainController
 	}
 	
 	
-	
+	*/
 	
 	
 	 
