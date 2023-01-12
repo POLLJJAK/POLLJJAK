@@ -18,15 +18,23 @@
 	</select>
 	
 	<!-- 모집 실패 프로젝트 정보 조회 -->
-	<select id="getfailedProject" resultType="com.test.dto.ProjectOpenMainDTO">
-		SELECT P.P_NAME,
-		 	   P.P_CODE, 
-		 	   TO_CHAR(P.P_START_DATE, 'YYYY-MM-DD') AS P_START_DATE, 
-			   TO_CHAR(P.P_END_DATE, 'YYYY-MM-DD') AS P_END_DATE 
-		FROM P P,
-		  	 P_FAILED PF
-		WHERE P.USER_CODE = #{user_code}
-      		  AND P.P_CODE = PF.P_CODE
-	</select> 
+   <select id="getfailedProject" resultType="com.test.dto.ProjectOpenMainDTO">
+      SELECT P.P_NAME,
+             P.P_CODE, 
+             TO_CHAR(P.P_START_DATE, 'YYYY-MM-DD') AS P_START_DATE, 
+            TO_CHAR(P.P_END_DATE, 'YYYY-MM-DD') AS P_END_DATE 
+      FROM P P,
+            P_FAILED PF
+      WHERE P.USER_CODE = #{user_code}
+              AND P.P_CODE = PF.P_CODE
+   </select> 
+	
+	
+	<!-- 모집 실패 프로젝트 정보 조회 -->
+	<delete id="getfailedProject" >
+		DELETE 
+		FROM P_FAILED
+		WHERE P_CODE = #{p_code};
+	</delete> 
 
 </mapper>

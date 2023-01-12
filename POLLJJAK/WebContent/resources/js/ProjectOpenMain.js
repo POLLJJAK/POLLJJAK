@@ -17,7 +17,7 @@ $(document).ready(function(){
 			dataType: "text"  
 		})
 	})
-	
+	/*
 	polljjakPostAjax("delfailedproject.action", {p_code: "test"}, function(result){
 		
 		if(result == "success"){
@@ -28,6 +28,7 @@ $(document).ready(function(){
 		}
 		
 	})
+	*/
 });
 
 /*

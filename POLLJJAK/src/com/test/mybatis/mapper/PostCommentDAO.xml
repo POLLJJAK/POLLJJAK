@@ -20,7 +20,7 @@
                     , #{content}, SYSDATE, '1');
 	</insert>
 	
-	<select id="list" resultType="com.test.dto.PostCommentDTO" >
+	<select id="list" resultType = "com.test.dto.PostCommentDTO">
 		SELECT COMMENT_CODE, POST_CODE
 			, USER_CODE, NICKNAME, CONTENT
 			, COMMENTDATE, COMMENTUPDATE, CGROUP, CDEPTH

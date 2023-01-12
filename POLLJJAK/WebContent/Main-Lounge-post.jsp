@@ -337,51 +337,25 @@
 	$("#img").click(function()
 	{
 		//alert("호출");
-		
-	
 		alert(post_code);
 		//댓글 리스트 
 		$.ajax({
 			url:"postcommentlist.action",
-			type:"post",
-			data: {
-				"post_code" : post_code
-			},
-			//dataType : "json",
-			//contentType : "application/json; charset=UTF-8",
-			success : function (data)
+			type:"GET",
+			data: {"post_code" : post_code},
+			success:function(res)
 			{
-				alert("성공");
-				/* 
-				let listHtml = "";
-				for (const i in data)
-				{
-					let no = data[i].comment_code;
-	                let bno = data[i].post_code;
-	                let grp = data[i].user_code;
-	                let grps = data[i].nickname;
-	                let grpl = data[i].content;
-	                let writer = data[i].commentdate;
-	                let content = data[i].commentupdate;
-	                let wdate = data[i].cgroup;
-	                let wgap = data[i].cdepth;
-	                
-	                alert(grpl);
-					
-				} */
-				//var list = data.list;
-				//var temp = "";
-				/* 
-				for (var i = 0; i < list.length; i++)
-				{
-					temp += list[i].comment_code;
-				} */
-				//$("#commentlist-crontent").html(temp);
-	                
+				alert("ssss");
+				
+			/* 	var result = res.json;
+				$.each(res, function(idx, val) { */
+					//console.log(idx + " " + val."comment_code");
+				});
+
 			},
-			error : function ()
+			error : function(res)
 			{
-				console.log(data); 
+				console.log(res); 
 				alert("ERR");
 			}
 			

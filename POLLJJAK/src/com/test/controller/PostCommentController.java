@@ -5,19 +5,17 @@
 package com.test.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.dto.PostCommentDTO;
@@ -31,67 +29,45 @@ public class PostCommentController
 	private SqlSession sqlSession;
 	
 	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "/postcommentlist.action", method =
-	 * RequestMethod.POST) public ArrayList<PostCommentDTO> commentList(ModelMap
-	 * model, @RequestParam(value = "post_code")String post_code) {
-	 * 
-	 * 
-	 * IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-	 * model.addAttribute("cmtList", dao.list(post_code)); ArrayList<PostCommentDTO>
-	 * cmtList = new ArrayList<PostCommentDTO>(); //cmtList = dao.list(post_code);
-	 * 
-	 * String result = "/Main-Lounge-post.jsp"; return result;
-	 * 
-	 * }
+	 * COMMENT_CODE, POST_CODE , USER_CODE, NICKNAME, CONTENT , COMMENTDATE,
+	 * COMMENTUPDATE, CGROUP, CDEPTH
 	 */
-	
-	
-	  @ResponseBody
-	  
-	  @RequestMapping(value = "/postcommentlist.action", method =RequestMethod.POST) 
-	  public String commentList(@RequestParam("post_code") String post_code
-			  					, HttpSession session)
-	  {
-	  
-		  Map<String, Object> map = new HashMap<String, Object>();
-		  
-		  IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-		  
-		  List<PostCommentDTO> list = new ArrayList<PostCommentDTO>(); 
-		  
-		  String result = dao.list(post_code);
-		  
-		  System.out.println(list);
-		  
-		  
-		  
-		  map.put("cmtList", list.get(0));
-		  
-		  
-		  return (String)list.get(0);
-	  
-	  }
-	 
-		/*
-		 * @ResponseBody
-		 * 
-		 * @RequestMapping(value = "/postcommentlist.action", method =
-		 * RequestMethod.POST) public List<PostCommentDTO>
-		 * commentList(@RequestParam("post_code") String post_code , HttpSession
-		 * session) {
-		 * 
-		 * //Map<String, Object> map = new HashMap<String, Object>();
-		 * 
-		 * IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-		 * List<PostCommentDTO> list = new ArrayList<PostCommentDTO>(); list =
-		 * dao.list(post_code);
-		 * 
-		 * //map.put("cmtList", list);
-		 * 
-		 * return list;
-		 * 
-		 * }
-		 */
+
+	/*
+	@ResponseBody
+	@RequestMapping(value="/postcommentlist.action", method = RequestMethod.GET)
+	public ArrayList<PostCommentDTO> list (HttpServletRequest request, HttpServletResponse response) 
+	{
+		String post_code = request.getParameter("post_code");
+		
+		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO .class);
+		
+		ArrayList<PostCommentDTO> list = dao.list(post_code);
+		
+		JSONObject obj = new JSONObject();
+        	
+        JSONArray jArray = new JSONArray();//배열이 필요할때
+        
+        for (int i = 0; i < list.size(); i++)//배열
+        {
+            JSONObject sObject = new JSONObject();//배열 내에 들어갈 json
+            sObject.put("comment_code", list.get(i).getComment_code());
+            sObject.put("post_code", list.get(i).getPost_code());
+            sObject.put("user_code", list.get(i).getUser_code());
+            sObject.put("nickname", list.get(i).getNickname());
+            sObject.put("content", list.get(i).getContent());
+            sObject.put("commentdate", list.get(i).getCommentdate());
+            sObject.put("cgroup", list.get(i).getCgroup());
+            sObject.put("cdepth", list.get(i).getCdepth());
+            jArray.put(sObject);
+        }
+        obj.put("item", jArray);//배열을 넣음
+
+        System.out.println(obj.toString());
+		
+		return 
+		*/
+		
+		
+		
 }
