@@ -366,30 +366,29 @@
 			success : function (data)
 			{
 				
-				 //alert(data);
-				 /*
+				 alert(data);
+				 
 				var listHtml = "";
 				for (var i=0; i<=data.length; i++)
 				{
-					var no = data.get(i).getComment_code();
-	                var bno = data[i].post_code;
-	                var user_code = data[i].user_code;
-	                var writer = data[i].nickname;
-	                var content = data[i].content;
-	                var grps = data[i].commentdate;
-	                var wdate = data[i].commentupdate;
-	                var grp = data[i].cgroup;
-	                var grp1 = data[i].cdepth;
+					var comment_code = data.comment_code[i];
+	                var bno = data.post_code;
+	                var user_code = data.user_code;
+	                var writer = data.nickname;
+	                var content = data.content;
+	                var grps = data.commentdate;
+	                var wdate = data.commentupdate;
+	                var grp = data.cgroup;
+	                var grp1 = data.cdepth;
 	                
-	                listHtml += comment_code + post_code + user_code +nickname;
+	                listHtml +=  comment_code; 
 				}
-				*/
+	                alert(comment_code);
 				
-				$(data).each(function()
-				{
-					alert(this.comment_code);
-				});
-	             
+				
+				
+				//alert(listHtml)
+	             alert("성공");
 
             
 
@@ -397,7 +396,7 @@
             ///////////// $(document).ready(function(){}); 안에 써주면 안된다.
 
             // 댓글 리스트 부분에 받아온 댓글 리스트를 넣기
-            $("#commentlist-content").html(listHtml);
+            //$("#commentlist-content").html(listHtml);
 					
 			},
 			error : function ()

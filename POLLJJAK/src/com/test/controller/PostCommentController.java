@@ -126,11 +126,12 @@ public class PostCommentController
 	}
 	*/
 	
-	@ResponseBody 
+	//@ResponseBody 
 	@RequestMapping(value = "/commentlist.action", method = RequestMethod.POST) 
-	public Map<String, Object> commentList(@RequestParam("post_code") String post_code 
-			, HttpSession session) 
+	public String commentList(@RequestParam("post_code") String post_code 
+			, HttpSession session, Model model) 
 	{
+		String result = "";
 		Map<String, Object> map = new HashMap<String, Object>();
 		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
 		
@@ -141,12 +142,21 @@ public class PostCommentController
 		for (int i = 0; i < cmtList.size(); i++)
 		{
 			map.put("comment_code", cmtList.get(i).getComment_code());
-			System.out.println(cmtList.get(i).getNickname());
+			map.put("post_code", cmtList.get(i).getPost_code());
+			map.put("user_code", cmtList.get(i).getUser_code());
+			map.put("nickname", cmtList.get(i).getNickname());
+			map.put("content", cmtList.get(i).getContent());
+			map.put("commentdate", cmtList.get(i).getCommentdate());
+			map.put("commentupdate", cmtList.get(i).getCommentupdate());
+			map.put("cgroup", cmtList.get(i).getCgroup());
+			map.put("cdepth", cmtList.get(i).getCdepth());
+			
+			//System.out.println(map.values()); 
 		}
 		
-		
-		// 왜 리턴을  못하는가.. 
-		return map;
+		model.addAttribute("map", map);
+		result = "/AjaxCmt.jsp";
+		return result;
 		
 		
 	}
