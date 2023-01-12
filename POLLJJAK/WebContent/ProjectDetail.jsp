@@ -15,59 +15,6 @@
 <script src="<%=cp %>/resources/js/ProjectDetail.js"></script> 
 <link rel="stylesheet" type="text/css" href="<%=cp %>/resources/css/ProjectDetail.css" />
 
-<!-- 드래그 앤 드랍 -->
-<script>
-	$( function() {
-	    $( "ul.droptrue" ).sortable({
-	      connectWith: "ul"
-	    });
-	 
-	    $( "#sortable1, #sortable2" ).disableSelection();
-	  } );
-	
-	
-	/* 지원취소 */
-	function deleteM()
-	{
-		if (confirm("지원멤버에서 삭제하시겠습니까?"))
-		{
-			/* 삭제ok → delete로 */
-			return true;
-		}
-		else
-			return false;
-	}
- 	
- 	//지원사유
- 	$(document).ready(function(){
- 		$("#reason1").css("display","none");
- 		
-        $('#member1').hover(function() 
-     	{
-			$("#reason1").css("display","inline");
-        	}, function(){
-            $("#reason1").css("display","none");
-        });
-        
-        $()
-    });
- 	
- 	$(function(){
- 		$('.news').hide();
- 	    $(".news").slice(0, 3).show(); 				// select the first ten
- 	    $("#load").click(function(e){ 				// click event for load more
- 	        e.preventDefault();
- 	        $(".news:hidden").slice(0, 3).fadeIn(1000).show();   // select next 10 hidden divs and show them
- 	        if($(".news:hidden").length == 1){      // check if any hidden divs still exist
- 	            //alert("No more news"); 			    // alert if there are none left
- 	        }
- 	    });
- 	});
- 	
- 	
-</script>
-
-
 <body>
     
 	<c:import url="./common/Nav.jsp" />
@@ -88,7 +35,8 @@
 	</section>
 	<!-- End Breadcrumbs Section -->
 		
-		
+	<!-- 모달로 넘겨줘야 하는 값  
+		 p_code, user_code, position_part(직무코드 서버단에서 알아내서 삽입), apply_reason-->	
 	<!-- ======= Portfolio Details Section ======= -->
 	<section id="portfolio-details" class="portfolio-details" >
 		<div class="container" >
@@ -144,7 +92,7 @@
 									</c:if>
 									<c:if test="${count > 0}"> 
 					          			<td>
-					          				<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#apply">
+					          				<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#apply" data-id="${position.position_part }">
 											<button class="apply btn-hover color-9">지원하기</button>
 											</div>
 										</td>
@@ -173,8 +121,8 @@
 														<th colspan = "2">${applicantInfo.position_part}</th>
 													</tr>
 													<th >${applicantInfo.u_nickname}</th>
-													<!-- <th style="float: right;"> -->
-													<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""style="float: right; width: 15px; height: 15px; "></a></th>
+													<a href="#" onclick="deleteM()"><img src="assets/img/icon-delete.png" alt=""style="float: right; width: 15px; height: 15px; "></a>
+													</th>
 													<tr>
 													<%-- <td colspan = "2">${applicantInfo.u_nickname}</td> --%>
 													<td colspan = "2">${applicantInfo.u_p_apply_reason}</td>
@@ -428,11 +376,10 @@
 		</div>
 	
 		<!-- 지원하기 -->
-		<!-- 컨트롤러 태워서 지원 사유랑 직무 넣어주고 리다이렉트  --> 
 		<div class="modal fade" id="apply" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
-					<form action="projectapply.action" method="post">
+					<form action="projectapply.action" method="post" onsubmit = "return reasonCheck()">
 						<div class="modal-header">
 							<h5 class="modal-title">지원하기</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -446,6 +393,7 @@
 								<textarea class="form-control" id="applyreason"></textarea>
 								<div style="float: right; font-size: small;">(최대 500자)</div>
 							</div>
+							<p id = "reasonch" style= "font-size: x-small; text-align: center; color: red;"></p>
 						</div>
 						<div class="modal-footer justify-content-center">
 							<button type="reset" class="fullbtn">취소</button>

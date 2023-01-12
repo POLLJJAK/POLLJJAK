@@ -41,9 +41,28 @@ public class ProjectDetailController
 		model.addAttribute("pLeaderInfo", dao.getProjectLeader(p_code));
 		model.addAttribute("pApplicantInfo", dao.getProjectApplicant(p_code));
 		
-		
-		System.out.println();
 		result = "/ProjectDetail.jsp";
+	
+		return result;
+	}
+	
+	// 프로젝트 지원
+	@RequestMapping(value = "/projectapply.action", method = RequestMethod.POST)
+	public String applyProject(Model model, HttpServletRequest request) 
+	{
+		String p_code = request.getParameter("p_code");
+		
+		String result = null;
+	
+		IProjectDetailDAO dao = sqlSession.getMapper(IProjectDetailDAO.class);
+	
+		model.addAttribute("pInfo", dao.getProjectDetail(p_code));
+		model.addAttribute("pPositionInfo", dao.getProjectPosition(p_code));
+		model.addAttribute("pLeaderInfo", dao.getProjectLeader(p_code));
+		model.addAttribute("pApplicantInfo", dao.getProjectApplicant(p_code));
+		
+		
+		result = "redirect:projectDetail.action?p_code=\"+opendto.getP_code()";
 	
 		return result;
 	}
