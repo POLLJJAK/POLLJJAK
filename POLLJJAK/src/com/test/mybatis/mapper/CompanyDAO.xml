@@ -26,4 +26,32 @@
 		FROM DOMAIN_PART
 	</select>
 	
+	<select id="cWarning" resultType="com.test.dto.CompanyDTO">
+		SELECT USER_CODE, C_COMPANY_NAME
+		FROM C
+		WHERE USER_CODE = #{user_code}
+	</select>
+	
+	<select id="pwCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM C
+		WHERE USER_CODE = #{user_code}
+		  AND C_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+	 
+		<!--    
+		SELECT CRYPTPACK.DECRYPT(U_PW, #{pw}) AS pw
+		FROM U
+		WHERE USER_CODE = #{user_code}
+		 -->
+	</select>
+	
+	<select id="search" resultType="com.test.dto.CompanyDTO">
+		SELECT USER_CODE, C_ID AS id, C_COMPANY_NAME
+		     , C_NAME AS name, C_POSITION, C_EMAIL AS email
+		     , DOMAIN_PART_CODE, C_BUSINESS_NUMBER
+		     , C_INTRO, C_IDEAL, C_PROJECT
+		FROM C
+		WHERE USER_CODE = #{user_code}
+	</select>
+	
 </mapper>

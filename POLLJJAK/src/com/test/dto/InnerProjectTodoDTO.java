@@ -12,6 +12,19 @@ public class InnerProjectTodoDTO
 	
 	
 	
+	private String u_p_apply_code;
+	
+	public String getU_p_apply_code()
+	{
+		return u_p_apply_code;
+	}
+	public void setU_p_apply_code(String u_p_apply_code)
+	{
+		this.u_p_apply_code = u_p_apply_code;
+	}
+	
+	
+	
 	public String getTodoCode()
 	{
 		return todoCode;

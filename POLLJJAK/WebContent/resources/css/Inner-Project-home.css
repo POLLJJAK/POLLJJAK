@@ -255,7 +255,7 @@
 #external-events {
   width: 230px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #F3F4F6;
   border-radius: 6px;
   background: #fff;
   text-align: left;
@@ -278,7 +278,7 @@
   vertical-align: middle;
 }
 
-#calendar1 {
+#calendar {
    	max-width: 95%;
    	margin-bottom: 50px;
    	margin-left: 20px;
@@ -422,8 +422,6 @@
 
 .paging-selectBox {
 	font-size: 14px;
-	fl
-	
 }
 
 
@@ -509,11 +507,14 @@
 }
 
 
-
-
-
-
-
-
-
+/* 일정 등록 */
+.toDoInputBox {
+	border: 1px solid #E5E8EF;
+	border-radius: 6px;
+	width: 100%;
+}
+.toDoInputBox2 {
+	border: 1px solid #E5E8EF;
+	border-radius: 6px;
+}
 

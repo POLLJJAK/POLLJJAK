@@ -1,15 +1,24 @@
 package com.test.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.test.mybatis.CalenService;
+import com.test.dto.InnerProjectTodoDTO;
 import com.test.mybatis.IInnerProjectTeamManageDAO;
+import com.test.mybatis.IInnerProjectTodoDAO;
 
 @Controller
 public class IInnerProjectTodoController
@@ -17,9 +26,7 @@ public class IInnerProjectTodoController
 	@Autowired
 	SqlSession sqlSession;
 	
-	@Autowired(required = false)
-	private CalenService service;
-	
+
 	
 	// 달력 화면 출력
 	@RequestMapping(value="/inner-project-home-todo.action", method=RequestMethod.GET)
@@ -32,14 +39,36 @@ public class IInnerProjectTodoController
 		IInnerProjectTeamManageDAO pj_title_dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
 		model.addAttribute("pj_title_info", pj_title_dao.pj_title_info(u_p_apply_code));
 		
-		model.addAttribute("list", service.calenList());
-		
 		result = "WEB-INF/view/Inner-Project-home-todo.jsp";
 		
 		return result;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/calendar.action", method=RequestMethod.GET)
+	public JSONArray todoDataView(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code) 
+	{
+		model.addAttribute("u_p_apply_code", u_p_apply_code);
+		
+		IInnerProjectTodoDAO tdm = sqlSession.getMapper(IInnerProjectTodoDAO.class);
+		
+		List<InnerProjectTodoDTO> list = tdm.tdm(u_p_apply_code);
+		
+		JSONArray array = new JSONArray();
+		for (int i = 0; i < list.size(); i++)
+		{
+			JSONObject obj = new JSONObject();
+			obj.put("title", list.get(i).getTodoTitle());
+			obj.put("start", list.get(i).getTodoStartDate());
+			
+			array.add(obj);
+		}
+		
+		return array;
+	}
 	
 	
+	
+
 	
 }

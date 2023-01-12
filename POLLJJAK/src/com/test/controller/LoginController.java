@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.test.dto.CompanyDTO;
 import com.test.dto.UserDTO;
 import com.test.mybatis.ILoginDAO;
+import com.test.mybatis.IUserDAO;
 
 @Controller
 public class LoginController
@@ -43,10 +44,42 @@ public class LoginController
 		return result;
 	}
 	
+	// 아이디 및 비밀번호 체크
+	@RequestMapping(value = "/ajaxLogin.action", method = RequestMethod.POST)
+	public String pwCheck(UserDTO user, CompanyDTO company, Model model
+					, HttpServletRequest request, HttpServletResponse response)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		String userType = request.getParameter("userType");
+		//System.out.println(userType);
+		
+		if (userType.equals("user"))
+		{
+			int loginCheck = dao.userIdCheck(user);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
+		else
+		{
+			int loginCheck = dao.companyIdCheck(company);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
+		
+		return result;
+	}
+	
 	// 세션을 이용한 로그인
 	@RequestMapping(value="/login.action", method = RequestMethod.POST)
 	public String login(UserDTO user, CompanyDTO company
-						, HttpServletRequest request, HttpServletResponse response)
+				, HttpServletRequest request, HttpServletResponse response)
 	{
 		String result = null;
 		
@@ -61,17 +94,21 @@ public class LoginController
 			
 			loginCheck = dao.userLogin(user);
 			
-			if(loginCheck == null)
-			{
-				result = "redirect:loginform.action";
-			}
-			else
-			{
-				HttpSession session = request.getSession();
-				session.setAttribute("loginCheck", loginCheck);
-				session.setAttribute("userType", userType);
-				result = "redirect:main.action";
-			}
+//			if(loginCheck == null)
+//			{
+//				result = "redirect:loginform.action";
+//			}
+//			else
+//			{
+//				HttpSession session = request.getSession();
+//				session.setAttribute("loginCheck", loginCheck);
+//				session.setAttribute("userType", userType);
+//				result = "redirect:main.action";
+//			}
+			HttpSession session = request.getSession();
+			session.setAttribute("loginCheck", loginCheck);
+			session.setAttribute("userType", userType);
+			result = "redirect:main.action";
 //			if (session == null || !request.isRequestedSessionIdValid()) {
 //				System.out.println("일반 세션이 무효화 상태입니다.");
 //			}
@@ -82,23 +119,16 @@ public class LoginController
 //				System.out.println(loginCheck.getId());
 //			}
 		}
-		else //if (userType.equals("company")) 
+		else // if (userType.equals("company")) 
 		{
 			CompanyDTO loginCheck = null;
 			
 			loginCheck = dao.companyLogin(company);
 			
-			if(loginCheck == null)
-			{
-				result = "redirect:loginform.action";
-			}
-			else
-			{
-				HttpSession session = request.getSession();
-				session.setAttribute("loginCheck", loginCheck);
-				session.setAttribute("userType", userType);
-				result = "redirect:main.action";
-			}
+			HttpSession session = request.getSession();
+			session.setAttribute("loginCheck", loginCheck);
+			session.setAttribute("userType", userType);
+			result = "redirect:main.action";
 //			if (session == null || !request.isRequestedSessionIdValid()) {
 //				System.out.println("기업 세션이 무효화 상태입니다.");
 //			}
@@ -108,6 +138,7 @@ public class LoginController
 //				System.out.println("기업 : " + loginCheck.getName());
 //			}
 		}
+		
 		return result;
 	}
 
@@ -152,8 +183,41 @@ public class LoginController
 		return result;
 	}
 	
+	// 아이디 및 비밀번호 체크
+	@RequestMapping(value = "/ajaxFindId.action", method = RequestMethod.POST)
+	public String IdCheck(UserDTO user, CompanyDTO company, Model model
+					, HttpServletRequest request, HttpServletResponse response)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		String userType = request.getParameter("userType");
+		System.out.println(userType);
+		
+		if (userType.equals("user"))
+		{
+			CompanyDTO loginCheck = dao.cForgetId(company);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
+		else
+		{
+			UserDTO loginCheck = dao.uForgetId(user);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
+		
+		return result;
+	}
+	
+	
 	// 아이디 찾기
-	@RequestMapping(value = "/forgetid.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/findid.action", method = RequestMethod.POST)
 	public String ForgetId(UserDTO user, CompanyDTO company, Model model
 							, HttpServletRequest request)
 	{
@@ -215,7 +279,7 @@ public class LoginController
 	}
 	
 	// 비번 찾기
-	@RequestMapping(value = "/forgetpw.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/findpw.action", method = RequestMethod.POST)
 	public String ForgetPw(UserDTO user, CompanyDTO company, Model model
 							, HttpServletRequest request)
 	{

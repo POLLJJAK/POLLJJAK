@@ -20,8 +20,10 @@
                     , #{content}, SYSDATE, '1');
 	</insert>
 	
-	<select id="list" resultType="com.test.dto.PostCommentDTO" parameterType="com.test.dto.PostCommentDTO">
-		SELECT COMMENT_CODE, POST_CODE, USER_CODE, NICKNAME, CONTENT, COMMENTDATE, COMMENTDATE, CGROUP, CDEPTH
+	<select id="list" resultType="com.test.dto.PostCommentDTO" >
+		SELECT COMMENT_CODE, POST_CODE
+			, USER_CODE, NICKNAME, CONTENT
+			, COMMENTDATE, COMMENTUPDATE, CGROUP, CDEPTH
 		FROM L_POST_COMMENT_LIST_VIEW
 		WHERE POST_CODE=#{post_code}
 	</select>
