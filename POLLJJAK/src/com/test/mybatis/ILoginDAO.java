@@ -19,6 +19,9 @@ public interface ILoginDAO
 	// 회원정보를 통해 로그인
 	public UserDTO userLogin(UserDTO dto);
 	
+	// 아이디 유무 체크
+	public int uIdCheck(UserDTO dto);
+	
 	// 회원정보를 통해 아이디 / 비밀번호 찾기
 	public UserDTO uForgetId(UserDTO dto);
 	public UserDTO uForgetPw(UserDTO dto);
@@ -33,6 +36,9 @@ public interface ILoginDAO
 
 	// 회원정보를 통해 로그인
 	public CompanyDTO companyLogin(CompanyDTO dto);
+	
+	// 아이디 유무 체크
+	public int cIdCheck(CompanyDTO dto);
 	
 	// 회원정보를 통해 아이디 / 비밀번호 찾기
 	public CompanyDTO cForgetId(CompanyDTO dto);

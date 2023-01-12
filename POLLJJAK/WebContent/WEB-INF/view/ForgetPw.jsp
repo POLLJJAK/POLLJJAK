@@ -71,7 +71,7 @@
 					</div>
 					</div>
 					<div class="input-container btn-wrap">
-						<input type="button" class="btn" id="findpw-btn" value="다음">
+						<input type="submit" class="btn" id="findpw-btn" value="다음">
 					</div>
 				</form>
 				<div class="input-container btn-wrap">

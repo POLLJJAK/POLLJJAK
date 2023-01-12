@@ -1,13 +1,8 @@
 package com.test.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,9 +39,11 @@ public class IInnerProjectTodoController
 		return result;
 	}
 	
+	
+	
 	@ResponseBody
 	@RequestMapping(value="/calendar.action", method=RequestMethod.GET)
-	public JSONArray todoDataView(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code) 
+	public List<InnerProjectTodoDTO> todoDataView(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code) 
 	{
 		model.addAttribute("u_p_apply_code", u_p_apply_code);
 		
@@ -54,17 +51,11 @@ public class IInnerProjectTodoController
 		
 		List<InnerProjectTodoDTO> list = tdm.tdm(u_p_apply_code);
 		
-		JSONArray array = new JSONArray();
-		for (int i = 0; i < list.size(); i++)
-		{
-			JSONObject obj = new JSONObject();
-			obj.put("title", list.get(i).getTodoTitle());
-			obj.put("start", list.get(i).getTodoStartDate());
-			
-			array.add(obj);
-		}
+
 		
-		return array;
+		System.out.println();
+		
+		return list;
 	}
 	
 	

@@ -42,6 +42,10 @@ public class IInnerProjectMainWorkController
 		model.addAttribute("pj_mainwork_list", dao.pj_mainwork_list(u_p_apply_code));
 		model.addAttribute("member_list", member_list);
 		
+		IInnerProjectTeamManageDAO ptldao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+		model.addAttribute("pj_team_leader", ptldao.pj_team_leader(u_p_apply_code));
+		
+		
 		result = "WEB-INF/view/Inner-Project-home-mainWork.jsp";
 		
 		return result;

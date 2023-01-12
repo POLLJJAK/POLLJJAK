@@ -98,7 +98,7 @@
 						<span class="err" id="err" style="display: inline;"></span>
 					</div>
 					<div class="input-container btn-wrap">
-						<button type="button" class="btn" id="findId-btn">다음</button>
+						<button type="submit" class="btn" id="findId-btn">다음</button>
 					</div>
 				</form>
 				<div class="input-container btn-wrap">
@@ -140,7 +140,7 @@
 					return;
 				}
 				
-				ajaxRequest();
+				//ajaxRequest();
 				
 				/*
 				var params = {userType: $("input:radio[name=\"userType\"]:checked").val()
@@ -178,7 +178,7 @@
 				});
 			*/
 			});
-			
+			/* 
 			function ajaxRequest()
 			{
 				$.ajaxSetup({async: false});
@@ -190,7 +190,7 @@
 							, userType: $("input:radio[name=\"userType\"]:checked").val()
 				}, function(data)
 				{
-					if (params != $.trim(data) )   
+					if ($.trim(data) == 0 )   
 					{
 						$("#err").html("입력하신 정보와 일치하는 아이디가 없습니다.");
 						$("#err").css("display", "inline");
@@ -203,7 +203,7 @@
 					}
 				});
 			}
-			
+			 */
 	</script>
 </body>
 </html>

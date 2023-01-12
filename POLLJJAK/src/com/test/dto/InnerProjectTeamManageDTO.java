@@ -15,8 +15,28 @@ public class InnerProjectTeamManageDTO
 	
 	private String pj_end_check;
 	
+	private String u_p_apply_code;
 	
 	
+	private String pj_team_leader;
+	
+	
+	public String getPj_team_leader()
+	{
+		return pj_team_leader;
+	}
+	public void setPj_team_leader(String pj_team_leader)
+	{
+		this.pj_team_leader = pj_team_leader;
+	}
+	public String getU_p_apply_code()
+	{
+		return u_p_apply_code;
+	}
+	public void setU_p_apply_code(String u_p_apply_code)
+	{
+		this.u_p_apply_code = u_p_apply_code;
+	}
 	public String getPj_end_check()
 	{
 		return pj_end_check;
