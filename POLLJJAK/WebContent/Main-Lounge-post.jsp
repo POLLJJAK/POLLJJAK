@@ -349,64 +349,62 @@
 	var post_code = "<%=post_code%>";
 	var user_code = "U000000003";
 	
-	$("#img").click(function()
-	{
-		//alert("호출");
-		
-	
-		alert(post_code);
-		//댓글 리스트 
-		$.ajax({
-			url:"commentlist.action",
-			type:"post",
-			data: {
-				post_code : post_code
-			},
-			async : false,
-			success : function (data)
-			{
-				
-				 alert(data);
-				 
-				var listHtml = "";
-				for (var i=0; i<=data.length; i++)
-				{
-					var comment_code = data.comment_code[i];
-	                var bno = data.post_code;
-	                var user_code = data.user_code;
-	                var writer = data.nickname;
-	                var content = data.content;
-	                var grps = data.commentdate;
-	                var wdate = data.commentupdate;
-	                var grp = data.cgroup;
-	                var grp1 = data.cdepth;
-	                
-	                listHtml +=  comment_code; 
-				}
-	                alert(comment_code);
-				
-				
-				
-				//alert(listHtml)
-	             alert("성공");
-
-            
-
-            ///////////// 동적으로 넣어준 html에 대한 이벤트 처리는 같은 함수내에서 다 해줘야한다.
-            ///////////// $(document).ready(function(){}); 안에 써주면 안된다.
-
-            // 댓글 리스트 부분에 받아온 댓글 리스트를 넣기
-            //$("#commentlist-content").html(listHtml);
-					
-			},
-			error : function ()
-			{	
-				alert("ERR");
-			}
+	$(function(){
+		$("#img").click(function()
+		{
+			//alert("호출");
+			var param = "<%=post_code%>";
 			
-		}); 
-	});
+			//alert(post_code);
+			//댓글 리스트 
+			$.ajax({
+				url:"commentlist.action",
+				type:"POST",
+				data: param,
+				dataType: "json",
+				contentType: "application/json; charset=UTF-8",
+				success : function(data)
+				{
+					console.log(data);
+				
+					/*
+					var listHtml = "";
+					for (var i=0; i<=data.length; i++)
+					{
+						var comment_code = data.comment_code[i];
+		                var bno = data.post_code;
+		                var user_code = data.user_code;
+		                var writer = data.nickname;
+		                var content = data.content;
+		                var grps = data.commentdate;
+		                var wdate = data.commentupdate;
+		                var grp = data.cgroup;
+		                var grp1 = data.cdepth;
+		                
+		                listHtml +=  comment_code; 
+					} */
+		            //alert(comment_code);
+					
+					//alert(listHtml)
+		            //alert("성공");
 	
+	            
+	
+	            ///////////// 동적으로 넣어준 html에 대한 이벤트 처리는 같은 함수내에서 다 해줘야한다.
+	            ///////////// $(document).ready(function(){}); 안에 써주면 안된다.
+	
+	            // 댓글 리스트 부분에 받아온 댓글 리스트를 넣기
+	            //$("#commentlist-content").html(listHtml);
+						
+				},
+				error : function ()
+				{	
+					alert("ERR");
+				}
+				
+			}); 
+		});
+	});
 	
 	// 로그인 한 상태에서 하트를 클릭했을 때 (로그인한 상태인 하트의 <a></a> class명: heart-click)
 	$(".heart-click").click(function() {

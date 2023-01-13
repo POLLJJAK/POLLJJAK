@@ -11,7 +11,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -126,39 +130,45 @@ public class PostCommentController
 	}
 	*/
 	
-	//@ResponseBody 
-	@RequestMapping(value = "/commentlist.action", method = RequestMethod.POST) 
-	public String commentList(@RequestParam("post_code") String post_code 
-			, HttpSession session, Model model) 
+	@ResponseBody
+	@RequestMapping(value = "/commentlist.action", method = RequestMethod.POST)
+	public String commentList(@RequestBody String post_code, Model model) 
 	{
-		String result = "";
-		Map<String, Object> map = new HashMap<String, Object>();
+		
+		System.out.println(post_code);
+		
+		
 		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
 		
+		//Map<String, Object> map = new HashMap<String, Object>();
 		
 		ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
 		cmtList =  dao.list(post_code);
 		
+		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jarr = new JSONArray();
+
 		for (int i = 0; i < cmtList.size(); i++)
 		{
-			map.put("comment_code", cmtList.get(i).getComment_code());
-			map.put("post_code", cmtList.get(i).getPost_code());
-			map.put("user_code", cmtList.get(i).getUser_code());
-			map.put("nickname", cmtList.get(i).getNickname());
-			map.put("content", cmtList.get(i).getContent());
-			map.put("commentdate", cmtList.get(i).getCommentdate());
-			map.put("commentupdate", cmtList.get(i).getCommentupdate());
-			map.put("cgroup", cmtList.get(i).getCgroup());
-			map.put("cdepth", cmtList.get(i).getCdepth());
-			
-			//System.out.println(map.values()); 
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("comment_code", cmtList.get(i).getComment_code());
+			jsonObj.put("post_code", cmtList.get(i).getPost_code());
+			jsonObj.put("user_code", cmtList.get(i).getUser_code());
+			jsonObj.put("nickname", cmtList.get(i).getNickname());
+			jsonObj.put("content", cmtList.get(i).getContent());
+			jsonObj.put("commentdate", cmtList.get(i).getCommentdate());
+			jsonObj.put("commentupdate", cmtList.get(i).getCommentupdate());
+			jsonObj.put("cgroup", cmtList.get(i).getCgroup());
+			jsonObj.put("cdepth", cmtList.get(i).getCdepth());
+			jarr.add(jsonObj);
 		}
 		
-		model.addAttribute("map", map);
-		result = "/AjaxCmt.jsp";
-		return result;
+		String jsonSt = jarr.toJSONString();
+		System.out.println(jsonSt);
+		jsonObject.put("data", jarr);
 		
-		
+		return jsonSt;
 	}
 	
 	/*
