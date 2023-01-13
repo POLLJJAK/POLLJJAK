@@ -366,29 +366,42 @@
 			success : function (data)
 			{
 				
-				 alert(data);
-				 
+				alert(data);
+				alert(typeof data);
+				/*
+				var tempList = data.queryDataList;
+				alert(tempList);
+				for (let i in tempList) {
+					 alert("이름 : ", tempList[i][0]);
+					 alert("ID : ", tempList[i][1]);
+					 alert("PH : ", tempList[i][2]);
+					 alert("메일 : ", tempList[i][3]);
+				}
+				*/
+				
 				var listHtml = "";
-				for (var i=0; i<=data.length; i++)
+				for (var i=0; i<=data.size; i++)
 				{
-					var comment_code = data.comment_code[i];
-	                var bno = data.post_code;
-	                var user_code = data.user_code;
-	                var writer = data.nickname;
-	                var content = data.content;
-	                var grps = data.commentdate;
-	                var wdate = data.commentupdate;
-	                var grp = data.cgroup;
-	                var grp1 = data.cdepth;
+					var comment_code = data[i][comment_code];
+	                //var bno = data.post_code;
+	                //var user_code = data.user_code;
+	                //var writer = data.nickname;
+	                //var content = data.content;
+	                //var grps = data.commentdate;
+	                //var wdate = data.commentupdate;
+	                //var grp = data.cgroup;
+	                //var grp1 = data.cdepth;
 	                
 	                listHtml +=  comment_code; 
 				}
+				
+				
+				
 	                alert(comment_code);
-				
-				
-				
+				//alert(data.size()); --undefined
+				//alert(data.length());-undefined
 				//alert(listHtml)
-	             alert("성공");
+	            //alert("성공");
 
             
 

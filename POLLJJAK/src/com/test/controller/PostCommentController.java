@@ -152,8 +152,8 @@ public class PostCommentController
 			map.put("cdepth", cmtList.get(i).getCdepth());
 			
 			//System.out.println(map.values()); 
+			
 		}
-		
 		model.addAttribute("map", map);
 		result = "/AjaxCmt.jsp";
 		return result;

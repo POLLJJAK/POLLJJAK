@@ -221,7 +221,7 @@ public class MainLoungeListController
 		
 		
 		model.addAttribute("likeCount", count);
-		result = "/AjaxLikeUp.jsp";
+		result = "/AjaxLikeDown.jsp";
 		return result;
 	}
 }
