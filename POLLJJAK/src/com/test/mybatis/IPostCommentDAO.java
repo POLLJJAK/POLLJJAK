@@ -6,6 +6,7 @@ package com.test.mybatis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.test.dto.PostCommentDTO;
 
@@ -22,7 +23,7 @@ public interface IPostCommentDAO {
 	//public List<PostCommentDTO> list(String post_code);
 	public ArrayList<PostCommentDTO> list(String post_code);
 	//public String list(String post_code);
-	
+	//public Map<String, Object> list(String post_code);
 	// 댓글 삭제
 	public PostCommentDTO removeComment(String comment_code);
 	

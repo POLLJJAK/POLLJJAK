@@ -164,7 +164,7 @@ public class MainLoungeListController
 	
 	
 	
-	
+	/*
 	// 좋아요추가
 	@ResponseBody
 	@RequestMapping(value = "/likeinsert.action", method = RequestMethod.GET)
@@ -179,13 +179,49 @@ public class MainLoungeListController
 		count = dao.likeCount(post_code) + 1;
 		
 		
-		// 리스트가 아니라 해당글상세로 보내야할거같은데..
-		//result = "redirect:/Main-Lounge-post.jsp";
 		
 		System.out.println(post_code);
 		System.out.println(user_code);
 		System.out.println(count);
 		
+		// 리턴 안되네?ㅎ..
 		return count;
+	}
+	*/
+	// 좋아요추가 v2
+	//@ResponseBody
+	@RequestMapping(value = "/likeinsert.action", method = RequestMethod.GET)
+	public String likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
+			,@RequestParam("user_code") String user_code, Model model  )
+	{
+		String result = "";
+		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+		dao.likeadd(post_code, user_code);
+		
+		int count = 0;
+		count = dao.likeCount(post_code);
+		
+		
+		model.addAttribute("likeCount", count);
+		result = "/AjaxLikeUp.jsp";
+		return result;
+	}
+	
+	// 좋아요삭제
+	@RequestMapping(value = "/likeremove.action", method = RequestMethod.GET)
+	public String likeRemove(HttpServletRequest request, @RequestParam("post_code") String post_code
+			,@RequestParam("user_code") String user_code, Model model  )
+	{
+		String result = "";
+		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+		dao.likeremove(post_code, user_code);
+		
+		int count = 0;
+		count = dao.likeCount(post_code);
+		
+		
+		model.addAttribute("likeCount", count);
+		result = "/AjaxLikeUp.jsp";
+		return result;
 	}
 }
