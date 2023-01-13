@@ -1,5 +1,7 @@
 package com.test.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.dto.CompanyDTO;
 import com.test.dto.UserDTO;
 import com.test.mybatis.ILoginDAO;
 import com.test.mybatis.IUserDAO;
+import com.test.util.MapToJson;
 
 @Controller
 public class LoginController
@@ -183,40 +187,39 @@ public class LoginController
 		return result;
 	}
 	
-	// 아이디 및 비밀번호 체크
-//	@RequestMapping(value = "/ajaxFindId.action", method = RequestMethod.POST)
-//	public String IdCheck(UserDTO user, CompanyDTO company, Model model
-//					, HttpServletRequest request, HttpServletResponse response)
-//	{
-//		String result = null;
-//		
-//		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
-//		
-//		String userType = request.getParameter("userType");
-//		System.out.println(userType);
-//		
-//		if (userType.equals("user"))
-//		{
-//			CompanyDTO loginCheck = dao.cForgetId(company);
-//			
-//			model.addAttribute("ajax", loginCheck);
-//			
-//			result = "/WEB-INF/view/Ajax.jsp";
-//		}
-//		else
-//		{
-//			UserDTO loginCheck = dao.uForgetId(user);
-//			
-//			model.addAttribute("ajax", loginCheck);
-//			
-//			result = "/WEB-INF/view/Ajax.jsp";
-//		}
-//		
-//		return result;
-//	}
+	// 아이디 찾기에서 이름/이메일 값 넘기기
+	@RequestMapping(value = "/ajaxFindId.action", method = RequestMethod.POST)
+	public String IdCheck(UserDTO user, CompanyDTO company, Model model
+					, HttpServletRequest request, HttpServletResponse response)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		String userType = request.getParameter("userType");
+		//System.out.println(userType);
+		
+		if (userType.equals("user"))
+		{
+			UserDTO loginCheck = dao.uForgetId(user);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
+		else
+		{
+			CompanyDTO loginCheck = dao.cForgetId(company);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
+		
+		return result;
+	}
 	
-	
-	// 아이디 찾기
+	// 아이디 띄워주는 페이지
 	@RequestMapping(value = "/findid.action", method = RequestMethod.POST)
 	public String ForgetId(UserDTO user, CompanyDTO company, Model model
 							, HttpServletRequest request)
@@ -232,16 +235,9 @@ public class LoginController
 			UserDTO uForgetId = null;
 			
 			uForgetId = dao.uForgetId(user);
-			
-			if(uForgetId != null)
-			{
-				model.addAttribute("user", uForgetId);
-				result = "/WEB-INF/view/FindId.jsp";
-			}
-			else
-			{
-				result = "redirect:forgetidform.action";
-			}
+
+			model.addAttribute("user", uForgetId);
+			result = "/WEB-INF/view/FindId.jsp";
 		}
 		else
 		{
@@ -249,15 +245,8 @@ public class LoginController
 			
 			cForgetId = dao.cForgetId(company);
 			
-			if(cForgetId != null)
-			{
-				model.addAttribute("user", cForgetId);
-				result = "/WEB-INF/view/FindId.jsp";
-			}
-			else
-			{
-				result = "redirect:forgetidform.action";
-			}
+			model.addAttribute("user", cForgetId);
+			result = "/WEB-INF/view/FindId.jsp";
 		}
 		
 		return result;
@@ -274,6 +263,38 @@ public class LoginController
 		model.addAttribute("domainList", dao.domainList());
 		
 		result = "/WEB-INF/view/ForgetPw.jsp";
+		
+		return result;
+	}
+	
+	// 비밀번호 찾기에서 이름/이메일/아이디 값 넘기기
+	@RequestMapping(value = "/ajaxFindPw.action", method = RequestMethod.POST)
+	public String PwCheck(UserDTO user, CompanyDTO company, Model model
+					, HttpServletRequest request, HttpServletResponse response)
+	{
+		String result = null;
+		
+		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+		
+		String userType = request.getParameter("userType");
+		//System.out.println(userType);
+		
+		if (userType.equals("user"))
+		{
+			UserDTO loginCheck = dao.uForgetPw(user);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
+		else
+		{
+			CompanyDTO loginCheck = dao.cForgetPw(company);
+			
+			model.addAttribute("ajax", loginCheck);
+			
+			result = "/WEB-INF/view/Ajax.jsp";
+		}
 		
 		return result;
 	}
@@ -295,34 +316,18 @@ public class LoginController
 			
 			uForgetPw = dao.uForgetPw(user);
 			
-			if(uForgetPw != null)
-			{
 				model.addAttribute("user", uForgetPw);
 				model.addAttribute("userType", userType);
 				result = "/WEB-INF/view/uChangePw.jsp";
-			}
-			else
-			{
-				result = "redirect:forgetpwform.action";
-			}
 		}
 		else
 		{
 			CompanyDTO cForgetPw = null;
 			
 			cForgetPw = dao.cForgetPw(company);
-			
-			if(cForgetPw != null)
-			{
 				model.addAttribute("user", cForgetPw);
 				model.addAttribute("userType", userType);
 				result = "/WEB-INF/view/cChangePw.jsp";
-			}
-			else
-			{
-				result = "redirect:forgetpwform.action";
-			}
-			
 		}
 		
 		return result;

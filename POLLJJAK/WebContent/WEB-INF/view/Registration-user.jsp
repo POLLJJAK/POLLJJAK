@@ -15,7 +15,6 @@
 <c:import url="./common/Head.jsp" />
 
 <!-- 현재 페이지 resources import -->
-<script src="<%=cp %>/resources/js/Registration.js"></script>
 <link rel="stylesheet" href="resources/css/Registration.css" />
 
 <body>
@@ -44,7 +43,9 @@
 				  		<fieldset>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="id" class="col-sm-2 col-form-label">아이디</label>
+								<label for="id" class="col-sm-2 col-form-label">
+									아이디<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4" >
 									<input type="text" class="form-control" id="id" name="id" autofocus="autofocus">
 									<span class="err" id="errId"></span> 
@@ -61,27 +62,31 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="pw" class="col-sm-2 col-form-label">비밀번호</label>
+								<label for="pw" class="col-sm-2 col-form-label">
+									비밀번호<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<input type="password" class="form-control" id="pw" name="pw">
 									<span class="err" id="errPw"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
-							<!-- 
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="pw_check" class="col-sm-2 col-form-label">비밀번호 확인</label>
+								<label for="pw_check" class="col-sm-2 col-form-label">
+									비밀번호 확인<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<input type="password" class="form-control" id="pw_check">
 									<span class="err" id="errPwCheck"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
-							 -->
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="name" class="col-sm-2 col-form-label">이름</label>
+								<label for="name" class="col-sm-2 col-form-label">
+									이름<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="name" name="name">
 									<span class="err" id="errName"></span>
@@ -90,7 +95,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="nickName" class="col-sm-2 col-form-label">닉네임</label>
+								<label for="nickName" class="col-sm-2 col-form-label">
+									닉네임<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="nickName" name="u_nickname">
 									<span class="err" id="errNickName"></span>
@@ -99,7 +106,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="email" class="col-sm-2 col-form-label">이메일</label>
+								<label for="email" class="col-sm-2 col-form-label">
+									이메일<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="email" name="email">
 									<div class="input-group">
@@ -118,7 +127,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="telephone" class="col-sm-2 col-form-label">전화번호</label>
+								<label for="telephone" class="col-sm-2 col-form-label">
+									전화번호<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="tel" name="u_tel">
 									<span class="err" id="errTel"></span>
@@ -134,7 +145,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="personal-part" class="col-sm-2 col-form-label">주요직무</label>
+								<label for="personal-part" class="col-sm-2 col-form-label">
+									주요직무<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<select class="form-select" id="personal-part" name="position_part_code">
 										<option value="none">주요 직무 선택</option>
@@ -177,7 +190,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="region" class="col-sm-2 col-form-label">모임 선호 지역</label>
+								<label for="region" class="col-sm-2 col-form-label">
+									모임 선호 지역<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<select class="form-select" id="region" name="region_part_code">
 										<option value="none">지역 선택</option>
@@ -207,7 +222,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="time" class="col-sm-2 col-form-label">모임 선호 시간</label>
+								<label for="time" class="col-sm-2 col-form-label">
+									모임 선호 시간<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<div class="radioBtn mb-3" id ="time">
 										<c:forEach var="time" items="${timeList }" varStatus="status">
@@ -219,7 +236,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="interests" class="col-sm-2 col-form-label">관심 분야</label>
+								<label for="interests" class="col-sm-2 col-form-label">
+									관심 분야<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<select class="form-select" id="interests" name="subject_part_code">
 										<option value="none">관심 분야 선택</option>
@@ -263,7 +282,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="personal-skill" class="col-sm-2 col-form-label">주요기술</label>
+								<label for="personal-skill" class="col-sm-2 col-form-label">
+									주요기술<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<select class="form-select" id="personal-skill" name="skill_part_code">
 										<option value="none">기술 선택</option>
@@ -297,7 +318,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="personal-skill" class="col-sm-2 col-form-label">부가기술 1</label>
+								<label for="personal-skill" class="col-sm-2 col-form-label">
+									부가기술 1<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<select class="form-select" id="personal-skill1" name="skill_part_code1">
 										<option value="none">기술 선택</option>
@@ -331,7 +354,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="personal-skill" class="col-sm-2 col-form-label">부가기술 2</label>
+								<label for="personal-skill" class="col-sm-2 col-form-label">
+									부가기술 2<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<select class="form-select" id="personal-skill2" name="skill_part_code2">
 										<option value="none">기술 선택</option>
@@ -365,7 +390,9 @@
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
-								<label for="personal-skill" class="col-sm-2 col-form-label">부가기술 3</label>
+								<label for="personal-skill" class="col-sm-2 col-form-label">
+									부가기술 3<em style="color: red;"> * </em>
+								</label>
 								<div class="col-sm-4">
 									<select class="form-select" id="personal-skill3" name="skill_part_code3">
 										<option value="none">기술 선택</option>
@@ -398,7 +425,7 @@
 								<div class = "col-sm-3"></div>
 							</div>
 							<div style = "text-align: center;">
-								<button type="button" class="btn btn-primary" id="registration_done">
+								<button type="button" class="btn btn-primary" id="u_registration_done">
 								가입하기</button>
 							</div>
 						</fieldset>
@@ -412,21 +439,6 @@
 
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
-
-	<a href="#"
-		class="back-to-top d-flex align-items-center justify-content-center"><i
-		class="bi bi-arrow-up-short"></i></a>
-
-	<!-- Vendor JS Files -->
-	<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-	<script src="assets/vendor/aos/aos.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-	<!-- Template Main JS File -->
-	<script src="assets/js/main.js"></script>
-
+	<script src="<%=cp %>/resources/js/Registration.js"></script>
 </body>
 </html>
