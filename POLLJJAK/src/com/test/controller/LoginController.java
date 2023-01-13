@@ -184,36 +184,36 @@ public class LoginController
 	}
 	
 	// 아이디 및 비밀번호 체크
-	@RequestMapping(value = "/ajaxFindId.action", method = RequestMethod.POST)
-	public String IdCheck(UserDTO user, CompanyDTO company, Model model
-					, HttpServletRequest request, HttpServletResponse response)
-	{
-		String result = null;
-		
-		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
-		
-		String userType = request.getParameter("userType");
-		System.out.println(userType);
-		
-		if (userType.equals("user"))
-		{
-			CompanyDTO loginCheck = dao.cForgetId(company);
-			
-			model.addAttribute("ajax", loginCheck);
-			
-			result = "/WEB-INF/view/Ajax.jsp";
-		}
-		else
-		{
-			UserDTO loginCheck = dao.uForgetId(user);
-			
-			model.addAttribute("ajax", loginCheck);
-			
-			result = "/WEB-INF/view/Ajax.jsp";
-		}
-		
-		return result;
-	}
+//	@RequestMapping(value = "/ajaxFindId.action", method = RequestMethod.POST)
+//	public String IdCheck(UserDTO user, CompanyDTO company, Model model
+//					, HttpServletRequest request, HttpServletResponse response)
+//	{
+//		String result = null;
+//		
+//		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
+//		
+//		String userType = request.getParameter("userType");
+//		System.out.println(userType);
+//		
+//		if (userType.equals("user"))
+//		{
+//			CompanyDTO loginCheck = dao.cForgetId(company);
+//			
+//			model.addAttribute("ajax", loginCheck);
+//			
+//			result = "/WEB-INF/view/Ajax.jsp";
+//		}
+//		else
+//		{
+//			UserDTO loginCheck = dao.uForgetId(user);
+//			
+//			model.addAttribute("ajax", loginCheck);
+//			
+//			result = "/WEB-INF/view/Ajax.jsp";
+//		}
+//		
+//		return result;
+//	}
 	
 	
 	// 아이디 찾기
