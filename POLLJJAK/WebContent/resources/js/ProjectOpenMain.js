@@ -7,11 +7,11 @@ $(document).ready(function(){
 		$.ajax({
 			type: "GET",
 			url: "delfailedproject.action",  
-			data: {p_code : "test"},//param,  
-			success: function(res){
-				console.log(res);
+			data: param,  
+			success: function(result){
+				console.log(result);
 			},
-			error: function(res){
+			error: function(zzz){
 				alert("dddd");
 			},
 			dataType: "text"  
@@ -70,3 +70,31 @@ function polljjakPostAjax(url, param, callback){
 	})
 }
 
+
+	/*
+	var param = {
+	  b_no: [
+	    "1078174307" //ex) $("#bno").val() !! 하이픈 들어가면 안됌
+	  ]
+	}
+	
+	 $.ajax({
+	    type: "POST",
+	    url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=zw9Rd/Otbl08z8daKvR1eaWXYaWFsTYNl7X5WIZYm0AfBGrejxQJJ4WPUALpruqzD48cmzrr30TWP0Vxel6ZGw==&returnType=JSON",
+	    data: JSON.stringify(param),
+	    dataType: "JSON",
+	    contentType: "application/json",
+	    success: function(response) {
+	        console.log(response.data[0].tax_type);
+	        response.data[0].tax_type == "국세청에 등록되지 않은 사업자등록번호입니다.";
+	        // tax type이  존재하지 않을 경우
+	        // DOM 조작
+	        // ex) $("#input").html("어쩌구저쩌구)
+	    },
+	    error : function(err){
+	        console.log(err);
+	    }
+	});
+	*/
+
+	
