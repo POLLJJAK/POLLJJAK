@@ -56,7 +56,7 @@ function polljjakGetAjax(url, param, callback){
 		dataType: "text"  
 	})
 }
-
+/*
 function polljjakPostAjax(url, param, callback){
 	$.ajax({
 		type: "POST",
@@ -69,6 +69,7 @@ function polljjakPostAjax(url, param, callback){
 		dataType: "text"  
 	})
 }
+*/
 
 
 	/*
