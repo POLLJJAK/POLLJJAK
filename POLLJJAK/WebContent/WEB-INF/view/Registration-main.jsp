@@ -21,7 +21,12 @@
 <!-- <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"> -->
 <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"> -->
 <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+<script type="text/javascript">
+</script>
+<style type="text/css">
 
+	
+</style>
 </head>
 <body>
 	<div class="page-container">
@@ -32,6 +37,7 @@
 				<p>Team 4, Cheer up guys.<br>We can finish our Final Project in time.<br>Him Eul Nae Yo SUPER POWER.</p>
 			</div>
 			<div class="form-left-side">
+				<div class="empty"></div>
 				<div class="input-container btn-wrap">
 					<div class="user-type">
 						<button class="outline" type="button" 

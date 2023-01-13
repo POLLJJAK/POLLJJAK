@@ -47,9 +47,6 @@ public class ProjectOpenMainController
 	
 		return result;
 	}
-	
-	/*
-	
 	// 실패 프로젝트 리스트에서 삭제
 	@ResponseBody
 	@RequestMapping(value = "/delfailedproject.action", method = {RequestMethod.GET, RequestMethod.POST})
@@ -62,11 +59,14 @@ public class ProjectOpenMainController
 		
 		IProjectOpenMainDAO dao = sqlSession.getMapper(IProjectOpenMainDAO.class);
 		
-		int transactionResult = 1;//dao.delFailedProject(p_code);
+		int transactionResult = dao.delfailedproject(p_code);
 		
-		if(transactionResult > 0) {
+		if(transactionResult > 0) 
+		{
 			result = "SUCCESS";
-		}else {
+		}
+		else 
+		{
 			result = "FAIL";
 		}
 		
@@ -75,9 +75,6 @@ public class ProjectOpenMainController
         response.getWriter().write(result);
 		
 	}
-	
-	
-	*/
 	
 	
 	 

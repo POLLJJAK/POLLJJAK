@@ -4,11 +4,7 @@ $(document).ready(function()
 	{
 		alert("존재하는 아이디 입니다.");
 	});
-	$(".c_business_number").click(function()
-	{
-		alert("사업자등록번호 api 사용 예정");
-	});
-	 
+	
 	$("#registration_done").click(function()
 	{
 		$(".err").css("display", "none");

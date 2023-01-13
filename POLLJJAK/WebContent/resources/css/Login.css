@@ -259,6 +259,11 @@
 		background: url(../) no-repeat 80% 50%;
 	}
 	
+	.user-type
+	{
+		text-align: center;
+	}
+	
 	.outline{
 		margin-top: 20px;
 		width: 200px;
