@@ -17,7 +17,17 @@ public class InnerProjectTeamManageDTO
 	
 	private String u_p_apply_code;
 	
+	private String member_stop_check;
 	
+	
+	public String getMember_stop_check()
+	{
+		return member_stop_check;
+	}
+	public void setMember_stop_check(String member_stop_check)
+	{
+		this.member_stop_check = member_stop_check;
+	}
 	private String pj_team_leader;
 	
 	

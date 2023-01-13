@@ -59,6 +59,9 @@ public class InnerProjectTeamManageController
 		List<Map<String, String>> p_stop_teamMember_check = dao.p_stop_teamMember_check(u_p_apply_code);
 		model.addAttribute("p_stop_teamMember_check", p_stop_teamMember_check);
 		
+		//중단 테이블에서 해당 유저 있으면 가져오기 없어도 널
+		model.addAttribute("p_stop_upa_check", dao.p_stop_upa_check(u_p_apply_code));
+		
 		
 		result = "WEB-INF/view/Inner-Project-home-teamManage.jsp";
 		
@@ -71,6 +74,8 @@ public class InnerProjectTeamManageController
 	{
 		String result = null;
 		
+		model.addAttribute("u_p_apply_code", u_p_apply_code);
+		
 		IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
 		model.addAttribute("p_stop_teamMember", dao.p_stop_teamMember(u_p_apply_code));
 		
@@ -80,7 +85,7 @@ public class InnerProjectTeamManageController
 		return result;
 	}
 	
-	
+
 
 	
 }

@@ -190,7 +190,83 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
+	<script type="text/javascript">
+	/*
+	사업자 등록번호 API 사용
+	키값 : zw9Rd/Otbl08z8daKvR1eaWXYaWFsTYNl7X5WIZYm0AfBGrejxQJJ4WPUALpruqzD48cmzrr30TWP0Vxel6ZGw==
+	예시 : b_no 139-87-00196 당근
+	진위확인 : http://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=zw9Rd/Otbl08z8daKvR1eaWXYaWFsTYNl7X5WIZYm0AfBGrejxQJJ4WPUALpruqzD48cmzrr30TWP0Vxel6ZGw==&returnType=JSON
+	*/
 
+	// 요청 
+		var param = {
+		  b_no: [
+		    "1078174307" //ex) $("#bno").val() !! 하이픈 들어가면 안됌
+		  ]
+		}
+		 $.ajax({
+		    type: "POST",
+		    url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=zw9Rd/Otbl08z8daKvR1eaWXYaWFsTYNl7X5WIZYm0AfBGrejxQJJ4WPUALpruqzD48cmzrr30TWP0Vxel6ZGw==&returnType=JSON",
+		    data: JSON.stringify(param),
+		    dataType: "JSON",
+		    contentType: "application/json",
+		    success: function(response) {
+		        console.log(response.data[0].tax_type);
+		        response.data[0].tax_type == "국세청에 등록되지 않은 사업자등록번호입니다.";
+		        // tax type이  존재하지 않을 경우
+		        // DOM 조작
+		        // ex) $("#input").html("어쩌구저쩌구)
+		    },
+		    error : function(err){
+		        console.log(err);
+		    }
+		});
+
+
+	// 응답 결과 예시
+	// 응답 결과1 -> 당근(존재하는 사업자)
+	/*
+	 {
+	    "request_cnt": 1,
+	    "match_cnt": 1,
+	    "status_code": "OK",
+	    "data": [
+	        {
+	            "b_no": "1078174307",
+	            "b_stt": "계속사업자",
+	            "b_stt_cd": "01",
+	            "tax_type": "부가가치세 일반과세자",
+	            "tax_type_cd": "01",
+	            "end_dt": "",
+	            "utcc_yn": "N",
+	            "tax_type_change_dt": "",
+	            "invoice_apply_dt": ""
+	        }
+	    ]
+	}
+
+	// 응답결과2 -> 존재하지 않는 사업자 번호
+	{
+	    "request_cnt": 1,
+	    "status_code": "OK",
+	    "data": [
+	        {
+	            "b_no": "107817-4307",
+	            "b_stt": "",
+	            "b_stt_cd": "",
+	            "tax_type": "국세청에 등록되지 않은 사업자등록번호입니다.",
+	            "tax_type_cd": "",
+	            "end_dt": "",
+	            "utcc_yn": "",
+	            "tax_type_change_dt": "",
+	            "invoice_apply_dt": ""
+	        }
+	    ]
+	}
+	 
+	 */
+
+	</script>
 </body>
 
 </html>
