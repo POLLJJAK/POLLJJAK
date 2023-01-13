@@ -32,13 +32,10 @@
               AND P.P_CODE = PF.P_CODE
    </select> 
 	
-	
-	<!-- 모집 실패 프로젝트 정보 조회 -->
-	<!-- 
-	<delete id="getfailedProject" >
+	<!-- 리스트에서 삭제 -->
+	<delete id="delfailedproject" >
 		DELETE 
 		FROM P_FAILED
-		WHERE P_CODE = #{p_code};
+		WHERE P_CODE = #{p_code}
 	</delete> 
-	 -->
 </mapper>
