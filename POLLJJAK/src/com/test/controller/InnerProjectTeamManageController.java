@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,20 +95,21 @@ public class InnerProjectTeamManageController
 	}
 	
 	
-
-	@RequestMapping(value="/p_stop_project.action", method=RequestMethod.GET)
+	@RequestMapping(value="/p_stop_project.action", method=RequestMethod.POST)
 	public String pStopProject(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code
 										  , @RequestParam("p_team_confirm_code") String p_team_confirm_code
 										  , InnerProjectTeamManageDTO dto) 
 	{
 		String result = null;
 		
+		model.addAttribute("u_p_apply_code", u_p_apply_code);
+		
 		IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
 		
 		dao.p_stop_project_insert(dto);
 		
 		dao.p_stop_teamMember(u_p_apply_code);
-		
+
 		
 		result = "redirect:inner-project-home-teammanage.action";
 		

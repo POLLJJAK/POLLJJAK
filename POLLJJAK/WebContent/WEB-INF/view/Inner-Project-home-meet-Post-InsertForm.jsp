@@ -190,14 +190,6 @@
 		
 			$('#meetInsertBtn').click(function() {
 				
-				/*
-				if ($('#ph_meet_subTitle'))
-				{
-					ph_meet_title
-					meet_startDate
-					meet_endDate
-				}
-				*/
 	 			var values = document.getElementsByName("members");
 				var members = new Array();
 				

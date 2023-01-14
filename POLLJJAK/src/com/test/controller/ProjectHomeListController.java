@@ -7,13 +7,15 @@
 
 package com.test.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.test.mybatis.IProjectHomeListDAO;
 
@@ -23,12 +25,18 @@ public class ProjectHomeListController
 	@Autowired
 	private SqlSession sqlSession;
 	
+	private HttpSession session;
 	
 	@RequestMapping(value="/projecthomelist.action", method=RequestMethod.GET)
-	public String projectRunlist(Model model, @RequestParam("user_code") String user_code) 
+	public String projectRunlist(Model model, HttpServletRequest request)
+	//, @RequestParam("user_code") String user_code) 
 	{
+		
 		String result = null;
-		model.addAttribute("user_code", user_code);
+		
+		session = request.getSession();
+		String user_code = (String)session.getAttribute("user_code");
+
 		
 		IProjectHomeListDAO dao = sqlSession.getMapper(IProjectHomeListDAO.class);
 		

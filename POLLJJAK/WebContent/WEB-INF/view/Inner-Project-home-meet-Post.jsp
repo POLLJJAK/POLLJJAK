@@ -160,7 +160,7 @@
 								onclick="location.href='inner-project-home-meet-post-updateform.action?u_p_apply_code=${u_p_apply_code }&ph_meet_code=${meetBoardPost.ph_meet_code }'">수정하기</button>
 							</div>
 							
-
+							<!-- 삭제 확인 토스트창 -->
 							<div class="toast-container position-fixed bottom-0 end-0 p-3">
 	 							<div id="DeleteView" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 									 <div class="toast-body">
