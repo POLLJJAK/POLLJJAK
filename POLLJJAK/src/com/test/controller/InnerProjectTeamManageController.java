@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.dto.InnerProjectTeamManageDTO;
 import com.test.mybatis.IInnerProjectTeamManageDAO;
 
 @Controller
@@ -62,6 +66,12 @@ public class InnerProjectTeamManageController
 		//중단 테이블에서 해당 유저 있으면 가져오기 없어도 널
 		model.addAttribute("p_stop_upa_check", dao.p_stop_upa_check(u_p_apply_code));
 		
+		//팀 내 중단 요청 횟수 카운트
+		model.addAttribute("p_stop_teamMember_count", dao.p_stop_teamMember_count(u_p_apply_code));
+		
+		// 팀 확정 코드
+		model.addAttribute("p_team_confirm_code", dao.p_team_confirm_code(u_p_apply_code));
+		
 		
 		result = "WEB-INF/view/Inner-Project-home-teamManage.jsp";
 		
@@ -77,13 +87,38 @@ public class InnerProjectTeamManageController
 		model.addAttribute("u_p_apply_code", u_p_apply_code);
 		
 		IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
-		model.addAttribute("p_stop_teamMember", dao.p_stop_teamMember(u_p_apply_code));
-		
+		dao.p_stop_teamMember(u_p_apply_code);
 		
 		result = "redirect:inner-project-home-teammanage.action";
 		
 		return result;
 	}
+	
+	
+	@RequestMapping(value="/p_stop_project.action", method=RequestMethod.POST)
+	public String pStopProject(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code
+										  , @RequestParam("p_team_confirm_code") String p_team_confirm_code
+										  , InnerProjectTeamManageDTO dto) 
+	{
+		String result = null;
+		
+		model.addAttribute("u_p_apply_code", u_p_apply_code);
+		
+		IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+		
+		dao.p_stop_project_insert(dto);
+		
+		dao.p_stop_teamMember(u_p_apply_code);
+
+		
+		result = "redirect:inner-project-home-teammanage.action";
+		
+		return result;
+	}
+	
+	
+	
+	
 	
 
 

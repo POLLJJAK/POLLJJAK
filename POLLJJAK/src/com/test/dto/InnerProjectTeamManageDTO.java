@@ -19,7 +19,41 @@ public class InnerProjectTeamManageDTO
 	
 	private String member_stop_check;
 	
+	private String team_p_stop_count;
 	
+	private String p_team_confirm_code;
+	
+	
+	private String p_stop_reason;
+	
+	
+	
+	public String getP_team_confirm_code()
+	{
+		return p_team_confirm_code;
+	}
+	public void setP_team_confirm_code(String p_team_confirm_code)
+	{
+		this.p_team_confirm_code = p_team_confirm_code;
+	}
+	
+
+	public String getP_stop_reason()
+	{
+		return p_stop_reason;
+	}
+	public void setP_stop_reason(String p_stop_reason)
+	{
+		this.p_stop_reason = p_stop_reason;
+	}
+	public String getTeam_p_stop_count()
+	{
+		return team_p_stop_count;
+	}
+	public void setTeam_p_stop_count(String team_p_stop_count)
+	{
+		this.team_p_stop_count = team_p_stop_count;
+	}
 	public String getMember_stop_check()
 	{
 		return member_stop_check;

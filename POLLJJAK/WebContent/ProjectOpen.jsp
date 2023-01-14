@@ -112,59 +112,59 @@
 						<input type="radio" id="location2" name="time" value="TPT0000002"><label for="location2">온라인</label>
 						<input type="radio" id="location3" name="time" value="TPT0000003"><label for="location3">오프라인</label>
 					</div>
-						<div>
-							<select class="form-select form-select-sm w-25 mt-2" id = "region_part" name = "region_part">
-								<option value="">지역 선택</option>
-								<option value="RPT0000001">서울</option>
-								<option value="RPT0000002">경기</option>
-								<option value="RPT0000003">인천</option>
-								<option value="RPT0000004">강원</option>
-								<option value="RPT0000005">충북</option>
-								<option value="RPT0000006">충남</option>
-								<option value="RPT0000007">전북</option>
-								<option value="RPT0000008">전남</option>
-								<option value="RPT0000009">경북</option>
-								<option value="RPT0000010">경남</option>
-								<option value="RPT0000011">제주</option>
-							</select>
-						</div>
+					<div>
+						<select class="form-select form-select-sm w-25 mt-2" id = "region_part" name = "region_part">
+							<option value="">지역 선택</option>
+							<option value="RPT0000001">서울</option>
+							<option value="RPT0000002">경기</option>
+							<option value="RPT0000003">인천</option>
+							<option value="RPT0000004">강원</option>
+							<option value="RPT0000005">충북</option>
+							<option value="RPT0000006">충남</option>
+							<option value="RPT0000007">전북</option>
+							<option value="RPT0000008">전남</option>
+							<option value="RPT0000009">경북</option>
+							<option value="RPT0000010">경남</option>
+							<option value="RPT0000011">제주</option>
+						</select>
 					</div>
+				</div>
 				<hr />
 				
-				  <label class="col-sm-4 form-label">팀장 직무<em style="color: red;"> * </em></label>
-					<table>
-						<tr>
-							<td><select class="form-select form-select-sm mb-4 " id="leader_position" name = "position">
-									<option value="">팀장 직무 선택</option>
-									<option value="PSPT000001">UI/UX</option>
-									<option value="PSPT000002">게임</option>
-									<option value="PSPT000003">프로젝트 매니저</option>
-									<option value="PSPT000004">하드웨어 기획</option>
-									<option value="PSPT000005">그래픽 디자인</option>
-									<option value="PSPT000006">UI/UX 디자인</option>
-									<option value="PSPT000007">3D 디자인</option>
-									<option value="PSPT000008">하드웨어 디자인</option>
-									<option value="PSPT000009">IOS</option>
-									<option value="PSPT000010">안드로이드</option>
-									<option value="PSPT000011">웹 프론트엔드</option>
-									<option value="PSPT000012">웹 퍼블리셔</option>
-									<option value="PSPT000013">크로스 플랫폼</option>
-									<option value="PSPT000014">임베디드SW</option>
-									<option value="PSPT000015">웹서버</option>
-									<option value="PSPT000016">블록체인</option>
-									<option value="PSPT000017">AI</option>
-									<option value="PSPT000018">DB/빅데이터/DS</option>
-									<option value="PSPT000019">게임서버</option>
-									<option value="PSPT000020">사업기획</option>
-									<option value="PSPT000021">마케팅</option>
-									<option value="PSPT000022">재무/회계</option>
-									<option value="PSPT000023">영업</option>
-									<option value="PSPT000024">전략/컨설팅</option>
-									<option value="PSPT000025">투자/고문</option>
-							</select></td>
-							<td><input type="text" id="countLeader" name="count" value="1" style = "display: none;"/></td>
-						</tr>
-					</table>
+				<label class="col-sm-4 form-label">팀장 직무<em style="color: red;"> * </em></label>
+				<table>
+					<tr>
+						<td><select class="form-select form-select-sm mb-4 " id="leader_position" name = "position">
+								<option value="">팀장 직무 선택</option>
+								<option value="PSPT000001">UI/UX</option>
+								<option value="PSPT000002">게임</option>
+								<option value="PSPT000003">프로젝트 매니저</option>
+								<option value="PSPT000004">하드웨어 기획</option>
+								<option value="PSPT000005">그래픽 디자인</option>
+								<option value="PSPT000006">UI/UX 디자인</option>
+								<option value="PSPT000007">3D 디자인</option>
+								<option value="PSPT000008">하드웨어 디자인</option>
+								<option value="PSPT000009">IOS</option>
+								<option value="PSPT000010">안드로이드</option>
+								<option value="PSPT000011">웹 프론트엔드</option>
+								<option value="PSPT000012">웹 퍼블리셔</option>
+								<option value="PSPT000013">크로스 플랫폼</option>
+								<option value="PSPT000014">임베디드SW</option>
+								<option value="PSPT000015">웹서버</option>
+								<option value="PSPT000016">블록체인</option>
+								<option value="PSPT000017">AI</option>
+								<option value="PSPT000018">DB/빅데이터/DS</option>
+								<option value="PSPT000019">게임서버</option>
+								<option value="PSPT000020">사업기획</option>
+								<option value="PSPT000021">마케팅</option>
+								<option value="PSPT000022">재무/회계</option>
+								<option value="PSPT000023">영업</option>
+								<option value="PSPT000024">전략/컨설팅</option>
+								<option value="PSPT000025">투자/고문</option>
+						</select></td>
+						<td><input type="text" id="countLeader" name="count" value="1" style = "display: none;"/></td>
+					</tr>
+				</table>
 
 				<label class="col-sm-4 form-label">팀원 직무<em style="color: red;"> * </em></label>
 				<table>

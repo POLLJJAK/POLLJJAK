@@ -9,7 +9,15 @@
 	width: 100%;
 }
 
-#registration_done
+#c_registration_done
+{
+	background-color: #3498db; 
+	border-radius: 50px;
+	width: 100px; 
+	border: none; 
+	display: inline-block;
+}
+#u_registration_done
 {
 	background-color: #3498db; 
 	border-radius: 50px;

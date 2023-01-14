@@ -4,6 +4,7 @@ import com.test.dto.ProjectOpenDTO;
 
 public class ObjectToJson {
 
+									// 사용할 DTO로 변경┓
 	public static String memberListJsonStringify(ProjectOpenDTO dto) {
 		
 		// Gson 객체 생성
@@ -16,6 +17,7 @@ public class ObjectToJson {
 		return studentJson;  // {"id":1,"name":"Anna"}
 	}
 	
+										// 사용할 DTO로 변경┓
 	public static String memberRecordJsonStringify(ProjectOpenDTO dto) {
 		
 		// Gson 객체 생성

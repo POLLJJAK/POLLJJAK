@@ -92,7 +92,7 @@
 		, #{ph_meet_subtitle}
 		, #{ph_meet_title}
 		, TO_DATE(#{meet_start_date}, 'YYYY-MM-DD HH24:MI:SS')
-		, TO_DATE(#{meet_start_date}, 'YYYY-MM-DD HH24:MI:SS')
+		, TO_DATE(#{meet_end_date}, 'YYYY-MM-DD HH24:MI:SS')
 		, #{summernote}
 		, SYSDATE
 		, NULL)

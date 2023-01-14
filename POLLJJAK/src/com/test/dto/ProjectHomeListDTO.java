@@ -17,6 +17,16 @@ public class ProjectHomeListDTO
 	private String p_code;
 	private String u_p_apply_code;
 	
+	private String p_end_condition_code;
+	
+	public String getP_end_condition_code()
+	{
+		return p_end_condition_code;
+	}
+	public void setP_end_condition_code(String p_end_condition_code)
+	{
+		this.p_end_condition_code = p_end_condition_code;
+	}
 	public String getP_name()
 	{
 		return p_name;
