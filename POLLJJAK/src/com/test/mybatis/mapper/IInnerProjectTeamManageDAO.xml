@@ -310,9 +310,49 @@
 		FROM P_STOP
 		WHERE U_P_APPLY_CODE = #{u_p_apply_code}
 	</select>
+	
+	
+	
+	<select id="p_stop_teamMember_count" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS TEAM_P_STOP_COUNT
+		FROM P_STOP 
+		WHERE U_P_APPLY_CODE IN (
+			SELECT B3.U_P_APPLY_CODE
+			FROM P B1, P_POSITION B2, U_P_APPLY B3, P_REJECT B4
+			WHERE B1.P_CODE = (
+				SELECT A3.P_CODE
+				FROM U_P_APPLY A1, P_POSITION A2, P A3
+				WHERE A1.U_P_APPLY_CODE = #{u_p_apply_code}
+				  AND A1.P_POSITION_CODE = A2.P_POSITION_CODE
+				  AND A2.P_CODE = A3.P_CODE
+			)
+			AND B1.P_CODE = B2.P_CODE 
+			AND B2.P_POSITION_CODE = B3.P_POSITION_CODE
+			AND NOT B3.U_P_APPLY_CODE = B4.U_P_APPLY_CODE
+		)
+	</select>
+	
+	
+	<select id="p_team_confirm_code" resultType="com.test.dto.InnerProjectTeamManageDTO">
+		SELECT B2.P_TEAM_CONFIRM_CODE AS P_TEAM_CONFIRM_CODE
+		FROM P B1, P_TEAM_CONFIRM B2, P_END B3
+		WHERE B1.P_CODE = (
+			SELECT A3.P_CODE
+			FROM U_P_APPLY A1, P_POSITION A2, P A3
+			WHERE A1.U_P_APPLY_CODE = #{u_p_apply_code}
+			  AND A1.P_POSITION_CODE = A2.P_POSITION_CODE
+			  AND A2.P_CODE = A3.P_CODE
+		)
+		AND B1.P_CODE = B2.P_CODE
+		AND NOT B2.P_TEAM_CONFIRM_CODE = B3.P_TEAM_CONFIRM_CODE
+	</select>
 
-	
-	
+
+
+	<insert id="p_stop_project_insert"  parameterType="com.test.dto.InnerProjectTeamManageDTO">
+		INSERT INTO P_END(P_END_CODE, P_TEAM_CONFIRM_CODE, P_END_CONDITION_CODE, P_END_DATE, P_STOP_REASON)
+		VALUES('PEC'||LPAD(P_END_CODE_SEQ.NEXTVAL, 7, '0'), #{p_team_confirm_code}, 'PEC0000003', SYSDATE, #{p_stop_reason})
+	</insert>
 	
 	
 </mapper>

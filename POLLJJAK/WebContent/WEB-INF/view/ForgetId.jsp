@@ -6,6 +6,11 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setHeader("Expires", "0"); // Proxies.
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +22,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
+
+<!-- 현재 페이지 resources import -->
 <link rel="stylesheet" href="resources/css/Login.css" />
-<!-- <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"> -->
-<!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
 </head>
 <body>
@@ -95,10 +99,10 @@
 					</div>
 					 -->
 					<div class="errStyle">
-						<span class="err" id="err" style="display: inline;"></span>
+						<span class="err" id="err"></span>
 					</div>
 					<div class="input-container btn-wrap">
-						<button type="submit" class="btn" id="findId-btn">다음</button>
+						<button type="button" class="btn" id="findId-btn">다음</button>
 					</div>
 				</form>
 				<div class="input-container btn-wrap">
@@ -113,97 +117,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-			$("#findId-btn").click(function()
-			{
-				$(".err").css("display", "none");
-				
-				if ($("#name").val() == "")
-				{
-					$("#err").html("이름을 입력해주세요.");
-					$("#err").css("display", "inline");
-					$("#name").focus();
-					return;
-				}
-				if ($("#email").val() == "")
-				{
-					$("#err").html("이메일을 입력해주세요.");
-					$("#err").css("display", "inline");
-					$("#email").focus();
-					return;
-				}
-				if ($("#domain").val() == "none")
-				{
-					$("#err").html("도메인을 선택해주세요.");
-					$("#err").css("display", "inline");
-					$("#domain").focus();
-					return;
-				}
-				
-				//ajaxRequest();
-				
-				/*
-				var params = {userType: $("input:radio[name=\"userType\"]:checked").val()
-							  , name: $("#name").val()
-							  , email: $("#email").val()
-							  , domain_part_code: $("select[id=domain] > option:selected").val()};  
- 				//var params = "userType=" + $("input:radio[name=\"userType\"]:checked").val() + "&name=" + $("#name").val() + "&email=" + $("#email").val() + "&domain_part_code=" + $("select[id=domain] > option:selected").val();
-				
-				$.ajax(
-				{
-					type:"POST"
-					, url:"ajaxFindId.action"
-					, data:params
-					, dateType:"json"
-					, success:function(data)
-					{
-						if(data.equals(ajax))
-						{
-							$("#err").html("입력하신 정보와 일치하는 아이디가 없습니다.");
-							$("#err").css("display", "inline");
-							$("#name").focus();
-							return;
-						}
-						else
-						{
-							$("#findId_form").submit();
-						}
-					}
-					,error :function(e)
-					{
-						alert("에러코드 : " + e.responseText + "/" + e.status);
-						$("#err").html("해당 정보가 없습니다.");
-					}
-					
-				});
-			*/
-			});
-			/* 
-			function ajaxRequest()
-			{
-				$.ajaxSetup({async: false});
-				$.post("ajaxFindId.action"
-						, {
-							name: $("#name").val()
-							, email: $("#email").val()
-							, domain_part_code: $("select[id=domain] > option:selected").val()
-							, userType: $("input:radio[name=\"userType\"]:checked").val()
-				}, function(data)
-				{
-					if ($.trim(data) == 0 )   
-					{
-						$("#err").html("입력하신 정보와 일치하는 아이디가 없습니다.");
-						$("#err").css("display", "inline");
-						$("#name").focus();
-						return;
-					}
-					else
-					{
-				        $("#findId_form").submit();
-					}
-				});
-			}
-			 */
-	</script>
+	<script src="<%=cp %>/resources/js/Login.js"></script>
 </body>
 </html>

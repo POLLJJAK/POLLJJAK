@@ -6,6 +6,11 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setHeader("Expires", "0"); // Proxies.
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +22,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
+
+<!-- 현재 페이지 resources import -->
 <link rel="stylesheet" href="resources/css/Login.css" />
-<!-- <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"> -->
-<!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
 </head>
 <body>
@@ -71,7 +75,7 @@
 					</div>
 					</div>
 					<div class="input-container btn-wrap">
-						<input type="submit" class="btn" id="findpw-btn" value="다음">
+						<input type="button" class="btn" id="findPw-btn" value="다음">
 					</div>
 				</form>
 				<div class="input-container btn-wrap">
@@ -86,5 +90,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="<%=cp %>/resources/js/Login.js"></script>
 </body>
 </html>

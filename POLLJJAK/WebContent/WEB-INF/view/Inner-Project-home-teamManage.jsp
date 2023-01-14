@@ -87,9 +87,19 @@
 													<c:otherwise>
 														<c:choose>
 															<c:when test="${pj_team_leader.u_p_apply_code == u_p_apply_code }">
-																<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject_leader">
-																	<button class="L-stopBtn mb-2">중단하기</button>
-																</div>
+																<c:choose>
+																	<c:when test="${p_stop_teamMember_count == (pj_team_count-1) }">	
+																		<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject_leader">
+																			<button class="L-stopBtn mb-2">중단하기</button>
+																		</div>
+																	</c:when>
+																	<c:otherwise>																		
+																		<div class="row col-md-12 col-lg-12">
+																			<button class="L-stopBtn-disabled mb-2" disabled>중단 요청 확인중</button>
+																		</div>
+																	</c:otherwise>
+																</c:choose>
+
 
 																<div class="row col-md-12 col-lg-12">
 																	<div class="col-lg-6 ps-0 pe-0" data-bs-toggle="modal" data-bs-target="#teamEvaluation">
@@ -106,7 +116,7 @@
 															
 																<c:choose>
 																	<c:when test="${p_stop_upa_check.u_p_apply_code == u_p_apply_code}">
-																		<div class="row col-md-12 col-lg-12"  data-bs-toggle="modal" data-bs-target="#stopProject_member">
+																		<div class="row col-md-12 col-lg-12">
 																			<button class="L-stopBtn-disabled mb-2" disabled>중단 요청중</button>
 																		</div>
 																	</c:when>
@@ -199,7 +209,7 @@
 												<td>
 													<c:forEach var="p_stop_teamMember_check" items="${p_stop_teamMember_check }">
 														<c:if test="${pj_team_info.u_name == p_stop_teamMember_check.u_name && p_stop_teamMember_check.member_stop_check >= 1}">
-															<button class="btn btn-danger" onclick="location.href='deletestopcheck.action?u_p_apply_code=${pj_team_info.u_p_apply_code }'">
+															<button class="btn btn-danger">
 																<div class="bi bi-person-x"></div>
 															</button>
 														</c:if>
@@ -400,7 +410,7 @@
 	</div>
 
 
-	<!-- 팀장용 중단 요청 모달창 -->
+	<!-- 팀장용 중단 하기 모달창 -->
 	<div class="modal fade" id="stopProject_leader" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
@@ -409,17 +419,17 @@
 		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      	</div>
 		      	<div class="modal-body row mb-3 justify-content-center">
-		      		<div>중단하시겠습니까?</div>
+		      		<div>프로젝트를 중단하시겠습니까?</div>
 		      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다.</div>
 		      		
 		      		<div class="form-group">
-						<textarea class="form-control" rows="2" placeholder="중단 사유를 입력해주세요."></textarea>
-						<div style="float: right; font-size: 12px;">(최대 500자)</div>
+						<textarea class="form-control" id="p_stop_reason" name="p_stop_reason" rows="2" placeholder="중단 사유를 입력해주세요." maxlength="100"></textarea>
+						<div style="float: right; font-size: 12px;">(최대 100자)</div>
 					</div>
 					
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-danger" id="submitStopBtn">중단하기</button>
+		        	<button type="button" class="btn btn-danger" id="pStopBtn">중단하기</button>
 		        	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소하기</button>
 		      	</div>
 		    </div>

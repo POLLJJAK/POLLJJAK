@@ -18,10 +18,16 @@ public interface IInnerProjectTeamManageDAO
 	public InnerProjectTeamManageDTO pj_team_leader(String u_p_apply_code);
 	
 	
-	
 	public int p_stop_teamMember(String u_p_apply_code);
 	
 	public List<Map<String, String>> p_stop_teamMember_check(String u_p_apply_code);
 	
 	public InnerProjectTeamManageDTO p_stop_upa_check(String u_p_apply_code);
+	
+	public int p_stop_teamMember_count(String u_p_apply_code);
+	
+	
+	public InnerProjectTeamManageDTO p_team_confirm_code(String u_p_apply_code);
+	
+	public int p_stop_project_insert(InnerProjectTeamManageDTO dto);
 }

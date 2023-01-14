@@ -6,6 +6,11 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setHeader("Expires", "0"); // Proxies.
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +22,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
+
+<!-- 현재 페이지 resources import -->
 <link rel="stylesheet" href="resources/css/Login.css" />
-<!-- <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"> -->
-<!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
 </head>
 <body>
 	<div class="page-container">
@@ -32,7 +37,7 @@
 			</div>
 			<div class="form-left-side">
 				<div class="empty-more"></div>
-				<form action="uchangepw.action" method="post">
+				<form action="uchangepw.action" id="changePw_form" method="post">
 					<div class="input-container">
 						<div class="input-wrap input-id">
 							<i class="fas fa-user"> 아이디 : </i>
@@ -43,15 +48,16 @@
 							<i class="fas fa-key"></i>
 							<input placeholder="비밀번호" type="password" id="pw" name="pw">
 						</div>
-						<!-- 
 						<div class="input-wrap input-password">
 							<i class="fas fa-key"></i>
-							<input placeholder="비밀번호 확인" type="password" id="pw" name="pw">
+							<input placeholder="비밀번호 확인" type="password" id="pw_check" name="pw_check">
 						</div>
-						 -->
+					</div>
+					<div class="errStyle">
+						<span class="err" id="err" style="display: inline;"></span>
 					</div>
 					<div class="input-container btn-wrap">
-						<input type="submit" class="changePw btn" value="비밀번호 재설정">
+						<input type="button" class="changePw btn" id="changePw-btn" value="비밀번호 재설정">
 						<div style="margin: 5px 0 5px 0;">
 							<a href="main.action" >홈으로</a>
 							<a>|</a>
@@ -62,5 +68,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="<%=cp %>/resources/js/Login.js"></script>
 </body>
 </html>
