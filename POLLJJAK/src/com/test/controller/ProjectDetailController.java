@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dto.ProjectDetailDTO;
 import com.test.mybatis.IProjectDetailDAO;
+import com.test.mybatis.IProjectDetailNewsDAO;
 
 @Controller
 public class ProjectDetailController
@@ -64,6 +65,8 @@ public class ProjectDetailController
 			message = "회원님은 개설 진행 중인 프로젝트에 지원중이므로 새로운 프로젝트에 지원할 수 없습니다";
 		}
 		
+		IProjectDetailNewsDAO newsListDao = sqlSession.getMapper(IProjectDetailNewsDAO.class);
+		
 		model.addAttribute("pInfo", dao.getProjectDetail(p_code));
 		model.addAttribute("pPositionInfo", dao.getProjectPosition(p_code));
 		model.addAttribute("pLeaderInfo", dao.getProjectLeader(p_code));
@@ -72,6 +75,7 @@ public class ProjectDetailController
 		model.addAttribute("p_code", p_code);
 		model.addAttribute("user_code", user_code);
 		
+		model.addAttribute("p_news_list", newsListDao.p_news_list(p_code));
 		
 		result = "/ProjectDetail.jsp";
 	
