@@ -418,20 +418,24 @@
 		        	<h5 class="modal-title">중단 요청</h5>
 		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      	</div>
-		      	<div class="modal-body row mb-3 justify-content-center">
-		      		<div>프로젝트를 중단하시겠습니까?</div>
-		      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다.</div>
-		      		
-		      		<div class="form-group">
-						<textarea class="form-control" id="p_stop_reason" name="p_stop_reason" rows="2" placeholder="중단 사유를 입력해주세요." maxlength="100"></textarea>
-						<div style="float: right; font-size: 12px;">(최대 100자)</div>
-					</div>
-					
-		      	</div>
-		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-danger" id="pStopBtn">중단하기</button>
-		        	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소하기</button>
-		      	</div>
+		
+		      	<form action="p_stop_project.action?u_p_apply_code=${u_p_apply_code}&p_team_confirm_code=${p_team_confirm_code.p_team_confirm_code}" method="post" id="pStopBtnForm">
+			      	<div class="modal-body row mb-3 justify-content-center">
+			      		<div>프로젝트를 중단하시겠습니까? ${p_team_confirm_code.p_team_confirm_code }</div>
+			      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다. ${u_p_apply_code }</div>
+			      		
+			      		<div class="form-group">
+							<textarea class="form-control" id="p_stop_reason" name="p_stop_reason" rows="2" placeholder="중단 사유를 입력해주세요." maxlength="100"></textarea>
+							<div style="float: right; font-size: 12px;">(최대 100자)</div>
+						</div>
+						
+			      	</div>
+			      	<div class="modal-footer justify-content-center">
+			        	<button type="button" class="btn btn-danger" id="pStopBtn" >중단하기</button>
+			        	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소하기</button>
+			      	</div>
+		      	</form>
+		      	
 		    </div>
 		 </div>
 	</div>

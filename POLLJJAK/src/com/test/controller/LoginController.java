@@ -112,6 +112,8 @@ public class LoginController
 			HttpSession session = request.getSession();
 			session.setAttribute("loginCheck", loginCheck);
 			session.setAttribute("userType", userType);
+			session.setAttribute("user_code", loginCheck.getUser_code());
+			
 			result = "redirect:main.action";
 //			if (session == null || !request.isRequestedSessionIdValid()) {
 //				System.out.println("일반 세션이 무효화 상태입니다.");

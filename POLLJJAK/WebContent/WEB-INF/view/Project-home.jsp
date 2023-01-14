@@ -96,6 +96,7 @@
 						완료 프로젝트
 					</h5>
 						
+						
 					<c:choose>
 						<c:when test="${fn:length(pj_complete_list) == 0}">
 							<div class="container mb-3">
@@ -105,6 +106,7 @@
 							</div>
 						</c:when>
 						<c:otherwise>
+						
 							<c:forEach var="pj_complete_list" items="${pj_complete_list}">
 								<div onclick="location.href='inner-project-home-teammanage.action?u_p_apply_code=${pj_complete_list.u_p_apply_code }'">
 									<div class="container pe-0 ps-0 mb-3">
@@ -112,17 +114,28 @@
 											<div class="pj-box-body p-3 col-xs-12 col-lg-12">
 												<div class="h5 fw-bolder">${pj_complete_list.p_name }</div>
 												<div class="mb-2">${pj_complete_list.pj_start_date } ~ ${pj_complete_list.pj_end_date }</div>
-												<div class="mb-1">전체 진척도 100%</div>
-												<div class="progress">
-													<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #37417C" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>		
+												
+												<c:choose>
+													<c:when test="${pj_complete_list.p_end_condition_code == 'PEC0000003'}">
+														<div class="mb-1">중단된 프로젝트입니다.</div>
+													</c:when>
+													<c:otherwise>
+														<div class="mb-1">전체 진척도 100%</div>
+														<div class="progress">
+															<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #37417C" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+														</div>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 									</div>
 								</div>
 							</c:forEach>
+							
 						</c:otherwise>
 					</c:choose>
+					
+					
 				</div>
 			</div>
 		</section>

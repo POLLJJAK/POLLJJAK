@@ -40,7 +40,6 @@ public class PostCommentController
       IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
       
       ObjectMapper mapper = new ObjectMapper();
-      //Map<String, Object> map =  HashMap<String, Object>();
       
       ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
       cmtList =  dao.list(post_code);
