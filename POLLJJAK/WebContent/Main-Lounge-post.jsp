@@ -365,16 +365,16 @@
             contentType: "application/json; charset=UTF-8",
             success : function(data)
             {
-               //console.log(data);
+               console.log(data);
             
                //alert(typeof data); //--object
                //alert(Object.keys(data)); //0,1,2,3,4,5
                //alert(Object.keys(data).length); //6
                alert(Object.keys(data).values()); //6
+               /*
                var listHtml = "";
-               for (const [key, value] of Object.entries(myObj)
+               for (var i=0; i<=Object.keys(data).length; i++)
                {
-            	   console.log(${key}: ${value});
                   	//var comment_code = data.comment_code[i];
                     var bno = data.post_code;
                     var user_code = data.user_code;
@@ -388,7 +388,7 @@
                     listHtml +=  comment_code; 
                } 
                   alert(comment_code);
-               
+               */
                //alert(listHtml)
                   //alert("성공");
    
