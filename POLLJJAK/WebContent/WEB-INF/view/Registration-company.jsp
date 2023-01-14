@@ -49,15 +49,14 @@
 								<div class="col-sm-4">
 									<input type="text" class="form-control" id="id" name="id" autofocus="autofocus">
 									<span class="err" id="errId"></span> 
+									<span class="err" id="errIdCheck"></span> 
 								</div>
-								<!-- 
 								<div class = "col-sm-3">
-									<button type="button" class="id_check"
+									<button type="button" class="companyId-check" id="idCheck"
 									style="margin-top: 4px; color: white; background-color: #3498db; border: 1px solid #3498db; border-radius: 3px;
 									font-size: 13px; font-weight: bold;">
 									ID 중복검사</button>
 								</div>
-								 -->
 							</div>
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
@@ -65,8 +64,11 @@
 									비밀번호<em style="color: red;"> * </em>
 								</label>
 								<div class="col-sm-4">
-									<input type="password" class="form-control" id="pw" name="pw">
+									<input type="password" class="form-control" id="pw" name="pw" autocomplete="off">
+									안전도 <progress class="meter" max="4" value="0" id="meter"></progress>
+									<div class="textbox"></div>
 									<span class="err" id="errPw"></span>
+									<span class="err" id="pwSecure"></span>
 								</div>
 								<div class = "col-sm-3"></div>
 							</div>
@@ -184,7 +186,8 @@
 								<button type="button" class="btn btn-primary registration_done" id="c_registration_done" >
 								가입하기</button>
 							</div>
-							<input type="hidden" id="checked_companyNum" value="">
+							<input type="hidden" id="checked_CNumbtn" value="">
+							<input type="hidden" id="checkedId_btn" value="">
 						</fieldset>
 					</form>
 				</div>

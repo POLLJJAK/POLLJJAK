@@ -15,6 +15,9 @@ public interface ICompanyDAO
 {
 	// 기업회원 정보 입력(추가)
 	public Integer add(CompanyDTO u);
+	
+	// 아이디 중복
+	public int idCheck(String id);
 		
 	// 도메인 출력
 	public ArrayList<DomainDTO> domainList();

@@ -21,6 +21,13 @@
           )}
 	</select>
 	
+	<select id="idCheck" resultType="int">
+        SELECT COUNT(*)
+		FROM C
+		WHERE C_ID = #{id}
+	</select>
+	
+	
 	<select id="domainList" resultType="com.test.dto.DomainDTO">
 		SELECT DOMAIN_PART_CODE, DOMAIN_ADDRESS, DOMAIN_PART
 		FROM DOMAIN_PART
