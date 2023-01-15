@@ -21,7 +21,7 @@ public interface IPostCommentDAO {
 	
 	// 댓글 리스트
 	//public List<PostCommentDTO> list(String post_code);
-	public ArrayList<PostCommentDTO> list(String post_code);
+	public List<Map<String, Object>> list(Map<String, Object> param);
 	//public String list(String post_code);
 	//public Map<String, Object> list(String post_code);
 	// 댓글 삭제
