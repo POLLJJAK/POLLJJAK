@@ -55,8 +55,7 @@
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar" class="navbar">
 					<ul style="margin-left: auto; margin-right: auto;">
-						<%-- <li><a class="nav-link scrollto active" href="companyupdateform.action?user_code="<%= request.getParameter("user_code") %>>정보</a></li> --%>
-						<li><a class="nav-link scrollto" href="companyformupdateform.action">정보</a></li>
+						<li><a class="nav-link scrollto" href="companyformupdateform.action?user_code=${user_code }">정보</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-project.jsp">프로젝트</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
 						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
