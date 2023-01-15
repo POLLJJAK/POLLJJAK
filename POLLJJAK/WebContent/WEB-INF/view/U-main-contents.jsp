@@ -3,10 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 
-<!-- 공지  -->
-<!-- 모든 페이지의 처리는 동적으로 그리도록 처리 될 예정  -->
-<!-- 현재는 뷰페이지 표현을 위해서 모든 아이템들이 정적으로 처리되어 있습니다-->
+<!-- 현재 페이지 resources import -->
+<script src="<%=cp %>/resources/js/U-main-contents.js"></script>
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
@@ -36,7 +39,7 @@
 <!-- ====== Carousel Notice Section ====== -->
 <!-- 일단 메인 배너에 대한 코드를 만들어 놓긴 했는데
 저는 개인적으로 메인만 있는게 더 좋을 것 같은 생각입니다 -->
-<div class="section-title"  style = "margin-bottom: 50px;"data-aos="fade-up">
+<!-- <div class="section-title"  style = "margin-bottom: 50px;"data-aos="fade-up">
 	<h2>관리자 공지사항</h2>
 	<p>플젝폴짝의 새로운 공지사항을 확인하세요!</p>
 </div>
@@ -89,7 +92,7 @@
 				class="visually-hidden">Next</span>
 		</button>
 	</div>
-</div>
+</div> -->
 <!-- End Carousel Notice Section -->
 
 <!-- ====== Carousel New Project Section ====== -->
@@ -118,7 +121,7 @@
 							<span class="visually-hidden">Next</span>
 						</button>
 					</div>
-					<div class="carousel-inner">
+					<div class="carousel-inner" id="appendChildSpot">
 						<div class="carousel-item active">
 							<div class="carousel-row">
 								<div class="col-md-3 mb-3">
@@ -130,7 +133,6 @@
 											<p class="card-text">한은영의 프로젝트</p>
 											<p class="card-text">JAVA/ORACLE</p>
 										</div>
-
 									</div>
 								</div>
 								<div class="col-md-3 mb-3">
