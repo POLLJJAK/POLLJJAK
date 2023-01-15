@@ -370,7 +370,7 @@
                //alert(typeof data); //--object
                //alert(JSON.stringify(data)); //--object
                alert(JSON.stringify(data[0]["nickname"])); 
-               alert(URLEncoder.encode(JSON.stringify(data[0]["nickname"]), "UTF-8")); 
+               //alert(URLEncoder.encode(JSON.stringify(data[0]["nickname"]), "UTF-8")); 
                //alert(Object.keys(data)); //0,1,2,3,4,5
                //alert(Object.keys(data).length); //6
                //alert(Object.keys(data).values()); //[object Array Iterator]
