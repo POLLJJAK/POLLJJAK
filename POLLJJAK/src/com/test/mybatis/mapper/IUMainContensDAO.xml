@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IUMainContentsDAO">
+	
+	<!-- 신규 프로젝트 조회-->
+	<!-- 
+	<select id="getNewProject" resultType="map">
+		SELECT P_NAME, P_CODE, U_NAME, SKILL_PART, P_FILE_PATH, P_FILE_NAME 
+		FROM 
+			(SELECT P.P_NAME,
+					P.P_CODE, 
+					U.U_NAME, 
+					SP.SKILL_PART, 
+					PF.P_FILE_PATH, 
+					PF.P_FILE_NAME 
+      	FROM P P, U U, SKILL_PART SP, P_FILE PF
+      	WHERE P.USER_CODE = U.USER_CODE
+      		AND P.SKILL_PART_CODE = SP.SKILL_PART_CODE
+     		AND P.P_CODE = PF.P_CODE
+      		<![CDATA[AND P.P_START_DATE >= TO_CHAR(SYSDATE-90,'YYYY-MM-DD')]]>
+      	)
+		<![CDATA[WHERE ROWNUM <= 20]]>
+	</select>
+	 -->
+</mapper>
