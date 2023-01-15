@@ -20,12 +20,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                     , #{content}, SYSDATE, '1');
 	</insert>
 	
-	<select id="list" resultType="com.test.dto.PostCommentDTO">
+	<select id="list" parameterType="map" resultType="map">
 		SELECT COMMENT_CODE, POST_CODE
 			, USER_CODE, NICKNAME, CONTENT
 			, COMMENTDATE, COMMENTUPDATE, CGROUP, CDEPTH
 		FROM L_POST_COMMENT_LIST_VIEW
 		WHERE POST_CODE=#{post_code}
+		START WITH CGROUP = '0'
+		CONNECT BY PRIOR COMMENT_CODE = CGROUP
+		ORDER SIBLINGS BY CGROUP ASC, COMMENTDATE ASC
 	</select>
 	
 	
