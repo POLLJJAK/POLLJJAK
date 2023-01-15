@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServlet;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,28 +28,24 @@ import com.test.dto.PostCommentDTO;
 import com.test.mybatis.IPostCommentDAO;
 
 @Controller
-public class PostCommentController
-{
+public class PostCommentController {
    @Autowired
    private SqlSession sqlSession;
-   
-   
+
    @ResponseBody
    @RequestMapping(value = "/commentlist.action", method = RequestMethod.POST)
-   public String commentList(@RequestBody String post_code, Model model)
-   {
-      
+
+   public String commentList(@RequestBody String post_code) {
+
       IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-      
+
       ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
-      cmtList =  dao.list(post_code);
-      
+      cmtList = dao.list(post_code);
+
       JSONObject jsonObject = new JSONObject();
       JSONArray jarr = new JSONArray();
 
-
-      for (int i = 0; i < cmtList.size(); i++)
-      {
+      for (int i = 0; i < cmtList.size(); i++) {
          JSONObject jsonObj = new JSONObject();
          jsonObj.put("comment_code", cmtList.get(i).getComment_code());
          jsonObj.put("post_code", cmtList.get(i).getPost_code());
@@ -61,49 +58,49 @@ public class PostCommentController
          jsonObj.put("cdepth", cmtList.get(i).getCdepth());
          jarr.add(jsonObj);
       }
-      
-      jsonObject.put("data", jarr);
-      
-      System.out.println(jsonObject.toJSONString());
-      
-      return jsonObject.toJSONString();
+
+      String jsonSt = jarr.toJSONString();
+      System.out.println(jsonSt);
+      // response.setContentType("text/html;charset=UTF-8");
+      // jsonObject.put("data", jarr);
+      return jsonSt;
    }
-   
+
    /*
-   @RequestMapping(value = "/commentlist.action", method = RequestMethod.POST) 
-	public String commentList(@RequestParam("post_code") String post_code 
-			, HttpSession session, Model model) 
-	{
-		String result = "";
-		Map<String, Object> map = new HashMap<String, Object>();
-		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-		
-		
-		ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
-		cmtList =  dao.list(post_code);
-		
-		for (int i = 0; i < cmtList.size(); i++)
-		{
-			map.put("comment_code", cmtList.get(i).getComment_code());
-			map.put("post_code", cmtList.get(i).getPost_code());
-			map.put("user_code", cmtList.get(i).getUser_code());
-			map.put("nickname", cmtList.get(i).getNickname());
-			map.put("content", cmtList.get(i).getContent());
-			map.put("commentdate", cmtList.get(i).getCommentdate());
-			map.put("commentupdate", cmtList.get(i).getCommentupdate());
-			map.put("cgroup", cmtList.get(i).getCgroup());
-			map.put("cdepth", cmtList.get(i).getCdepth());
-			
-			//System.out.println(map.values()); 
-			//찍히는구먼
-			
-		}
-		System.out.println();
-		model.addAttribute("map", map);
-		result = "/AjaxCmt.jsp";
-		return result;
-		
-		
-	}
+    * @RequestMapping(value = "/commentlist.action", method = RequestMethod.POST)
+    * public String commentList(@RequestParam("post_code") String post_code
+    * , HttpSession session, Model model)
+    * {
+    * String result = "";
+    * Map<String, Object> map = new HashMap<String, Object>();
+    * IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
+    * 
+    * 
+    * ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
+    * cmtList = dao.list(post_code);
+    * 
+    * for (int i = 0; i < cmtList.size(); i++)
+    * {
+    * map.put("comment_code", cmtList.get(i).getComment_code());
+    * map.put("post_code", cmtList.get(i).getPost_code());
+    * map.put("user_code", cmtList.get(i).getUser_code());
+    * map.put("nickname", cmtList.get(i).getNickname());
+    * map.put("content", cmtList.get(i).getContent());
+    * map.put("commentdate", cmtList.get(i).getCommentdate());
+    * map.put("commentupdate", cmtList.get(i).getCommentupdate());
+    * map.put("cgroup", cmtList.get(i).getCgroup());
+    * map.put("cdepth", cmtList.get(i).getCdepth());
+    * 
+    * //System.out.println(map.values());
+    * //찍히는구먼
+    * 
+    * }
+    * System.out.println();
+    * model.addAttribute("map", map);
+    * result = "/AjaxCmt.jsp";
+    * return result;
+    * 
+    * 
+    * }
     */
 }
