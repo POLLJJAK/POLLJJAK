@@ -355,4 +355,30 @@
 	</insert>
 	
 	
+	
+	
+	
+	
+	
+	<insert id="teamEvaluation">
+		INSERT INTO P_RATING(P_RATING_CODE, RECEIVE_U_P_APPLY_CODE, SEND_U_P_APPLY_CODE, P_RATING, P_RATING_DATE)
+		SELECT ('PR'||LPAD(P_RATING_CODE_SEQ.NEXTVAL, 8, '0')), A.*
+		FROM (
+		<foreach collection="list" item="item"  index="index" separator=" UNION ALL ">
+			SELECT #{u_p_apply_code} AS U_P_APPLY_CODE
+			, #{} AS TEAM_MEMBER
+			, #{} AS RATING_VAL
+			, SYSDATE
+			FROM DUAL 
+		</foreach>
+		) A
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

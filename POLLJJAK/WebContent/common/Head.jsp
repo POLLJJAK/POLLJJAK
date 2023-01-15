@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
     <title>플젝폴짝 : 개발자 프로젝트 모집 관리 플랫폼</title>

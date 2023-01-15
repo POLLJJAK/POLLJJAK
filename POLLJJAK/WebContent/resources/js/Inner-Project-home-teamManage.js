@@ -14,13 +14,19 @@ $(function() {
 		 var modal = $(this);
      });
 	 
-	 
+	/* 중단 요청 버튼 */
 	$('#pStopBtn').click(function() {
 		
 		$('#pStopBtnForm').submit();
 	});
  
-	 
+	/* 팀원 평가 버튼 */
+	$('#teamEvalBtn').click(function() {
+		
+		
+		$('#teamEvalBtnForm').submit();
+	});
+ 
 	 
 	 
 });

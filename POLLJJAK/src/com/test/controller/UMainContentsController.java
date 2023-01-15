@@ -41,11 +41,11 @@ public class UMainContentsController
 			
 		}
 		
-		NewProjectList.put("p_code", dao);
-		NewProjectList.put("p_name", "test1");
-		NewProjectList.put("u_name", "1111");
-		NewProjectList.put("skill_part", "010-1111-1111");
-		NewProjectList.put("p_file", "대전 서구 탄방동");
+		NewProjectList.put("p_code", );
+		NewProjectList.put("p_name", "");
+		NewProjectList.put("u_name", "");
+		NewProjectList.put("skill_part", ");
+		NewProjectList.put("p_file", "");
 		listMap.add(NewProjectList);
 				
 		dao.getNewProject()
