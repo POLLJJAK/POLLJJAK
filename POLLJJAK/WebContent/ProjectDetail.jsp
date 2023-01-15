@@ -208,60 +208,25 @@
 		        <div id="tab-2" class="tab-content" >
 		        	<br><br>
 		        	<div class="project-news">
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		
-		        			
+		        	
+	        			<c:choose>
+			        		<c:when test="${fn:length(p_news_list) == 0}">
+								<div class="news">
+									새로운 소식이 없습니다.
+								</div>
+			        		</c:when>
+			        		<c:otherwise>
+				        		<c:forEach var="p_news_list" items="${p_news_list }">
+				        			<div class="news">
+					        			${p_news_list.p_news_date} <br>
+					        			<span style="color: blue; font-weight: bold;">${p_news_list.p_news_content}</span> 
+					        		</div>
+			        			</c:forEach>
+			        		</c:otherwise>
+		        		</c:choose>
 		        		
 		        	</div>
+		        	
 		        	<button class="btn-hover color-9"  id ="load"
 		        	style="align-content: center; margin-left: 30%; margin-top: 10%;">더보기</button>
 		        
