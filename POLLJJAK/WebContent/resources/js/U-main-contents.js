@@ -1,5 +1,3 @@
-$().ready(function(){
-	
 	//1. 서버 요청
 	
 	//2. 데이터 받아와
@@ -7,17 +5,54 @@ $().ready(function(){
 	//3. 4빵해서 이쁘게 HTML 문자열 만들어
 	
 	//4. append해!
-	
-	$.ajax({
-		url: "umaincontents.action",
-		dataType: "json",
-		success: function(result){
-			alert("결과 있음");
-		},
-		error: function(result){
-			alert("err");
-		}
+	$.ready(function(){
+			
+			var param = {post_code : post_code};
+			var paramJson = {};
+			paramJson.paramCode = param;
+         
+			//댓글 리스트 
+			$.ajax({
+				url:"commentlist.action",
+				type:"POST",
+				method : "POST",
+				dataType: "json",
+				contentType : "application/json; charset-utf-8",
+				async : false,
+				cache : false,
+				success : function(data)
+				{
+					//데이터 정상적으로 넘어옵니다.
+					console.log(data);
+					
+					console.log(data.resultList);
+					
+					//직접 접근하여 출력하기
+					console.log(data.resultList[0].CDEPTH);
+					console.log(data.resultList[0].CGROUP);
+					console.log(data.resultList[0].COMMENTDATE);
+					console.log(data.resultList[0].COMMENT_CODE);
+					console.log(data.resultList[0].CONTENT);
+					console.log(data.resultList[0].NICKNAME);
+					console.log(data.resultList[0].POST_CODE);
+					console.log(data.resultList[0].USER_CODE);
+					
+					//배열 순회하며 출력하기
+					data.resultList.map(e => 
+					{
+						console.log(e.CDEPTH);
+						console.log(e.CGROUP);
+						console.log(e.COMMENTDATE);
+						console.log(e.COMMENT_CODE);
+						console.log(e.CONTENT);
+						console.log(e.NICKNAME);
+						console.log(e.POST_CODE);
+						console.log(e.USER_CODE);
+					}
+				}
+			})
 	});
+
 	
 	
 	/*
@@ -47,4 +82,3 @@ $().ready(function(){
 	}
 	$("#appendChildSpot").
 	*/
-});
