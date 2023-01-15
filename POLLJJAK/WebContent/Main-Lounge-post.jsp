@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -10,7 +9,7 @@
    String post_code = request.getParameter("post_code");
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
@@ -73,7 +72,9 @@
 
 .board_cmt_write {
    width: 90%;
-   font-size: small;;
+   font-size: small;
+   margin-top: 50px;
+   
 }
 
 .content {
@@ -94,7 +95,8 @@
 }
 
 .cmt-contentlist {
-   border: 1px solid black;
+   border-bottom: 1px solid black;
+   
 }
 
 .siren {
@@ -102,6 +104,10 @@
    border-bottom: none;
    float: right;
    float: inherit;
+}
+
+.write_rereply{
+	width: 40%;
 }
 </style>
 <body>
@@ -268,12 +274,8 @@
 
                      <div class="board_cmt">
                         <div class="cmt-list">
-                           <div>
-                              <img src="assets/img/UserIcon/User-Icon.png" alt=""
-                                 style="width: 60px; height: 60px; padding: 10px;">
-                           </div>
                            <div class="cmt-contentlist">
-                              어찌구 저찌구 / 날짜 / 작성자 <span id="commentlist-content"></span>
+                              <span id="commentlist-content"></span>
                            </div>
 
                         </div>
@@ -352,10 +354,8 @@
    $(function(){
       $("#img").click(function()
       {
-         //alert("호출");
          var param = "<%=post_code%>";
          
-         //alert(post_code);
          //댓글 리스트 
          $.ajax({
             url:"commentlist.action",
@@ -368,39 +368,225 @@
                console.log(data);
             
                //alert(typeof data); //--object
+               //alert(JSON.stringify(data)); //--object
+               alert(JSON.stringify(data[0]["nickname"])); 
+               alert(URLEncoder.encode(JSON.stringify(data[0]["nickname"]), "UTF-8")); 
                //alert(Object.keys(data)); //0,1,2,3,4,5
                //alert(Object.keys(data).length); //6
-               alert(Object.keys(data).values()); //6
-               /*
-               var listHtml = "";
-               for (var i=0; i<=Object.keys(data).length; i++)
-               {
-                  	//var comment_code = data.comment_code[i];
-                    var bno = data.post_code;
-                    var user_code = data.user_code;
-                    var writer = data.nickname;
-                    var content = data.content;
-                    var grps = data.commentdate;
-                    var wdate = data.commentupdate;
-                    var grp = data.cgroup;
-                    var grp1 = data.cdepth;
-                    
-                    listHtml +=  comment_code; 
-               } 
-                  alert(comment_code);
-               */
-               //alert(listHtml)
-                  //alert("성공");
-   
+               //alert(Object.keys(data).values()); //[object Array Iterator]
+               //alert(Object.values(data)); //[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
                
-   
-               ///////////// 동적으로 넣어준 html에 대한 이벤트 처리는 같은 함수내에서 다 해줘야한다.
-               ///////////// $(document).ready(function(){}); 안에 써주면 안된다.
-   
-               // 댓글 리스트 부분에 받아온 댓글 리스트를 넣기
-               //$("#commentlist-content").html(listHtml);
-                  
-            },
+               var listHtml = "";
+               for (var i=0; i<Object.keys(data).length; i++)
+               {
+            	    //data.replace("\"", "");
+                  	var no = JSON.stringify(data[i]["comment_code"]).replace(/\"/gi, "");
+                    var bno = JSON.stringify(data[i]["post_code"]).replace(/\"/gi, "");
+                    var cu_code = JSON.stringify(data[i]["user_code"]).replace(/\"/gi, "");
+                    var writer = JSON.stringify(data[i]["nickname"]).replace(/\"/gi, "");
+                    var content = JSON.stringify(data[i]["content"]).replace(/\"/gi, "");
+                    var grps = JSON.stringify(data[i]["commentdate"]).replace(/\"/gi, "");
+                    var wdate = JSON.stringify(data[i]["commentupdate"]).replace(/\"/gi, "");
+                    var grp = JSON.stringify(data[i]["cgroup"]).replace(/\"/gi, "");
+                    var grpl = JSON.stringify(data[i]["cdepth"]).replace(/\"/gi, "");
+                    
+                    listHtml +=  "<div class='cmt-list'>"; 
+                    if(grpl != 1){	
+                        listHtml += "	<div class='col-1'>";
+                        //listHtml += "		<a href='other_profile.do?other_nick="+writer+"'> ";
+                        listHtml += "			<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 60px; height: 60px; padding: 10px;'>";
+                        listHtml += "		</a> ";
+                        listHtml += "	</div>";
+                        listHtml += "	<div class='rereply-content col-8'>";
+                        listHtml += "		<div>";
+                        listHtml += "			<span>";
+                        listHtml += "				<b>"+ writer +"</b>";
+                        listHtml += "			</span>";
+                        listHtml += "			<span>";
+                        listHtml += 				content;
+                        listHtml += "			</span>";
+                        listHtml += "		</div>";
+                        
+                        
+                        
+                        
+                   
+                        // 로그인 상태일때 답글작성 버튼
+                        //if("${nick}" != ""){
+                        if(user_code != ""){
+                            listHtml += "		<div>";
+                            listHtml += "			<a href='#' class='write_reply_start' data-bs-toggle='collapse' data-bs-target='#re_reply"+ no +"' aria-expanded='false' aria-controls='collapseExample'>답글&nbsp;달기</a>";
+                            listHtml += "		</div>";
+                            
+                        }
+                        listHtml += "	</div>";
+
+	                    }else{	// 답글일때
+	                        listHtml += "	<div class='col-1'>";
+	                        listHtml += "	</div>";
+	                        listHtml += "	<div class='col-1'>";
+	                        listHtml += "		<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 40px; height: 40px; padding: 10px;'>";
+	                        listHtml += "	<div class='rereply-content"+ no +" col-7'>";
+	                        listHtml += "		<div>";
+	                        listHtml += "			<span>";
+	                        listHtml += "				<b>"+ writer +"</b>";
+	                        listHtml += "			</span>";
+	                        listHtml += "			<span>";
+	                        listHtml += 				content;
+	                        listHtml += "			</span>";
+	                        listHtml += "		</div>";
+	                        listHtml += "	</div>";
+	
+	                        listHtml += "	</div>";
+	                    }
+	
+	                    listHtml += "	<div class='col-3 reply-right'>";
+	                    listHtml += "		<div>";
+	                    listHtml += 			grps;
+	                    listHtml += "		</div>";
+	                    
+	                    // 현재 로그인 상태이고..
+	                    //if("${nick}" != ""){
+	                    if(user_code != ""){
+	
+	                        //현재 사용자가 이 댓글의 작성자일때 삭제 버튼이 나온다.
+	                        //if(user_code == writer){
+	                        if(user_code == cu_code){
+	                            listHtml += "		<div>";
+	                            // 수정할 댓글의 no를 grpl과 함께 넘긴다. 
+	                            // 모댓글 수정칸과 답글 수정칸을 화면에 다르게 나타내야하기 때문에 모댓글과 답글을 구분하는 grpl을 함께 넘겨주어야한다.
+	                            //listHtml += "			<a href='javascript:' no='"+ no +"' grpl='"+ grpl +"' class='reply_modify'>수정</a>";
+	                            //listHtml += "			&nbsp;|&nbsp;";
+	                            // 삭제는 no만 넘겨주면 된다.
+	                            listHtml += "			<a href='javascript:' no='"+ no +"' grpl='"+ grpl + "' bno='"+ bno +"' grp='"+ grp +"' class='reply_delete'>삭제</a>";
+	                            listHtml += "		</div>";
+	                        }
+	                    }
+	
+	                    listHtml += "	</div>";
+	                    // 댓글에 답글달기를 누르면 답글입력란이 나온다.
+	                    // ---- 답글입력란
+	                    listHtml += "	<div class='collapse row rereply_write' id='re_reply"+ no +"'>";
+	                    listHtml += "		<div class='col-1'>";
+	                    listHtml += "		</div>";
+	                    listHtml += "		<div class='col-1'>";
+	                    listHtml += "			<a href='other_profile.do?other_nick="+writer+"'> ";
+	                    listHtml += "			</a> ";
+	                    listHtml += "		</div>";
+	                    listHtml += "		<div class='col-7'>";
+	                    listHtml +=  "  		<input class='w-100 input_rereply_div form-control' id='input_rereply"+ no +"' type='text' placeholder='댓글입력...'>"
+	                    listHtml += "		</div>";
+	                    listHtml += "		<div class='col-3'>";
+	                    // 답글달기 버튼이 눌리면 모댓글 번호(no)와 게시물번호(bno)를 함수에 전달한다.
+	
+	                    // 동적으로 넣은 html태그에서 발생하는 이벤트는 동적으로 처리해줘야한다 !!!!!
+	                    // 예를들어, 동적으로 넣은 html태그에서 발생하는 click 이벤트는 html태그 안에서 onclick으로 처리하면 안되고, jquery에서 클래스명이나 id값으로 받아서 처리하도록 해야한다.
+	                    // 아래코드를 보자~~~~
+	                    // listHtml += "			<button onclick='javascript:WriteReReply("+ no +","+ bno +")' type='button' class='btn btn-success mb-1 write_rereply' >답글&nbsp;달기</button>"
+	                    // 위 코드는 클릭되어도 값이 넘겨지지 않는다. 값이 undefined가 된다.
+	                    // 아래코드처럼 짜야한다. click이벤트를 처리하지 않고 데이터(no, bno)만 속성으로 넘겨주도록 작성한다.
+	                    listHtml += "			<button type='button' class='btn-hover color-9 write_rereply' no='" + no + "' bno='" + bno + "'>답글&nbsp;달기</button>"
+	                    listHtml += "		</div>";
+	                    listHtml += "	</div>";
+	                    // ---- 답글입력란 끝
+	                }
+	
+	                listHtml += "</div>";
+	                $("#commentlist-content").html(listHtml);
+
+	
+	
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+		            
+		
+		            ///////////// 동적으로 넣어준 html에 대한 이벤트 처리는 같은 함수내에서 다 해줘야한다.
+		            ///////////// $(document).ready(function(){}); 안에 써주면 안된다.
+		/*
+		            // 댓글 리스트 부분에 받아온 댓글 리스트를 넣기
+		            $(".reply-list"+no).html(listHtml);
+		
+		            // 답글에서 답글달기를 누르면 input란에 "@답글작성자"가 들어간다.
+		            //$('.write_re_reply_start').on('click', function(){
+		            //	$('#input_rereply'+ $(this).attr('no')).val("@"+$(this).attr('writer')+" ");
+		            //});
+		
+		            //답글을 작성한 후 답글달기 버튼을 눌렀을 때 그 click event를 아래처럼 jquery로 처리한다.
+		            $('button.btn.btn-success.mb-1.write_rereply').on( 'click', function() {
+		                console.log( 'no', $(this).attr('no') );
+		                console.log( 'bno', $(this).attr('bno') );
+		
+		                // 답글을 DB에 저장하는 함수를 호출한다. bno와 no를 같이 넘겨주어야한다.
+		                WriteReReply($(this).attr('bno'), $(this).attr('no') );
+		            });
+		
+		            // 삭제버튼을 클릭했을 때
+		            $('.reply_delete').on('click', function(){
+		                // 모댓글 삭제일때
+		                if($(this).attr('grpl') == 0){	
+		                    DeleteReply($(this).attr('no'), $(this).attr('bno'));
+		
+		                // 답글 삭제일때
+		                }else{
+		                    DeleteReReply($(this).attr('no'), $(this).attr('bno'), $(this).attr('grp'));
+		                }
+		
+		            });
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	        },
             error : function ()
             {   
                alert("ERR");

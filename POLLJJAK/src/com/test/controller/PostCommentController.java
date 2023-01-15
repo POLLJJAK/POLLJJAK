@@ -6,6 +6,7 @@ package com.test.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -31,7 +32,7 @@ public class PostCommentController
    
    @ResponseBody
    @RequestMapping(value = "/commentlist.action", method = RequestMethod.POST)
-   public String commentList(@RequestBody String post_code, Model model) 
+   public String commentList(@RequestBody String post_code) 
    {
       
       System.out.println(post_code);
@@ -66,8 +67,8 @@ public class PostCommentController
       
       String jsonSt = jarr.toJSONString();
       System.out.println(jsonSt);
+      //response.setContentType("text/html;charset=UTF-8"); 
       //jsonObject.put("data", jarr);
-      
       return jsonSt;
    }
    
