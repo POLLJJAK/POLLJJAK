@@ -19,20 +19,29 @@ public class ProjectDetailDTO {
 	private String p_update_date;
 	private int p_apply_count;
 	
-	
 	// 지원자 및 확정멤버, 지원분야 정보
 	private String u_nickname;	//리더, 지원자
 	private String u_p_apply_date;
 	private String u_p_apply_reason;
 	private int p_position_count;
 	private String position_part;
+	private String user_code;
 	
 	// 프로젝트 리더 추가 정보 
 	private String u_portfolio_url;
 	private String u_skill_part;
 	private String u_intro;
 	
+	// 프로젝트 지원 변수
+	private String p_position_code;
 	
+	
+	public String getP_position_code() {
+		return p_position_code;
+	}
+	public void setP_position_code(String p_position_code) {
+		this.p_position_code = p_position_code;
+	}
 	public String getP_code() {
 		return p_code;
 	}
@@ -153,6 +162,12 @@ public class ProjectDetailDTO {
 	public void setPosition_part(String position_part) {
 		this.position_part = position_part;
 	}
+	public String getUser_code() {
+		return user_code;
+	}
+	public void setUser_code(String user_code) {
+		this.user_code = user_code;
+	}
 	public String getU_portfolio_url() {
 		return u_portfolio_url;
 	}
@@ -171,19 +186,6 @@ public class ProjectDetailDTO {
 	public void setU_intro(String u_intro) {
 		this.u_intro = u_intro;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	
 }

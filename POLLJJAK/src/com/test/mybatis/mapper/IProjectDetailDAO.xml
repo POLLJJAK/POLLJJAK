@@ -70,6 +70,7 @@
       	AND UPA.USER_CODE = U.USER_CODE
       	AND PP.P_POSITION_CODE = UPA.P_POSITION_CODE
       	AND P.P_CODE = #{p_code}
+      	AND UPA.U_P_READY_DATE IS NOT NULL
 	  ORDER BY U_P_APPLY_DATE
 	</select> 
 	
@@ -95,6 +96,82 @@
 	</select> 
 	
 	
+	<!--  프로젝트 지원하전 검증 사항 1 -->
+	<!--  지원자가 블랙리스트 인가?-->
+	<select id="getBlackList" resultType="int">
+		SELECT COUNT(*) AS IN_BLACKLIST
+ 		FROM  P P,
+ 		 	  P_POSITION PP,
+ 		 	  U_P_APPLY UPA, 
+ 		 	  P_REJECT PR, 
+ 		 	  REJECT_CONDITION RC
+ 		WHERE P.P_CODE = #{p_code}
+    	AND PP. P_POSITION_CODE = UPA.P_POSITION_CODE
+    	AND UPA.U_P_APPLY_CODE = PR.U_P_APPLY_CODE
+    	AND RC.REJECT_CONDITION_CODE = 'RJC0000002'
+    	AND UPA.USER_CODE = #{user_code}
+	</select>
+	
+	
+	<!--  프로젝트 지원하전 검증 사항 2 -->
+	<!--  진행중인 프로젝트가 있는가?-->
+	<select id="getProgressProject" resultType="int">
+		SELECT  COUNT(*) AS IN_PROGRESS_PROJECT
+		FROM U_P_APPLY UPA, 
+			 P_POSITION PP, 
+			 P_TEAM_CONFIRM PTC, 
+			 P_END PE
+		WHERE UPA.USER_CODE = #{user_code}
+    	AND UPA.P_POSITION_CODE = PP.P_POSITION_CODE
+    	AND PP.P_CODE = PTC.P_CODE
+    	AND PTC.P_TEAM_CONFIRM_CODE != PE.P_TEAM_CONFIRM_CODE
+	</select>
+	
+	
+	<!--  프로젝트 지원하전 검증 사항 3 -->
+	<!--  개설이 진행 중인 프로젝트나 개설중인 프로젝트에 지원 중인가?-->
+	<select id="getProgressApply" resultType="int">
+		SELECT COUNT(*) AS IN_PROGRESS_APPLY
+		FROM U_P_APPLY UPA 
+		JOIN P_POSITION PP
+			ON UPA.USER_CODE = #{user_code}
+				AND UPA.P_POSITION_CODE = PP.P_POSITION_CODE 
+				LEFT JOIN  P_TEAM_CONFIRM PTC
+					ON PP.P_CODE = PTC.P_CODE
+						LEFT JOIN P_FAILED PF
+							ON PP.P_CODE = PF.P_CODE
+		WHERE PTC.P_CODE IS NULL
+		AND PF.P_CODE IS NULL
+	</select>
+	
+	
+	<!--  프로젝트 지원 분야로 position_part_code 가져오기 -->
+	<select id="getPositionCode" resultType="String">
+		SELECT DISTINCT P_POSITION_CODE
+		FROM P_POSITION PP 
+		WHERE
+		(SELECT POSITION_PART_CODE 
+		 FROM POSITION_PART PPT 
+		 WHERE PPT.POSITION_PART = #{position_part}) = PP.POSITION_PART_CODE
+  		AND PP.P_CODE = #{p_code}
+	</select>
+	
+	
+	<!--  프로젝트 지원 -->
+	<insert id="applyProject" parameterType = "com.test.dto.ProjectDetailDTO">
+		INSERT INTO U_P_APPLY(U_P_APPLY_CODE, 
+							  P_POSITION_CODE,
+							  USER_CODE,
+							  U_P_APPLY_REASON,
+							  U_P_APPLY_DATE,
+							  U_P_READY_DATE)
+		VALUES('UPA'||LPAD(U_P_APPLY_CODE_SEQ.NEXTVAL, 7, '0'), 
+			   #{p_position_code},
+			   #{user_code},
+			   #{u_p_apply_reason}, 
+			   SYSDATE,
+			   SYSDATE)
+	</insert>
 	
 	
 	

@@ -39,6 +39,24 @@ public class CompanyController
 		return result;
 	}
 	
+	@RequestMapping(value = "/cidcheckajax.action", method = RequestMethod.POST)
+	public String companyIdCheck(Model model, String id)
+	{
+		String result = null;
+		
+		ICompanyDAO dao = sqlSession.getMapper(ICompanyDAO.class);
+
+		int idCheck = dao.idCheck(id);
+		//System.out.println(idCheck);
+		
+		Model modal = model.addAttribute("ajax", dao.idCheck(id));
+		//System.out.println(modal);
+		
+		result = "/WEB-INF/view/Ajax.jsp";
+		
+		return result;
+	}
+	
 	// 기업 회원가입(회원 정보 추가)
 	@RequestMapping(value = "/companyregistration.action", method = RequestMethod.POST)
 	public String companyInsert(CompanyDTO company)

@@ -64,43 +64,48 @@
 							<h5><strong>모집현황</strong></h5>
 								<table class = "table">
 									<c:forEach var="position" items="${pPositionInfo }" varStatus="status">
-									<tr>
-									<c:choose>
-										<c:when test="${status.index == 0}">
-											<td>팀장 </td>
-										</c:when>
-										<c:otherwise>
-											<td>모집분야${status.index}</td>
-										</c:otherwise>
-									</c:choose>
-									<td>${position.position_part }</td>
-									<td>${position.p_apply_count}/${position.p_position_count }</td>
-									<c:set var = "count" value = "${position.p_position_count - position.p_apply_count}"></c:set>
-									 <c:if test="${status.index == 0}"> 
-										<td>
-											<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
-												<button class="fullbtn" style= "display: none;"></button>
-											</div>
-										</td>
-									</c:if>
-									 <c:if test="${count == 0 && status.index != 0 }"> 
-										<td>
-											<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
-												<button class="fullbtn" >지원하기</button>
-											</div>
-										</td>
-									</c:if>
-									<c:if test="${count > 0}"> 
-					          			<td>
-					          				<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#apply" data-id="${position.position_part }">
-											<button class="apply btn-hover color-9">지원하기</button>
-											</div>
-										</td>
-									</c:if>
-								</tr>
-								</c:forEach>
+										<tr>
+											<c:choose>
+												<c:when test="${status.index == 0}">
+													<td>팀장 </td>
+												</c:when>
+												<c:otherwise>
+													<td>모집분야${status.index}</td>
+												</c:otherwise>
+											</c:choose>
+											<td>${position.position_part }</td>
+											<td>${position.p_apply_count}/${position.p_position_count }</td>
+											<c:set var = "count" value = "${position.p_position_count - position.p_apply_count}"></c:set>
+											<c:choose>
+												<c:when test = "${status.index eq 0}">
+													<td>
+														<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
+															<button class="fullbtn" style= "display: none;">${status.index}</button>
+														</div>
+													</td>
+												</c:when>
+												<c:otherwise>
+													 <c:if test="${count eq 0 || not empty message}">
+															<td>
+																<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#applyEnd">
+																	<button class="fullbtn" >지원하기</button>
+																</div>
+															</td>
+													</c:if>
+													<c:if test="${count > 0 && empty message}">
+									          			<td>
+									          				<div class="row col-md-12 col-lg-12" data-bs-toggle="modal" data-bs-target="#apply" data-id="${position.position_part }">
+																<button class="apply btn-hover color-9">지원하기</button>
+															</div>
+														</td>
+													</c:if>
+												</c:otherwise>
+											</c:choose>
+										</tr>
+									</c:forEach>
 								</table>
-						</div>
+								<p style = "color :red; font-size: small; text-align: center;">${message}</p>
+							</div>
 		          
 		          
 		          		<div class="project-allmember">
@@ -203,60 +208,25 @@
 		        <div id="tab-2" class="tab-content" >
 		        	<br><br>
 		        	<div class="project-news">
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		<div class="news">
-		        			22.12.24 <br>
-		        			<span style="color: blue; font-weight: bold;">모집분야 1</span>에 
-		        			<b>혼자사는박또기</b>님이 지원하셨습니다.
-		        		</div>
-		        		
-		        			
+		        	
+	        			<c:choose>
+			        		<c:when test="${fn:length(p_news_list) == 0}">
+								<div class="news">
+									새로운 소식이 없습니다.
+								</div>
+			        		</c:when>
+			        		<c:otherwise>
+				        		<c:forEach var="p_news_list" items="${p_news_list }">
+				        			<div class="news">
+					        			${p_news_list.p_news_date} <br>
+					        			<span style="color: blue; font-weight: bold;">${p_news_list.p_news_content}</span> 
+					        		</div>
+			        			</c:forEach>
+			        		</c:otherwise>
+		        		</c:choose>
 		        		
 		        	</div>
+		        	
 		        	<button class="btn-hover color-9"  id ="load"
 		        	style="align-content: center; margin-left: 30%; margin-top: 10%;">더보기</button>
 		        
@@ -369,7 +339,7 @@
 		
 			      	</div>
 			      	<div class="modal-footer justify-content-center">
-			        	<button type="button" class="btn-hover color-9">확인</button>
+			        	<button type="button" class="btn-hover color-9" data-bs-dismiss="modal" aria-label="Close">확인</button>
 			      	</div>
 			    </div>
 			 </div>
@@ -379,7 +349,7 @@
 		<div class="modal fade" id="apply" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
-					<form action="projectapply.action" method="post" onsubmit = "return reasonCheck()">
+					<form action="projectapply.action" method="post" id = "applyform">
 						<div class="modal-header">
 							<h5 class="modal-title">지원하기</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -390,15 +360,18 @@
 								<p style="font-size: xx-small; color: red;">※지원 사유는 지원즉시 전체공개 됩니다. 신중하게 작성해주세요!</p>
 							</div>
 							<div class="form-group">
-								<textarea class="form-control" id="applyreason"></textarea>
+								<textarea class="form-control" id="apply_reason" name = "apply_reason"></textarea>
 								<div style="float: right; font-size: small;">(최대 500자)</div>
 							</div>
 							<p id = "reasonch" style= "font-size: x-small; text-align: center; color: red;"></p>
 						</div>
 						<div class="modal-footer justify-content-center">
-							<button type="reset" class="fullbtn">취소</button>
-							<button type="submit" class="btn-hover color-9">제출</button>
+							<button type="reset" class="fullbtn" data-bs-dismiss="modal" aria-label="Close">취소</button>
+							<button id="applySubmitBtn"type="button" class="btn-hover color-9">제출</button>
 						</div>
+						<input type = "hidden" id = "p_code" name = "p_code" value = "${p_code}">
+						<input type = "hidden" id = "user_code" name = "user_code" value = "${user_code}">
+						<input type = "hidden" id = "position_part" name = "position_part" value = "">
 					</form>
 				</div>
 			</div>

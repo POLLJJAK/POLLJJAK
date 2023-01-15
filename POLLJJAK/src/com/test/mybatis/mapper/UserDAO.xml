@@ -18,6 +18,17 @@
 	</select>
 	 -->
 	 
+	<select id="idCheck" resultType="int">
+		<!-- 
+		SELECT U_id AS id
+		FROM U
+		WHERE U_ID = #{id}
+		 -->
+        SELECT COUNT(*)
+		FROM U
+		WHERE U_ID = #{id}
+	</select>
+	 
 	<select id="add" resultType="com.test.dto.UserDTO" statementType="CALLABLE">
 		{CALL USERREGISTRATION(#{subject_part_code, mode=IN, jdbcType=VARCHAR}
           , #{region_part_code, mode=IN, jdbcType=VARCHAR}
