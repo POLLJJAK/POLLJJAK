@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!-- 공지  -->
 <!-- 모든 페이지의 처리는 동적으로 그리도록 처리 될 예정  -->
 <!-- 현재는 뷰페이지 표현을 위해서 모든 아이템들이 정적으로 처리되어 있습니다-->
@@ -33,6 +36,9 @@
 <!-- End Hero -->
 
 
+
+
+
 <!-- ====== Carousel Notice Section ====== -->
 <!-- 일단 메인 배너에 대한 코드를 만들어 놓긴 했는데
 저는 개인적으로 메인만 있는게 더 좋을 것 같은 생각입니다 -->
@@ -40,9 +46,9 @@
 	<h2>관리자 공지사항</h2>
 	<p>플젝폴짝의 새로운 공지사항을 확인하세요!</p>
 </div>
-<div class="container mb-100" data-aos="fade-up">
-	<div id="carousel-new-notice" class="carousel carousel-dark slide"
-		data-bs-ride="carousel">
+<!-- <div class="container mb-100" data-aos="fade-up"> -->
+<div class="mb-100" data-aos="fade-up">
+	<div id="carousel-new-notice" class="carousel carousel-dark slide" data-bs-ride="carousel">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carousel-new-notice"
 				data-bs-slide-to="0" class="active" aria-current="true"
@@ -54,28 +60,25 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active" data-bs-interval="10000">
-				<img src="https://images.unsplash.com/photo-1563725911583-7d108f720483"
-					class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">
+				<img src="<%=cp %>/upload/banner/Banner1.png" class="d-block w-100" alt="Banner1">
+				<!-- <div class="carousel-caption d-none d-md-block">
 					<h5>라운지 이용 에티켓</h5>
 					<p>라운지를 이용할 때는 상호존중 에티켓을 지켜주세요!</p>
-				</div>
+				</div> -->
 			</div>
 			<div class="carousel-item" data-bs-interval="2000">
-				<img src="https://images.unsplash.com/photo-1563725911583-7d108f720483"
-					class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">
+				<img src="<%=cp %>/upload/banner/Banner2.png" class="d-block w-100" alt="Banner2">
+				<!-- <div class="carousel-caption d-none d-md-block">
 					<h5>새로운 프로젝트 개설</h5>
 					<p>마음에 드는 프로젝트가 없나요? 자신만의 새로운 프로젝트를 개설해보세요!</p>
-				</div>
+				</div> -->
 			</div>
 			<div class="carousel-item">
-				<img src="https://images.unsplash.com/photo-1563725911583-7d108f720483"
-					class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">
+				<img src="<%=cp %>/upload/banner/Banner3.png" class="d-block w-100" alt="Banner3">
+<!-- 				<div class="carousel-caption d-none d-md-block">
 					<h5>새로운 공지사항</h5>
 					<p>고객센터에서 관리자에게 무엇이든 물어보세요!</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button"
@@ -91,6 +94,10 @@
 	</div>
 </div>
 <!-- End Carousel Notice Section -->
+
+
+
+
 
 <!-- ====== Carousel New Project Section ====== -->
 <div class="section-title" data-aos="fade-up">
