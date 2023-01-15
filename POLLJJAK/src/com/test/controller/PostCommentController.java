@@ -30,7 +30,7 @@ public class PostCommentController
    
    
    @ResponseBody
-   @RequestMapping(value = "/commentlist.action", method = RequestMethod.POST)
+   @RequestMapping(value = "/commentlist.action", headers="application/json;charset=utf-8")
    public String commentList(@RequestBody String post_code, Model model) 
    {
       
