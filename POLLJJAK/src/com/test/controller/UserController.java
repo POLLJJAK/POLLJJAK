@@ -6,6 +6,8 @@
 package com.test.controller;
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.test.dto.UserDTO;
 import com.test.mybatis.IUserDAO;
@@ -42,6 +43,24 @@ public class UserController
 		model.addAttribute("skillList", dao.skillList());
 		
 		result = "/WEB-INF/view/Registration-user.jsp";
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/uidcheckajax.action", method = RequestMethod.POST)
+	public String userIdCheck(Model model, String id)
+	{
+		String result = null;
+		
+		IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
+
+		int idCheck = dao.idCheck(id);
+		//System.out.println(idCheck);
+		
+		Model modal = model.addAttribute("ajax", dao.idCheck(id));
+		//System.out.println(modal);
+		
+		result = "/WEB-INF/view/Ajax.jsp";
 		
 		return result;
 	}

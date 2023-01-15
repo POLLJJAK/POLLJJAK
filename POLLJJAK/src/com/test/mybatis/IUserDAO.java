@@ -20,6 +20,9 @@ public interface IUserDAO
 	// 일반회원 정보 입력(추가)
 	public Integer add(UserDTO u);
 	
+	// 아이디 중복
+	public int idCheck(String id);
+	
 	// 도메인 출력
 	public ArrayList<DomainDTO> domainList();
 	

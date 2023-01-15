@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
-
    String post_code = request.getParameter("post_code");
+   
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
@@ -360,17 +359,18 @@
          $.ajax({
             url:"commentlist.action",
             type:"POST",
-            data: param,
+            data:  param,
             dataType: "json",
             contentType: "application/json; charset=UTF-8",
             success : function(data)
             {
                console.log(data);
+               
             
                //alert(typeof data); //--object
                //alert(Object.keys(data)); //0,1,2,3,4,5
                //alert(Object.keys(data).length); //6
-               alert(Object.keys(data).values()); //6
+               //alert(Object.keys(data).values()); //6
                /*
                var listHtml = "";
                for (var i=0; i<=Object.keys(data).length; i++)

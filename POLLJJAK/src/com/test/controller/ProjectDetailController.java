@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dto.ProjectDetailDTO;
+import com.test.mybatis.IProjectDetailBlacklistDAO;
 import com.test.mybatis.IProjectDetailDAO;
 import com.test.mybatis.IProjectDetailNewsDAO;
 
@@ -65,7 +66,6 @@ public class ProjectDetailController
 			message = "회원님은 개설 진행 중인 프로젝트에 지원중이므로 새로운 프로젝트에 지원할 수 없습니다";
 		}
 		
-		IProjectDetailNewsDAO newsListDao = sqlSession.getMapper(IProjectDetailNewsDAO.class);
 		
 		model.addAttribute("pInfo", dao.getProjectDetail(p_code));
 		model.addAttribute("pPositionInfo", dao.getProjectPosition(p_code));
@@ -74,8 +74,15 @@ public class ProjectDetailController
 		model.addAttribute("message", message);
 		model.addAttribute("p_code", p_code);
 		model.addAttribute("user_code", user_code);
-		
+
+		// 소식
+		IProjectDetailNewsDAO newsListDao = sqlSession.getMapper(IProjectDetailNewsDAO.class);
 		model.addAttribute("p_news_list", newsListDao.p_news_list(p_code));
+		
+		// 블랙리스트 지원자 출력, 차단목록 출력
+		IProjectDetailBlacklistDAO blackListDao = sqlSession.getMapper(IProjectDetailBlacklistDAO.class);
+		model.addAttribute("u_p_apply_list", blackListDao.u_p_apply_list(p_code));
+		model.addAttribute("p_reject_list", blackListDao.p_reject_list(p_code));
 		
 		result = "/ProjectDetail.jsp";
 	

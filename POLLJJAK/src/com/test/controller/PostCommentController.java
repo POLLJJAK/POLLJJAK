@@ -4,14 +4,18 @@
 
 package com.test.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,23 +35,17 @@ public class PostCommentController
    
    @ResponseBody
    @RequestMapping(value = "/commentlist.action", method = RequestMethod.POST)
-   public String commentList(@RequestBody String post_code, Model model) 
+   public String commentList(@RequestBody String post_code, Model model)
    {
       
-      System.out.println(post_code);
-      
-      
       IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-      
-      ObjectMapper mapper = new ObjectMapper();
       
       ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
       cmtList =  dao.list(post_code);
       
-      
-      
       JSONObject jsonObject = new JSONObject();
       JSONArray jarr = new JSONArray();
+
 
       for (int i = 0; i < cmtList.size(); i++)
       {
@@ -64,11 +62,11 @@ public class PostCommentController
          jarr.add(jsonObj);
       }
       
-      String jsonSt = jarr.toJSONString();
-      System.out.println(jsonSt);
-      //jsonObject.put("data", jarr);
+      jsonObject.put("data", jarr);
       
-      return jsonSt;
+      System.out.println(jsonObject.toJSONString());
+      
+      return jsonObject.toJSONString();
    }
    
    /*

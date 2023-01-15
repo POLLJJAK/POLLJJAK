@@ -25,3 +25,19 @@
 	border: none; 
 	display: inline-block;
 }
+
+.meter {
+    appearance: none;
+    margin-top: 10px;
+}
+.meter::-webkit-progress-bar {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+.meter::-webkit-progress-value {
+    border-radius: 10px;
+    background: var(--c, red);
+}
+.meter[value]::-webkit-progress-value {
+    transition: width 0.5s;
+}

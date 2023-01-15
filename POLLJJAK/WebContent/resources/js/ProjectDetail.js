@@ -1,10 +1,6 @@
 /*<!-- 탭박스 JS  -->*/
 $(document).ready(function(){
 	//지원사유
-	$( "ul.droptrue" ).sortable({
-		connectWith: "ul"
-	});
-	
 	$('.news').hide();
 	$(".news").slice(0, 3).show();
 
@@ -46,14 +42,73 @@ $(document).ready(function(){
 			$("#applyform").attr("action","projectapply.action").submit();
 			
 		});
-		
-		
-		
-		
 	});
-      
+	
+	
+	// jQuery blacklist drag & drop
+	$("#sortable1").sortable({
+		connectWith: "#sortable2",
+		update : function(event, ui) {
+			var u_p_apply_code = ui.item.attr("id");
+			var p_code = document.getElementById("p_code").value;
+			
+		    if (this === ui.item.parent()[0]) {
+		    	delete_blacklist(u_p_apply_code, p_code);
+		    }
+		}
+	});
+	
+	$("#sortable2").sortable({
+		connectWith: "#sortable1",
+		update : function(event, ui) {
+			var u_p_apply_code = ui.item.attr("id");
+			var p_code = document.getElementById("p_code").value;
+			
+		    if (this === ui.item.parent()[0]) {
+		    	add_blacklist(u_p_apply_code, p_code);
+		    }
+		}
+	});
 });
-     	
+
+
+
+function add_blacklist(u_p_apply_code, p_code){
+	$.ajax({
+		type: "POST",
+		url: "addblacklist.action",  
+		data: { u_p_apply_code : u_p_apply_code,
+			    p_code : p_code 
+			  },
+		dataType: 'Text',
+		success: function(data){
+		},
+		error: function(data){
+			console.log("add blacklist : error");
+		}
+	});
+	
+}
+
+
+function delete_blacklist(u_p_apply_code, p_code){
+	
+	$.ajax({
+		type: "POST",
+		url: "deleteblacklist.action",  
+		data: { u_p_apply_code : u_p_apply_code,
+			    p_code : p_code 
+			  },
+		dataType: 'Text',
+		success: function(data){
+		},
+		error: function(data){
+			console.log("delete blacklist : error");
+		}
+	});
+	
+}
+
 /* 지원취소 */
 function deleteM()
 {
@@ -65,3 +120,8 @@ function deleteM()
 	else
 		return false;
 }
+
+
+
+
+
