@@ -28,7 +28,11 @@
 				<li><a class="nav-link scrollto" href="projecthomelist.action?user_code=${user_code }">내 프로젝트 홈</a></li>
 				
 				<li><a class="nav-link scrollto " href="mainlounge.action">라운지</a></li>
+				
+				<!-- 기업 구현하면 쓰기 -->
 				<li><a class="nav-link scrollto" href="Inner-page.jsp">기업둘러보기</a></li>
+				
+				
 				<!-- ========= Searching Section ============ -->
 				<li>
 					<div class="serach" style="margin-right: 30px;">

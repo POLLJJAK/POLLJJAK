@@ -71,9 +71,8 @@
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar" class="navbar">
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto " href="U-MyPage-Info.jsp">정보</a></li>
-						<li><a class="nav-link scrollto active"
-							href="U-MyPage-project.jsp">프로젝트</a></li>
+						<li><a class="nav-link scrollto" href="userupdateform.action?user_code=${user_code }">정보</a></li>
+						<li><a class="nav-link scrollto active updateform" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
 						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
 					</ul>
@@ -90,23 +89,35 @@
 				</div>
 				<!-- End Page Menu Intro Section -->
 
-
+				
 				<!-- ====== Project in Progress Section ====== -->
 				<section class="pt-5 pb-5">
 					<div class="container mb-50 row">
 						<div class="col-sm-3"></div>
-						<div class="col-sm-6">
-							<div class="card ">
-								<input type="hidden" value="aaaa" /> <img class="img-fluid"
-									alt="100%x280"
-									src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-								<div class="card-body">
-									<h4 class="card-title">한은영의 프로젝트</h4>
-									<p class="card-text">한은영의 프로젝트</p>
-									<p class="card-text">JAVA/ORACLE</p>
+						<c:choose>
+							<c:when test="${fn:length(myPageRunPJ) == 0}">
+							<div class="container mb-3">
+								<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+									<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
 								</div>
 							</div>
-						</div>
+							</c:when>
+							<c:otherwise>
+							<c:forEach var="myPageRunPJ" items="${myPageRunPJ }">
+								<div class="col-sm-6">
+									<div class="card" onclick="location.href='projectDetail.action?p_code=${myPageRunPJ.p_code}'">
+										<input type="hidden" value="aaaa" /> 
+										<img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+										<div class="card-body">
+											<h4 class="card-title">${myPageRunPJ.p_name }의 프로젝트</h4>
+											<p class="card-text">${myPageRunPJ.p_name }의 프로젝트</p>
+											<p class="card-text">JAVA/ORACLE</p>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						<div class="col-sm-3"></div>
 					</div>
 				</section>
@@ -146,53 +157,33 @@
 									<div class="carousel-inner">
 										<div class="carousel-item active">
 											<div class="carousel-row">
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">한은영의 프로젝트</h4>
-															<p class="card-text">한은영의 프로젝트</p>
-															<p class="card-text">JAVA/ORACLE</p>
+												<c:choose>
+													<c:when test="${fn:length(myPageSupportPJ) == 0}">
+														<div class="container mb-3">
+															<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+																<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
+															</div>
 														</div>
-
-													</div>
-												</div>
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">김유림의 프로젝트</h4>
-															<p class="card-text">김유림의 프로젝트</p>
-															<p class="card-text">C/MariaDB</p>
+													</c:when>
+													<c:otherwise>
+													<c:forEach var="myPageSupportPJ" items="${myPageSupportPJ }">
+														<div class="col-md-3 mb-3">
+															<div class="card" onclick="location.href='projectDetail.action?p_code=${myPageSupportPJ.p_code}'">
+																<img class="img-fluid" alt="100%x280"
+																	src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+																<div class="card-body">
+																	<h4 class="card-title">${myPageSupportPJ.p_name }의 프로젝트</h4>
+																	<p class="card-text">${myPageSupportPJ.p_name }의 프로젝트</p>
+																	<p class="card-text">JAVA/ORACLE</p>
+																</div>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">김인교의 프로젝트</h4>
-															<p class="card-text">김인교의 프로젝트</p>
-															<p class="card-text">C++/MongoDB</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">박원석의 프로젝트</h4>
-															<p class="card-text">박원석의 프로젝트</p>
-															<p class="card-text">Python/Django</p>
-														</div>
-													</div>
-												</div>
+													</c:forEach>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
+										<!-- 
 										<div class="carousel-item">
 											<div class="carousel-row">
 												<div class="col-md-3 mb-3">
@@ -208,6 +199,7 @@
 												</div>
 											</div>
 										</div>
+										 -->
 									</div>
 								</div>
 							</div>
@@ -250,53 +242,33 @@
 									<div class="carousel-inner">
 										<div class="carousel-item active">
 											<div class="carousel-row">
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">한은영의 프로젝트</h4>
-															<p class="card-text">한은영의 프로젝트</p>
-															<p class="card-text">JAVA/ORACLE</p>
+												<c:choose>
+													<c:when test="${fn:length(myPageCompletePJ) == 0}">
+														<div class="container mb-3">
+															<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+																<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
+															</div>
 														</div>
-
-													</div>
-												</div>
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">김유림의 프로젝트</h4>
-															<p class="card-text">김유림의 프로젝트</p>
-															<p class="card-text">C/MariaDB</p>
+													</c:when>
+													<c:otherwise>
+													<c:forEach var="myPageCompletePJ" items="${myPageCompletePJ }">
+														<div class="col-md-3 mb-3">
+															<div class="card" onclick="location.href='projectDetail.action?p_code=${myPageCompletePJ.p_code}'">
+																<img class="img-fluid" alt="100%x280"
+																	src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+																<div class="card-body">
+																	<h4 class="card-title">${myPageCompletePJ.p_name }의 프로젝트</h4>
+																	<p class="card-text">${myPageCompletePJ.p_name }한은영의 프로젝트</p>
+																	<p class="card-text">JAVA/ORACLE</p>
+																</div>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">김인교의 프로젝트</h4>
-															<p class="card-text">김인교의 프로젝트</p>
-															<p class="card-text">C++/MongoDB</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">박원석의 프로젝트</h4>
-															<p class="card-text">박원석의 프로젝트</p>
-															<p class="card-text">Python/Django</p>
-														</div>
-													</div>
-												</div>
+													</c:forEach>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
+										<!-- 
 										<div class="carousel-item">
 											<div class="carousel-row">
 												<div class="col-md-3 mb-3">
@@ -323,6 +295,7 @@
 												</div>
 											</div>
 										</div>
+										 -->
 									</div>
 								</div>
 							</div>
@@ -366,29 +339,30 @@
 									<div class="carousel-inner">
 										<div class="carousel-item active">
 											<div class="carousel-row">
+											<c:choose>
+												<c:when test="${fn:length(myPageOpenPJ) == 0}">
+												<div class="container mb-3">
+													<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+														<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
+													</div>
+												</div>
+												</c:when>
+												<c:otherwise>
+												<c:forEach var="myPageOpenPJ" items="${myPageOpenPJ }">
 												<div class="col-md-3 mb-3">
-													<div class="card">
+													<div class="card" onclick="location.href='projectDetail.action?p_code=${myPageOpenPJ.p_code}'">
 														<img class="img-fluid" alt="100%x280"
 															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 														<div class="card-body">
-															<h4 class="card-title">한은영의 프로젝트</h4>
-															<p class="card-text">한은영의 프로젝트</p>
+															<h4 class="card-title">${myPageOpenPJ.p_name }의 프로젝트</h4>
+															<p class="card-text">${myPageOpenPJ.p_name }의 프로젝트</p>
 															<p class="card-text">JAVA/ORACLE</p>
 														</div>
-
 													</div>
 												</div>
-												<div class="col-md-3 mb-3">
-													<div class="card">
-														<img class="img-fluid" alt="100%x280"
-															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-														<div class="card-body">
-															<h4 class="card-title">김유림의 프로젝트</h4>
-															<p class="card-text">김유림의 프로젝트</p>
-															<p class="card-text">C/MariaDB</p>
-														</div>
-													</div>
-												</div>
+												</c:forEach>
+												</c:otherwise>
+											</c:choose>
 											</div>
 										</div>
 									</div>
@@ -429,14 +403,15 @@
 </body>
 
 <script>
-
+/* 
 	$().ready(function(){
 		$(".card").click(function(){
 			var target = $(this).find("input").val();
-			/*$(location).attr("href", "/POLLJJAK/Inner-page.jsp?target=" + target);*/
-			$(location).attr("href", "/POLLJJAK/ProjectDetail.jsp");
+			//$(location).attr("href", "/POLLJJAK/Inner-page.jsp?target=" + target);
+			$(location).attr("href", "projectDetail.action?p_code=" + $(this).val());
 		});
 	})
+ */
 
 </script>
 

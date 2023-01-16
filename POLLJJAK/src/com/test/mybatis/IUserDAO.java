@@ -8,7 +8,9 @@ package com.test.mybatis;
 import java.util.ArrayList;
 
 import com.test.dto.DomainDTO;
+import com.test.dto.MyPageProjectListDTO;
 import com.test.dto.PositionDTO;
+import com.test.dto.ProjectHomeListDTO;
 import com.test.dto.RegionDTO;
 import com.test.dto.SkillDTO;
 import com.test.dto.SubjectDTO;
@@ -54,5 +56,17 @@ public interface IUserDAO
 	
 	// 일반회원 정보 수정
 	public int update(UserDTO dto);
+	
+	// 일반회원 본인이 참여한 진행중인 프로젝트
+	public ArrayList<MyPageProjectListDTO> myPageRunPJ(String user_code);
+	
+	// 일반회원 본인이 지원한 프로젝트
+	public ArrayList<MyPageProjectListDTO> myPageSupportPJ(String user_code);
+
+	// 일반회원 본인이 완료한 프로젝트
+	public ArrayList<MyPageProjectListDTO> myPageCompletePJ(String user_code);
+
+	// 일반회원 본인이 개설한 프로젝트
+	public ArrayList<MyPageProjectListDTO> myPageOpenPJ(String user_code);
 	
 }
