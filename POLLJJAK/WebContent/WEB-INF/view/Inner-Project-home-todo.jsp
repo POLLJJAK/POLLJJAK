@@ -48,23 +48,33 @@ String cp = request.getContextPath();
 									<!-- 프로젝트 정보 (제목, 진행기간, 전체 진척도)-->
 									<div class="col-md-12 col-lg-4 mb-4">
 										<div>
-											<div class="pj-title p-0 md-2 rounded">진행중인 프로젝트 제목1</div>
+											<div class="pj-title p-0 md-2 rounded">${pj_title_info.p_name }</div>
 										</div>
 										
 										<div>
-											<div class="pj-date p-0 mt-1 mb-1">2022-12-24 ~ 2022-12-25</div>
+											<div class="pj-date p-0 mt-1 mb-1">${pj_title_info.pj_start_date } ~ ${pj_title_info.pj_end_date }</div>
 										</div>
 										
 										<div>
-											<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
-												<div class="progress-bar" role="progressbar" style="width: 75%; background-color: #81EC81" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-											</div>
+											<c:choose>
+												<c:when test="${pj_title_info.pj_end_check == '종료' }">
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: 100%; background-color: #37417C" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="progress p-0" style="font-size: 8px; height: 10px; border: 1px solid #C2C2C2">
+														<div class="progress-bar" role="progressbar" style="width: ${pj_title_info.all_percent }%; background-color: #4EE193" aria-valuenow="${pj_title_info.all_percent }" aria-valuemin="0" aria-valuemax="100">${pj_title_info.all_percent }%</div>
+													</div>
+												</c:otherwise>
+											</c:choose>
+											
 										</div>
 									</div>
 									
 									<div class="col-md-0 col-lg-2"></div>
 									<div class="col-md-0 col-lg-2"></div>
-									
+
 								</div>
 							</div>
 						</div>
@@ -77,8 +87,8 @@ String cp = request.getContextPath();
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-teammanage.action?u_p_apply_code=${u_p_apply_code}">팀원 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
-							      <li><a class="nav-link pb-0 scrollto active" href="Inner-Project-home-todo.jsp">일정 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto" href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-lounge.action?u_p_apply_code=${u_p_apply_code }">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
@@ -263,24 +273,10 @@ String cp = request.getContextPath();
 						dataType: "json",
 						success: function(data) {
 							alert("성공:" + data);
-/* 							var events = [];
-							if (json.length > 0) {
-								$.each(json, function(index, item) {
-									events.push({
-										todoCode: item.title,
-										todoPartCode: item.start,
-										todoUserCode: item.end,
-										todoTitle: item.end,
-										todoStartDate: item.end,
-										todoEndDate: item.end,
-										todoInsertDate: item.end,
-									});
-								})								
-							}
-							successCallback(events); */
+		
 						},
 						error: function(data) {
-							alert("error:"+ data);
+							//alert("error:"+ data);
 						}
 					});
 					

@@ -6,7 +6,7 @@
 <mapper namespace="com.test.mybatis.IInnerProjectMainWorkDAO">
 	
 	<select id="pj_mainwork_list" resultType="com.test.dto.InnerProjectMainWorkDTO">
-	SELECT PH_MAINWORK_TITLE, PJ_START_DATE, PJ_END_DATE, 
+		SELECT PH_MAINWORK_TITLE, PJ_START_DATE, PJ_END_DATE, 
 		(
 			ROUND(NVL(
 					(
@@ -37,7 +37,7 @@
 			FROM PH_MAINWORK
 			WHERE U_P_APPLY_CODE IN (
 				SELECT P3.U_P_APPLY_CODE
-				FROM P P1, P_POSITION P2, U_P_APPLY P3, P_REJECT P4
+				FROM P P1, P_POSITION P2, U_P_APPLY P3
 				WHERE P1.P_CODE = (
 					SELECT T3.P_CODE
 					FROM U_P_APPLY T1, P_POSITION T2, P T3
@@ -47,7 +47,7 @@
 				)  
 				 AND P1.P_CODE = P2.P_CODE
 				 AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
-				 AND NOT P3.U_P_APPLY_CODE = P4.U_P_APPLY_CODE
+				 AND P3.U_P_APPLY_CODE NOT IN (SELECT U_P_APPLY_CODE FROM P_REJECT)
 			)
 		) C1
 		ORDER BY 2
@@ -92,6 +92,53 @@
 	</select>
 	
 	
+	<select id="mainWorkInsertForm_memberlist" resultType="com.test.dto.InnerProjectMainWorkDTO">
+		SELECT 
+		P3.U_P_APPLY_CODE AS UPA_CODE,
+		P4.U_NAME AS INSERT_MEMBER
+		FROM P P1, P_POSITION P2, U_P_APPLY P3, U P4
+		WHERE P1.P_CODE = (
+			SELECT T3.P_CODE
+			FROM U_P_APPLY T1, P_POSITION T2, P T3
+			WHERE T1.U_P_APPLY_CODE = #{u_p_apply_code}
+			  AND T1.P_POSITION_CODE = T2.P_POSITION_CODE
+			  AND T2.P_CODE = T3.P_CODE
+		)  
+		AND P1.P_CODE = P2.P_CODE
+		AND P2.P_POSITION_CODE = P3.P_POSITION_CODE
+		AND P3.U_P_APPLY_CODE NOT IN (SELECT U_P_APPLY_CODE FROM P_REJECT)
+		AND P3.USER_CODE = P4.USER_CODE
+		ORDER BY UPA_CODE ASC
+	</select>
+	
+	
+	
+	<insert id="mainWorkInsert">
+		INSERT INTO PH_MAINWORK(PH_MAINWORK_CODE, U_P_APPLY_CODE, PH_MAINWORK_START_DATE, PH_MAINWORK_END_DATE, PH_MAINWORK_DATE, PH_MAINWORK_TITLE)
+		VALUES('PHMW'|| LPAD(PH_MAINWORK_CODE_SEQ.NEXTVAL, 6,'0')
+		, #{u_p_apply_code}
+		, TO_DATE(#{ph_mainwork_start_date},'YYYY-MM-DD HH24:MI:SS')
+		, TO_DATE(#{ph_mainwork_end_date},'YYYY-MM-DD HH24:MI:SS')
+		, TO_DATE(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
+		, #{ph_mainwork_title}
+		)
+	</insert>
+	
+	
+	
+	<insert id="mainWorkMemberInsert">
+		INSERT INTO PH_MAINWORK_MEMBER(PH_MAINWORK_MEMBER_CODE, U_P_APPLY_CODE, PH_MAINWORK_CODE)
+		SELECT ('PHMWM'|| LPAD(PH_MAINWORK_MEMBER_CODE_SEQ.NEXTVAL, 5,'0'))
+		, A.* 
+		FROM (
+		<foreach collection="list" item="item"  index="index" separator=" UNION ALL ">
+		SELECT
+		#{item} AS U_P_APPLY_CODE
+		, (SELECT MAX(PH_MAINWORK_CODE) FROM PH_MAINWORK) AS PH_MAINWORK_CODE
+		FROM DUAL
+		</foreach>
+		) A
+	</insert>
 	
 	
 	
