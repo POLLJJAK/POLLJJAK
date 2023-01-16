@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                     , #{content}, SYSDATE, '1');
 	</insert>
 	
-	<select id="list" resultType="com.test.dto.PostCommentDTO">
+	<select id="list" parameterType="map" resultType="map">
 		SELECT COMMENT_CODE, POST_CODE
 			, USER_CODE, NICKNAME, CONTENT
 			, COMMENTDATE, COMMENTUPDATE, CGROUP, CDEPTH

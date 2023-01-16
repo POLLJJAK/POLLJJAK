@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IProjectDetailBlacklistDAO">
+	
+	<select id="u_p_apply_list" resultType="com.test.dto.ProjectDetailBlacklistDTO">
+		SELECT A4.USER_CODE, A3.U_P_APPLY_CODE, A4.U_NICKNAME
+		FROM P A1, P_POSITION A2, U_P_APPLY A3, U A4
+		WHERE A1.P_CODE = #{p_code}
+		  AND A1.P_CODE = A2.P_CODE
+		  AND A2.P_POSITION_CODE = A3.P_POSITION_CODE
+		  AND A3.U_P_APPLY_CODE NOT IN (SELECT U_P_APPLY_CODE FROM P_REJECT)
+		  AND A3.USER_CODE = A4.USER_CODE
+	</select>
+	
+	<select id="p_reject_list" resultType="com.test.dto.ProjectDetailBlacklistDTO">
+		SELECT A3.USER_CODE, A3.U_P_APPLY_CODE, A5.U_NICKNAME
+		FROM P A1, P_POSITION A2, U_P_APPLY A3, P_REJECT A4, U A5
+		WHERE A1.P_CODE = #{p_code}
+		  AND A1.P_CODE = A2.P_CODE
+		  AND A2.P_POSITION_CODE = A3.P_POSITION_CODE
+		  AND A3.U_P_APPLY_CODE = A4.U_P_APPLY_CODE
+		  AND A3.USER_CODE = A5.USER_CODE
+	</select>
+	
+	
+	<insert id="addblacklist">
+		INSERT INTO P_REJECT(P_REJECT_CODE, U_P_APPLY_CODE, REJECT_CONDITION_CODE, P_REJECT_DATE)
+		VALUES('PRJ'||LPAD(P_REJECT_CODE_SEQ.NEXTVAL, 7, '0'), #{u_p_apply_code}, 'RJC0000002', SYSDATE)
+	</insert>
+	
+	
+	<delete id="deleteblacklist">
+		DELETE 
+		FROM P_REJECT
+		WHERE U_P_APPLY_CODE = #{u_p_apply_code}
+	</delete>
+	
+</mapper>

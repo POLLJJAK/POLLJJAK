@@ -5,8 +5,7 @@
 <%
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
-
-   String post_code = request.getParameter("post_code");
+   
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -114,8 +113,8 @@
 </style>
 <body>
    <c:import url="./common/Nav.jsp" />
+   <input type="hidden" id="post_code" value="${postdetail.post_code}"/>
    <main id="main">
-
       <!-- 빈칸 여백 -->
       <section class="pb-2"></section>
 
@@ -384,53 +383,84 @@
    </main>
    <!-- End #main -->
    <!-- 스크립트 -->
-   <script type="text/javascript">
-   
-   
-   var post_code = "<%=post_code%>";
-   var user_code = "U000000003";
-   
-   $(function(){
-      $("#img").click(function()
-      {
-         var param = "<%=post_code%>";
+	<script type="text/javascript">
+	
+	//수정된 부분--
+	//스크립트릿에 저장하지 않고 jsp 페이지 상단에 input hidden 태그에 값 저장후 가져옴
+	//파라미터 세팅은 컨트롤러에서 공통으로 사용하는 convertToJsonString을 활용하기 위해
+	//	var param = {post_code : post_code};
+	//	var paramJson = {};
+	//	paramJson.paramCode = param;
+	// 이와 같은 형식으로 넘겨야함 ※ 꼭 paramJson에 paramCode라는 키를 가진 value로 param을 넣어야함
+
+	
+	$(function(){
+		var post_code = $("#post_code").val();
+		var user_code = "U000000003";
+	   
+		$("#img").click(function()
+		{
+			
+			var param = {post_code : post_code};
+			var paramJson = {};
+			paramJson.paramCode = param;
          
-         //댓글 리스트 
-         $.ajax({
-            url:"commentlist.action",
-            type:"POST",
-            data: param,
-            dataType: "json",
-            contentType: "application/json; charset=UTF-8",
-            success : function(data)
-            {
-               console.log(data);
-            
-               //alert(typeof data); //--object
-               //alert(JSON.stringify(data)); //--object
-               alert(JSON.stringify(data[0]["nickname"])); 
-               //alert(URLEncoder.encode(JSON.stringify(data[0]["nickname"]), "UTF-8")); 
-               //alert(Object.keys(data)); //0,1,2,3,4,5
-               //alert(Object.keys(data).length); //6
-               //alert(Object.keys(data).values()); //[object Array Iterator]
-               //alert(Object.values(data)); //[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
-               
-               var listHtml = "";
-               for (var i=0; i<Object.keys(data).length; i++)
-               {
-            	    //data.replace("\"", "");
-                  	var no = JSON.stringify(data[i]["comment_code"]).replace(/\"/gi, "");
-                    var bno = JSON.stringify(data[i]["post_code"]).replace(/\"/gi, "");
-                    var cu_code = JSON.stringify(data[i]["user_code"]).replace(/\"/gi, "");
-                    var writer = JSON.stringify(data[i]["nickname"]).replace(/\"/gi, "");
-                    var content = JSON.stringify(data[i]["content"]).replace(/\"/gi, "");
-                    var grps = JSON.stringify(data[i]["commentdate"]).replace(/\"/gi, "");
-                    var wdate = JSON.stringify(data[i]["commentupdate"]).replace(/\"/gi, "");
-                    var grp = JSON.stringify(data[i]["cgroup"]).replace(/\"/gi, "");
-                    var grpl = JSON.stringify(data[i]["cdepth"]).replace(/\"/gi, "");
+			//댓글 리스트 
+			$.ajax({
+				url:"commentlist.action",
+				type:"POST",
+				method : "POST",
+				data: JSON.stringify(paramJson),
+				dataType: "json",
+				contentType : "application/json; charset-utf-8",
+				async : false,
+				cache : false,
+				success : function(data)
+				{
+					//데이터 정상적으로 넘어옵니다.
+					console.log(data);
+					
+					console.log(data.resultList);
+					
+					//직접 접근하여 출력하기
+					console.log(data.resultList[0].CDEPTH);
+					console.log(data.resultList[0].CGROUP);
+					console.log(data.resultList[0].COMMENTDATE);
+					console.log(data.resultList[0].COMMENT_CODE);
+					console.log(data.resultList[0].CONTENT);
+					console.log(data.resultList[0].NICKNAME);
+					console.log(data.resultList[0].POST_CODE);
+					console.log(data.resultList[0].USER_CODE);
+					
+					//배열 순회하며 출력하기
+					data.resultList.map(e => {
+						console.log(e.CDEPTH);
+						console.log(e.CGROUP);
+						console.log(e.COMMENTDATE);
+						console.log(e.COMMENT_CODE);
+						console.log(e.CONTENT);
+						console.log(e.NICKNAME);
+						console.log(e.POST_CODE);
+						console.log(e.USER_CODE);
+					})
+
+					/*
+					var listHtml = "";
+					for (var i=0; i<Object.keys(data).length; i++)
+					{
+						//data.replace("\"", "");
+						var no = JSON.stringify(data[i]["comment_code"]).replace(/\"/gi, "");
+						var bno = JSON.stringify(data[i]["post_code"]).replace(/\"/gi, "");
+						var cu_code = JSON.stringify(data[i]["user_code"]).replace(/\"/gi, "");
+						var writer = JSON.stringify(data[i]["nickname"]).replace(/\"/gi, "");
+						var content = JSON.stringify(data[i]["content"]).replace(/\"/gi, "");
+						var grps = JSON.stringify(data[i]["commentdate"]).replace(/\"/gi, "");
+						var wdate = JSON.stringify(data[i]["commentupdate"]).replace(/\"/gi, "");
+						var grp = JSON.stringify(data[i]["cgroup"]).replace(/\"/gi, "");
+						var grpl = JSON.stringify(data[i]["cdepth"]).replace(/\"/gi, "");
                     
-                    listHtml +=  "<div class='cmt-list'>"; 
-                    if(grpl != 1){	
+						listHtml +=  "<div class='cmt-list'>"; 
+						if(grpl != 1){	
                         listHtml += "	<div class='col-1'>";
                         //listHtml += "		<a href='other_profile.do?other_nick="+writer+"'> ";
                         listHtml += "			<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 60px; height: 60px; padding: 10px;'>";
@@ -534,7 +564,7 @@
 	                $("#commentlist-content").html(listHtml);
 
 	
-	
+					*/
 	                
 	                
 	                
@@ -600,36 +630,14 @@
 		
 		            });
 	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	        },
-            error : function ()
-            {   
-               alert("ERR");
-            }
+					
+					//
+					
+		        },
+	            error : function (err)
+	            {   
+	               console.log(err);
+	            }
             
          }); 
       });

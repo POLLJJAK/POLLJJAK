@@ -36,6 +36,7 @@
 <!-- ====== Carousel Notice Section ====== -->
 <!-- 일단 메인 배너에 대한 코드를 만들어 놓긴 했는데
 저는 개인적으로 메인만 있는게 더 좋을 것 같은 생각입니다 -->
+<!--
 <div class="section-title"  style = "margin-bottom: 50px;"data-aos="fade-up">
 	<h2>관리자 공지사항</h2>
 	<p>플젝폴짝의 새로운 공지사항을 확인하세요!</p>
@@ -90,6 +91,7 @@
 		</button>
 	</div>
 </div>
+ -->
 <!-- End Carousel Notice Section -->
 
 <!-- ====== Carousel New Project Section ====== -->

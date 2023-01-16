@@ -54,6 +54,7 @@ public class MapToJson {
 		return returnString;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static Map<String, Object> convertToMap(String strJson, String strKeyName) {
 
 		Map<String, Object> formData = null;

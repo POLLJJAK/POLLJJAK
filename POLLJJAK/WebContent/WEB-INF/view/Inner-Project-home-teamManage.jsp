@@ -292,10 +292,9 @@
 		      			함께한 팀원들을 평가하세요!
 		      		</div>
 
+					<!-- 별점 기능 -->
 					<div class="mb-2 row justify-content-center text-center">
 						<div class="col-lg-12 mb-1">팀원 1</div>
-						
-						<!-- 별점 기능 -->
 						<div class="scoreSelect1">
 							<input type="radio" class="score" id="score1.0" name="score"><label for="score1.0">1.0</label>
 							<input type="radio" class="score" id="score1.5" name="score"><label for="score1.5">1.5</label>
@@ -307,14 +306,29 @@
 							<input type="radio" class="score" id="score4.5" name="score"><label for="score4.5">4.5</label>
 							<input type="radio" class="score" id="score5.0" name="score"><label for="score5.0">5.0</label>
 						</div>
-						
 					</div>
 					
+					<c:forEach var="p_rating_list" items="${p_rating_list }">
+						<div class="mb-2 row justify-content-center text-center">
+							<div class="col-lg-12 mb-1">${p_rating_list.member_name }</div>
+							<div class="scoreSelect1">
+								<input type="radio" class="score" id="score1.0" name="score"><label for="score1.0">1.0</label>
+								<input type="radio" class="score" id="score1.5" name="score"><label for="score1.5">1.5</label>
+								<input type="radio" class="score" id="score2.0" name="score"><label for="score2.0">2.0</label>
+								<input type="radio" class="score" id="score2.5" name="score"><label for="score2.5">2.5</label>
+								<input type="radio" class="score" id="score3.0" name="score"><label for="score3.0">3.0</label>
+								<input type="radio" class="score" id="score3.5" name="score"><label for="score3.5">3.5</label>
+								<input type="radio" class="score" id="score4.0" name="score"><label for="score4.0">4.0</label>
+								<input type="radio" class="score" id="score4.5" name="score"><label for="score4.5">4.5</label>
+								<input type="radio" class="score" id="score5.0" name="score"><label for="score5.0">5.0</label>
+							</div>
+						</div>
+					</c:forEach>
 				
 					
 		      	</div>
 		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="gradientBtn color-9">팀원평가 완료</button>
+		        	<button type="button" id="teamEvalBtn" class="gradientBtn color-9">팀원평가 완료</button>
 		      	</div>
 		    </div>
 		 </div>

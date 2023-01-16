@@ -49,13 +49,12 @@
 					<img src="assets/img/UserIcon/star.png" alt="" style="width: 10px; height: 10px;"> 
 					<img src="assets/img/UserIcon/star.png" alt="" style="width: 10px; height: 10px;">
 					<!-- End Star -->
-					<p>최근 로그인 날짜 : 2022-12-09</p>
+					<p>최근 로그인 날짜 : 2023-01-18</p>
 				</div>
 				<hr>
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar" class="navbar">
 					<ul style="margin-left: auto; margin-right: auto;">
-						<%-- <li><a class="nav-link scrollto active" href="companyupdateform.action?user_code="<%= request.getParameter("user_code") %>>정보</a></li> --%>
 						<li><a class="nav-link scrollto" href="companyformupdateform.action">정보</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-project.jsp">프로젝트</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
