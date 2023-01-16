@@ -49,7 +49,7 @@
 					<img src="assets/img/UserIcon/star.png" alt="" style="width: 10px; height: 10px;"> 
 					<img src="assets/img/UserIcon/star.png" alt="" style="width: 10px; height: 10px;">
 					<!-- End Star -->
-					<p>최근 로그인 날짜 : 2022-12-09</p>
+					<p>최근 로그인 날짜 : 2023-01-18</p>
 				</div>
 				<hr>
 				<!-- ====== InnerNav ====== -->

@@ -23,7 +23,7 @@
 			<ul>
 				<!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트조회/지원</a></li> -->
 				<li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp">프로젝트 조회/지원</a></li>
-				<li><a class="nav-link scrollto" href="projectopenmain.action?user_code=U000000101">프로젝트 개설</a></li>
+				<li><a class="nav-link scrollto" href="projectopenmain.action?user_code=${user_code }">프로젝트 개설</a></li>
 				<%-- <li><a class="nav-link scrollto" href="projecthomelist.action?user_code=${user_code }">내 프로젝트 홈</a></li> --%>
 				<li><a class="nav-link scrollto" href="projecthomelist.action">내 프로젝트 홈</a></li>
 				
@@ -107,8 +107,8 @@
 							<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 							<c:choose>
 								<c:when test="${userType.equals(\"user\") }">
-									<button type="button" class="btn-uModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> 
-									<!-- <a href="umypagewarningform.action" class="dropdown-item">일반 마이페이지</a> --> 
+									<%-- <button type="button" class="btn-uModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> --%> 
+									<a href="umypagewarningform.action?user_code=${user_code }" class="dropdown-item">일반 마이페이지</a>
 								</c:when>
 									<c:when test="${userType.equals(\"company\") }">
 									<button type="button" class="btn-cModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> 
