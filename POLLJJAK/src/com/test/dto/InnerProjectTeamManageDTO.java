@@ -23,8 +23,28 @@ public class InnerProjectTeamManageDTO
 	
 	private String p_team_confirm_code;
 	
-	
 	private String p_stop_reason;
+	
+	private String team_member;
+	public String getTeam_member()
+	{
+		return team_member;
+	}
+	public void setTeam_member(String team_member)
+	{
+		this.team_member = team_member;
+	}
+	private String p_leader_reason;
+	
+	
+	public String getP_leader_reason()
+	{
+		return p_leader_reason;
+	}
+	public void setP_leader_reason(String p_leader_reason)
+	{
+		this.p_leader_reason = p_leader_reason;
+	}
 	
 	
 	

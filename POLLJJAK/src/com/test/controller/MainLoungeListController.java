@@ -97,7 +97,8 @@ public class MainLoungeListController
 		{
 		// ----------------------------------------- 세션처리
 
-			String user_code = request.getParameter("user_code");
+			//String user_code = request.getParameter("user_code");
+			String user_code = temp;
 			model.addAttribute("user_code", user_code);
 			
 			result = "/Main-Lounge-post-insertform.jsp";
@@ -142,12 +143,15 @@ public class MainLoungeListController
 	{
 		String result = null;
 		
+		HttpSession session = request.getSession();
+		
 		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
 		String post_code = request.getParameter("post_code");
 		
-		//로그인세션만들면 수정할것!
-		//String user_code = "U000000003";
-		String user_code = request.getParameter("user_code");
+		
+		String user_code = null;
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		model.addAttribute("postdetail", dao.postdetail(post_code));
 		model.addAttribute("likecheck", dao.likecheck(post_code, user_code));
@@ -169,10 +173,10 @@ public class MainLoungeListController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -203,10 +207,10 @@ public class MainLoungeListController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -233,10 +237,10 @@ public class MainLoungeListController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -281,9 +285,7 @@ public class MainLoungeListController
 		// 리턴 안되네?ㅎ..
 		return count;
 	}
-	*/
-	// 좋아요추가 v2
-	//@ResponseBody
+	
 	@RequestMapping(value = "/likeinsert.action", method = RequestMethod.GET)
 	public String likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
 			,@RequestParam("user_code") String user_code, Model model  )
@@ -293,10 +295,10 @@ public class MainLoungeListController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -320,21 +322,60 @@ public class MainLoungeListController
 			
 		return result;
 	}
-	
-	// 좋아요삭제
-	@RequestMapping(value = "/likeremove.action", method = RequestMethod.GET)
-	public String likeRemove(HttpServletRequest request, @RequestParam("post_code") String post_code
-			,@RequestParam("user_code") String user_code, Model model  )
+	*/
+	// 좋아요추가 v2
+	//@ResponseBody
+	@RequestMapping(value = "/likeinsert.action", method = RequestMethod.GET)
+	public String likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
+			, Model model  )
 	{
 		String result = "";
 		
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+	
+		System.out.println(post_code);
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			dao.likeadd(post_code, user_code);
+			
+			int count = 0;
+			count = dao.likeCount(post_code);
+			
+			
+			model.addAttribute("likeCount", count);
+			result = "/AjaxLikeUp.jsp";
+		}
+			
+		return result;
+	}
+	
+	// 좋아요삭제
+	@RequestMapping(value = "/likeremove.action", method = RequestMethod.GET)
+	public String likeRemove(HttpServletRequest request, @RequestParam("post_code") String post_code
+			, Model model  )
+	{
+		String result = "";
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String user_code = null; 
+		
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
