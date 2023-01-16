@@ -126,7 +126,8 @@ public class IInnerProjectMeetController
 	}
 	
 	@RequestMapping(value="/inner-project-home-meet-post-insert.action", method=RequestMethod.POST)
-	public String meetBoardInsert(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code, InnerProjectMeetDTO meetDto
+	public String meetBoardInsert(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code
+											 , InnerProjectMeetDTO meetDto
 											 , @RequestParam("members") List<String> members
 											 , HttpServletRequest request) {
 		String result = null;

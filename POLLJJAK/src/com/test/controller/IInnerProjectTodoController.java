@@ -33,6 +33,7 @@ public class IInnerProjectTodoController
 
 		// 프로젝트 타이틀 불러오기
 		IInnerProjectTeamManageDAO pj_title_dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+		
 		model.addAttribute("pj_title_info", pj_title_dao.pj_title_info(u_p_apply_code));
 		
 		result = "WEB-INF/view/Inner-Project-home-todo.jsp";
@@ -54,7 +55,6 @@ public class IInnerProjectTodoController
 		
 
 		
-		System.out.println();
 		
 		return list;
 	}

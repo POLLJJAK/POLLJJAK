@@ -96,7 +96,7 @@
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-lounge.action?u_p_apply_code=${u_p_apply_code }">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
