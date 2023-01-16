@@ -33,32 +33,25 @@ public class UMainContentsController
 	
 	
 	// 신규 프로젝트 정보 조회
-	@RequestMapping(value = "/umaincontents.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/umaincontents.action", method = RequestMethod.POST)
 	public String getNewProject(Model model, HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException 
 	{
 		
 		IUMainContentsDAO dao = sqlSession.getMapper(IUMainContentsDAO.class);
 
-		UMainContentsDTO dto = new UMainContentsDTO();
-		
-		//요청온 request객체 convertToJsonString에 넘겨서 jsonString 으로 변환
-		//jsonString을 convertToMap을 이용하여 Map으로 변환
-		String jsonString = MapToJson.convertToJsonString(request);
-		Map<String, Object> param = MapToJson.convertToMap(jsonString, "paramCode");
 		Map<String, Object> resultMap = new HashMap();
-		
 		
 		//Map을 파라미터로 모델 호출 & 데이터 Map에 반환 
 		//다중 Row의 결과이므로 ListMap에 반환
-		List<Map<String, Object>> resultPList =  dao.getNewProject();
+		List<Map<String, Object>> resultList =  dao.getNewProject();
 		
 		//resultMap에 저장 & 다시 json스트링으로 변환 
-		resultMap.put("resultPList", resultPList);
+		resultMap.put("resultList", resultList);
 		ObjectMapper mapper = new ObjectMapper();
-		String newPlist = mapper.writeValueAsString(resultMap);
+		String resultJsonString = mapper.writeValueAsString(resultMap);
 		
 		//ajax페이지에 전달
-		model.addAttribute("result", newPlist);
+		model.addAttribute("result", resultJsonString);
 		String result = "/AjaxResult.jsp";	
 		
 		return result;

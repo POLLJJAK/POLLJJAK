@@ -6,7 +6,6 @@
 <mapper namespace="com.test.mybatis.IUMainContentsDAO">
 	
 	<!-- 신규 프로젝트 조회-->
-	<!-- 
 	<select id="getNewProject" resultType="map">
 		SELECT P_NAME, P_CODE, U_NAME, SKILL_PART, P_FILE_PATH, P_FILE_NAME 
 		FROM 
@@ -24,5 +23,4 @@
       	)
 		<![CDATA[WHERE ROWNUM <= 20]]>
 	</select>
-	 -->
 </mapper>
