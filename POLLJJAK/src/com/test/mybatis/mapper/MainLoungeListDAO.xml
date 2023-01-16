@@ -67,4 +67,10 @@
 		WHERE L_POST_CODE=#{post_code}
 	</select>
 	
+	<!-- 신고사유목록 -->
+	<select id="reportList" resultType="com.test.dto.MainLoungeListDTO">
+		SELECT REPORT_REASON_CODE,REPORT_REASON  
+		FROM REPORT_REASON
+	</select>
+	
 </mapper>

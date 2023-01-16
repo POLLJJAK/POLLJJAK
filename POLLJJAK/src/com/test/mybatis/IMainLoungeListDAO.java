@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import com.test.dto.MainLoungeListDTO;
+import com.test.dto.ReportDTO;
 
 public interface IMainLoungeListDAO
 {
@@ -46,5 +47,8 @@ public interface IMainLoungeListDAO
 	
 	// 좋아요 수 
 	public int likeCount(String post_code);
+	
+	//신고사유
+	public ArrayList<MainLoungeListDTO> reportList();
 	
 }

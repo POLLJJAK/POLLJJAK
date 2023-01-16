@@ -16,7 +16,11 @@ public class MainLoungeListDTO
 	
 	//페이징
 	private String start, end;
-
+	
+	// 신고사유, 코드
+	private String report_reason_code, report_reason;
+	
+	//getter / setter
 	public String getSid()
 	{
 		return sid;
@@ -136,8 +140,27 @@ public class MainLoungeListDTO
 	{
 		this.end = end;
 	}
-	
-	
+
+	public String getReport_reason_code()
+	{
+		return report_reason_code;
+	}
+
+	public void setReport_reason_code(String report_reason_code)
+	{
+		this.report_reason_code = report_reason_code;
+	}
+
+	public String getReport_reason()
+	{
+		return report_reason;
+	}
+
+	public void setReport_reason(String report_reason)
+	{
+		this.report_reason = report_reason;
+	}
+
 	
 	
 	

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.test.dto.ArticlePage;
 import com.test.dto.MainLoungeListDTO;
 import com.test.mybatis.IMainLoungeListDAO;
+import com.test.mybatis.IReportDAO;
 
 @Controller
 public class MainLoungeListController
@@ -59,6 +60,8 @@ public class MainLoungeListController
 			MainLoungeListDTO dto = new MainLoungeListDTO();
 			dto.setStart(Integer.toString(vo.getStart()));
 			dto.setEnd(Integer.toString(vo.getEnd()));
+			
+			
 			model.addAttribute("list", dao.list(dto));
 			model.addAttribute("paging", vo);
 			
@@ -114,6 +117,10 @@ public class MainLoungeListController
 		model.addAttribute("postdetail", dao.postdetail(post_code));
 		model.addAttribute("likecheck", dao.likecheck(post_code, user_code));
 		result ="/Main-Lounge-post.jsp";
+		
+		//신고모달에 띄울 신고사유
+		//IReportPostDAO Rdao = sqlSession.getMapper(IReportPostDAO.class);
+		model.addAttribute("reportList", dao.reportList());
 		
 		return result;
 	}
