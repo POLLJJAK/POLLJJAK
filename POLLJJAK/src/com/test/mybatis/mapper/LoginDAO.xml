@@ -36,6 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="domainList" resultType="com.test.dto.DomainDTO">
 		SELECT DOMAIN_PART_CODE, DOMAIN_ADDRESS, DOMAIN_PART
 		FROM DOMAIN_PART
+		ORDER BY DOMAIN_PART_CODE
 	</select>
 	
 	<select id="uIdCheck"  resultType="com.test.dto.UserDTO">
