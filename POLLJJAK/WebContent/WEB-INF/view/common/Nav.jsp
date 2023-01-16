@@ -18,7 +18,7 @@
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 		</div>
-	
+		
 		<nav id="navbar" class="navbar">
 			<ul>
 				<!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트조회/지원</a></li> -->
@@ -28,7 +28,11 @@
 				<li><a class="nav-link scrollto" href="projecthomelist.action?user_code=${user_code }">내 프로젝트 홈</a></li>
 				
 				<li><a class="nav-link scrollto " href="mainlounge.action">라운지</a></li>
+				
+				<!-- 기업 구현하면 쓰기 -->
 				<li><a class="nav-link scrollto" href="Inner-page.jsp">기업둘러보기</a></li>
+				
+				
 				<!-- ========= Searching Section ============ -->
 				<li>
 					<div class="serach" style="margin-right: 30px;">
