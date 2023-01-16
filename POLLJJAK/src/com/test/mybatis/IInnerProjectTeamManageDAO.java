@@ -26,8 +26,11 @@ public interface IInnerProjectTeamManageDAO
 	
 	public int p_stop_teamMember_count(String u_p_apply_code);
 	
-	
 	public InnerProjectTeamManageDTO p_team_confirm_code(String u_p_apply_code);
 	
 	public int p_stop_project_insert(InnerProjectTeamManageDTO dto);
+	
+	public int pj_team_leader_move(InnerProjectTeamManageDTO dto);
+	public ArrayList<InnerProjectTeamManageDTO> pj_team_leader_modal_list(String u_p_apply_code);
+	
 }

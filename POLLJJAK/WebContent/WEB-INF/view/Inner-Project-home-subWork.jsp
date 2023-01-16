@@ -15,7 +15,8 @@
 <!-- 내 프로젝트 홈 css 파일 -->
 <link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
-
+<!-- js 연결 -->
+<script src="<%=cp %>/resources/js/Inner-Project-home-SubWork.js"></script> 
 <body>
 
 	<a href="#"
@@ -87,7 +88,7 @@
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-lounge.action?u_p_apply_code=${u_p_apply_code }">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
@@ -145,83 +146,107 @@
 									<div class="container d-flex justify-content-between p-0">
 										<div class="align-self-center"
 											style="font-size: 1.0rem; font-weight: bold;">업무 목록</div>
-										<div class="p-2 pe-0 ms-auto align-self-center"
-											data-bs-toggle="modal" data-bs-target="#subWorkAdd">
-											<button type="button" class="btn btn-light">세부 업무 추가</button>
-										</div>
+											
+											<c:forEach var="mainwork_team" items="${mainwork_team }">
+												<c:choose>
+													<c:when test="${mainwork_team.main_u_p_apply_code == u_p_apply_code}">
+														<div class="p-2 pe-0 ms-auto align-self-center" data-bs-toggle="modal" data-bs-target="#subWorkAdd">
+															<button type="button" class="btn btn-light">세부 업무 추가</button>
+														</div>
+													</c:when>
+													<c:otherwise>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										
 									</div>
 
 
 									<c:forEach var="subwork_list" items="${subwork_list }">
 									<c:set var="i" value="${i+1 }"/>
 									
-									<div class="d-flex justify-content-between mb-3">
-										<div class="accordion" style="width: 95%;" id="accordionExample">
-											<div class="accordion-item">
-											
-												<div class="accordion-header" id="heading${i}">
-													<button class="accordion-button collapsed p-2"
-														type="button" data-bs-toggle="collapse"
-														data-bs-target="#collapse${i}" aria-expanded="false"
-														aria-controls="collapse">
-														<div class="col-lg-1">${subwork_list.u_name }</div>
-														<div class="col-lg-5">${subwork_list.ph_subwork_title }</div>
-														<div class="col-lg-2">${subwork_list.ph_subwork_start_date }</div>
-														<div class="col-lg-1">${subwork_list.ph_subwork_complete_date }</div>
-													</button>
-												</div>
+										<div class="d-flex justify-content-between mb-3">
+											<div class="accordion" style="width: 95%;" id="accordionExample">
+												<div class="accordion-item">
 												
-												<div id="collapse${i}" class="accordion-collapse collapse"
-													aria-labelledby="heading${i}"
-													data-bs-parent="#accordionExample">
-													<div class="accordion-body">
-														<div style="font-size: 1.0rem; font-weight: bold;">세부업무 설명</div>
-														<hr>
-														<div>
-															${subwork_list.ph_subwork_detail}
-														</div>
-
-														<hr>
-
-														<div>
-															<textarea class="form-control" rows="3"></textarea>
-															<div class="text-end mt-2">
-																<button type="button" class="btn btn-primary"
-																	onClick="javascript:addReply();">코멘트 작성</button>
+													<div class="accordion-header" id="heading${i}">
+														<button class="accordion-button collapsed p-2"
+															type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="false" aria-controls="collapse">
+															<div class="col-lg-1">${subwork_list.u_name }</div>
+															<div class="col-lg-5">${subwork_list.ph_subwork_title }</div>
+															<div class="col-lg-2">${subwork_list.ph_subwork_start_date }</div>
+															<div class="col-lg-1">${subwork_list.ph_subwork_complete_date }</div>
+														</button>
+													</div>
+													
+													<div id="collapse${i}" class="accordion-collapse collapse"
+														aria-labelledby="heading${i}"
+														data-bs-parent="#accordionExample">
+														<div class="accordion-body">
+															<div style="font-size: 1.0rem; font-weight: bold;">세부업무 설명</div>
+															<hr>
+															<div>
+																${subwork_list.ph_subwork_detail}
 															</div>
-														</div>
-
-														<div style="font-size: 1.0rem; font-weight: bold;">팀원 코멘트</div>
-
-														<hr>
-														
-														<c:forEach var="subwork_teamComment" items="${subwork_teamComment }">
-															
-															<c:if test="${subwork_list.swlistcode == subwork_teamComment.scsbcode}">
-																<div class="mb-3">
-																	<div class="fw-bolder">${subwork_teamComment.tc_u_name }</div>
-																	<div>${subwork_teamComment.ph_s_comment_content }</div>
+	
+															<hr>
+	
+															<div>
+																<textarea class="form-control" rows="3"></textarea>
+																<div class="text-end mt-2">
+																	<button type="button" class="btn btn-primary"
+																		onClick="javascript:addReply();">코멘트 작성</button>
 																</div>
-															</c:if>
-
-														</c:forEach>
-														
+															</div>
+	
+															<div style="font-size: 1.0rem; font-weight: bold;">팀원 코멘트</div>
+	
+															<hr>
+															
+															<c:forEach var="subwork_teamComment" items="${subwork_teamComment }">
+																
+																<c:if test="${subwork_list.swlistcode == subwork_teamComment.scsbcode}">
+																	<div class="mb-3">
+																		<div class="fw-bolder">${subwork_teamComment.tc_u_name }</div>
+																		<div>${subwork_teamComment.ph_s_comment_content }</div>
+																	</div>
+																</c:if>
+	
+															</c:forEach>
+															
+														</div>
 													</div>
 												</div>
 											</div>
+	
+											<div class="ps-1">
+												<c:if test="${subwork_list.u_name == userName}">
+													<c:if test="${subwork_list.ph_subwork_complete_date eq '미완료' }">
+														<button class="p-2 btn btn-success"
+															onclick="location.href='checkSubWork.action?u_p_apply_code=${u_p_apply_code }&ph_mainwork_code=${ph_mainwork_code}&ph_subwork_code=${subwork_list.ph_subwork_code }'">
+															<div class="bi bi-check-lg"></div>
+														</button>
+													</c:if>
+													<c:if test="${subwork_list.ph_subwork_complete_date ne '미완료' }">
+														<button class="p-2 btn btn-primary" disabled>
+															<div class="bi bi-check-lg"></div>
+														</button>
+													</c:if>
+												</c:if>
+												<c:if test="${subwork_list.u_name != userName}">
+													<button class="p-2 btn btn-light" disabled>
+														<div class="bi bi-check-lg"></div>
+													</button>
+												</c:if>
+											</div>
+											
+											
+											<div class="ps-1">
+												<button class="p-2 btn btn-danger">
+													<div class="bi bi-trash3-fill" id="deleteSubWorkBtn"></div>
+												</button>
+											</div>
 										</div>
-
-										<div class="ps-1">
-											<button class="p-2 btn btn-success">
-												<div class="bi bi-check-lg"></div>
-											</button>
-										</div>
-										<div class="ps-1">
-											<button class="p-2 btn btn-danger">
-												<div class="bi bi-trash3-fill"></div>
-											</button>
-										</div>
-									</div>
 									
 									</c:forEach>
 									
@@ -276,9 +301,7 @@
 										</div>
 									</div>
 
-
 									<hr>
-
 								</div>
 							</div>
 
@@ -300,29 +323,31 @@
 		        	<h5 class="modal-title">세부 업무 등록</h5>
 		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      	</div>
-		      	<div class="modal-body row mb-3 justify-content-center">
 		      	
-					<div class="form-group mb-3 row">
-						<label class="col-sm-4 form-label">세부 업무 제목</label>
-						<div class="com-sm-3">
-							<input type="text" name="mainWorkTitle" class="form-control" placeholder="제목을 입력해주세요">
-						</div>
-					</div>
-					
-					<div class="form-group mb-3 row">
-						<label class="col-sm-6 form-label">세부 업무 설명</label>
-						<div class="form-group">
-							<textarea class="form-control" rows="2" placeholder="세부내용 설명을 입력해주세요."></textarea>
-							<div style="float: right; font-size: 12px;">(최대 500자)</div>
+		      	<form action="addSubWork.action?u_p_apply_code=${u_p_apply_code }&ph_mainwork_code=${ph_mainwork_code}" method="post" id="subWorkAddForm">
+			      	<div class="modal-body row mb-3 justify-content-center">
+						<div class="form-group mb-3 row">
+							<label class="col-sm-4 form-label">세부 업무 제목</label>
+							<div class="com-sm-3">
+								<input type="text" name="ph_subwork_title" class="form-control" placeholder="제목을 입력해주세요" maxlength="10">
+							</div>
 						</div>
 						
-					</div>
-					
-					
-		      	</div>
-		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-primary" onclick="location.href='<%=cp %>/Inner-Project-home-mainWork-Leader.jsp';" style="cursor: pointer;">등록하기</button>
-		      	</div>
+						<div class="form-group mb-3 row">
+							<label class="col-sm-6 form-label">세부 업무 설명</label>
+							<div class="form-group">
+								<textarea class="form-control" name="ph_subwork_detail" rows="2" placeholder="세부내용 설명을 입력해주세요."></textarea>
+								<div style="float: right; font-size: 12px;">(최대 500자)</div>
+							</div>
+							
+						</div>
+						
+			      	</div>
+			      	<div class="modal-footer justify-content-center">
+			        	<button type="button" class="btn btn-primary" id="subWorkAddBtn" style="cursor: pointer;">등록하기</button>
+			      	</div>
+		      	</form>
+		      	
 		    </div>
 		 </div>
 	</div>
@@ -335,6 +360,8 @@
 	<c:import url="./common/Footer.jsp" />
 
 </body>
+
+
 
 
 
