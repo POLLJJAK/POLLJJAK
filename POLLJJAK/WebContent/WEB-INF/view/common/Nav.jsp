@@ -18,7 +18,7 @@
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 		</div>
-	
+		
 		<nav id="navbar" class="navbar">
 			<ul>
 				<!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트조회/지원</a></li> -->
