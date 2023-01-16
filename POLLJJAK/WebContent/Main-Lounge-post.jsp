@@ -392,7 +392,7 @@
 					console.log(data.resultList[0].NICKNAME);
 					console.log(data.resultList[0].POST_CODE);
 					console.log(data.resultList[0].USER_CODE);
-					
+
 					//배열 순회하며 출력하기
 					data.resultList.map(e => {
 						console.log(e.CDEPTH);

@@ -39,6 +39,7 @@ public class PostCommentController {
 		Map<String, Object> param = MapToJson.convertToMap(jsonString, "paramCode");
 		Map<String, Object> resultMap = new HashMap();
 		   
+		
 		//Map을 파라미터로 모델 호출 & 데이터 Map에 반환 
 		//다중 Row의 결과이므로 ListMap에 반환
 		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
