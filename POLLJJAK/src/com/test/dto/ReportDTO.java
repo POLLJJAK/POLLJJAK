@@ -1,16 +1,16 @@
 /*====================
- ReportPostDTO 
+ ReportDTO 
  - 자유게시판 신고
 ======================*/
 
 package com.test.dto;
 
-public class ReportPostDTO
+public class ReportDTO
 {
 	private String report_post_code, post_code, user_code, reportDate, complete;
 	
-	// 신고사유 코드
-	private String report_reason_code;
+	// 신고사유, 코드
+	private String report_reason_code, report_reason;
 	
 	// 관리자 코드 
 	private String a_code;
@@ -97,7 +97,17 @@ public class ReportPostDTO
 	{
 		this.warned_part_code = warned_part_code;
 	}
-	
+
+	public String getReport_reason()
+	{
+		return report_reason;
+	}
+
+	public void setReport_reason(String report_reason)
+	{
+		this.report_reason = report_reason;
+	}
+
 	
 	
 

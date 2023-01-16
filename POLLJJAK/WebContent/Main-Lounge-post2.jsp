@@ -5,7 +5,8 @@
 <%
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
-   
+
+   String post_code = request.getParameter("post_code");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -96,9 +97,7 @@
 .cmt-contentlist {
    border-bottom: 1px solid black;
    
-   
 }
-.col-1{ width: 100%;}
 
 .siren {
    margin-left: 52%;
@@ -110,17 +109,11 @@
 .write_rereply{
 	width: 40%;
 }
-
-.reply-right{ text-align: right; font-size: small;}
-
-.report_title{ text-align: left; font-size: small;}
-
-.r_cmt{width: 100%; margin-left: 10%;}
 </style>
 <body>
    <c:import url="./common/Nav.jsp" />
-   <input type="hidden" id="post_code" value="${postdetail.post_code}"/>
    <main id="main">
+
       <!-- 빈칸 여백 -->
       <section class="pb-2"></section>
 
@@ -192,8 +185,12 @@
                               <dd id="postLike">${postdetail.postLike }</dd>
                            </dl>
                            <div class="info siren" data-bs-toggle="modal" data-bs-target="#report" data-id="${postdetail.post_code }">
+                           		<%-- <a href="reportpost.action?post_code='${postdetail.post_code }'"> --%>
+                           		<a href="reportlist.action?post_code=LP00000006">
                                  <img src="assets/img/siren-icon.png" alt="" style="width: 30px; height: 30px;">
+                           		</a>
 						   </div>
+                           
                         </div>
 
 
@@ -269,13 +266,13 @@
                      </div>
                      <!-- end meet_wrap mb-3-->
 
-
-
-					  <!--=========================신고 모달 ===============================  -->
+					 <!--=========================신고 모달 ===============================  -->
+					 
+					 
 					 <div class="modal fade" id="report" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
-								<form action="reportpost.action" method="post" id = "reportform">
+								<form action="reportadd.action" method="post" id = "applyform">
 									<div class="modal-header">
 										<h5 class="modal-title">신고하기</h5>
 										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -286,27 +283,26 @@
 											<p style="font-size: xx-small; color: red;">※허위신고는 경고대상입니다. 신중하게 신고해주세요!</p>
 										</div>
 										<div class="form-group">
-											<p class="report_title">신고 글 : ${postdetail.title}</p>
-												
+											<textarea class="form-control" id="apply_reason" name = "apply_reason"></textarea>
+											<div style="float: right; font-size: small;">(최대 500자)</div>
 											
-											<select class="form-select form-select-m w-70 mt-2" id = "reportsel" name = "reportsel">
+											<select class="form-select form-select-sm w-25 mt-2" id = "report" name = "report">
 												<option value="">신고 사유 선택</option>
 												<c:forEach var="report" items="${reportList}">
-													<option value=${report.report_reason_code }>${report.report_reason }</option>
+													<option value=${reportList.report_reason_code }>${reportList.report_name }</option>
 											
 												</c:forEach>
 											</select>
-											
-											
 										</div>
-										<p id = "reason" style= "font-size: small; text-align: center; color: red; padding: 5%;"></p>
+										<p id = "reasonch" style= "font-size: x-small; text-align: center; color: red;"></p>
 									</div>
 									<div class="modal-footer justify-content-center">
 										<button type="reset" class="fullbtn" data-bs-dismiss="modal" aria-label="Close">취소</button>
-										<button id="reportSubmitBtn"type="submit" class="btn-hover color-9">신고</button>
+										<button id="applySubmitBtn"type="button" class="btn-hover color-9">제출</button>
 									</div>
-									<input type = "hidden" id = "post_code" name = "post_code" value = "${postdetail.post_code}">
-									<input type = "hidden" id = "user_code" name = "user_code" value = "U000000001">
+									<input type = "hidden" id = "p_code" name = "p_code" value = "${p_code}">
+									<input type = "hidden" id = "user_code" name = "user_code" value = "${user_code}">
+									<input type = "hidden" id = "position_part" name = "position_part" value = "">
 								</form>
 							</div>
 						</div>
@@ -389,185 +385,53 @@
    </main>
    <!-- End #main -->
    <!-- 스크립트 -->
-	<script type="text/javascript">
-	
-	//수정된 부분--
-	//스크립트릿에 저장하지 않고 jsp 페이지 상단에 input hidden 태그에 값 저장후 가져옴
-	//파라미터 세팅은 컨트롤러에서 공통으로 사용하는 convertToJsonString을 활용하기 위해
-	//	var param = {post_code : post_code};
-	//	var paramJson = {};
-	//	paramJson.paramCode = param;
-	// 이와 같은 형식으로 넘겨야함 ※ 꼭 paramJson에 paramCode라는 키를 가진 value로 param을 넣어야함
-
-	
-	$(function(){
-		var post_code = $("#post_code").val();
-		var user_code = "U000000003";
-	   
-		$("#img").click(function()
-		{
-			
-			var param = {post_code : post_code};
-			var paramJson = {};
-			paramJson.paramCode = param;
+   <script type="text/javascript">
+   
+   
+   var post_code = "<%=post_code%>";
+   var user_code = "U000000003";
+   
+   $(function(){
+      $("#img").click(function()
+      {
+         var param = "<%=post_code%>";
          
-			//댓글 리스트 
-			$.ajax({
-				url:"commentlist.action",
-				type:"POST",
-				method : "POST",
-				data: JSON.stringify(paramJson),
-				dataType: "json",
-				contentType : "application/json; charset-utf-8",
-				async : false,
-				cache : false,
-				success : function(data)
-				{
-					//데이터 정상적으로 넘어옵니다.
-					console.log(data);
-					
-					console.log(data.resultList);
-					
-					//직접 접근하여 출력하기
-					console.log(data.resultList[0].CDEPTH);
-					console.log(data.resultList[0].CGROUP);
-					console.log(data.resultList[0].COMMENTDATE);
-					console.log(data.resultList[0].COMMENT_CODE);
-					console.log(data.resultList[0].CONTENT);
-					console.log(data.resultList[0].NICKNAME);
-					console.log(data.resultList[0].POST_CODE);
-					console.log(data.resultList[0].USER_CODE);
-
-					
-				
-					var listHtml = "";
-
-					//배열 순회하며 출력하기
-					data.resultList.map(e => {
-						var grpl = (e.CDEPTH);
-						var grp = (e.CGROUP);
-						var grps = (e.COMMENTDATE);
-						var no = (e.COMMENT_CODE);
-						var content = (e.CONTENT);
-						var writer = (e.NICKNAME);
-						var bno = (e.POST_CODE);
-						var cu_code = (e.USER_CODE);
-						
-						listHtml +=  "<div class='cmt-list'>"; 
-						if(grpl != 1){	
-                        listHtml += "	<div class='col-1'>";
-                        //listHtml += "		<a href='other_profile.do?other_nick="+writer+"'> ";
-                        listHtml += "			<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 60px; height: 60px; padding: 10px;'>";
-                        listHtml += "		</a> ";
-                        listHtml += "	</div>";
-                        listHtml += "	<div class='rereply-content col-8'>";
-                        listHtml += "		<div>";
-                        listHtml += "			<span>";
-                        listHtml += "				<b>"+ writer +"</b>";
-                        listHtml += "			</span>";
-                        listHtml += "			<span>";
-                        listHtml += 				content;
-                        listHtml += "			</span>";
-                        listHtml += "		</div>";
-                        
-                        
-                     	// 로그인 상태일때 답글작성 버튼
-                        //if("${nick}" != ""){
-                        if(user_code != ""){
-                            listHtml += "		<div>";
-                            listHtml += "			<a href='#' class='write_reply_start' data-bs-toggle='collapse' data-bs-target='#re_reply"+ no +"' aria-expanded='false' aria-controls='collapseExample'>답글&nbsp;달기</a>";
-                            listHtml += "		</div>";
-                            
-                        }
-                        listHtml += "	</div>";
-
-	                    }else{	// 답글일때
-	                        listHtml += "	<div class='col-1'>";
-	                        listHtml += "	</div>";
-	                        listHtml += "	<div class='col-1 r_cmt'>";
-	                        listHtml += "		<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 40px; height: 40px; padding: 10px;'>";
-	                        listHtml += "	<div class='rereply-content"+ no +" col-7'>";
-	                        listHtml += "		<div>";
-	                        listHtml += "			<span>";
-	                        listHtml += "				<b>"+ writer +"</b>";
-	                        listHtml += "			</span>";
-	                        listHtml += "			<span>";
-	                        listHtml += 				content;
-	                        listHtml += "			</span>";
-	                        listHtml += "		</div>";
-	                        listHtml += "	</div>";
-	
-	                        listHtml += "	</div>";
-	                    }
-						listHtml += "	<div class='col-3 reply-right'>";
-	                    listHtml += "		<div>";
-	                    listHtml += 			grps;
-	                    listHtml += "		</div>";
-	                    
-	                    // 현재 로그인 상태이고..
-	                    //if("${nick}" != ""){
-	                    if(user_code != ""){
-	
-	                        //현재 사용자가 이 댓글의 작성자일때 삭제 버튼이 나온다.
-	                        //if(user_code == writer){
-	                        if(user_code == cu_code){
-	                            listHtml += "		<div>";
-	                            // 수정할 댓글의 no를 grpl과 함께 넘긴다. 
-	                            // 모댓글 수정칸과 답글 수정칸을 화면에 다르게 나타내야하기 때문에 모댓글과 답글을 구분하는 grpl을 함께 넘겨주어야한다.
-	                            //listHtml += "			<a href='javascript:' no='"+ no +"' grpl='"+ grpl +"' class='reply_modify'>수정</a>";
-	                            //listHtml += "			&nbsp;|&nbsp;";
-	                            // 삭제는 no만 넘겨주면 된다.
-	                            listHtml += "			<a href='javascript:' no='"+ no +"' grpl='"+ grpl + "' bno='"+ bno +"' grp='"+ grp +"' class='reply_delete'>삭제</a>";
-	                            listHtml += "		</div>";
-	                        }
-	                    }
-	                    listHtml += "	</div>";
-	                    // 댓글에 답글달기를 누르면 답글입력란이 나온다.
-	                    // ---- 답글입력란
-	                    listHtml += "	<div class='collapse row rereply_write' id='re_reply"+ no +"'>";
-	                    listHtml += "		<div class='col-1'>";
-	                    listHtml += "		</div>";
-	                    listHtml += "		<div class='col-1'>";
-	                    listHtml += "			<a href='other_profile.do?other_nick="+writer+"'> ";
-	                    listHtml += "			</a> ";
-	                    listHtml += "		</div>";
-	                    listHtml += "		<div class='col-7'>";
-	                    listHtml +=  "  		<input class='w-100 input_rereply_div form-control' id='input_rereply"+ no +"' type='text' placeholder='댓글입력...'>"
-	                    listHtml += "		</div>";
-	                    listHtml += "		<div class='col-3'>";
-	                    // 답글달기 버튼이 눌리면 모댓글 번호(no)와 게시물번호(bno)를 함수에 전달한다.
-	
-	                    // 동적으로 넣은 html태그에서 발생하는 이벤트는 동적으로 처리해줘야한다 !!!!!
-	                    // 예를들어, 동적으로 넣은 html태그에서 발생하는 click 이벤트는 html태그 안에서 onclick으로 처리하면 안되고, jquery에서 클래스명이나 id값으로 받아서 처리하도록 해야한다.
-	                    // 아래코드를 보자~~~~
-	                    // listHtml += "			<button onclick='javascript:WriteReReply("+ no +","+ bno +")' type='button' class='btn btn-success mb-1 write_rereply' >답글&nbsp;달기</button>"
-	                    // 위 코드는 클릭되어도 값이 넘겨지지 않는다. 값이 undefined가 된다.
-	                    // 아래코드처럼 짜야한다. click이벤트를 처리하지 않고 데이터(no, bno)만 속성으로 넘겨주도록 작성한다.
-	                    listHtml += "			<button type='button' class='btn-hover color-9 write_rereply' no='" + no + "' bno='" + bno + "'>답글&nbsp;달기</button>"
-	                    listHtml += "		</div>";
-	                    listHtml += "	</div>";
-	                    // ---- 답글입력란 끝
-                     	
-                     	
-						
-					})
-					/*
-					var listHtml = "";
-					for (var i=0; i<Object.keys(data).length; i++)
-					{
-						//data.replace("\"", "");
-						var no = JSON.stringify(data[i]["comment_code"]).replace(/\"/gi, "");
-						var bno = JSON.stringify(data[i]["post_code"]).replace(/\"/gi, "");
-						var cu_code = JSON.stringify(data[i]["user_code"]).replace(/\"/gi, "");
-						var writer = JSON.stringify(data[i]["nickname"]).replace(/\"/gi, "");
-						var content = JSON.stringify(data[i]["content"]).replace(/\"/gi, "");
-						var grps = JSON.stringify(data[i]["commentdate"]).replace(/\"/gi, "");
-						var wdate = JSON.stringify(data[i]["commentupdate"]).replace(/\"/gi, "");
-						var grp = JSON.stringify(data[i]["cgroup"]).replace(/\"/gi, "");
-						var grpl = JSON.stringify(data[i]["cdepth"]).replace(/\"/gi, "");
+         //댓글 리스트 
+         $.ajax({
+            url:"commentlist.action",
+            type:"POST",
+            data: param,
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            success : function(data)
+            {
+               console.log(data);
+            
+               //alert(typeof data); //--object
+               //alert(JSON.stringify(data)); //--object
+               alert(JSON.stringify(data[0]["nickname"])); 
+               //alert(URLEncoder.encode(JSON.stringify(data[0]["nickname"]), "UTF-8")); 
+               //alert(Object.keys(data)); //0,1,2,3,4,5
+               //alert(Object.keys(data).length); //6
+               //alert(Object.keys(data).values()); //[object Array Iterator]
+               //alert(Object.values(data)); //[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+               
+               var listHtml = "";
+               for (var i=0; i<Object.keys(data).length; i++)
+               {
+            	    //data.replace("\"", "");
+                  	var no = JSON.stringify(data[i]["comment_code"]).replace(/\"/gi, "");
+                    var bno = JSON.stringify(data[i]["post_code"]).replace(/\"/gi, "");
+                    var cu_code = JSON.stringify(data[i]["user_code"]).replace(/\"/gi, "");
+                    var writer = JSON.stringify(data[i]["nickname"]).replace(/\"/gi, "");
+                    var content = JSON.stringify(data[i]["content"]).replace(/\"/gi, "");
+                    var grps = JSON.stringify(data[i]["commentdate"]).replace(/\"/gi, "");
+                    var wdate = JSON.stringify(data[i]["commentupdate"]).replace(/\"/gi, "");
+                    var grp = JSON.stringify(data[i]["cgroup"]).replace(/\"/gi, "");
+                    var grpl = JSON.stringify(data[i]["cdepth"]).replace(/\"/gi, "");
                     
-						listHtml +=  "<div class='cmt-list'>"; 
-						if(grpl != 1){	
+                    listHtml +=  "<div class='cmt-list'>"; 
+                    if(grpl != 1){	
                         listHtml += "	<div class='col-1'>";
                         //listHtml += "		<a href='other_profile.do?other_nick="+writer+"'> ";
                         listHtml += "			<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 60px; height: 60px; padding: 10px;'>";
@@ -667,12 +531,12 @@
 	                    // ---- 답글입력란 끝
 	                }
 	
-
-	
-					*/
-	                
 	                listHtml += "</div>";
 	                $("#commentlist-content").html(listHtml);
+
+	
+	
+	                
 	                
 	                
 	                
@@ -737,14 +601,36 @@
 		
 		            });
 	*/
-					
-					//
-					
-		        },
-	            error : function (err)
-	            {   
-	               console.log(err);
-	            }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	        },
+            error : function ()
+            {   
+               alert("ERR");
+            }
             
          }); 
       });
@@ -807,34 +693,6 @@
    //    alert('로그인 하셔야 하트를 누를수 있습니다!');
    //});
 
-   
-   
-    
-   //========================신고============================
-	$("#reportSubmitBtn").click(function()
-	{
-
-		var reportsel = $("#reportsel").val();
-		if (reportsel == "")
-		{
-			$("#reportsel").focus();
-			$("#reason").text("신고 사유를 선택해주세요.");
-			return false;
-			
-		}
-		
-	});
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    </script>
 
 

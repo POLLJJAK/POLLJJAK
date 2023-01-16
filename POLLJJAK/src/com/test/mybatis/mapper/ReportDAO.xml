@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IReportDAO">
+
+	<!-- 게시글 신고 -->
+	<insert id="reportPostAdd">
+		INSERT INTO REPORT_POST(REPORT_POST_CODE, L_POST_CODE, USER_CODE, REPORT_REASON_CODE, REPORT_DATE)
+		VALUES('REPS'||LPAD(REPORT_POST_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code}, #{user_code}, #{report_reason_code, jdbcType=VARCHAR}, SYSDATE)
+	</insert>
+	 
+</mapper>

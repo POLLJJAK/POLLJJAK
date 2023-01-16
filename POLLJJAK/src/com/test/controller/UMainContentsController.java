@@ -1,12 +1,17 @@
 package com.test.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dto.UMainContentsDTO;
+import com.test.mybatis.IPostCommentDAO;
 import com.test.mybatis.IProjectOpenDAO;
 import com.test.mybatis.IUMainContentsDAO;
+import com.test.util.MapToJson;
 
 
 @Controller
@@ -26,37 +33,31 @@ public class UMainContentsController
 	
 	
 	// 신규 프로젝트 정보 조회
-	@RequestMapping(value = "/umaincontents.action", method = RequestMethod.GET)
-	public String getNewProject(Model model, HttpServletRequest request) 
+	@RequestMapping(value = "/umaincontents.action", method = RequestMethod.POST)
+	public String getNewProject(Model model, HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException 
 	{
 		
 		IUMainContentsDAO dao = sqlSession.getMapper(IUMainContentsDAO.class);
 
-		UMainContentsDTO dto = new UMainContentsDTO();
+		Map<String, Object> resultMap = new HashMap();
 		
-		List<Map<String, Object>> NewProjectList = new ArrayList<Map<String, Object>>();
+		//Map을 파라미터로 모델 호출 & 데이터 Map에 반환 
+		//다중 Row의 결과이므로 ListMap에 반환
+		List<Map<String, Object>> resultList =  dao.getNewProject();
 		
-		/*
-		for (int i = 0; i < .length; i++) {
-			
-		}
+		//resultMap에 저장 & 다시 json스트링으로 변환 
+		resultMap.put("resultList", resultList);
+		ObjectMapper mapper = new ObjectMapper();
+		String resultJsonString = mapper.writeValueAsString(resultMap);
 		
-		NewProjectList.put("p_code", );
-		NewProjectList.put("p_name", "");
-		NewProjectList.put("u_name", "");
-		NewProjectList.put("skill_part", ");
-		NewProjectList.put("p_file", "");
-		listMap.add(NewProjectList);
-				
-		dao.getNewProject()
+		//ajax페이지에 전달
+		model.addAttribute("result", resultJsonString);
+		String result = "/AjaxResult.jsp";	
 		
-		//model.addAttribute("newProject", dao.getNewProject());
-		 */
-	
-		String result = "{" + "키" + ":" + "밸류" + "}";
 		return result;
 		
 	}
+	
 	
 	
 	
