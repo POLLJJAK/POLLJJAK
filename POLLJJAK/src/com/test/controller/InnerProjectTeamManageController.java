@@ -92,6 +92,9 @@ public class InnerProjectTeamManageController
 			// 팀 확정 코드
 			model.addAttribute("p_team_confirm_code", dao.p_team_confirm_code(u_p_apply_code));
 			
+			// 팀장 권한 모달 창 팀원 (자신제외)출력용 
+			model.addAttribute("pj_team_leader_modal_list", dao.pj_team_leader_modal_list(u_p_apply_code));
+			
 			
 			result = "WEB-INF/view/Inner-Project-home-teamManage.jsp";
 		}
@@ -167,13 +170,54 @@ public class InnerProjectTeamManageController
 			dao.p_stop_teamMember(u_p_apply_code);
 	
 			
-			result = "redirect:inner-project-home-teammanage.action";
+			result = "redirect:projecthomelist.action";
 		}
 		
 		return result;
 	}
 	
 	
+	//팀장 권한 이양
+	@RequestMapping(value="/pj_team_leader_move.action", method=RequestMethod.POST)
+	public String teamLeaderMove(Model model, InnerProjectTeamManageDTO dto, HttpServletRequest request) 
+	{
+		String result = null;
+		String u_p_apply_code = request.getParameter("u_p_apply_code");
+		String team_member = request.getParameter("team_member");
+		String p_leader_reason = request.getParameter("p_leader_reason");
+		
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
+		
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			model.addAttribute("u_p_apply_code", u_p_apply_code);
+			
+			IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+			
+			
+			dto.setP_leader_reason(p_leader_reason);
+			dto.setTeam_member(team_member);
+			
+			dao.pj_team_leader_move(dto);
+			
+			result = "redirect:inner-project-home-teammanage.action";
+		}
+		
+		return result;
+	}
 	
 	
 	
