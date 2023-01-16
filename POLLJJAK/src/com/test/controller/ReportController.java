@@ -33,10 +33,10 @@ public class ReportController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -47,7 +47,7 @@ public class ReportController
 		// ----------------------------------------- 세션처리
 		
 			String post_code = request.getParameter("post_code");
-			String user_code = request.getParameter("user_code");
+			//String user_code = request.getParameter("user_code");
 			String report_reason_code = request.getParameter("reportsel");
 			
 			IReportDAO dao = sqlSession.getMapper(IReportDAO.class);

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.test.dto.ArticlePage;
 import com.test.dto.MainLoungeListDTO;
 import com.test.mybatis.IMainLoungeListDAO;
+import com.test.mybatis.IPostCommentDAO;
 import com.test.mybatis.IReportDAO;
 
 @Controller
@@ -108,7 +109,7 @@ public class MainLoungeListController
 	}
 	
 	@RequestMapping(value = "/mainloungeinsert.action", method = RequestMethod.POST)
-	public String mainLoungeInsert(MainLoungeListDTO dto, HttpServletRequest request)
+	public String mainLoungeInsert(MainLoungeListDTO dto, HttpServletRequest request, Model model)
 	{
 		String result = null;
 		
@@ -132,6 +133,7 @@ public class MainLoungeListController
 			dao.add(dto);
 			
 			// 리스트가 아니라 해당글상세로 보내야할거같은데..
+			
 			result = "redirect:mainlounge.action";
 		}
 		
@@ -151,16 +153,22 @@ public class MainLoungeListController
 		
 		String user_code = null;
 		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		
+		
+		//System.out.println(user_code);
 		
 		model.addAttribute("postdetail", dao.postdetail(post_code));
 		model.addAttribute("likecheck", dao.likecheck(post_code, user_code));
-		result ="/Main-Lounge-post.jsp";
-		
-		//신고모달에 띄울 신고사유
-		//IReportPostDAO Rdao = sqlSession.getMapper(IReportPostDAO.class);
 		model.addAttribute("reportList", dao.reportList());
 		
+		
+		
+		IPostCommentDAO comment = sqlSession.getMapper(IPostCommentDAO.class);
+		int commentcount = comment.commentCount(post_code);
+		session.setAttribute("commentcount",commentcount);
+		
+		
+		result ="/Main-Lounge-post.jsp";
 		return result;
 	}
 	
