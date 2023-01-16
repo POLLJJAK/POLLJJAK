@@ -131,7 +131,9 @@
 							<span class="visually-hidden">Next</span>
 						</button>
 					</div>
-					<div class="carousel-inner" id="appendChildSpot">
+					<div class="carousel-inner" >
+					<div id="appendChildSpot">
+					</div>
 					</div>
 				</div>
 			</div>

@@ -1808,8 +1808,10 @@ section {
     cursor: pointer;
 }
 .img-fluid {
+	height: 200px;
+    width: 100%;
     max-width: 100%;
-    height: auto;
+    /* height: auto; */
     border-top-left-radius: 26px;
     border-top-right-radius: 26px;
 }
