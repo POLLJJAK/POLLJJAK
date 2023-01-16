@@ -53,31 +53,37 @@
 	<select id="domainList" resultType="com.test.dto.DomainDTO">
 		SELECT DOMAIN_PART_CODE, DOMAIN_ADDRESS, DOMAIN_PART
 		FROM DOMAIN_PART
+		ORDER BY DOMAIN_PART_CODE
 	</select>
 	
 	<select id="positionList" resultType="com.test.dto.PositionDTO">
 		SELECT POSITION_PART_CODE, POSITION_PART
 		FROM POSITION_PART
+		ORDER BY POSITION_PART_CODE
 	</select>
 	
 	<select id="regionList" resultType="com.test.dto.RegionDTO">
 		SELECT REGION_PART_CODE, REGION_PART
 		FROM REGION_PART
+		ORDER BY REGION_PART_CODE
 	</select>
 	
 	<select id="timeList" resultType="com.test.dto.TimeDTO">
 		SELECT TIME_PART_CODE, TIME_PART
 		FROM TIME_PART
+		ORDER BY TIME_PART_CODE
 	</select>
 	
 	<select id="subjectList" resultType="com.test.dto.SubjectDTO">
 		SELECT SUBJECT_PART_CODE, SUBJECT_PART
 		FROM SUBJECT_PART
+		ORDER BY SUBJECT_PART_CODE
 	</select>
 	
 	<select id="skillList" resultType="com.test.dto.SkillDTO">
 		SELECT SKILL_PART_CODE, SKILL_PART
 		FROM SKILL_PART
+		ORDER BY SKILL_PART_CODE
 	</select>
 	
 	<select id="uWarning" resultType="com.test.dto.UserDTO">

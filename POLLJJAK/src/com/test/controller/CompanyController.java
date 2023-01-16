@@ -39,6 +39,7 @@ public class CompanyController
 		return result;
 	}
 	
+	// 아이디 중복
 	@RequestMapping(value = "/cidcheckajax.action", method = RequestMethod.POST)
 	public String companyIdCheck(Model model, String id)
 	{
@@ -119,12 +120,12 @@ public class CompanyController
 		model.addAttribute("company", dao.search(company));
 		model.addAttribute("domainList", dao.domainList());
 		
-		
 		result = "/WEB-INF/view/C-MyPage-Info.jsp";
 		
 		return result;
 	}
 	
+	// 기업회원 정보 수정
 	@RequestMapping(value = "/companyupdate.action", method = RequestMethod.POST)
 	public String companyUpdate(CompanyDTO company)
 	{

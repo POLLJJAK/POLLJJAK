@@ -47,6 +47,7 @@ public class UserController
 		return result;
 	}
 	
+	// 아이디 중복
 	@RequestMapping(value = "/uidcheckajax.action", method = RequestMethod.POST)
 	public String userIdCheck(Model model, String id)
 	{

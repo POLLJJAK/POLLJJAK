@@ -25,7 +25,8 @@ public class IInnerProjectTodoController
 	
 	// 달력 화면 출력
 	@RequestMapping(value="/inner-project-home-todo.action", method=RequestMethod.GET)
-	public String todoCalendar(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code) {
+	public String todoCalendar(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code) 
+	{
 		String result = null;
 		
 		model.addAttribute("u_p_apply_code", u_p_apply_code);

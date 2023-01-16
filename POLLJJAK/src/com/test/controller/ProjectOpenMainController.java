@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,24 +30,39 @@ public class ProjectOpenMainController
 	@RequestMapping(value = "/projectopenmain.action", method = RequestMethod.GET)
 	public String getProject(Model model, HttpServletRequest request) 
 	{
-		String user_code = request.getParameter("user_code");
-		
 		String result = null;
-	
-		IProjectOpenMainDAO dao = sqlSession.getMapper(IProjectOpenMainDAO.class);
-	
-		model.addAttribute("uProjectInfo", dao.getProject(user_code));
+
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
-		model.addAttribute("uProjectFailedInfo", dao.getfailedProject(user_code));
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		model.addAttribute("user_code", user_code);
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+			
+			String user_code = request.getParameter("user_code");
 		
+			IProjectOpenMainDAO dao = sqlSession.getMapper(IProjectOpenMainDAO.class);
 		
-		
-		result = "/ProjectOpenMain.jsp";
-	
+			model.addAttribute("uProjectInfo", dao.getProject(user_code));
+			
+			model.addAttribute("uProjectFailedInfo", dao.getfailedProject(user_code));
+			
+			model.addAttribute("user_code", user_code);
+			
+			result = "/ProjectOpenMain.jsp";
+		}
 		return result;
 	}
+	
 	// 실패 프로젝트 리스트에서 삭제
 	@ResponseBody
 	@RequestMapping(value = "/delfailedproject.action", method = {RequestMethod.GET, RequestMethod.POST})
@@ -54,25 +70,42 @@ public class ProjectOpenMainController
 	{
 		String result ="";
 		
-		String p_code = request.getParameter("p_code");
-		System.out.println(p_code);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
-		IProjectOpenMainDAO dao = sqlSession.getMapper(IProjectOpenMainDAO.class);
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		int transactionResult = dao.delfailedproject(p_code);
-		
-		if(transactionResult > 0) 
+		if (session.getAttribute("user_code") == null)
 		{
-			result = "SUCCESS";
+			result = "redirect:loginform.action";
 		}
-		else 
+		else
 		{
-			result = "FAIL";
+		// ----------------------------------------- 세션처리
+
+			String p_code = request.getParameter("p_code");
+			System.out.println(p_code);
+			
+			IProjectOpenMainDAO dao = sqlSession.getMapper(IProjectOpenMainDAO.class);
+			
+			int transactionResult = dao.delfailedproject(p_code);
+			
+			if(transactionResult > 0) 
+			{
+				result = "SUCCESS";
+			}
+			else 
+			{
+				result = "FAIL";
+			}
+			
+			response.setContentType("text/html");
+		 	response.setCharacterEncoding("utf-8");
+	        response.getWriter().write(result);
 		}
-		
-		response.setContentType("text/html");
-	 	response.setCharacterEncoding("utf-8");
-        response.getWriter().write(result);
 		
 	}
 	

@@ -4,6 +4,9 @@ package com.test.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,29 +27,47 @@ public class IInnerProjectMainWorkController
 	
 	
 	@RequestMapping(value="/inner-project-home-mainwork.action", method=RequestMethod.GET)
-	public String mainWorklist(ModelMap model, @RequestParam("u_p_apply_code") String u_p_apply_code) {
+	public String mainWorklist(ModelMap model, @RequestParam("u_p_apply_code") String u_p_apply_code
+								, HttpServletRequest request) {
 		
 		String result = null;
 		
-		model.addAttribute("u_p_apply_code", u_p_apply_code);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
 
-		// 프로젝트 타이틀 불러오기
-		IInnerProjectTeamManageDAO pj_title_dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
-		model.addAttribute("pj_title_info", pj_title_dao.pj_title_info(u_p_apply_code));
+		String temp = null; 
+		
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
 
-		
-		IInnerProjectMainWorkDAO dao = sqlSession.getMapper(IInnerProjectMainWorkDAO.class);
-		
-		List<Map<String, String>> member_list = dao.member_list(u_p_apply_code);
-		
-		model.addAttribute("pj_mainwork_list", dao.pj_mainwork_list(u_p_apply_code));
-		model.addAttribute("member_list", member_list);
-		
-		IInnerProjectTeamManageDAO ptldao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
-		model.addAttribute("pj_team_leader", ptldao.pj_team_leader(u_p_apply_code));
-		
-		
-		result = "WEB-INF/view/Inner-Project-home-mainWork.jsp";
+			model.addAttribute("u_p_apply_code", u_p_apply_code);
+	
+			// 프로젝트 타이틀 불러오기
+			IInnerProjectTeamManageDAO pj_title_dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+			model.addAttribute("pj_title_info", pj_title_dao.pj_title_info(u_p_apply_code));
+	
+			
+			IInnerProjectMainWorkDAO dao = sqlSession.getMapper(IInnerProjectMainWorkDAO.class);
+			
+			List<Map<String, String>> member_list = dao.member_list(u_p_apply_code);
+			
+			model.addAttribute("pj_mainwork_list", dao.pj_mainwork_list(u_p_apply_code));
+			model.addAttribute("member_list", member_list);
+			
+			IInnerProjectTeamManageDAO ptldao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+			model.addAttribute("pj_team_leader", ptldao.pj_team_leader(u_p_apply_code));
+			
+			
+			result = "WEB-INF/view/Inner-Project-home-mainWork.jsp";
+		}
 		
 		return result;
 	}

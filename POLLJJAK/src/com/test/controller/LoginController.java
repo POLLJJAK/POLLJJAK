@@ -58,11 +58,12 @@ public class LoginController
 		ILoginDAO dao = sqlSession.getMapper(ILoginDAO.class);
 		
 		String userType = request.getParameter("userType");
-		//System.out.println(userType);
+		System.out.println(userType);
 		
 		if (userType.equals("user"))
 		{
 			int loginCheck = dao.userIdCheck(user);
+			System.out.println(loginCheck);
 			
 			model.addAttribute("ajax", loginCheck);
 			
