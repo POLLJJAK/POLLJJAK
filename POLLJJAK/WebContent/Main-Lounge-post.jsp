@@ -306,7 +306,7 @@
 										<button id="reportSubmitBtn"type="submit" class="btn-hover color-9">신고</button>
 									</div>
 									<input type = "hidden" id = "post_code" name = "post_code" value = "${postdetail.post_code}">
-									<input type = "hidden" id = "user_code" name = "user_code" value = "U000000001">
+									<!-- <input type = "hidden" id = "user_code" name = "user_code" value = "U000000001"> -->
 								</form>
 							</div>
 						</div>
@@ -402,7 +402,7 @@
 	
 	$(function(){
 		var post_code = $("#post_code").val();
-		var user_code = "U000000003";
+		/* var user_code = "U000000003"; */
 	   
 		$("#img").click(function()
 		{
@@ -750,19 +750,16 @@
       });
    });
    
+	var post_code = $("#post_code").val();
    // 로그인 한 상태에서 하트를 클릭했을 때 (로그인한 상태인 하트의 <a></a> class명: heart-click)
    $(".heart-click").click(function() {
-
        // 빈하트를 눌렀을때
-       
+       alert(post_code);
        if($(this).children("svg").attr("class") == "bi bi-suit-heart"){
            $.ajax({
-               type : "get",
+               type : "GET",
                url : "likeinsert.action",
-               data : {
-                  post_code : post_code,
-                  user_code : user_code
-               },
+               data : {post_code : post_code,},
                dataType : "text",
                success : function(data) {
                   
@@ -779,12 +776,9 @@
        // 꽉찬 하트를 눌렀을 때
        }else if($(this).children("svg").attr("class") == "bi bi-suit-heart-fill"){
            $.ajax({
-               url : 'likeremove.action',
-               type : 'get',
-               data : {
-                  post_code : post_code,
-                  user_code : user_code
-               },
+        	   type : "GET",
+               url : "likeinsert.action",
+               data : {post_code : post_code,},
                dataType : "text",
                success : function(data) {
                   $("#postLike").text(data);
