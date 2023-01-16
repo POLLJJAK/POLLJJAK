@@ -2,6 +2,9 @@ package com.test.controller;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,33 +23,70 @@ public class ProjectDetailBlacklistController
 	
 	@RequestMapping(value="/addblacklist.action", method = RequestMethod.POST)
 	public String addBlacklist(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code
-										  , @RequestParam("p_code") String p_code) 
+										  , @RequestParam("p_code") String p_code
+										  , HttpServletRequest request) 
 	{
 		String result = "";
 		
-		System.out.println("지원 목록 → 차단 목록 : " + u_p_apply_code);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
-		IProjectDetailBlacklistDAO dao = sqlSession.getMapper(IProjectDetailBlacklistDAO.class);
-		dao.addblacklist(u_p_apply_code);
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		result = "redirect:projectDetail.action?p_code=" + p_code;
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			System.out.println("지원 목록 → 차단 목록 : " + u_p_apply_code);
+			
+			IProjectDetailBlacklistDAO dao = sqlSession.getMapper(IProjectDetailBlacklistDAO.class);
+			dao.addblacklist(u_p_apply_code);
+			
+			result = "redirect:projectDetail.action?p_code=" + p_code;
+		}
 		
 		return result;
 	}
 	
 	@RequestMapping(value="/deleteblacklist.action", method = RequestMethod.POST)
 	public String deleteBlacklist(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code
-											 , @RequestParam("p_code") String p_code) 
+											 , @RequestParam("p_code") String p_code
+											 , HttpServletRequest request) 
 	{
 		
 		String result = "";
 		
-		System.out.println("차단 목록 → 지원 목록 : " + u_p_apply_code);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
-		IProjectDetailBlacklistDAO dao = sqlSession.getMapper(IProjectDetailBlacklistDAO.class);
-		dao.deleteblacklist(u_p_apply_code);
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		result = "redirect:projectDetail.action?p_code=" + p_code;
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+
+		
+			System.out.println("차단 목록 → 지원 목록 : " + u_p_apply_code);
+			
+			IProjectDetailBlacklistDAO dao = sqlSession.getMapper(IProjectDetailBlacklistDAO.class);
+			dao.deleteblacklist(u_p_apply_code);
+			
+			result = "redirect:projectDetail.action?p_code=" + p_code;
+		}
 		
 		return result;
 	}

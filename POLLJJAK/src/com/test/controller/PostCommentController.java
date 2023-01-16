@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.JsonGenerationException;
@@ -33,6 +34,8 @@ public class PostCommentController {
 	@RequestMapping(value = "/commentlist.action")
 	public String commentList(HttpServletRequest request, Model model) throws JsonGenerationException, JsonMappingException, IOException 
 	{
+		String result = null;
+		
 		//요청온 request객체 convertToJsonString에 넘겨서 jsonString 으로 변환
 		//jsonString을 convertToMap을 이용하여 Map으로 변환
 		String jsonString = MapToJson.convertToJsonString(request);
@@ -52,7 +55,7 @@ public class PostCommentController {
 		
 		//ajax페이지에 전달
 		model.addAttribute("result", aaa);
-		String result = "/AjaxResult.jsp";	
+		result = "/AjaxResult.jsp";	
 		
 		return result;
 	}

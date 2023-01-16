@@ -1,6 +1,5 @@
 package com.test.controller;
 
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,13 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.dto.CompanyDTO;
 import com.test.dto.UserDTO;
 import com.test.mybatis.ILoginDAO;
-import com.test.mybatis.IUserDAO;
-import com.test.util.MapToJson;
 
 @Controller
 public class LoginController

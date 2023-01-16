@@ -7,6 +7,7 @@ package com.test.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,7 @@ public class MainLoungeListController
 		{
 			System.out.println(e.toString());
 		}
+		
 		return result;
 	}
 	
@@ -78,27 +80,59 @@ public class MainLoungeListController
 	public String mainLoungeInsertForm(HttpServletRequest request, Model model)
 	{
 		String result = null;
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
 
-		String user_code = request.getParameter("user_code");
-		model.addAttribute("user_code", user_code);
+		String temp = null; 
 		
-		result = "/Main-Lounge-post-insertform.jsp";
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+
+			String user_code = request.getParameter("user_code");
+			model.addAttribute("user_code", user_code);
+			
+			result = "/Main-Lounge-post-insertform.jsp";
+		}
 		
 		return result;
 	}
 	
 	@RequestMapping(value = "/mainloungeinsert.action", method = RequestMethod.POST)
-	public String mainLoungeInsert(MainLoungeListDTO dto)
+	public String mainLoungeInsert(MainLoungeListDTO dto, HttpServletRequest request)
 	{
 		String result = null;
 		
-		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-		dao.add(dto);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
-		// 리스트가 아니라 해당글상세로 보내야할거같은데..
-		result = "redirect:mainlounge.action";
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			dao.add(dto);
+			
+			// 리스트가 아니라 해당글상세로 보내야할거같은데..
+			result = "redirect:mainlounge.action";
+		}
 		
 		return result;
 	}
@@ -112,7 +146,8 @@ public class MainLoungeListController
 		String post_code = request.getParameter("post_code");
 		
 		//로그인세션만들면 수정할것!
-		String user_code = "U000000003";
+		//String user_code = "U000000003";
+		String user_code = request.getParameter("user_code");
 		
 		model.addAttribute("postdetail", dao.postdetail(post_code));
 		model.addAttribute("likecheck", dao.likecheck(post_code, user_code));
@@ -130,39 +165,91 @@ public class MainLoungeListController
 	public String mainLoungeUpdateForm(HttpServletRequest request, Model model)
 	{
 		String result = "";
-		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
 		
-		String post_code = request.getParameter("post_code");
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
-		model.addAttribute("post", dao.postdetail(post_code));
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		result = "/Main-Lounge-post-updateform.jsp";
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
 		
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			
+			String post_code = request.getParameter("post_code");
+			
+			model.addAttribute("post", dao.postdetail(post_code));
+			
+			result = "/Main-Lounge-post-updateform.jsp";
+		}
 		
 		return result;
 				
 	}
 	
 	@RequestMapping(value = "/mainloungeupdate.action", method = RequestMethod.POST)
-	public String mainLoungeUpdate(MainLoungeListDTO dto)
+	public String mainLoungeUpdate(MainLoungeListDTO dto, HttpServletRequest request)
 	{
 		String result = null;
-		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-		dao.update(dto);
 		
-		result = "redirect:mainlounge.action";
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			dao.update(dto);
+			
+			result = "redirect:mainlounge.action";
+		}
+			
 		return result;
 	}
 	
 	@RequestMapping(value = "/mainloungedelete.action", method = RequestMethod.GET)
-	public String mainLoungeRemove(String post_code)
+	public String mainLoungeRemove(String post_code, HttpServletRequest request)
 	{
 		String result = null;
 		
-		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-		dao.remove(post_code);
-		result = "redirect:mainlounge.action";
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
+		
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+	
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			dao.remove(post_code);
+			result = "redirect:mainlounge.action";
+		}
 		
 		return result;
 	}
@@ -202,15 +289,35 @@ public class MainLoungeListController
 			,@RequestParam("user_code") String user_code, Model model  )
 	{
 		String result = "";
-		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-		dao.likeadd(post_code, user_code);
 		
-		int count = 0;
-		count = dao.likeCount(post_code);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		model.addAttribute("likeCount", count);
-		result = "/AjaxLikeUp.jsp";
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+	
+		
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			dao.likeadd(post_code, user_code);
+			
+			int count = 0;
+			count = dao.likeCount(post_code);
+			
+			
+			model.addAttribute("likeCount", count);
+			result = "/AjaxLikeUp.jsp";
+		}
+			
 		return result;
 	}
 	
@@ -220,15 +327,34 @@ public class MainLoungeListController
 			,@RequestParam("user_code") String user_code, Model model  )
 	{
 		String result = "";
-		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-		dao.likeremove(post_code, user_code);
 		
-		int count = 0;
-		count = dao.likeCount(post_code);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		model.addAttribute("likeCount", count);
-		result = "/AjaxLikeDown.jsp";
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+	
+			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+			dao.likeremove(post_code, user_code);
+			
+			int count = 0;
+			count = dao.likeCount(post_code);
+			
+			
+			model.addAttribute("likeCount", count);
+			result = "/AjaxLikeDown.jsp";
+		}
+		
 		return result;
 	}
 }

@@ -25,7 +25,6 @@ public class ProjectHomeListController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private HttpSession session;
 	
 	@RequestMapping(value="/projecthomelist.action", method=RequestMethod.GET)
 	public String projectRunlist(Model model, HttpServletRequest request)
@@ -34,17 +33,30 @@ public class ProjectHomeListController
 		
 		String result = null;
 		
-		session = request.getSession();
-		String user_code = (String)session.getAttribute("user_code");
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
 
+		String user_code = null; 
 		
-		IProjectHomeListDAO dao = sqlSession.getMapper(IProjectHomeListDAO.class);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
-		model.addAttribute("pj_run_list", dao.pj_run_list(user_code));
-		
-		model.addAttribute("pj_complete_list", dao.pj_complete_list(user_code));
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
 			
-		result ="WEB-INF/view/Project-home.jsp";
+			IProjectHomeListDAO dao = sqlSession.getMapper(IProjectHomeListDAO.class);
+			
+			model.addAttribute("pj_run_list", dao.pj_run_list(user_code));
+			
+			model.addAttribute("pj_complete_list", dao.pj_complete_list(user_code));
+				
+			result ="WEB-INF/view/Project-home.jsp";
+		}
 		
 		return result;
 	};

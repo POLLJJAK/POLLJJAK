@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.JsonGenerationException;
@@ -36,6 +37,7 @@ public class UMainContentsController
 	@RequestMapping(value = "/umaincontents.action", method = RequestMethod.POST)
 	public String getNewProject(Model model, HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException 
 	{
+		String result = null;
 		
 		IUMainContentsDAO dao = sqlSession.getMapper(IUMainContentsDAO.class);
 
@@ -52,19 +54,11 @@ public class UMainContentsController
 		
 		//ajax페이지에 전달
 		model.addAttribute("result", resultJsonString);
-		String result = "/AjaxResult.jsp";	
+		result = "/AjaxResult.jsp";	
 		
 		return result;
 		
 	}
-	
-	
-	
-	
-	
-	
-	 
-	
 	
 
 }

@@ -22,10 +22,10 @@
 		<nav id="navbar" class="navbar">
 			<ul>
 				<!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트조회/지원</a></li> -->
-				<li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp">프로젝트 조회/지원</a></li>
+				<li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp?user_code=${user_code }">프로젝트 조회/지원</a></li>
 				<li><a class="nav-link scrollto" href="projectopenmain.action?user_code=${user_code }">프로젝트 개설</a></li>
 				<%-- <li><a class="nav-link scrollto" href="projecthomelist.action?user_code=${user_code }">내 프로젝트 홈</a></li> --%>
-				<li><a class="nav-link scrollto" href="projecthomelist.action">내 프로젝트 홈</a></li>
+				<li><a class="nav-link scrollto" href="projecthomelist.action?user_code=${user_code }">내 프로젝트 홈</a></li>
 				
 				<li><a class="nav-link scrollto " href="mainlounge.action">라운지</a></li>
 				<li><a class="nav-link scrollto" href="Inner-page.jsp">기업둘러보기</a></li>

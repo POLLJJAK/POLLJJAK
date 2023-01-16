@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dto.ReportDTO;
-import com.test.mybatis.IProjectHomeListDAO;
 import com.test.mybatis.IReportDAO;
 
 @Controller
@@ -24,8 +23,6 @@ public class ReportController
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private HttpSession session;
-	
 	// 게시글 신고 
 	@RequestMapping(value="/reportpost.action", method=RequestMethod.POST)
 	public String reportList(Model model, HttpServletRequest request)
@@ -33,20 +30,38 @@ public class ReportController
 		
 		String result = null;
 		
-		String post_code = request.getParameter("post_code");
-		String user_code = request.getParameter("user_code");
-		String report_reason_code = request.getParameter("reportsel");
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String temp = null; 
 		
-		IReportDAO dao = sqlSession.getMapper(IReportDAO.class);
-		ReportDTO dto = new ReportDTO();
-		dto.setPost_code(post_code);
-		dto.setUser_code(user_code);
-		dto.setReport_reason_code(report_reason_code);
-		dao.reportPostAdd(dto);
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
 		
-		result = "redirect:mainlounge.action";
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			String post_code = request.getParameter("post_code");
+			String user_code = request.getParameter("user_code");
+			String report_reason_code = request.getParameter("reportsel");
+			
+			IReportDAO dao = sqlSession.getMapper(IReportDAO.class);
+			ReportDTO dto = new ReportDTO();
+			dto.setPost_code(post_code);
+			dto.setUser_code(user_code);
+			dto.setReport_reason_code(report_reason_code);
+			dao.reportPostAdd(dto);
+			
+			result = "redirect:mainlounge.action";
+		}
+		
 		return result;
-	};
+	}
 	
 }
 

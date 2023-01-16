@@ -137,20 +137,38 @@ public class InnerProjectTeamManageController
 	@RequestMapping(value="/p_stop_project.action", method=RequestMethod.POST)
 	public String pStopProject(Model model, @RequestParam("u_p_apply_code") String u_p_apply_code
 										  , @RequestParam("p_team_confirm_code") String p_team_confirm_code
-										  , InnerProjectTeamManageDTO dto) 
+										  , InnerProjectTeamManageDTO dto, HttpServletRequest request) 
 	{
 		String result = null;
 		
-		model.addAttribute("u_p_apply_code", u_p_apply_code);
 		
-		IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
-		
-		dao.p_stop_project_insert(dto);
-		
-		dao.p_stop_teamMember(u_p_apply_code);
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
 
+		String temp = null; 
 		
-		result = "redirect:inner-project-home-teammanage.action";
+		temp = (String) session.getAttribute("user_code");
+		System.out.println(temp);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			model.addAttribute("u_p_apply_code", u_p_apply_code);
+			
+			IInnerProjectTeamManageDAO dao = sqlSession.getMapper(IInnerProjectTeamManageDAO.class);
+			
+			dao.p_stop_project_insert(dto);
+			
+			dao.p_stop_teamMember(u_p_apply_code);
+	
+			
+			result = "redirect:inner-project-home-teammanage.action";
+		}
 		
 		return result;
 	}
