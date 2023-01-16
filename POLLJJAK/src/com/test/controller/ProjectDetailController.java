@@ -38,10 +38,10 @@ public class ProjectDetailController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -58,8 +58,9 @@ public class ProjectDetailController
 			
 			//세션처리 되었을시 user_code 호출시 받아올거임
 			//String user_code = "U000000129";
-			String user_code = request.getParameter("user_code");
 			dto.setUser_code(user_code);
+			String user_code1 = dto.getUser_code();
+			System.out.println(user_code1);
 			
 		
 			IProjectDetailDAO dao = sqlSession.getMapper(IProjectDetailDAO.class);
