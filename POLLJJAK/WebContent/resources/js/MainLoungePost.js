@@ -54,13 +54,13 @@ $(function (){
 						listHtml +=  "<div class='cmt-list'>"; 
 						if(cdepth != 1){	
                         listHtml += "	<div class='col-1'>";
-                        listHtml += "			<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 60px; height: 60px; padding: 10px;'>";
-                        listHtml += "		</a> ";
+                        //listHtml += "			<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 60px; height: 60px; padding: 10px;'>";
+                        //listHtml += "		</a> ";
                         listHtml += "	</div>";
-                        listHtml += "	<div class='rereply-content col-8'>";
-                        listHtml += "		<div>";
+                        listHtml += "	<div class='rereply-content'>";
+                        listHtml += "		<div class='cmt_box'>";
                         listHtml += "			<span>";
-                        listHtml += "				<b>"+ nickname +"</b>";
+                        listHtml += "				<b class='cmt_nickname'>"+ nickname +"</b>";
                         listHtml += "			</span>";
                         listHtml += "			<span>";
                         listHtml += 				content;
@@ -82,7 +82,7 @@ $(function (){
 	                        listHtml += "	<div class='col-1'>";
 	                        listHtml += "	</div>";
 	                        listHtml += "	<div class='col-1 r_cmt'>";
-	                        listHtml += "		<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 40px; height: 40px; padding: 10px;'>";
+	                        //listHtml += "		<img src='assets/img/UserIcon/User-Icon.png' alt=''  style='width: 40px; height: 40px; padding: 10px;'>";
 	                        listHtml += "	<div class='rereply-content"+ comment_code +" col-7'>";
 	                        listHtml += "		<div>";
 	                        listHtml += "			<span>";
@@ -96,7 +96,7 @@ $(function (){
 	
 	                        listHtml += "	</div>";
 	                    }
-						listHtml += "	<div class='col-3 reply-right'>";
+						listHtml += "	<div class='rereply-content col-1 reply-right'>";
 	                    listHtml += "		<div>";
 	                    listHtml += 			commentdate;
 	                    listHtml += "		</div>";
@@ -117,7 +117,7 @@ $(function (){
 	                    }
 	                    listHtml += "	</div>";
 	                    // 대댓달기
-	                    listHtml += "	<div class='collapse row rereply_write' id='re_reply"+ comment_code +"'>";
+	                    listHtml += "	<div class='collapse row rereply_write r_cmt' id='re_reply"+ comment_code +"'>";
 	                    listHtml += "		<div class='col-1'>";
 	                    listHtml += "		</div>";
 	                    listHtml += "		<div class='col-1'>";

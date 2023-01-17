@@ -79,15 +79,28 @@
 }
 
 .cmt-contentlist {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid transparent;
+	
 }
 
+.rereply-content{
+	/* border-bottom: 3px solid gray;
+	border-image:linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+    border-image-slice: 1; */
+    
+    
+    border-bottom: 1px solid;
+    border-radius: 20px;
+    border-image: linear-gradient(to left, #ffffff, black);
+    border-image-slice: 1;
+    margin: 10px;
+	}
 .col-1 {
 	width: 100%;
-	border-bottom: 1px solid black;
+	
 	padding: 1px;
 }
-
+.cmt_box{width: 100%; margin: 0%;}
 .siren {
 	margin-left: 52%;
 	border-bottom: none;
@@ -100,7 +113,7 @@
 	height: 100%;
 	
 }
-
+.cmt_nickname{padding-right: 10%;}
 .reply-right {
 	text-align: right;
 	font-size: small;
@@ -114,6 +127,6 @@
 .r_cmt {
 	width: 100%;
 	padding-left: 10%;
-	border-bottom: 1px solid black;
+	/* border-bottom: 1px solid black; */
 }
 

@@ -26,7 +26,7 @@ public class ReportController
 	
 	// 게시글 신고 
 	@RequestMapping(value="/reportpost.action", method=RequestMethod.GET)
-	public String reportList(Model model, HttpServletRequest request, ReportDTO dto)
+	public String reportPostAdd(Model model, HttpServletRequest request, ReportDTO dto)
 	{
 		
 		String result = null;

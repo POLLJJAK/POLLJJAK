@@ -167,6 +167,7 @@ public class MainLoungeListController
 		IPostCommentDAO comment = sqlSession.getMapper(IPostCommentDAO.class);
 		int commentcount = comment.commentCount(post_code);
 		session.setAttribute("commentcount",commentcount);
+		//model.addAttribute("commentcount", commentcount);
 		
 		
 		result ="/Main-Lounge-post.jsp";

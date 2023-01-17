@@ -36,7 +36,7 @@ public class MainNoticeController
 		String result = null;
 		
 		// 세션처리 -----------------------------------------
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 
 		String temp = null; 
 		
@@ -48,7 +48,7 @@ public class MainNoticeController
 			result = "redirect:loginform.action";
 		}
 		else
-		{
+		{*/
 		// ----------------------------------------- 세션처리
 		
 			try
@@ -83,7 +83,7 @@ public class MainNoticeController
 			{
 				System.out.println(e.toString());
 			}
-		}
+		
 		return result;
 	}
 	
@@ -156,7 +156,7 @@ public class MainNoticeController
 		String result = null;
 		
 		// 세션처리 -----------------------------------------
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 
 		String temp = null; 
 		
@@ -168,7 +168,7 @@ public class MainNoticeController
 			result = "redirect:loginform.action";
 		}
 		else
-		{
+		{*/
 		// ----------------------------------------- 세션처리
 
 			IMainNoticeDAO dao = sqlSession.getMapper(IMainNoticeDAO.class);
@@ -177,7 +177,7 @@ public class MainNoticeController
 			model.addAttribute("noticedetail", dao.noticedetail(notice_code));
 			
 			result ="/Main-Notice-post.jsp";
-		}
+		
 		
 		return result;
 	}

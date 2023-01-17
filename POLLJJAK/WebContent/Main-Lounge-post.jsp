@@ -14,8 +14,7 @@ String cp = request.getContextPath();
 <c:import url="./common/Head.jsp" />
 <link rel="stylesheet" href="<%=cp%>/resources/css/PostDetail.css" />
 <link rel="stylesheet" href="<%=cp%>/resources/css/MainLoungePost.css" />
-<!-- js 연결 -->
-<script src="<%=cp %>/resources/js/MainLoungePost.js"></script>
+
 
 <body>
 	<c:import url="./common/Nav.jsp" />
@@ -286,7 +285,8 @@ String cp = request.getContextPath();
 
 	</main>
 	<!-- End #main -->
-
+<!-- js 연결 -->
+<script src="<%=cp %>/resources/js/MainLoungePost.js"></script>
 	<!-- footer import (js imported)-->
 	<c:import url="./common/Footer.jsp" />
 
