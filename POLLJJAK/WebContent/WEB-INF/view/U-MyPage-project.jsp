@@ -50,7 +50,7 @@
 						style="width: 60px; height: 60px; padding: 10px;"> <br>
 					<button
 						style="color: white; background-color: #3498db; width: 20px; height: 20px; border: none; border-radius: 5px;">1</button>
-					<span>닉네임</span>
+					<span>${user.u_nickname }</span>
 					<p style="margin-bottom: 0px; margin-top: 5px;">4.0/5.0</p>
 
 					<!-- ====== Star ====== 추후 스크립트 처리예정 -->
