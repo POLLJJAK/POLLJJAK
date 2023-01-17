@@ -25,7 +25,7 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+          <h2></h2>
           <ol>
             <li><a href="index.html">Home</a></li>
             <li>Inner Page</li>
@@ -36,10 +36,9 @@
     </section><!-- End Breadcrumbs Section -->
 
     <section class="inner-page">
-      <div class="container">
-        <p>
-          Example inner page template
-        </p>
+      <div class="container" style="text-align: center;">
+      <h2>기업 둘러보기</h2>
+        <img src='assets/img/CommingSoon.png' alt=''  style='width: 50%; height: 50%; padding: 10px;text-align: center;'>
       </div>
     </section>
 
