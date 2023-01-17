@@ -32,11 +32,11 @@ public class UserMyPageController
 		String user_code = null; 
 
 		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -70,7 +70,7 @@ public class UserMyPageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -104,7 +104,7 @@ public class UserMyPageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -156,7 +156,7 @@ public class UserMyPageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -192,7 +192,7 @@ public class UserMyPageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -232,7 +232,7 @@ public class UserMyPageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -262,7 +262,7 @@ public class UserMyPageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
