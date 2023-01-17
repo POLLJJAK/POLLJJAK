@@ -121,12 +121,12 @@
 							<c:choose>
 								<c:when test="${userType.equals(\"user\") }">
 									<%-- <button type="button" class="btn-uModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> --%> 
-									<a href="umypagewarningform.action?user_code=${user_code }" class="dropdown-item">일반 마이페이지</a>
+									<a href="umypagewarningform.action?user_code=${user_code }" class="dropdown-item">마이페이지</a>
 									<%-- <a onclick="javascript:pageMove('umypagewarningform.action', '${loginCheck.user_code }');" class="dropdown-item">일반 마이페이지</a> --%>
 								</c:when>
 									<c:when test="${userType.equals(\"company\") }">
 									<%-- <button type="button" class="btn-cModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> --%> 
-									<a href="cmypagewarningform.action?user_code=${user_code }" class="dropdown-item">일반 마이페이지</a>
+									<a href="cmypagewarningform.action?user_code=${user_code }" class="dropdown-item">마이페이지</a>
 								</c:when>
 								<%-- 
 								<c:otherwise>
