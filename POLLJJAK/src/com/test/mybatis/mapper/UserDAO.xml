@@ -126,7 +126,10 @@
 	</select>
 	
 	
-	<update id="update">
+	<update id="updateInfo">
+		
+	</update>
+	<update id="updateskills">
 		
 	</update>
 	

@@ -20,12 +20,21 @@
 		</div>
 		
 		<nav id="navbar" class="navbar">
+			<!-- a태그를 post방식으로 넘길 때 쓸 input -->
+			<!--
+			<form name="navForm">
+				<input type="hidden" name="user_code"/>
+			</form>
+			 -->
 			<ul>
-				<!--<li><a class="nav-link scrollto active" href="Inner-page.jsp">프로젝트조회/지원</a></li> -->
 				<li><a class="nav-link scrollto" href="U-P-Apply-Main.jsp?user_code=${user_code }">프로젝트 조회/지원</a></li>
 				<li><a class="nav-link scrollto" href="projectopenmain.action?user_code=${user_code }">프로젝트 개설</a></li>
-				<%-- <li><a class="nav-link scrollto" href="projecthomelist.action?user_code=${user_code }">내 프로젝트 홈</a></li> --%>
+													<!-- ┏ a태그의 post 방식 -->
+				<%-- <li><a class="nav-link scrollto" onclick="javascript:pageMove('projectopenmain.action', '${user_code }');">프로젝트 개설</a></li> --%>
+				
 				<li><a class="nav-link scrollto" href="projecthomelist.action?user_code=${user_code }">내 프로젝트 홈</a></li>
+													<!-- ┏ a태그의 post 방식 -->
+				<%-- <li><a class="nav-link scrollto" onclick="javascript:pageMove('projecthomelist.action', '${user_code }');">내 프로젝트 홈</a></li> --%>
 				
 				<li><a class="nav-link scrollto " href="mainlounge.action">라운지</a></li>
 				
@@ -113,9 +122,11 @@
 								<c:when test="${userType.equals(\"user\") }">
 									<%-- <button type="button" class="btn-uModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> --%> 
 									<a href="umypagewarningform.action?user_code=${user_code }" class="dropdown-item">일반 마이페이지</a>
+									<%-- <a onclick="javascript:pageMove('umypagewarningform.action', '${loginCheck.user_code }');" class="dropdown-item">일반 마이페이지</a> --%>
 								</c:when>
 									<c:when test="${userType.equals(\"company\") }">
-									<button type="button" class="btn-cModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> 
+									<%-- <button type="button" class="btn-cModify dropdown-item" value="${loginCheck.user_code }">마이페이지</button> --%> 
+									<a href="cmypagewarningform.action?user_code=${user_code }" class="dropdown-item">일반 마이페이지</a>
 								</c:when>
 								<%-- 
 								<c:otherwise>
@@ -152,7 +163,7 @@
 		});
 	});
 	*/
- 		 
+ 	/* 	 
 	$(function()
 	{
 		$(".btn-uModify").click(function()
@@ -165,6 +176,21 @@
 			$(location).attr("href", "cmypagewarningform.action?user_code=" + $(this).val());
 		});
 	});
+	 */
+	/* 
+	// a태그 post 방식으로 넘기기
+	function pageMove(url, user_code)
+	{
+		var f = document.navForm;	// 폼 name
+		
+		f.user_code = user_code;	// post 방식으로 넘기고 싶은 값
+		f.action = url;				// post 방식으로 넘기고 싶은 값
+		f.method = "post";
+		
+		f.submit();
+		
+	}
+	 */ 
 </script>
 </header>
 
