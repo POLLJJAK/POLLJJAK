@@ -87,13 +87,6 @@ public class ProjectDetailController
 			}
 			
 			
-			model.addAttribute("pInfo", dao.getProjectDetail(p_code));
-			model.addAttribute("pPositionInfo", dao.getProjectPosition(p_code));
-			model.addAttribute("pLeaderInfo", dao.getProjectLeader(p_code));
-			model.addAttribute("pApplicantInfo", dao.getProjectApplicant(p_code));
-			model.addAttribute("message", message);
-			model.addAttribute("p_code", p_code);
-			model.addAttribute("user_code", user_code);
 	
 			// 소식
 			IProjectDetailNewsDAO newsListDao = sqlSession.getMapper(IProjectDetailNewsDAO.class);
@@ -103,6 +96,15 @@ public class ProjectDetailController
 			IProjectDetailBlacklistDAO blackListDao = sqlSession.getMapper(IProjectDetailBlacklistDAO.class);
 			model.addAttribute("u_p_apply_list", blackListDao.u_p_apply_list(p_code));
 			model.addAttribute("p_reject_list", blackListDao.p_reject_list(p_code));
+			
+			model.addAttribute("pInfo", dao.getProjectDetail(p_code));
+			model.addAttribute("pPositionInfo", dao.getProjectPosition(p_code));
+			model.addAttribute("pLeaderInfo", dao.getProjectLeader(p_code));
+			model.addAttribute("pApplicantInfo", dao.getProjectApplicant(p_code));
+			model.addAttribute("message", message);
+			model.addAttribute("p_code", p_code);
+			model.addAttribute("user_code", user_code);
+			model.addAttribute("u_nickname", dto.getU_nickname());
 			
 			result = "/ProjectDetail.jsp";
 		}
@@ -146,6 +148,7 @@ public class ProjectDetailController
 			dto.setP_position_code(p_position_code);
 			
 			System.out.println(dto.getP_position_code());
+			dao.addNews(dto);
 			dao.applyProject(dto);
 			
 			result = "redirect:projectDetail.action?p_code="+dto.getP_code();

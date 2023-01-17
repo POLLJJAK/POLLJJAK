@@ -174,8 +174,14 @@
 	</insert>
 	
 	
-	
-	
-	
-	
+	<!--  프로젝트 지원 소식 추가 -->
+	<insert id="addNews" parameterType = "com.test.dto.ProjectDetailDTO">
+	INSERT INTO P_NEWS(P_NEWS_CODE, P_CODE, P_NEWS_CONTENT, P_NEWS_DATE)
+	VALUES('PN'||LPAD(P_NEWS_CODE_SEQ.NEXTVAL, 8, '0'), 
+			#{p_code}, 
+			(SELECT U_NICKNAME || ' 님이 ' || #{position_part} || ' 분야에 지원하셨습니다. '
+			 FROM U WHERE USER_CODE = #{user_code}), 
+			 TO_DATE(SYSDATE,'YY-MM-DD HH24:MI:SS'))
+	</insert>
+	 
 </mapper>

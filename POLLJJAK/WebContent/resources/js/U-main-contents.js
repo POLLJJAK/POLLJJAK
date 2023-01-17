@@ -7,7 +7,7 @@
 //4. append해!
 $().ready(function(){
 	
-	alert("ds")
+	//alert("ds")
 	
 	//신규 프로젝트 리스트
 	$.ajax({
@@ -20,39 +20,44 @@ $().ready(function(){
 		//cache : false,
 		success : function(data)
 		{
-			//데이터 정상적으로 넘어옵니다.
 			console.log(data.resultList);
 			
-			//직접 접근하여 출력하기
 			console.log(data.resultList[0].P_CODE);
-			
+
 			var items =`<div class="carousel-item active">
 							<div class="carousel-row">`;
 			
 			//배열 순회하며 출력하기
 			data.resultList.map((e, i) => 
 			{
-				if((i+1) % 4){
-					items +=	`<div class="carousel-item">
-									<div class="carousel-row">`;
-				}
+				var filepath = e.P_FILE_PATH;
+				var startIdx = filepath.indexOf("\\POLLJJAK");
+				var newfilepath = filepath.substring(startIdx).replace(/\\/g, '/');
+				
 				items += 
 				`
 				<div class="col-md-3 mb-3">
-					<div class="card">
-						<input type="hidden" value="${e.P_CODE}"/>
+					<div class="card" onclick="location.href='/POLLJJAK/projectDetail.action?p_code=${e.P_CODE}'">
 						<img class="img-fluid" alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
+							src="${newfilepath}/${e.P_FILE_NAME}">
 						<div class="card-body">
 							<h4 class="card-title">${e.P_NAME}</h4>
 							<p class="card-text">${e.U_NAME}</p>
-							<p class="card-text">${e.U_SKILL}</p>
+							<p class="card-text">${e.SKILL_PART}</p>
 						</div>
 					</div>
 				</div>
 				`;
-				if((i+1) % 4 == 0){
-					items += `</div></div>`;
+				if((i+1) % 4 == 0)
+				{
+					items +=	`</div>
+									</div>`;
+				
+					if((i+1) != data.resultList.length)
+					{
+						items += `<div class="carousel-item">
+							<div class="carousel-row">`;
+					}
 				}
 			})
 			
@@ -64,3 +69,4 @@ $().ready(function(){
 		}
 	});
 });
+

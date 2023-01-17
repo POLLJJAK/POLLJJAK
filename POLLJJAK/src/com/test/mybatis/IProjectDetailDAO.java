@@ -33,6 +33,9 @@ public interface IProjectDetailDAO {
 	// 프로젝트 지원
 	public int applyProject(ProjectDetailDTO dto);
 	
+	// 지원 시 소식 테이블 추가
+	public int addNews(ProjectDetailDTO dto);
+	
 
 	
 
