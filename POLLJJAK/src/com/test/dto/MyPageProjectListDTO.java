@@ -11,7 +11,25 @@ public class MyPageProjectListDTO
 	private String u_p_apply_code;
 	
 	private String p_end_condition_code;
+	private String skill_part_code;
+	private String skill_part;
 	
+	public String getSkill_part()
+	{
+		return skill_part;
+	}
+	public void setSkill_part(String skill_part)
+	{
+		this.skill_part = skill_part;
+	}
+	public String getSkill_part_code()
+	{
+		return skill_part_code;
+	}
+	public void setSkill_part_code(String skill_part_code)
+	{
+		this.skill_part_code = skill_part_code;
+	}
 	public String getP_end_condition_code()
 	{
 		return p_end_condition_code;

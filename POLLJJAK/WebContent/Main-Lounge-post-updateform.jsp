@@ -23,7 +23,7 @@
   	<script src="resources/js/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="<%=cp %>/resources/css/summernote-lite.css"/>
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
-<link rel="stylesheet" href="<%=cp %>/resources/css/ProjectDetail.css" />
+<link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css" />
 
 
 <style>

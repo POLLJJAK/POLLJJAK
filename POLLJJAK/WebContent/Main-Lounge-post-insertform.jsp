@@ -77,7 +77,7 @@
 		<div class="container" >
 			<div class="board_wrap">
 			<!-- 작성폼 -->
-			<form method="post" action="mainloungeinsert.action?user_code=U000000002" id="myForm">
+			<form method="post" action="mainloungeinsert.action" id="myForm">
 			<div class="board_list_wrap">
 				<div class="meet_wrap mb-3">
 					<table class="table">

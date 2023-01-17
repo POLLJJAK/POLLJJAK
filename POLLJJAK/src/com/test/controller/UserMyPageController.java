@@ -205,6 +205,63 @@ public class UserMyPageController
 	}
 	
 	// 일반회원 알림
+	@RequestMapping(value = "/umypagenotification.action", method = RequestMethod.GET)
+	public String userMyPageNotification(Model model, HttpServletRequest request)
+	{
+		String result = null;
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String user_code = null; 
+		
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
+			
+			result = "/WEB-INF/view/U-MyPage-Notification.jsp";
+		}
+		
+		return result;
+	}
 	
+	// 일반회원 활동내역
+	@RequestMapping(value = "/umypagelog.action", method = RequestMethod.GET)
+	public String userMyPageLog(Model model, HttpServletRequest request)
+	{
+		String result = null;
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+		
+		String user_code = null; 
+		
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+			// ----------------------------------------- 세션처리
+			
+			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
+			
+			result = "/WEB-INF/view/U-MyPage-Log.jsp";
+		}
+		
+		return result;
+	}
 	
 }

@@ -63,8 +63,8 @@
 						<li><a class="nav-link scrollto active updateform" href="#">정보</a></li>
 						<%-- <li><a class="nav-link scrollto active updateform" onclick="javascript:pageMove('userupdateform.action', '${user_code }');">정보</a></li> --%>
 						<li><a class="nav-link scrollto" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
-						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
+						<li><a class="nav-link scrollto" href="umypagenotification.action?user_code=${user_code }">알림</a></li>
+						<li><a class="nav-link scrollto " href="umypagelog.action?user_code=${user_code }">활동내역</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>

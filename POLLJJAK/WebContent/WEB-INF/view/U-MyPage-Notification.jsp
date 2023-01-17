@@ -70,10 +70,12 @@ String cp = request.getContextPath();
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar" class="navbar">
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto " href="U-MyPage-Info.jsp">정보</a></li>
-						<li><a class="nav-link scrollto" href="U-MyPage-project.jsp">프로젝트</a></li>
-						<li><a class="nav-link scrollto active" href="U-MyPage-Notification.jsp">알림</a></li>
-						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
+						<%-- <li><a class="nav-link scrollto active updateform" href="userupdateform.action?user_code=${user_code }">정보</a></li> --%>
+						<li><a class="nav-link scrollto updateform" href="#">정보</a></li>
+						<%-- <li><a class="nav-link scrollto active updateform" onclick="javascript:pageMove('userupdateform.action', '${user_code }');">정보</a></li> --%>
+						<li><a class="nav-link scrollto" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
+						<li><a class="nav-link scrollto active" href="umypagenotification.action?user_code=${user_code }">알림</a></li>
+						<li><a class="nav-link scrollto" href="umypagelog.action?user_code=${user_code }">활동내역</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>

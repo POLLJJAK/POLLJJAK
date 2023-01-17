@@ -98,6 +98,8 @@ String cp = request.getContextPath();
 
 .col-1 {
 	width: 100%;
+	border-bottom: 1px solid black;
+	padding: 1px;
 }
 
 .siren {
@@ -110,6 +112,7 @@ String cp = request.getContextPath();
 .write_rereply {
 	width: 40%;
 	height: 100%;
+	
 }
 
 .reply-right {
@@ -124,7 +127,8 @@ String cp = request.getContextPath();
 
 .r_cmt {
 	width: 100%;
-	margin-left: 10%;
+	padding-left: 10%;
+	border-bottom: 1px solid black;
 }
 </style>
 <body>
@@ -258,7 +262,7 @@ String cp = request.getContextPath();
 
 									</div>
 									<c:set var="post_writer" value="${postdetail.user_code}"></c:set>
-										<c:if test="${user_code eq 'post_writer' }">
+										<c:if test="${user_code eq post_writer}">
 										
 											<button type="button" class="btn-hover color-9"
 												style="margin: 1%; width: 10%; float: right;"
@@ -571,7 +575,6 @@ String cp = request.getContextPath();
 		            $('.write_rereply').on('click', function() {
 		            	console.log( 'comment_code', $(this).attr('comment_code') );
 		                console.log( 'post_code', $(this).attr('post_code') );
-						alert("호출");
 		                // 답글을 DB에 저장하는 함수를 호출한다. post_code와 no를 같이 넘겨주어야한다.
 		                addReComment($(this).attr('post_code'), $(this).attr('comment_code') );
 		            });

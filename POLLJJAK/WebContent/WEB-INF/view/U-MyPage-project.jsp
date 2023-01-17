@@ -74,11 +74,10 @@
 						<input type="hidden" name="user_code"/>
 					</form>
 					<ul style="margin-left: auto; margin-right: auto;">
-						<%-- <li><a class="nav-link scrollto" href="userupdateform.action?user_code=${user_code }">정보</a></li> --%>
-						<li><a class="nav-link scrollto" onclick="javascript:pageMove('userupdateform.action', '${user_code }');">정보</a></li>
-						<li><a class="nav-link scrollto active updateform" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
-						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
+						<li><a class="nav-link scrollto" href="userupdateform.action?user_code=${user_code }">정보</a></li>
+						<li><a class="nav-link scrollto active" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
+						<li><a class="nav-link scrollto" href="umypagenotification.action?user_code=${user_code }">알림</a></li>
+						<li><a class="nav-link scrollto " href="umypagelog.action?user_code=${user_code }">활동내역</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
@@ -113,9 +112,9 @@
 										<input type="hidden" value="aaaa" /> 
 										<img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
-											<h4 class="card-title">${myPageRunPJ.p_name }의 프로젝트</h4>
-											<p class="card-text">${myPageRunPJ.p_name }의 프로젝트</p>
-											<p class="card-text">JAVA/ORACLE</p>
+											<h4 class="card-title">${myPageRunPJ.p_name }</h4>
+											<p class="card-text">${myPageRunPJ.p_name }</p>
+											<p class="card-text">${myPageRunPJ.skill_part }</p>
 										</div>
 									</div>
 								</div>
@@ -176,9 +175,9 @@
 																<img class="img-fluid" alt="100%x280"
 																	src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 																<div class="card-body">
-																	<h4 class="card-title">${myPageSupportPJ.p_name }의 프로젝트</h4>
-																	<p class="card-text">${myPageSupportPJ.p_name }의 프로젝트</p>
-																	<p class="card-text">JAVA/ORACLE</p>
+																	<h4 class="card-title">${myPageSupportPJ.p_name }</h4>
+																	<p class="card-text">${myPageSupportPJ.p_name }</p>
+																	<p class="card-text">${myPageSupportPJ.skill_part }</p>
 																</div>
 															</div>
 														</div>
@@ -261,9 +260,9 @@
 																<img class="img-fluid" alt="100%x280"
 																	src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 																<div class="card-body">
-																	<h4 class="card-title">${myPageCompletePJ.p_name }의 프로젝트</h4>
-																	<p class="card-text">${myPageCompletePJ.p_name }한은영의 프로젝트</p>
-																	<p class="card-text">JAVA/ORACLE</p>
+																	<h4 class="card-title">${myPageCompletePJ.p_name }</h4>
+																	<p class="card-text">${myPageCompletePJ.p_name }</p>
+																	<p class="card-text">${myPageCompletePJ.skill_part }</p>
 																</div>
 															</div>
 														</div>
@@ -358,9 +357,9 @@
 														<img class="img-fluid" alt="100%x280"
 															src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 														<div class="card-body">
-															<h4 class="card-title">${myPageOpenPJ.p_name }의 프로젝트</h4>
-															<p class="card-text">${myPageOpenPJ.p_name }의 프로젝트</p>
-															<p class="card-text">JAVA/ORACLE</p>
+															<h4 class="card-title">${myPageOpenPJ.p_name }</h4>
+															<p class="card-text">${myPageOpenPJ.p_name }</p>
+															<p class="card-text">${myPageOpenPJ.skill_part }</p>
 														</div>
 													</div>
 												</div>
@@ -417,19 +416,6 @@
 	})
  */
  
-	// a태그 post 방식으로 넘기기
-	function pageMove(url, user_code)
-	{
-		var f = document.navForm;	// 폼 name
-		
-		f.user_code = user_code;	// post 방식으로 넘기고 싶은 값
-		f.action = url;				// post 방식으로 넘기고 싶은 값
-		f.method = "post";
-		
-		f.submit();
-		
-	}
-
 </script>
 
 </html>
