@@ -47,10 +47,6 @@ public class ReportController
 		{
 		// ----------------------------------------- 세션처리
 		
-			//String post_code = request.getParameter("post_code");
-			//String user_code = request.getParameter("user_code");
-			//String report_reason_code = request.getParameter("reportsel");
-			
 			IReportDAO dao = sqlSession.getMapper(IReportDAO.class);
 			
 			dto.setUser_code(user_code);
