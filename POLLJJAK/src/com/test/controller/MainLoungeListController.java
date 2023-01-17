@@ -86,11 +86,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -119,11 +118,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -150,8 +148,6 @@ public class MainLoungeListController
 	{
 		String result = null;
 		
-		
-		
 		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
 		String post_code = request.getParameter("post_code");
 		
@@ -159,11 +155,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -201,11 +196,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -237,11 +231,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -269,11 +262,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -330,9 +322,9 @@ public class MainLoungeListController
 
 		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -369,11 +361,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -409,11 +400,10 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		String temp = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{

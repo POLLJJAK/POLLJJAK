@@ -38,11 +38,11 @@ public class MainNoticeController
 		// 세션처리 -----------------------------------------
 		/*HttpSession session = request.getSession();
 
-		String temp = null;
+		String user_code = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -96,11 +96,11 @@ public class MainNoticeController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null;
+		String user_code = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -128,11 +128,11 @@ public class MainNoticeController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null;
+		String user_code = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -161,11 +161,11 @@ public class MainNoticeController
 		// 세션처리 -----------------------------------------
 		/*HttpSession session = request.getSession();
 
-		String temp = null;
+		String user_code = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -194,11 +194,11 @@ public class MainNoticeController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null;
+		String user_code = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -228,11 +228,11 @@ public class MainNoticeController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null;
+		String user_code = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{
@@ -260,11 +260,11 @@ public class MainNoticeController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null;
+		String user_code = null;
 		
-		temp = (String) session.getAttribute("user_code");
+		user_code = (String) session.getAttribute("user_code");
 		session.getAttribute("loginCheck");
-		//System.out.println(temp);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("loginCheck") == null)
 		{

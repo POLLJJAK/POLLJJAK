@@ -138,8 +138,8 @@
 		  , U_TEL = #{u_tel}
 		  , U_INTRO = #{u_intro}
 		  , U_PORTFOLIO_URL = #{u_portfolio_url}
-		  , U_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
-		WHERE USER_CODE = #{user_code};
+		  , U_EMAIL = #{u_email}
+		WHERE USER_CODE = #{user_code}
 	</update>
 	<update id="updateskill">
 		UPDATE U_SKILL

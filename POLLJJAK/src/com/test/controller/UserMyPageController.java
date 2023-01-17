@@ -149,7 +149,7 @@ public class UserMyPageController
 	
 	// 일반 회원정보 수정(마이페이지 업데이트)
 	@RequestMapping(value = "/userupdate.action", method = RequestMethod.POST)
-	public String userUpdate(UserDTO user, HttpServletRequest request)
+	public String userUpdate(UserDTO user, HttpServletRequest request, Model model)
 	{
 		String result = null;
 		// 세션처리 -----------------------------------------
@@ -172,11 +172,15 @@ public class UserMyPageController
 			
 			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
 			
+			// user_code를 dto에 담아 뿌리기
+			user.setUser_code(user_code);
+			
 			dao.updateInfo(user);
 			dao.updateskill(user);
 			dao.updateskill1(user);
 			dao.updateskill2(user);
 			dao.updateskill3(user);
+			System.out.println(dao.updateInfo(user));
 			
 			result = "redirect:userupdateform.action";
 		}
@@ -196,7 +200,7 @@ public class UserMyPageController
 		String user_code = null; 
 		
 		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		//System.out.println(user_code);
 		
 		session.getAttribute("loginCheck");
 		

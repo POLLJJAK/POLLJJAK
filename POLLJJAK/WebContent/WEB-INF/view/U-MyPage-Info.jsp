@@ -68,7 +68,7 @@
 				<hr>
 				<!-- End InnerNav -->
 				<div class = "row justify-content-end">
-					<form action="userupdate.action" class=" form-horizontal" method="post" id="">
+					<form action="userupdate.action" class=" form-horizontal" method="post" id="my_update_form">
 				  		<fieldset disabled="disabled">
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
@@ -252,7 +252,7 @@
 				</form>
 				</div>
 				<div style = "text-align: center;">
-					<button class ="btn btn-primary" id ="modify" 
+					<button type="button" class ="btn btn-primary" id ="modify" 
 					style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
 					수정하기</button>
 					<button type ="button" class ="btn btn-primary" id ="modify_done" 
@@ -298,7 +298,8 @@
 			$("#modify_done").click(function()
 			{
 				alert("수정이 완료되었습니다.");
-				$(location).attr("href", "userupdateform.action");
+				$("#my_update_form").attr("action", "userupdate.action?user_code=" + $("#user_code").val());
+				$("#my_update_form").submit();
 			});
 		});
 		/* 
