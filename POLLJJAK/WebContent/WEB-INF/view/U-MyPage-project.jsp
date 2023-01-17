@@ -70,8 +70,12 @@
 				<hr>
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar" class="navbar">
+					<form name="navForm">
+						<input type="hidden" name="user_code"/>
+					</form>
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto" href="userupdateform.action?user_code=${user_code }">정보</a></li>
+						<%-- <li><a class="nav-link scrollto" href="userupdateform.action?user_code=${user_code }">정보</a></li> --%>
+						<li><a class="nav-link scrollto" onclick="javascript:pageMove('userupdateform.action', '${user_code }');">정보</a></li>
 						<li><a class="nav-link scrollto active updateform" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
 						<li><a class="nav-link scrollto" href="U-MyPage-Notification.jsp">알림</a></li>
 						<li><a class="nav-link scrollto " href="U-MyPage-Log.jsp">활동내역</a></li>
@@ -412,6 +416,19 @@
 		});
 	})
  */
+ 
+	// a태그 post 방식으로 넘기기
+	function pageMove(url, user_code)
+	{
+		var f = document.navForm;	// 폼 name
+		
+		f.user_code = user_code;	// post 방식으로 넘기고 싶은 값
+		f.action = url;				// post 방식으로 넘기고 싶은 값
+		f.method = "post";
+		
+		f.submit();
+		
+	}
 
 </script>
 

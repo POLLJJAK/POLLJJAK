@@ -160,6 +160,21 @@ public class LoginController
 		return result;
 	}
 	
+	// 세션을 없애고 회원 로그인폼으로
+	@RequestMapping(value = "/killsessionLoginform.action", method = RequestMethod.GET)
+	public String killSessionLoginForm(HttpServletRequest request)
+	{
+		String result = null;
+		
+		HttpSession session = request.getSession();
+		
+		session.invalidate();
+		
+		result = "/WEB-INF/view/Login.jsp";
+		
+		return result;
+	}
+	
 	// 회원가입 메인폼으로
 	@RequestMapping(value = "/registraionmainform.action", method = RequestMethod.GET)
 	public String RegistrationMainForm()

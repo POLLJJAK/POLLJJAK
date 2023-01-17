@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.SessionScope;
 
 import com.test.dto.UserDTO;
 import com.test.mybatis.IUserDAO;
@@ -29,7 +30,7 @@ public class UserMyPageController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
-		
+
 		user_code = (String) session.getAttribute("user_code");
 		System.out.println(user_code);
 		
@@ -78,7 +79,7 @@ public class UserMyPageController
 			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
 			
 			dao.pwCheck(user);
-			//System.out.println("비번일치수 : " + dao.pwCheck(user));
+			System.out.println("비번일치수 : " + dao.pwCheck(user));
 			
 			model.addAttribute("ajax", dao.pwCheck(user));
 			
@@ -124,6 +125,7 @@ public class UserMyPageController
 			
 			String skills = dao.searchSkill(user);
 			String[] arrSkills = skills.split(", ");
+			System.out.println(arrSkills);
 			
 			model.addAttribute("arrSkills1", arrSkills[0]);
 			model.addAttribute("arrSkills2", arrSkills[1]);
@@ -201,5 +203,8 @@ public class UserMyPageController
 		
 		return result;
 	}
+	
+	// 일반회원 알림
+	
 	
 }
