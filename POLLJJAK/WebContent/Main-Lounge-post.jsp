@@ -283,7 +283,7 @@ String cp = request.getContextPath();
 							aria-labelledby="staticBackdropLabel" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered">
 								<div class="modal-content">
-									<form action="reportpost.action" method="post" id="reportform">
+									<form action="reportpost.action" method="GET" id="reportform">
 										<div class="modal-header">
 											<h5 class="modal-title">신고하기</h5>
 											<button type="button" class="btn-close"
@@ -300,7 +300,7 @@ String cp = request.getContextPath();
 												<p class="report_title">신고 글 : ${postdetail.title}</p>
 
 
-												<select class="form-select form-select-m w-70 mt-2" id="reportsel" name="reportsel">
+												<select class="form-select form-select-m w-70 mt-2" id="report_reason_code" name="report_reason_code">
 													<option value="">신고 사유 선택</option>
 													<c:forEach var="report" items="${reportList}">
 														<option value=${report.report_reason_code }>${report.report_reason }</option>
@@ -319,7 +319,7 @@ String cp = request.getContextPath();
 											<button id="reportSubmitBtn" type="submit"
 												class="btn-hover color-9">신고</button>
 										</div>
-										<input type="hidden" id="post_code" value="${postdetail.post_code}"> 
+										<input type="hidden" id="post_code" name="post_code" value="${postdetail.post_code}">
 									</form>
 								</div>
 							</div>
@@ -736,10 +736,10 @@ String cp = request.getContextPath();
 	$("#reportSubmitBtn").click(function()
 	{
 
-		var reportsel = $("#reportsel").val();
+		var reportsel = $("#report_reason_code").val();
 		if (reportsel == "")
 		{
-			$("#reportsel").focus();
+			$("#report_reason_code").focus();
 			$("#reason").text("신고 사유를 선택해주세요.");
 			return false;
 			
