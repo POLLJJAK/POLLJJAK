@@ -432,9 +432,8 @@ String cp = request.getContextPath();
 							class="btn-hover color-9">제출</button>
 					</div>
 					<input type="hidden" id="p_code" name="p_code" value="${p_code}">
-					<input type="hidden" id="user_code" name="user_code"
-						value="${user_code}"> <input type="hidden"
-						id="position_part" name="position_part" value="">
+					<input type="hidden" id="user_code" name="user_code" value="${user_code}"> 
+					<input type="hidden" id="position_part" name="position_part" value="">
 				</form>
 			</div>
 		</div>

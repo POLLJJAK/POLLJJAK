@@ -19,18 +19,8 @@ String cp = request.getContextPath();
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 
-
-<!-- Vendor JS Files -->
-<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-
-<!-- <script src="./js/U-P-Apply-Main.js"></script> -->
+<script src="<%=cp %>/resources/js/U-P-Apply-New.js"></script>
+<link href="<%=cp %>/resources/css/Inner-Project-home.css" rel="stylesheet">
 
 <body>
 	<c:import url="./common/Nav.jsp" />
@@ -85,66 +75,66 @@ String cp = request.getContextPath();
 
 				<!-- ====== Select Section ====== -->
 				<div class="select-project-part form-group" data-aos="fade-up">
-					<p>신규 프로젝트</p>
+					<p>전체 프로젝트</p>
 					<div class="row row-cols-auto">
 						<div class="col">
-							<select class="form-select form-select-sm">
-								<option value="none">지역</option>
-								<option value="서울">서울</option>
-								<option value="경기">경기</option>
-								<option value="인천">인천</option>
-								<option value="강원">강원</option>
-								<option value="충북">충북</option>
-								<option value="충남">충남</option>
-								<option value="전북">전북</option>
-								<option value="전남">전남</option>
-								<option value="경북">경북</option>
-								<option value="경남">경남</option>
-								<option value="제주">제주</option>
+							<select class="form-select form-select-sm selectTrigger" id="regionPart">
+								<option value="">지역</option>
+								<option value="RPT0000001">서울</option>
+								<option value="RPT0000002">경기</option>
+								<option value="RPT0000003">인천</option>
+								<option value="RPT0000004">강원</option>
+								<option value="RPT0000005">충북</option>
+								<option value="RPT0000006">충남</option>
+								<option value="RPT0000007">전북</option>
+								<option value="RPT0000008">전남</option>
+								<option value="RPT0000009">경북</option>
+								<option value="RPT0000010">경남</option>
+								<option value="RPT0000011">제주</option>
 							</select>
 						</div>
 						<div class="col">
-							<select class="form-select form-select-sm">
-								<option value="none">주제</option>
-								<option value="생활">생활</option>
-								<option value="업무">업무</option>
-								<option value="공공/교통">공공/교통</option>
-								<option value="금융/핀테크">금융/핀테크</option>
-								<option value="의료">의료</option>
-								<option value="교육">교육</option>
-								<option value="유통/쇼핑">유통/쇼핑</option>
-								<option value="엔터테인먼트">엔터테인먼트</option>
-								<option value="기타">기타</option>
+							<select class="form-select form-select-sm selectTrigger" id="subjectPart">
+								<option value="">주제</option>
+								<option value="SBPT000001">생활</option>
+								<option value="SBPT000002">업무</option>
+								<option value="SBPT000003">공공/교통</option>
+								<option value="SBPT000004">금융/핀테크</option>
+								<option value="SBPT000005">의료</option>
+								<option value="SBPT000006">교육</option>
+								<option value="SBPT000007">유통/쇼핑</option>
+								<option value="SBPT000008">엔터테인먼트</option>
+								<option value="SBPT000009">기타</option>
 							</select>
 						</div>
 						<div class="col">
-							<select class="form-select form-select-sm">
-								<option value="none">모집분야</option>
-								<option value="UI/UX">UI/UX</option>
-								<option value="게임">게임</option>
-								<option value="프로젝트 매니저">프로젝트 매니저</option>
-								<option value="하드웨어 기획">하드웨어 기획</option>
-								<option value="그래픽 디자인">그래픽 디자인</option>
-								<option value="UI/UX 디자인">UI/UX 디자인</option>
-								<option value="3D 디자인">3D 디자인</option>
-								<option value="하드웨어 디자인">하드웨어 디자인</option>
-								<option value="IOS">IOS</option>
-								<option value="안드로이드">안드로이드</option>
-								<option value="웹 프론트엔드">웹 프론트엔드</option>
-								<option value="웹 퍼블리셔">웹 퍼블리셔</option>
-								<option value="크로스 플랫폼">크로스 플랫폼</option>
-								<option value="임베디드SW">임베디드SW</option>
-								<option value="웹서버">웹서버</option>
-								<option value="블록체인">블록체인</option>
-								<option value="AI">AI</option>
-								<option value="DB/빅데이터/DS">DB/빅데이터/DS</option>
-								<option value="게임서버">게임서버</option>
-								<option value="사업기획">사업기획</option>
-								<option value="마케팅">마케팅</option>
-								<option value="재무/회계">재무/회계</option>
-								<option value="영업">영업</option>
-								<option value="전략/컨설팅">전략/컨설팅</option>
-								<option value="투자/고문">투자/고문</option>
+							<select class="form-select form-select-sm selectTrigger" id="positionPart">
+								<option value="">모집분야</option>
+								<option value="PSPT000001">UI/UX</option>
+								<option value="PSPT000002">게임</option>
+								<option value="PSPT000003">프로젝트 매니저</option>
+								<option value="PSPT000004">하드웨어 기획</option>
+								<option value="PSPT000005">그래픽 디자인</option>
+								<option value="PSPT000006">UI/UX 디자인</option>
+								<option value="PSPT000007">3D 디자인</option>
+								<option value="PSPT000008">하드웨어 디자인</option>
+								<option value="PSPT000009">IOS</option>
+								<option value="PSPT000010">안드로이드</option>
+								<option value="PSPT000011">웹 프론트엔드</option>
+								<option value="PSPT000012">웹 퍼블리셔</option>
+								<option value="PSPT000013">크로스 플랫폼</option>
+								<option value="PSPT000014">임베디드SW</option>
+								<option value="PSPT000015">웹서버</option>
+								<option value="PSPT000016">블록체인</option>
+								<option value="PSPT000017">AI</option>
+								<option value="PSPT000018">DB/빅데이터/DS</option>
+								<option value="PSPT000019">게임서버</option>
+								<option value="PSPT000020">사업기획</option>
+								<option value="PSPT000021">마케팅</option>
+								<option value="PSPT000022">재무/회계</option>
+								<option value="PSPT000023">영업</option>
+								<option value="PSPT000024">전략/컨설팅</option>
+								<option value="PSPT000025">투자/고문</option>
 							</select>
 						</div>
 					</div>
@@ -162,208 +152,9 @@ String cp = request.getContextPath();
 	</div>
 	<section class="pt-5 pb-5" data-aos="fade-up">
 		<div class="container">
-			<div class="row">
-				<div class="col-3">
-					<div class="card ">
-						<input type="hidden" value="aaaa" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">한은영의 프로젝트</h4>
-							<p class="card-text">한은영의 프로젝트</p>
-							<p class="card-text">JAVA/ORACLE</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="BBBB" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">김유림의 프로젝트</h4>
-							<p class="card-text">김유림의 프로젝트</p>
-							<p class="card-text">C/MariaDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="cccc" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">김인교의 프로젝트</h4>
-							<p class="card-text">김인교의 프로젝트</p>
-							<p class="card-text">C++/MongoDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="dddd" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">박원석의 프로젝트</h4>
-							<p class="card-text">박원석의 프로젝트</p>
-							<p class="card-text">Python/Django</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-3">
-					<div class="card ">
-						<input type="hidden" value="aaaa" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">김호진의 프로젝트</h4>
-							<p class="card-text">김호진의 프로젝트</p>
-							<p class="card-text">JAVA/ORACLE</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="BBBB" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">유동현의 프로젝트</h4>
-							<p class="card-text">유동현의 프로젝트</p>
-							<p class="card-text">C/MariaDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="cccc" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">임시연의 프로젝트</h4>
-							<p class="card-text">임시연의 프로젝트</p>
-							<p class="card-text">C++/MongoDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="dddd" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">최나윤의 프로젝트</h4>
-							<p class="card-text">최나윤의 프로젝트</p>
-							<p class="card-text">Python/Django</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-3">
-					<div class="card ">
-						<input type="hidden" value="aaaa" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">정영준의 프로젝트</h4>
-							<p class="card-text">정영준의 프로젝트</p>
-							<p class="card-text">JAVA/ORACLE</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="BBBB" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">민찬우의 프로젝트</h4>
-							<p class="card-text">민찬우의 프로젝트</p>
-							<p class="card-text">C/MariaDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="cccc" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">조영관의 프로젝트</h4>
-							<p class="card-text">조영관의 프로젝트</p>
-							<p class="card-text">C++/MongoDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="dddd" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">반보영의 프로젝트</h4>
-							<p class="card-text">반보영의 프로젝트</p>
-							<p class="card-text">Python/Django</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-3">
-					<div class="card ">
-						<input type="hidden" value="aaaa" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">고연수의 프로젝트</h4>
-							<p class="card-text">고연수의 프로젝트</p>
-							<p class="card-text">JAVA/ORACLE</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="BBBB" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">김태민의 프로젝트</h4>
-							<p class="card-text">김태민의 프로젝트</p>
-							<p class="card-text">C/MariaDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="cccc" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">김보경의 프로젝트</h4>
-							<p class="card-text">김보경의 프로젝트</p>
-							<p class="card-text">C++/MongoDB</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card">
-						<input type="hidden" value="dddd" /> <img class="img-fluid"
-							alt="100%x280"
-							src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
-						<div class="card-body">
-							<h4 class="card-title">최동현의 프로젝트</h4>
-							<p class="card-text">최동현의 프로젝트</p>
-							<p class="card-text">Python/Django</p>
-						</div>
-					</div>
-				</div>
+			<div id="appendChildSpot">
 			</div>
 		</div>
-
 	</section>
 	<!--  Carousel Popular Project Section -->
 
@@ -375,18 +166,6 @@ String cp = request.getContextPath();
 		<i class="bi bi-arrow-up-short"></i>
 	</a>
 </body>
-
-<script>
-
-	$().ready(function(){
-		$(".card").click(function(){
-			var target = $(this).find("input").val();
-			/*$(location).attr("href", "/POLLJJAK/Inner-page.jsp?target=" + target);*/
-			$(location).attr("href", "/POLLJJAK/ProjectDetail.jsp");
-		});
-	})
-
-</script>
 
 </html>
 

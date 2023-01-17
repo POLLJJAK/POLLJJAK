@@ -27,7 +27,7 @@
 				</h1>
 				<h2 data-aos="fade-up" data-aos-delay="400">개발자가 되고싶어?</h2>
 				<div data-aos="fade-up" data-aos-delay="800">
-					<a href="Inner-page.jsp" class="btn-get-started scrollto">프로젝트 둘러보기</a>
+					<a href="projectapplymain.action" class="btn-get-started scrollto">프로젝트 둘러보기</a>
 				</div>
 			</div>
 			<div class="col-lg-6 order-1 order-lg-2 hero-img"
@@ -98,7 +98,7 @@
 			<span class="visually-hidden">Next</span>
 		</button>
 	</div>
-</div> -->
+</div> 
 <!-- End Carousel Notice Section -->
 
 

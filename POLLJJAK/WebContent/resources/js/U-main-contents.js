@@ -23,16 +23,7 @@ $().ready(function(){
 			console.log(data.resultList);
 			
 			console.log(data.resultList[0].P_CODE);
-			/*
-			 * 0
-: 
-{P_CODE: 'P000000007',
- P_FILE_NAME: '유동현의 1번 프로젝트.png', 
- P_FILE_PATH: 'C:\\FinalProject\\.metadata\\.plugins\\org.eclipse.wst…rver.core\\tmp1\\wtpwebapps\\POLLJJAK\\upload\\project', 
- P_NAME: '유동현의 1번 프로젝트', 
- SKILL_PART: 'Kotlin', …}
-			 * 
-			 * */
+
 			var items =`<div class="carousel-item active">
 							<div class="carousel-row">`;
 			
