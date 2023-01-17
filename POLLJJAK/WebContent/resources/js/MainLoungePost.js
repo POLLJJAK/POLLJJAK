@@ -244,7 +244,6 @@ $(function (){
 		{
 			//여기서 모달 호출 어케해???
 			$('#loginplz').modal('show'); 
-			
 		}
 	});
    	 

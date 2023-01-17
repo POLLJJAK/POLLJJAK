@@ -66,7 +66,7 @@ public class UserMyPageController
 		String user_code = null; 
 		
 		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -79,7 +79,7 @@ public class UserMyPageController
 			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
 			
 			dao.pwCheck(user);
-			System.out.println("비번일치수 : " + dao.pwCheck(user));
+			//System.out.println("비번일치수 : " + dao.pwCheck(user));
 			
 			model.addAttribute("ajax", dao.pwCheck(user));
 			
@@ -100,7 +100,7 @@ public class UserMyPageController
 		String user_code = null; 
 		
 		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		//System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -129,7 +129,7 @@ public class UserMyPageController
 			String skills = dao.searchSkill(user);
 			
 			String[] arrSkills = skills.split(", ");
-			System.out.println(arrSkills);
+			//System.out.println(arrSkills);
 			
 			model.addAttribute("arrSkills1", arrSkills[0]);
 			model.addAttribute("arrSkills2", arrSkills[1]);
@@ -178,7 +178,7 @@ public class UserMyPageController
 	
 	// 일반 회원정보 프로젝트
 	@RequestMapping(value = "/umypageproject.action", method = RequestMethod.GET)
-	public String userMyPageProject(Model model, HttpServletRequest request)
+	public String userMyPageProject(UserDTO user, Model model, HttpServletRequest request)
 	{
 		String result = null;
 		
@@ -199,6 +199,10 @@ public class UserMyPageController
 		// ----------------------------------------- 세션처리
 		
 			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
+			
+			dao.search(user);
+			
+			model.addAttribute("user", dao.search(user));
 			
 			model.addAttribute("myPageRunPJ", dao.myPageRunPJ(user_code));
 			model.addAttribute("myPageSupportPJ", dao.myPageSupportPJ(user_code));
