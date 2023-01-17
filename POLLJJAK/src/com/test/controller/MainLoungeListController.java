@@ -85,10 +85,10 @@ public class MainLoungeListController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -99,8 +99,8 @@ public class MainLoungeListController
 		// ----------------------------------------- 세션처리
 
 			//String user_code = request.getParameter("user_code");
-			String user_code = temp;
-			model.addAttribute("user_code", user_code);
+			//String user_code = temp;
+			//model.addAttribute("user_code", user_code);
 			
 			result = "/Main-Lounge-post-insertform.jsp";
 		}
@@ -116,10 +116,10 @@ public class MainLoungeListController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String user_code = null; 
 		
-		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
 		if (session.getAttribute("user_code") == null)
 		{
@@ -129,12 +129,13 @@ public class MainLoungeListController
 		{
 		// ----------------------------------------- 세션처리
 		
-			IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
-			dao.add(dto);
-			
-			// 리스트가 아니라 해당글상세로 보내야할거같은데..
-			
-			result = "redirect:mainlounge.action";
+		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
+		dto.setUser_code(user_code);
+		dao.add(dto);
+		
+		// 리스트가 아니라 해당글상세로 보내야할거같은데..
+		result = "redirect:mainlounge.action";
+		
 		}
 		
 		return result;
