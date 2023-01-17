@@ -20,7 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.dto.PostCommentDTO;
+import com.test.mybatis.IMainLoungeListDAO;
 import com.test.mybatis.IPostCommentDAO;
 import com.test.util.MapToJson;
 
@@ -59,42 +63,117 @@ public class PostCommentController {
 		
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/addcomment.action", method = RequestMethod.POST)
+	//public String addComment(HttpServletRequest request, Model model, @RequestParam(value="post_code")String post_code, @RequestParam(value="content")String content) 
+	public String addComment(HttpServletRequest request, Model model, PostCommentDTO dto) 
+	{
+		String result = null;
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String user_code = null;
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+		
+			
+		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
+		dto.setUser_code(user_code);
+		dao.addComment(dto);
+		
+		//이전페이지보내기
+		String referer = request.getHeader("Referer"); // 헤더에서 이전 페이지를 읽는다.
+		return "redirect:"+ referer;
+		//result = "/Main-Lounge.jsp";	
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/addrecomment.action", method = RequestMethod.GET)
+	public String likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
+			, @RequestParam("comment_code") String comment_code, @RequestParam("content") String content, Model model  )
+	{
+		String result = "";
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String user_code = null; 
+		
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+		// ----------------------------------------- 세션처리
+	
+		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
+		dao.addReComment(user_code, post_code, comment_code, content);
+		
+		int count = 0;
+		count = dao.commentCount(post_code);
+			
+		//좋아요수 재활용
+		model.addAttribute("likeCount", count);
+		result = "/AjaxLikeUp.jsp";
+		}
+			
+		return result;
+	}
+	
+	
+	@RequestMapping(value = "/removecomment.action", method = RequestMethod.GET)
+	public String likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
+			, @RequestParam("comment_code") String comment_code, Model model  )
+	{
+		String result = "";
+		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+		
+		String user_code = null; 
+		
+		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
+		
+		if (session.getAttribute("user_code") == null)
+		{
+			result = "redirect:loginform.action";
+		}
+		else
+		{
+			// ----------------------------------------- 세션처리
+			
+			IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
+			dao.removeComment(comment_code);
+			
+			int count = 0;
+			count = dao.commentCount(post_code);
+			
+			//좋아요수 재활용
+			model.addAttribute("likeCount", count);
+			result = "/AjaxLikeUp.jsp";
+		}
+		
+		return result;
+	}
+	
+	
+	
    
-   /*
-    * @RequestMapping(value = "/commentlist.action", method = RequestMethod.POST)
-    * public String commentList(@RequestParam("post_code") String post_code
-    * , HttpSession session, Model model)
-    * {
-    * String result = "";
-    * Map<String, Object> map = new HashMap<String, Object>();
-    * IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-    * 
-    * 
-    * ArrayList<PostCommentDTO> cmtList = new ArrayList<PostCommentDTO>();
-    * cmtList = dao.list(post_code);
-    * 
-    * for (int i = 0; i < cmtList.size(); i++)
-    * {
-    * map.put("comment_code", cmtList.get(i).getComment_code());
-    * map.put("post_code", cmtList.get(i).getPost_code());
-    * map.put("user_code", cmtList.get(i).getUser_code());
-    * map.put("nickname", cmtList.get(i).getNickname());
-    * map.put("content", cmtList.get(i).getContent());
-    * map.put("commentdate", cmtList.get(i).getCommentdate());
-    * map.put("commentupdate", cmtList.get(i).getCommentupdate());
-    * map.put("cgroup", cmtList.get(i).getCgroup());
-    * map.put("cdepth", cmtList.get(i).getCdepth());
-    * 
-    * //System.out.println(map.values());
-    * //찍히는구먼
-    * 
-    * }
-    * System.out.println();
-    * model.addAttribute("map", map);
-    * result = "/AjaxCmt.jsp";
-    * return result;
-    * 
-    * 
-    * }
-    */
+  
 }

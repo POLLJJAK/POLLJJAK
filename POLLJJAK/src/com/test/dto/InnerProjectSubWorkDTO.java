@@ -11,8 +11,45 @@ public class InnerProjectSubWorkDTO
 	private String ph_subwork_detail, swlistcode;
 	private String tc_u_name, ph_s_comment_content, scsbcode;
 	
+	private String main_u_p_apply_code;
+	
+	private String ph_mainwork_code;
+	private String u_p_apply_code;
+	private String ph_subwork_code;
 	
 	
+	public String getPh_subwork_code()
+	{
+		return ph_subwork_code;
+	}
+	public void setPh_subwork_code(String ph_subwork_code)
+	{
+		this.ph_subwork_code = ph_subwork_code;
+	}
+	public String getPh_mainwork_code()
+	{
+		return ph_mainwork_code;
+	}
+	public void setPh_mainwork_code(String ph_mainwork_code)
+	{
+		this.ph_mainwork_code = ph_mainwork_code;
+	}
+	public String getU_p_apply_code()
+	{
+		return u_p_apply_code;
+	}
+	public void setU_p_apply_code(String u_p_apply_code)
+	{
+		this.u_p_apply_code = u_p_apply_code;
+	}
+	public String getMain_u_p_apply_code()
+	{
+		return main_u_p_apply_code;
+	}
+	public void setMain_u_p_apply_code(String main_u_p_apply_code)
+	{
+		this.main_u_p_apply_code = main_u_p_apply_code;
+	}
 	public String getPh_mainwork_title()
 	{
 		return ph_mainwork_title;
