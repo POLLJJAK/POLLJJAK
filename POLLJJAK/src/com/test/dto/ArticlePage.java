@@ -29,13 +29,13 @@ public class ArticlePage
 	// 제일 마지막 페이지 계산
 	public void calcLastPage(int total, int cntPerPage) 
 	{
-		setLastPage((int) Math.ceil((double)total / (double)cntPerPage));
+		setLastPage((int) Math.ceil((double)total / (double)cntPerPage)+1);
 	}
 	
 	// 시작, 끝 페이지 계산
 	public void calcStartEndPage(int nowPage, int cntPage) 
 	{
-		setEndPage(((int)Math.ceil((double)nowPage / (double)cntPage)) * cntPage);
+		setEndPage(((int)Math.ceil((double)nowPage / (double)cntPage)) * cntPage+1);
 		if (getLastPage() < getEndPage()) {
 			setEndPage(getLastPage());
 		}
