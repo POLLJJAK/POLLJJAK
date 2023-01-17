@@ -88,20 +88,15 @@
 							      <li><a class="nav-link pb-0 scrollto active" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-lounge.action?u_p_apply_code=${u_p_apply_code }">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
 						
 						
-						
-						
 						<div class="container">
 						   <hr>
 						</div>
-
-
-
 
 
 
@@ -176,19 +171,22 @@
 								
 								<c:if test="${pj_team_leader.u_p_apply_code == u_p_apply_code }">
 									
-									<!-- 버튼 2개 -->
 									<div class="d-flex align-items-start flex-column pe-3 mb-3">
+									
 										<div class="mb-auto" data-bs-toggle="modal" data-bs-target="#mainWorkUpdate">
 											<button class="p-2 btn btn-white" style="background-color: #98E5AE; color: white;">
 												<div class="bi bi-pencil-square"></div>
 											</button>
 										</div>
+										
 										<div class="mt-auto">
 											<button class="p-2 btn btn-danger">
 												<div class="bi bi-trash3-fill"></div>
 											</button>
 										</div>
+										
 									</div>
+									
 								</c:if>
 								
 								
@@ -234,39 +232,46 @@
 		        	<h5 class="modal-title">주요 업무 등록</h5>
 		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      	</div>
-		      	<div class="modal-body row mb-3 justify-content-center">
 		      	
-					<div class="form-group mb-3 row">
-						<label class="col-sm-4 form-label">주요 업무 제목</label>
-						<div class="com-sm-3">
-							<input type="text" name="mainWorkTitle" class="form-control" placeholder="제목을 입력해주세요">
-						</div>
-					</div>
-					
-					<div class="form-group mb-3 row">
-						<label class="col-sm-6 form-label">주요 업무 진행 날짜</label>
-						<div class="com-sm-3">
+		      	<form action="addmainwork.action?u_p_apply_code=${u_p_apply_code}" method="post" id="addMainWorkForm">
+			      	<div class="modal-body row mb-3 justify-content-center">
+			      	
+						<div class="form-group mb-3 row">
+							<label class="col-sm-4 form-label">주요 업무 제목</label>
 							<div class="com-sm-3">
-						        <input type="text" name="startDate" value="" class="datepicker inp" placeholder="시작일" readonly="readonly"/> 
-								<input type="text" name="endDate" value="" class="datepicker inp" placeholder="종료일" readonly="readonly" />
+								<input type="text" name="ph_mainwork_title" class="form-control" placeholder="제목을 입력해주세요">
 							</div>
 						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label class="col-sm-4 form-label">진행 팀원</label>
-						<div class="checkbox">
-							<input type="checkbox" id="member1" name="member" value="member1"><label for="member1">팀원1</label>
-							<input type="checkbox" id="member2" name="member" value="member2"><label for="member2">팀원2</label>
-							<input type="checkbox" id="member3" name="member" value="member3"><label for="member3">팀원3</label>	
-							<input type="checkbox" id="member4" name="member" value="member4"><label for="member4">팀원4</label>
+						
+						<div class="form-group mb-3 row">
+							<label class="col-sm-6 form-label">주요 업무 진행 날짜</label>
+							<div class="com-sm-3">
+								<div class="d-flex com-sm-3">
+							        <input type="text" name="ph_mainwork_start_date" value="" class="datepicker inp p-1 me-2" placeholder="시작일" readonly="readonly"/> 
+									<input type="text" name="ph_mainwork_end_date" value="" class="datepicker inp p-1" placeholder="종료일" readonly="readonly" />
+								</div>
+							</div>
 						</div>
-					</div>
-					
-		      	</div>
-		      	<div class="modal-footer justify-content-center">
-		        	<button type="button" class="btn btn-primary" onclick="location.href='<%=cp %>/Inner-Project-home-mainWork.jsp';" style="cursor: pointer;">등록하기</button>
-		      	</div>
+						
+						<div class="form-group row">
+							<label class="col-sm-4 form-label">진행 팀원</label>
+							<div class="checkbox">
+								<c:forEach var="mainWorkInsertForm_memberlist" items="${mainWorkInsertForm_memberlist }">
+									<input type="checkbox"
+									id="${mainWorkInsertForm_memberlist.upa_code }" name="mainWorkMembers" value="${mainWorkInsertForm_memberlist.upa_code }">
+									<label for="${mainWorkInsertForm_memberlist.upa_code }"> ${mainWorkInsertForm_memberlist.insert_member }</label>
+								</c:forEach>
+							</div>
+						</div>
+						
+			      	</div>
+			      	
+			      	<div class="modal-footer justify-content-center">
+			        	<button type="button" class="btn btn-primary" style="cursor: pointer;" id="addMainWorkBtn">등록하기</button>
+			      	</div>
+		      	</form>
+		      	
+		      	
 		    </div>
 		 </div>
 	</div>
@@ -328,8 +333,14 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script>
 
+
+<script type="text/javascript">
+	$(function(){
+			$('#addMainWorkBtn').click(function(){
+				$('#addMainWorkForm').submit();
+			});
+	})
 </script>
 
 </html>

@@ -5,6 +5,16 @@
 
 <mapper namespace="com.test.mybatis.IInnerProjectSubWorkDAO">
 	
+	<select id="userName" resultType="java.lang.String">
+		SELECT A2.U_NAME 
+		 FROM U_P_APPLY A1, U A2
+		 WHERE A1.U_P_APPLY_CODE = #{u_p_apply_code}
+		   AND A1.USER_CODE = A2.USER_CODE
+	</select>
+	
+	
+	
+	
 	<select id="mainwork_title" resultType="com.test.dto.InnerProjectSubWorkDTO">
 		SELECT PH_MAINWORK_TITLE
 		, TO_CHAR(PH_MAINWORK_START_DATE, 'YYYY-MM-DD') AS PH_MAINWORK_START_DATE
@@ -15,7 +25,7 @@
 	
 	
 	<select id="mainwork_team" resultType="com.test.dto.InnerProjectSubWorkDTO">
-		SELECT A4.U_NAME AS main_u_name
+		SELECT A3.U_P_APPLY_CODE AS MAIN_U_P_APPLY_CODE, A4.U_NAME AS main_u_name
 		FROM PH_MAINWORK A1, PH_MAINWORK_MEMBER A2, U_P_APPLY A3, U A4
 		WHERE A1.PH_MAINWORK_CODE = #{ph_mainwork_code}
 		  AND A1.PH_MAINWORK_CODE = A2.PH_MAINWORK_CODE
@@ -60,6 +70,7 @@
 		SELECT 
 		A3.U_NAME
 		, A1.PH_SUBWORK_CODE
+		, A1.PH_SUBWORK_TITLE
 		, A1.PH_SUBWORK_DETAIL
 		, TO_CHAR(A1.PH_SUBWORK_START_DATE, 'YYYY-MM-DD') AS PH_SUBWORK_START_DATE
 		, 
@@ -102,6 +113,26 @@
 		WHERE A1.PH_MAINWORK_CODE = #{ph_mainwork_code}
 	</select>
 	
+	
+	
+	<insert id="addSubwork">
+		INSERT INTO PH_SUBWORK(
+		PH_SUBWORK_CODE, PH_MAINWORK_CODE
+		, U_P_APPLY_CODE, PH_SUBWORK_TITLE, PH_SUBWORK_DETAIL
+		, PH_SUBWORK_START_DATE )
+		VALUES('PHS'|| LPAD(PH_SUBWORK_CODE_SEQ.NEXTVAL, 7,'0'), #{ph_mainwork_code}
+		, #{u_p_apply_code}, #{ph_subwork_title}, #{ph_subwork_detail}
+		,  TO_DATE(SYSDATE,'YYYY-MM-DD HH24:MI:SS') )
+	</insert>
+	
+	
+		
+	<insert id="completeSubwork">
+		INSERT INTO PH_SUBWORK_COMPLETE(PH_SUBWORK_COMPLETE_CODE, PH_SUBWORK_CODE, PH_SUBWORK_COMPLETE)
+		VALUES('PHSC'|| LPAD(PH_SUBWORK_COMPLETE_CODE_SEQ.NEXTVAL, 6,'0')
+		,#{ph_subwork_code}, TO_DATE(SYSDATE,'YYYY-MM-DD HH24:MI:SS') )
+	</insert>
+
 	
 	
 	

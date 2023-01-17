@@ -155,7 +155,7 @@
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-mainwork.action?u_p_apply_code=${u_p_apply_code}">업무 관리</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-meet.action?u_p_apply_code=${u_p_apply_code}">회의록</a></li>
 							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-todo.action?u_p_apply_code=${u_p_apply_code }">일정 관리</a></li>
-							      <li><a class="nav-link pb-0 scrollto " href="Inner-Project-home-Lounge.jsp">라운지</a></li>
+							      <li><a class="nav-link pb-0 scrollto" href="inner-project-home-lounge.action?u_p_apply_code=${u_p_apply_code }">라운지</a></li>
 							   </ul>
 							</nav>
 						</div>
@@ -246,8 +246,13 @@
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${pj_team_leader.u_p_apply_code == u_p_apply_code }">
-												<div class="p-1 col-lg-2" data-bs-toggle="modal" data-bs-target="#inviteTeamBtn">
-													<button class="p-2 gradientBtn color-9" style="float: right;">팀원초대</button>
+												<div class="d-flex col-lg-2">
+													<div class="p-1 col-lg-6" data-bs-toggle="modal" data-bs-target="#moveProject_leader">
+														<button class="p-2 gradientBtn color-9" style="float: right;">권한위임</button>
+													</div>
+													<div class="p-1 col-lg-6" data-bs-toggle="modal" data-bs-target="#inviteTeamBtn">
+														<button class="p-2 gradientBtn color-9" style="float: right;">팀원초대</button>
+													</div>
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -435,8 +440,8 @@
 		
 		      	<form action="p_stop_project.action?u_p_apply_code=${u_p_apply_code}&p_team_confirm_code=${p_team_confirm_code.p_team_confirm_code}" method="post" id="pStopBtnForm">
 			      	<div class="modal-body row mb-3 justify-content-center">
-			      		<div>프로젝트를 중단하시겠습니까? ${p_team_confirm_code.p_team_confirm_code }</div>
-			      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다. ${u_p_apply_code }</div>
+			      		<div>프로젝트를 중단하시겠습니까?</div>
+			      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 중단한 프로젝트는 다시 시작할 수 없습니다.</div>
 			      		
 			      		<div class="form-group">
 							<textarea class="form-control" id="p_stop_reason" name="p_stop_reason" rows="2" placeholder="중단 사유를 입력해주세요." maxlength="100"></textarea>
@@ -453,6 +458,48 @@
 		    </div>
 		 </div>
 	</div>
+	
+	
+	
+	<!-- 팀장용 권한 양도 모달창 -->
+	<div class="modal fade" id="moveProject_leader" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title">팀장 양도</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		
+		      	<form action="pj_team_leader_move.action?u_p_apply_code=${u_p_apply_code}" method="post" id="pjMoveLeaderForm">
+			      	<div class="modal-body row mb-3 justify-content-center">
+			      		<div>팀장 권한을 양도하시겠습니까? ${p_team_confirm_code.p_team_confirm_code }</div>
+			      		<div style="margin-bottom: 20px; font-size: 12px; font-weight: bold;">※ 팀장 권한은 고유한 권한입니다. ${u_p_apply_code }</div>
+			      		
+				      	<div class="input-group mb-3">
+						  <label class="input-group-text" for="inputGroupSelect01">양도할 팀원 선택</label>
+						  <select class="form-select" id="inputGroupSelect01" name="team_member">
+						    <option selected>팀원명</option>
+							    <c:forEach var="pj_team_leader_modal_list" items="${pj_team_leader_modal_list}">
+							    	<option value="${pj_team_leader_modal_list.u_p_apply_code}">${pj_team_leader_modal_list.u_name }</option>
+						    	</c:forEach>
+						  </select>
+						</div>
+					
+			      		<div class="form-group">
+							<textarea class="form-control" id="p_leader_reason" name="p_leader_reason" rows="2" placeholder="양도 사유를 입력해주세요." maxlength="100"></textarea>
+							<div style="float: right; font-size: 12px;">(최대 100자)</div>
+						</div>
+						
+			      	</div>
+			      	<div class="modal-footer justify-content-center">
+			        	<button type="button" class="gradientBtn color-9" id="pjMoveLeaderBtn" >양도하기</button>
+			      	</div>
+		      	</form>
+		      	
+		    </div>
+		 </div>
+	</div>
+	
 
 </body>
 
