@@ -112,6 +112,7 @@ public class UserMyPageController
 		
 			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
 			
+			// user_code를 dto에 담아 뿌리기
 			user.setUser_code(user_code);
 
 			dao.search(user);
