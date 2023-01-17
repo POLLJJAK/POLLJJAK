@@ -72,12 +72,16 @@
 				<nav id="navbar" class="navbar">
 					<form name="navForm">
 						<input type="hidden" name="user_code"/>
+						<input type="hidden" name="arrSkills1"/>
+						<input type="hidden" name="arrSkills2"/>
+						<input type="hidden" name="arrSkills3"/>
 					</form>
 					<ul style="margin-left: auto; margin-right: auto;">
-						<li><a class="nav-link scrollto" href="userupdateform.action?user_code=${user_code }">정보</a></li>
+						<%-- <li><a class="nav-link scrollto" href="userupdateform.action?user_code=${user_code }">정보</a></li> --%>
+						<li><a class="nav-link scrollto" onclick="javascript:pageMove('userupdateform.action', '${user_code }', '${arrSkills1 }', '${arrSkills2 }', '${arrSkills3 }');">정보</a></li>
 						<li><a class="nav-link scrollto active" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="umypagenotification.action?user_code=${user_code }">알림</a></li>
-						<li><a class="nav-link scrollto " href="umypagelog.action?user_code=${user_code }">활동내역</a></li>
+						<%-- <li><a class="nav-link scrollto" href="umypagenotification.action?user_code=${user_code }">알림</a></li>
+						<li><a class="nav-link scrollto " href="umypagelog.action?user_code=${user_code }">활동내역</a></li> --%>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
@@ -142,6 +146,15 @@
 							class="carousel carousel-dark slide" data-bs-ride="carousel">
 							<div class="row">
 								<div class="col-12">
+								<c:choose>
+									<c:when test="${fn:length(myPageSupportPJ) == 0}">
+										<div class="container mb-3">
+											<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+												<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
 									<div class="col-1">
 										<button class="carousel-control-prev" type="button"
 											data-bs-target="#carousel-apply-project" data-bs-slide="prev">
@@ -160,15 +173,6 @@
 									<div class="carousel-inner">
 										<div class="carousel-item active">
 											<div class="carousel-row">
-												<c:choose>
-													<c:when test="${fn:length(myPageSupportPJ) == 0}">
-														<div class="container mb-3">
-															<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
-																<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
-															</div>
-														</div>
-													</c:when>
-													<c:otherwise>
 													<c:forEach var="myPageSupportPJ" items="${myPageSupportPJ }">
 														<div class="col-md-3 mb-3">
 															<div class="card" onclick="location.href='projectDetail.action?p_code=${myPageSupportPJ.p_code}'">
@@ -182,8 +186,6 @@
 															</div>
 														</div>
 													</c:forEach>
-													</c:otherwise>
-												</c:choose>
 											</div>
 										</div>
 										<!-- 
@@ -204,6 +206,8 @@
 										</div>
 										 -->
 									</div>
+									</c:otherwise>
+								</c:choose>
 								</div>
 							</div>
 						</div>
@@ -227,6 +231,15 @@
 						<div id="carousel-complete-project" class="carousel carousel-dark slide" data-bs-ride="carousel">
 							<div class="row">
 								<div class="col-12">
+								<c:choose>
+									<c:when test="${fn:length(myPageCompletePJ) == 0}">
+										<div class="container mb-3">
+											<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+												<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
 									<div class="col-1">
 										<button class="carousel-control-prev" type="button"
 											data-bs-target="#carousel-complete-project" data-bs-slide="prev">
@@ -245,15 +258,6 @@
 									<div class="carousel-inner">
 										<div class="carousel-item active">
 											<div class="carousel-row">
-												<c:choose>
-													<c:when test="${fn:length(myPageCompletePJ) == 0}">
-														<div class="container mb-3">
-															<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
-																<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
-															</div>
-														</div>
-													</c:when>
-													<c:otherwise>
 													<c:forEach var="myPageCompletePJ" items="${myPageCompletePJ }">
 														<div class="col-md-3 mb-3">
 															<div class="card" onclick="location.href='projectDetail.action?p_code=${myPageCompletePJ.p_code}'">
@@ -267,8 +271,6 @@
 															</div>
 														</div>
 													</c:forEach>
-													</c:otherwise>
-												</c:choose>
 											</div>
 										</div>
 										<!-- 
@@ -300,6 +302,8 @@
 										</div>
 										 -->
 									</div>
+									</c:otherwise>
+								</c:choose>
 								</div>
 							</div>
 						</div>
@@ -324,6 +328,15 @@
 						<div id="carousel-open-project" class="carousel carousel-dark slide" data-bs-ride="carousel">
 							<div class="row">
 								<div class="col-12">
+								<c:choose>
+									<c:when test="${fn:length(myPageOpenPJ) == 0}">
+									<div class="container mb-3">
+										<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
+											<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
+										</div>
+									</div>
+									</c:when>
+									<c:otherwise>
 									<div class="col-1">
 										<button class="carousel-control-prev" type="button"
 											data-bs-target="#carousel-open-project" data-bs-slide="prev">
@@ -342,15 +355,6 @@
 									<div class="carousel-inner">
 										<div class="carousel-item active">
 											<div class="carousel-row">
-											<c:choose>
-												<c:when test="${fn:length(myPageOpenPJ) == 0}">
-												<div class="container mb-3">
-													<div class="mt-3 mb-3 p-3 d-flex justify-content-center">
-														<div class="no-pj-title">프로젝트가 존재하지 않습니다.</div>
-													</div>
-												</div>
-												</c:when>
-												<c:otherwise>
 												<c:forEach var="myPageOpenPJ" items="${myPageOpenPJ }">
 												<div class="col-md-3 mb-3">
 													<div class="card" onclick="location.href='projectDetail.action?p_code=${myPageOpenPJ.p_code}'">
@@ -364,11 +368,11 @@
 													</div>
 												</div>
 												</c:forEach>
-												</c:otherwise>
-											</c:choose>
 											</div>
 										</div>
 									</div>
+									</c:otherwise>
+								</c:choose>
 								</div>
 							</div>
 						</div>
@@ -415,6 +419,22 @@
 		});
 	})
  */
+ 
+	// a태그 post 방식으로 넘기기
+	function pageMove(url, user_code, arrSkills1, arrSkills2, arrSkills3)
+	{
+		var f = document.navForm;	// 폼 name
+		
+		f.user_code = user_code;	// post 방식으로 넘기고 싶은 값
+		f.arrSkills1 = arrSkills1;	// post 방식으로 넘기고 싶은 값
+		f.arrSkills2 = arrSkills2;	// post 방식으로 넘기고 싶은 값
+		f.arrSkills3 = arrSkills3;	// post 방식으로 넘기고 싶은 값
+		f.action = url;				// post 방식으로 넘기고 싶은 값
+		f.method = "post";
+		
+		f.submit();
+		
+	}
  
 </script>
 

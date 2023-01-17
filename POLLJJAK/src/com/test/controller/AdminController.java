@@ -22,7 +22,7 @@ public class AdminController
 	
 	// 관리자 로그인 페이지로
 	@RequestMapping(value = "/adminloginform.action", method = RequestMethod.GET)
-	public String loginForm()
+	public String AdminloginForm()
 	{
 		String result = null;
 		
@@ -33,7 +33,7 @@ public class AdminController
 	
 	// 관리자 로그인
 	@RequestMapping(value="/adminlogin.action", method = RequestMethod.POST)
-	public String login(AdminDTO admin, HttpServletRequest request, HttpServletResponse response)
+	public String Adminlogin(AdminDTO admin, HttpServletRequest request, HttpServletResponse response)
 	{
 		String result = null;
 		
@@ -69,7 +69,7 @@ public class AdminController
 	
 	// 세션 없애기를 이용해 로그아웃
 	@RequestMapping(value = "/adminlogout.action", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request, HttpServletResponse response)
+	public String Adminlogout(HttpServletRequest request, HttpServletResponse response)
 	{
 		String result = null;
 				

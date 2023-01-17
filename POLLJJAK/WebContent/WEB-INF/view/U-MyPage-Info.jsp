@@ -56,22 +56,23 @@
 				<nav id="navbar" class="navbar">
 					<form name="navForm">
 						<input type="hidden" name="user_code"/>
-						<input type="hidden" name="arrSkills"/>
+						<input type="hidden" name="arrSkills1"/>
+						<input type="hidden" name="arrSkills2"/>
+						<input type="hidden" name="arrSkills3"/>
 					</form>
 					<ul style="margin-left: auto; margin-right: auto;">
 						<%-- <li><a class="nav-link scrollto active updateform" href="userupdateform.action?user_code=${user_code }">정보</a></li> --%>
-						<li><a class="nav-link scrollto active updateform" href="#">정보</a></li>
-						<%-- <li><a class="nav-link scrollto active updateform" onclick="javascript:pageMove('userupdateform.action', '${user_code }');">정보</a></li> --%>
+						<li><a class="nav-link scrollto active updateform" onclick="javascript:pageMove('userupdateform.action', '${user_code }', '${arrSkills1 }', '${arrSkills2 }', '${arrSkills3 }');">정보</a></li>
 						<li><a class="nav-link scrollto" href="umypageproject.action?user_code=${user_code }">프로젝트</a></li>
-						<li><a class="nav-link scrollto" href="umypagenotification.action?user_code=${user_code }">알림</a></li>
-						<li><a class="nav-link scrollto " href="umypagelog.action?user_code=${user_code }">활동내역</a></li>
+						<%-- <li><a class="nav-link scrollto" href="umypagenotification.action?user_code=${user_code }">알림</a></li>
+						<li><a class="nav-link scrollto " href="umypagelog.action?user_code=${user_code }">활동내역</a></li> --%>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
 				<hr>
 				<!-- End InnerNav -->
 				<div class = "row justify-content-end">
-					<form action="" class=" form-horizontal" method="post" id="">
+					<form action="userupdate.action" class=" form-horizontal" method="post" id="">
 				  		<fieldset disabled="disabled">
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
@@ -313,12 +314,14 @@
 	});
 	
 	// a태그 post 방식으로 넘기기
-	function pageMove(url, user_code, arrSkills)
+	function pageMove(url, user_code, arrSkills1, arrSkills2, arrSkills3)
 	{
 		var f = document.navForm;	// 폼 name
 		
 		f.user_code = user_code;	// post 방식으로 넘기고 싶은 값
-		f.user_code = arrSkills;	// post 방식으로 넘기고 싶은 값
+		f.arrSkills1 = arrSkills1;	// post 방식으로 넘기고 싶은 값
+		f.arrSkills2 = arrSkills2;	// post 방식으로 넘기고 싶은 값
+		f.arrSkills3 = arrSkills3;	// post 방식으로 넘기고 싶은 값
 		f.action = url;				// post 방식으로 넘기고 싶은 값
 		f.method = "post";
 		

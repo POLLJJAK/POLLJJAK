@@ -160,7 +160,11 @@ public class UserMyPageController
 			
 			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
 			
-			dao.update(user);
+			dao.updateInfo(user);
+			dao.updateskill(user);
+			dao.updateskill1(user);
+			dao.updateskill2(user);
+			dao.updateskill3(user);
 			
 			result = "redirect:userupdateform.action";
 		}
