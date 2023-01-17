@@ -283,7 +283,7 @@ public class LoginController
 	
 	// 비밀번호 찾기에서 이름/이메일/아이디 값 넘기기
 	@RequestMapping(value = "/ajaxFindPw.action", method = RequestMethod.POST)
-	public String PwCheck(UserDTO user, CompanyDTO company, Model model
+	public String FindPw(UserDTO user, CompanyDTO company, Model model
 					, HttpServletRequest request, HttpServletResponse response)
 	{
 		String result = null;

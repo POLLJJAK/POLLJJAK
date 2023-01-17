@@ -156,7 +156,7 @@ hr {
   color: #555555;
   white-space: nowrap;
   transition: 0.3s;
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
 .navbar button,

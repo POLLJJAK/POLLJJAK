@@ -8,7 +8,7 @@
 	<!-- 게시글 신고 -->
 	<insert id="reportPostAdd">
 		INSERT INTO REPORT_POST(REPORT_POST_CODE, L_POST_CODE, USER_CODE, REPORT_REASON_CODE, REPORT_DATE)
-		VALUES('REPS'||LPAD(REPORT_POST_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code}, #{user_code}, #{report_reason_code, jdbcType=VARCHAR}, SYSDATE)
+		VALUES('REPS'||LPAD(REPORT_POST_CODE_SEQ.NEXTVAL, 6,'0'), #{post_code, jdbcType=VARCHAR}, #{user_code, jdbcType=VARCHAR}, #{report_reason_code, jdbcType=VARCHAR}, SYSDATE)
 	</insert>
 	 
 </mapper>

@@ -127,12 +127,49 @@
 	
 	
 	<update id="updateInfo">
-		
+		UPDATE U
+		SET SUBJECT_PART_CODE = #{subject_part_code}
+		  , REGION_PART_CODE = #{region_part_code}
+		  , POSITION_PART_CODE = #{position_part_code}
+		  , TIME_PART_CODE = #{time_part_code}
+		  , DOMAIN_PART_CODE = #{domain_part_code}
+		  , U_NAME = #{name}
+		  , U_NICKNAME = #{u_nickname}
+		  , U_TEL = #{u_tel}
+		  , U_INTRO = #{u_intro}
+		  , U_PORTFOLIO_URL = #{u_portfolio_url}
+		  , U_PW = CRYPTPACK.ENCRYPT(#{pw}, #{pw})
+		WHERE USER_CODE = #{user_code};
 	</update>
-	<update id="updateskills">
-		
+	<update id="updateskill">
+		UPDATE U_SKILL
+		SET SKILL_PART_CODE = #{skill_part_code}
+		WHERE USER_CODE = #{user_code}
+		  AND U_SKILL_PART_CODE = 'USPT000001'
+	</update>
+	<update id="updateskill1">
+		UPDATE U_SKILL
+		SET SKILL_PART_CODE = #{skill_part_code1}
+		WHERE USER_CODE = #{user_code}
+		  AND U_SKILL_PART_CODE = 'USPT000002'
+          AND SKILL_PART_CODE = #{skill_part_code1}
+	</update>
+	<update id="updateskill2">
+		UPDATE U_SKILL
+		SET SKILL_PART_CODE = #{skill_part_code2}
+		WHERE USER_CODE = #{user_code}
+		  AND U_SKILL_PART_CODE = 'USPT000002'
+          AND SKILL_PART_CODE = #{skill_part_code2}
+	</update>
+	<update id="updateskill3">
+		UPDATE U_SKILL
+		SET SKILL_PART_CODE = #{skill_part_code3}
+		WHERE USER_CODE = #{user_code}
+		  AND U_SKILL_PART_CODE = 'USPT000002'
+          AND SKILL_PART_CODE = #{skill_part_code3}
 	</update>
 	
+	<!-- 개설 확정되어 진행 중인 프로젝트 -->
 	<select id="myPageRunPJ" resultType="com.test.dto.MyPageProjectListDTO">
 		 		 SELECT T1.P_NAME, T1.USER_CODE,
 		 TO_CHAR(T1.PJ_START_DATE, 'YYYY-MM-DD') AS PJ_START_DATE,
@@ -214,6 +251,7 @@
 		  	AND T1.SKILL_PART_CODE = T5.SKILL_PART_CODE
 	</select>
 	
+	<!-- 본인이 지원한 모집중인 프로젝트 -->
 	<select id="myPageSupportPJ" resultType="com.test.dto.MyPageProjectListDTO">
 		SELECT T1.P_NAME
 		     , T1.USER_CODE
@@ -232,6 +270,7 @@
 		  AND T3.USER_CODE = #{user_code}
 	</select>
 	
+	<!-- 완료된 프로젝트 -->
 	<select id="myPageCompletePJ" resultType="com.test.dto.MyPageProjectListDTO">
 		 SELECT T1.P_NAME
 		 	  , T1.USER_CODE
@@ -249,6 +288,7 @@
 		   AND T4.P_TEAM_CONFIRM_CODE = T5.P_TEAM_CONFIRM_CODE
 	</select>
 	
+	<!-- 본인이 개설한 모집중인 프로젝트 -->
 	<select id="myPageOpenPJ" resultType="com.test.dto.MyPageProjectListDTO">
 		SELECT T1.P_NAME
 		     , T1.USER_CODE
@@ -258,13 +298,13 @@
 		     , T1.P_CODE
 		     , T3.U_P_APPLY_CODE
 		     , T5.SKILL_PART
-		FROM P T1, P_POSITION T2, U_P_APPLY T3, P_TEAM_CONFIRM T4, SKILL_PART T5
+		FROM P T1, P_POSITION T2, U_P_APPLY T3, SKILL_PART T5
 		WHERE T1.P_CODE = T2.P_CODE
 		  AND T2.P_POSITION_CODE = T3.P_POSITION_CODE
-		  AND T1.P_CODE = T4.P_CODE
 		  AND T1.USER_CODE = T3.USER_CODE
 		  AND T1.SKILL_PART_CODE = T5.SKILL_PART_CODE
-		  AND T3.USER_CODE = #{user_code} 
+		  AND T1.P_CODE NOT IN (SELECT P_CODE FROM P_FAILED)
+		  AND T3.USER_CODE = #{user_code}
 	</select>
 	 
 </mapper>
