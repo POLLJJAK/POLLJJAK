@@ -39,7 +39,9 @@ public class ReportController
 		user_code = (String) session.getAttribute("user_code");
 		System.out.println(user_code);
 		
-		if (session.getAttribute("user_code") == null)
+		session.getAttribute("loginCheck");
+		
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}

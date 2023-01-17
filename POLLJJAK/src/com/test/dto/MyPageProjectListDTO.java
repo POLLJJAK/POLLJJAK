@@ -6,7 +6,6 @@ public class MyPageProjectListDTO
 	
 	private String user_code;
 	
-	private int all_percent;
 	private String p_code;
 	private String u_p_apply_code;
 	
@@ -69,14 +68,6 @@ public class MyPageProjectListDTO
 	public void setPj_end_date(String pj_end_date)
 	{
 		this.pj_end_date = pj_end_date;
-	}
-	public int getAll_percent()
-	{
-		return all_percent;
-	}
-	public void setAll_percent(int all_percent)
-	{
-		this.all_percent = all_percent;
 	}
 	public String getP_code()
 	{

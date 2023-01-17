@@ -34,9 +34,10 @@ public class IInnerProjectSubWorkController
 		String temp = null; 
 		
 		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -86,9 +87,10 @@ public class IInnerProjectSubWorkController
 		String temp = null; 
 		
 		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -125,9 +127,10 @@ public class IInnerProjectSubWorkController
 		String temp = null; 
 		
 		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}

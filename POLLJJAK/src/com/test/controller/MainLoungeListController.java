@@ -86,11 +86,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -117,11 +119,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -155,11 +159,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			model.addAttribute("likecheck", "");
 		}
@@ -195,11 +201,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -229,11 +237,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -259,11 +269,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -318,10 +330,11 @@ public class MainLoungeListController
 
 		String user_code = null; 
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -356,11 +369,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -394,11 +409,13 @@ public class MainLoungeListController
 		HttpSession session = request.getSession();
 
 		String user_code = null; 
+		String temp = null;
 		
-		user_code = (String) session.getAttribute("user_code");
-		System.out.println(user_code);
+		temp = (String) session.getAttribute("user_code");
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}

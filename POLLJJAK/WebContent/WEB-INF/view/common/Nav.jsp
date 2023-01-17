@@ -84,7 +84,7 @@
 				</li>
 				-->
 				<c:choose>
-				<c:when test="${loginCheck == null }">
+				<c:when test="${sessionScope.loginCheck == null }">
 				<li><a class="getstarted scrollto" href="loginform.action">로그인</a></li>
 				</c:when>
 					<c:otherwise>

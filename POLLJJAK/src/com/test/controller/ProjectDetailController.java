@@ -43,7 +43,9 @@ public class ProjectDetailController
 		user_code = (String) session.getAttribute("user_code");
 		System.out.println(user_code);
 		
-		if (session.getAttribute("user_code") == null)
+		session.getAttribute("loginCheck");
+		
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
@@ -122,12 +124,13 @@ public class ProjectDetailController
 		// 세션처리 -----------------------------------------
 		HttpSession session = request.getSession();
 
-		String temp = null; 
+		String temp = null;
 		
 		temp = (String) session.getAttribute("user_code");
-		System.out.println(temp);
+		session.getAttribute("loginCheck");
+		//System.out.println(temp);
 		
-		if (session.getAttribute("user_code") == null)
+		if (session.getAttribute("loginCheck") == null)
 		{
 			result = "redirect:killsessionLoginform.action";
 		}
