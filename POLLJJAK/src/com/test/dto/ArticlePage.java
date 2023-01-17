@@ -29,7 +29,7 @@ public class ArticlePage
 	// 제일 마지막 페이지 계산
 	public void calcLastPage(int total, int cntPerPage) 
 	{
-		setLastPage((int) Math.ceil((double)total / (double)cntPerPage)+1);
+		setLastPage((int) Math.ceil((double)total / (double)cntPerPage));
 	}
 	
 	// 시작, 끝 페이지 계산

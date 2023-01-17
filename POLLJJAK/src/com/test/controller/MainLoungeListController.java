@@ -146,20 +146,31 @@ public class MainLoungeListController
 	{
 		String result = null;
 		
-		HttpSession session = request.getSession();
+		
 		
 		IMainLoungeListDAO dao = sqlSession.getMapper(IMainLoungeListDAO.class);
 		String post_code = request.getParameter("post_code");
 		
+		// 세션처리 -----------------------------------------
+		HttpSession session = request.getSession();
+
+		String user_code = null; 
 		
-		String user_code = null;
 		user_code = (String) session.getAttribute("user_code");
+		System.out.println(user_code);
 		
-		
-		//System.out.println(user_code);
+		if (session.getAttribute("user_code") == null)
+		{
+			model.addAttribute("likecheck", "");
+		}
+		else
+		{
+			model.addAttribute("likecheck", dao.likecheck(post_code, user_code));
+		}
+		// ----------------------------------------- 세션처리
 		
 		model.addAttribute("postdetail", dao.postdetail(post_code));
-		model.addAttribute("likecheck", dao.likecheck(post_code, user_code));
+		//model.addAttribute("likecheck", dao.likecheck(post_code, user_code));
 		model.addAttribute("reportList", dao.reportList());
 		
 		
