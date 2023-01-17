@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+
+.form-control {
+	align-content: center;
+}
+
+.info {
+	padding: 1px;
+	border-bottom: 1px solid #999;
+	font-size: 0;
+}
+
+.info dl {
+	position: relative;
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.info dl:first-child {
+	padding-left: 0;
+}
+
+.info dl::before {
+	content: "";
+	position: absolute;
+	top: 1px;
+	left: 0;
+	display: block;
+	width: 3px;
+	height: 10px;
+	background: #ddd;
+}
+
+.info dl:first-child::before {
+	display: none;
+}
+
+.info dl dt, .info dl dd {
+	display: inline-block;
+	font-size: small;
+}
+
+.info dl dt {
+	padding-left: 9px;
+}
+
+.info dl dd {
+	margin-left: 10px;
+	color: #777;
+}
+
+.board_cmt {
+	width: 100%;
+	margin: auto;
+}
+
+.board_cmt_write {
+	width: 90%;
+	font-size: small;
+	margin-top: 50px;
+}
+
+.content {
+	padding: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.cmt-content {
+	float: left;
+	width: 90%;
+}
+
+.cmt-btn {
+	float: right;
+	width: 10%;
+	padding-left: 3%;
+}
+
+.cmt-contentlist {
+	border-bottom: 1px solid black;
+}
+
+.col-1 {
+	width: 100%;
+	border-bottom: 1px solid black;
+	padding: 1px;
+}
+
+.siren {
+	margin-left: 52%;
+	border-bottom: none;
+	float: right;
+	float: inherit;
+}
+
+.write_rereply {
+	width: 40%;
+	height: 100%;
+	
+}
+
+.reply-right {
+	text-align: right;
+	font-size: small;
+}
+
+.report_title {
+	text-align: left;
+	font-size: small;
+}
+
+.r_cmt {
+	width: 100%;
+	padding-left: 10%;
+	border-bottom: 1px solid black;
+}
+
