@@ -102,8 +102,10 @@ $(function (){
 	                    listHtml += "		</div>";
 	                    
 	                    // 로그인 했어
-	                    if("${user_code}" != ""){
-	
+	                    //if("${user_code}" != ""){
+                    	if("${user_code}" != ""){
+                    		//alert("${user_code}");
+                    		console.log(cu_code);
 	                        //댓글 작성자와 로그인회원코드가 일치할때 수정/삭제 버튼 등장
 	                        if("${user_code}" == cu_code){
 	                            listHtml += "		<div>";
