@@ -1809,7 +1809,7 @@ section {
     cursor: pointer;
 }
 .img-fluid {
-	height: 200px;
+	height: 100%;
     width: 100%;
     max-width: 100%;
     /* height: auto; */
