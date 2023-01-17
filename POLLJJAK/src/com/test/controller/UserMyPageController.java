@@ -112,6 +112,8 @@ public class UserMyPageController
 		
 			IUserDAO dao = sqlSession.getMapper(IUserDAO.class);
 			
+			user.setUser_code(user_code);
+
 			dao.search(user);
 			
 			model.addAttribute("user", dao.search(user));
@@ -124,6 +126,7 @@ public class UserMyPageController
 			
 			
 			String skills = dao.searchSkill(user);
+			
 			String[] arrSkills = skills.split(", ");
 			System.out.println(arrSkills);
 			
