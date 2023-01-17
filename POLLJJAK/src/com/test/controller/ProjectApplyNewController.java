@@ -28,7 +28,7 @@ public class ProjectApplyNewController {
    
    
 	@RequestMapping(value = "/projectapplynew.action")
-	public String commentList(HttpServletRequest request, Model model) throws JsonGenerationException, JsonMappingException, IOException 
+	public String getNewProject(HttpServletRequest request, Model model) throws JsonGenerationException, JsonMappingException, IOException 
 	{
 		String result = null;
 			
