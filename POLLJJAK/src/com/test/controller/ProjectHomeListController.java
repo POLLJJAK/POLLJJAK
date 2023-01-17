@@ -43,7 +43,7 @@ public class ProjectHomeListController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{

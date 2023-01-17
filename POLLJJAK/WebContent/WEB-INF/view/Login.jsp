@@ -41,6 +41,7 @@
 						<a href="registraionmainform.action">회원가입</a>
 					</div>
 				</div>
+				<div class="empty"></div>
 				<form action="login.action" method="post" id="login_form">
 					<div class="radioBtn">
 						<input class="userType" type="radio" id="user" name="userType" value="user" checked="checked"><label for="user">일반</label>
@@ -70,6 +71,7 @@
 						<a href="forgetpwform.action" >비밀번호 찾기</a>
 					</div>
 				</div>
+				<!-- 
 				<div class="sosial">
 					<div>
 						<div class="section-title pt-5">
@@ -98,8 +100,9 @@
 								</a>
 							</div>
 						</div>
-					</div> <!-- 소셜로그인 이미지 -->
-				</div> <!-- 소셜로그인 -->
+					</div> 소셜로그인 이미지
+				</div> 소셜로그인
+				 -->
 			</div> <!-- 왼쪽 파트 -->
 		</div>
 	</div> <!-- 전체 공간 -->

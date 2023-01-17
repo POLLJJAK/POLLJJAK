@@ -45,7 +45,7 @@ public class ProjectDetailController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -129,7 +129,7 @@ public class ProjectDetailController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{

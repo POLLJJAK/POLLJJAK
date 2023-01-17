@@ -45,7 +45,7 @@ public class IInnerProjectMainWorkController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -98,7 +98,7 @@ public class IInnerProjectMainWorkController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{

@@ -44,7 +44,7 @@ public class InnerProjectTeamManageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -119,7 +119,7 @@ public class InnerProjectTeamManageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -155,7 +155,7 @@ public class InnerProjectTeamManageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{
@@ -197,7 +197,7 @@ public class InnerProjectTeamManageController
 		
 		if (session.getAttribute("user_code") == null)
 		{
-			result = "redirect:loginform.action";
+			result = "redirect:killsessionLoginform.action";
 		}
 		else
 		{

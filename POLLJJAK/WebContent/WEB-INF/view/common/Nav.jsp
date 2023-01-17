@@ -83,7 +83,6 @@
 					</ul>
 				</li>
 				-->
-				<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
 				<c:choose>
 				<c:when test="${loginCheck == null }">
 				<li><a class="getstarted scrollto" href="loginform.action">로그인</a></li>
