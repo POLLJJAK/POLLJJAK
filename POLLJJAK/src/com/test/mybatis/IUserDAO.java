@@ -55,7 +55,11 @@ public interface IUserDAO
 	public String searchSkill(UserDTO dto);
 	
 	// 일반회원 정보 수정
-	public int update(UserDTO dto);
+	public int updateInfo(UserDTO dto);
+	public int updateskill(UserDTO dto);
+	public int updateskill1(UserDTO dto);
+	public int updateskill2(UserDTO dto);
+	public int updateskill3(UserDTO dto);
 	
 	// 일반회원 본인이 참여한 진행중인 프로젝트
 	public ArrayList<MyPageProjectListDTO> myPageRunPJ(String user_code);

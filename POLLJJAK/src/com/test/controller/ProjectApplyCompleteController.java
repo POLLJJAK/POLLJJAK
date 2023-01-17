@@ -28,7 +28,7 @@ public class ProjectApplyCompleteController {
    
    
 	@RequestMapping(value = "/projectapplycomplete.action")
-	public String commentList(HttpServletRequest request, Model model) throws JsonGenerationException, JsonMappingException, IOException 
+	public String getNewCompleteProject(HttpServletRequest request, Model model) throws JsonGenerationException, JsonMappingException, IOException 
 	{
 		String result = null;
 			

@@ -140,6 +140,40 @@
 				}
 				
 				ajaxRequest();
+				
+				/* 
+				$.ajax({
+					type: "get"
+					, url: "userupdateform.action"
+					, data: {"user_code": $("#user_code").val(), "pw": $("#pw").val()}
+					, dataType: "text"
+					, async: true
+					, success: function(data)
+					{
+						$(".err").css("display", "none");
+						
+							
+						if($.trim(data) == 0)
+						{
+							$("#err").html("비밀번호가 일치하지 않습니다.");
+							$("#err").css("display", "inline");
+							$("#pw").focus();
+							return;
+						}
+						else
+						{
+							$("#my_warning_form").attr("action", "userupdateform.action?user_code=" + $("#user_code").val());  
+							$("#my_warning_form").submit();
+						}
+							
+					}
+					, error :function(e)
+					{
+						alert("에러코드 : " + e.responseText + "/" + e.status);
+						$("#err").html("해당 정보가 없습니다.");
+					}
+				}); 
+				*/
 			});
 		});
 		
