@@ -211,8 +211,8 @@
 										<img class="img-fluid" alt="100%x280"
 											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
-											<h4 class="card-title">박성순의 프로젝트</h4>
-											<p class="card-text">박성순의 프로젝트</p>
+											<h4 class="card-title">박원석의 프로젝트</h4>
+											<p class="card-text">박원석의 프로젝트</p>
 											<p class="card-text">JAVA/Web</p>
 										</div>
 									</div>
@@ -226,8 +226,8 @@
 										<img class="img-fluid" alt="100%x280"
 											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
-											<h4 class="card-title">이상홍의 프로젝트</h4>
-											<p class="card-text">이상홍의 프로젝트</p>
+											<h4 class="card-title">유동현의 프로젝트</h4>
+											<p class="card-text">유동현의 프로젝트</p>
 											<p class="card-text">Network/Android</p>
 										</div>
 									</div>
@@ -237,8 +237,8 @@
 										<img class="img-fluid" alt="100%x280"
 											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
-											<h4 class="card-title">조윤상의 프로젝트</h4>
-											<p class="card-text">조윤상의 프로젝트</p>
+											<h4 class="card-title">김호진의 프로젝트</h4>
+											<p class="card-text">김호진의 프로젝트</p>
 											<p class="card-text">React/Angular</p>
 										</div>
 									</div>
@@ -248,8 +248,8 @@
 										<img class="img-fluid" alt="100%x280"
 											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
-											<h4 class="card-title">임권묵의 프로젝트</h4>
-											<p class="card-text">임권묵의 프로젝트</p>
+											<h4 class="card-title">임시연의 프로젝트</h4>
+											<p class="card-text">임시연의 프로젝트</p>
 											<p class="card-text">C++/C</p>
 										</div>
 									</div>
@@ -259,8 +259,8 @@
 										<img class="img-fluid" alt="100%x280"
 											src="https://images.unsplash.com/photo-1563725911583-7d108f720483">
 										<div class="card-body">
-											<h4 class="card-title">권희용의 프로젝트</h4>
-											<p class="card-text">권희용의 프로젝트</p>
+											<h4 class="card-title">최나윤의 프로젝트</h4>
+											<p class="card-text">최나윤의 프로젝트</p>
 											<p class="card-text">AI/Android</p>
 										</div>
 									</div>
