@@ -18,7 +18,7 @@
 <style>
     .form-control
     {
-    	align-content: center;
+    	/* align-content: center; */
     }
 	.info {
 	    padding: 10px;
@@ -141,7 +141,7 @@
 					
 					
 					<!-- 글내용 -->
-					<div style="width: 100%; align-content: center;">
+					<div style="width: 100%;">
 						<div id="content" class="content">
 						${noticedetail.content }
 						</div>
@@ -182,13 +182,6 @@
 </section>
 		
   </main><!-- End #main -->
-	<!-- 스크립트 -->
-	<script type="text/javascript">
-	
-	
-	
-	</script>
-	
 	
 <!-- footer import (js imported)-->
 <c:import url="./common/Footer.jsp" />

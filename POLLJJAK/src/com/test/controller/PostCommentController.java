@@ -100,7 +100,7 @@ public class PostCommentController {
 	}
 	
 	@RequestMapping(value = "/addrecomment.action", method = RequestMethod.GET)
-	public String likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
+	public String addReComment(HttpServletRequest request, @RequestParam("post_code") String post_code
 			, @RequestParam("comment_code") String comment_code, @RequestParam("content") String content, Model model  )
 	{
 		String result = "";
@@ -137,7 +137,7 @@ public class PostCommentController {
 	
 	
 	@RequestMapping(value = "/removecomment.action", method = RequestMethod.GET)
-	public String likeInsert(HttpServletRequest request, @RequestParam("post_code") String post_code
+	public String removeComment(HttpServletRequest request, @RequestParam("post_code") String post_code
 			, @RequestParam("comment_code") String comment_code, Model model  )
 	{
 		String result = "";
