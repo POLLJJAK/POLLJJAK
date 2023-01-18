@@ -4,7 +4,7 @@ $().ready(function(){
 		$('#addPart').click(function(){
 			
 			var appendedPartCnt = $(".appendedPart").length;
-			
+		
 			
 			if(appendedPartCnt == levelCheck() || $("input[name='count']").val() > levelCheck())
 			{
@@ -17,6 +17,7 @@ $().ready(function(){
 				}
 				return;
 			}
+			
 			
 			var add = 
 				`<tr class="appendedPart appendedPart${appendedPartCnt}">

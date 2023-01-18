@@ -63,6 +63,7 @@ String cp = request.getContextPath();
 									style="width: 60px; height: 60px; padding: 10px;"> <br>${pLeaderInfo[0].u_nickname}<br>
 								<p style="color: #007aff;">★★★★★</p>
 								<button class="btn-hover color-9">프로필</button>
+								<button class="btn-hover color-9" onclick="location.href='/POLLJJAK/projectDetail.action?p_code=${e.P_CODE}'">프로젝트 홈으로</button>
 								<br>
 								<br>
 								<hr>

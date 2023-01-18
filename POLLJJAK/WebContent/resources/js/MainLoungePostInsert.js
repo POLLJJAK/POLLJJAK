@@ -27,7 +27,6 @@ function registerSummernote(element, placeholder, max, callbackMax) {
 	        	  e.preventDefault();
 	            if (e.keyCode != 8)
 	              e.preventDefault();
-	            // add other keys ...
 	          }
 	        },
 	        onKeyup: function(e) {
