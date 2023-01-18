@@ -13,11 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
-	<insert id="addReComment">
+	<insert id="addReComment" parameterType="java.lang.String">
 		INSERT INTO L_POST_COMMENT(L_POST_COMMENT_CODE, L_POST_CODE, USER_CODE, L_POST_COMMENT_CODE2
                     , L_POST_COMMENT_CONTENT, L_POST_COMMENT_DATE, L_POST_COMMENT_DEPTH) 
-		VALUES('LPC'||LPAD(L_POST_COMMENT_CODE_SEQ.NEXTVAL, 7,'0'), #{post_code, jdbcType=VARCHAR}, #{user_code, jdbcType=VARCHAR}
-					, #{comment_code, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, SYSDATE, '1')
+		VALUES('LPC'||LPAD(L_POST_COMMENT_CODE_SEQ.NEXTVAL, 7,'0'), #{post_code}, #{user_code}
+					, #{comment_code}, #{content}, SYSDATE, '1')
 	</insert>
 	
 	<select id="list" parameterType="map" resultType="map">

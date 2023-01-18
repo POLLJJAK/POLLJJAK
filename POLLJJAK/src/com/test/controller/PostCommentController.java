@@ -103,7 +103,8 @@ public class PostCommentController {
 	
 	@RequestMapping(value = "/addrecomment.action", method = RequestMethod.GET)
 	public String addReComment(HttpServletRequest request, @RequestParam("post_code") String post_code
-			, @RequestParam("comment_code") String comment_code, @RequestParam("content") String content, Model model  )
+			, @RequestParam("comment_code") String comment_code, @RequestParam("content") String content, Model model
+			, PostCommentDTO redto)
 	{
 		String result = "";
 		
@@ -124,9 +125,18 @@ public class PostCommentController {
 		else
 		{
 		// ----------------------------------------- 세션처리
+			
+		//System.out.println(post_code);
 	
 		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
-		dao.addReComment(user_code, post_code, comment_code, content);
+		
+		//dao.addReComment(user_code, post_code, comment_code, content);
+		redto.setUser_code(user_code);
+		redto.setPost_code(post_code);
+		redto.setComment_code(comment_code);
+		redto.setContent(content);
+		
+		dao.addReComment(redto);
 		
 		int count = 0;
 		count = dao.commentCount(post_code);
