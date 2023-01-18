@@ -18,20 +18,17 @@
 <!-- head import (css imported)-->
 <c:import url="./common/Head.jsp" />
 
-<!-- 게시판 썸머노트 lite 버전(cdn아님)  -->
-	<script src="resources/js/summernote-lite.js"></script>
-  	<script src="resources/js/summernote-ko-KR.js"></script>
-	<link rel="stylesheet" href="<%=cp %>/resources/css/summernote-lite.css"/>
+<!-- 게시판 썸머노트 lite 버전  -->
+<script src="<%=cp %>/resources/js/summernote-lite.js"></script>
+<script src="<%=cp %>/resources/js/summernote-ko-KR.js"></script>
+<link href="<%=cp %>/resources/css/summernote-lite.css" rel="stylesheet">
+
 <link rel="stylesheet" href="<%=cp %>/resources/css/Inner-Project-home.css" />
 <link rel="stylesheet" href="<%=cp %>/resources/css/PostDetail.css" />
 <!-- js 연결 -->
 <script src="<%=cp %>/resources/js/MainLoungePostInsert.js"></script>
 
 <style>
-	.form-control
-    {
-    	align-content: center;
-    }
     
 	title{width: 2000px; text-align: left;}
 </style>
@@ -94,7 +91,7 @@
 					</table>
 					
 					<!-- 썸머노트 -->
-					<div style="width: 100%; align-content: center;">
+					<div style="width: 100%; ">
 						<textarea id="summernote" name="summernote"></textarea>
 					</div>
 					<div class="col-xs-12 text-right" style="text-align: right; font-size: small; font-weight: bold;">

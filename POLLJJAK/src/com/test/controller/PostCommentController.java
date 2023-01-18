@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -102,7 +103,7 @@ public class PostCommentController {
 	}
 	
 	@RequestMapping(value = "/addrecomment.action", method = RequestMethod.GET)
-	public String addReComment(HttpServletRequest request, @RequestParam("post_code") String post_code
+	public String addReComment(HttpServletRequest request, @Param("post_code") String post_code
 			, @RequestParam("comment_code") String comment_code, @RequestParam("content") String content, Model model  )
 	{
 		String result = "";
@@ -124,7 +125,8 @@ public class PostCommentController {
 		else
 		{
 		// ----------------------------------------- 세션처리
-	
+			
+			System.out.println(post_code);
 		IPostCommentDAO dao = sqlSession.getMapper(IPostCommentDAO.class);
 		dao.addReComment(user_code, post_code, comment_code, content);
 		
