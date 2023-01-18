@@ -17,7 +17,8 @@ public interface IPostCommentDAO {
 	public int addComment(PostCommentDTO dto);
 
 	// 대댓글 작성
-	public int addReComment(String user_code, String post_code, String comment_code, String content);
+	//public int addReComment(String user_code, String post_code, String comment_code, String content);
+	public int addReComment(PostCommentDTO dto);
 	
 	// 댓글 리스트
 	public List<Map<String, Object>> list(Map<String, Object> param);
