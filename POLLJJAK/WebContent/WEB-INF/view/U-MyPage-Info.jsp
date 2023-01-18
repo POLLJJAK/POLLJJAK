@@ -55,7 +55,7 @@
 				<!-- ====== InnerNav ====== -->
 				<nav id="navbar" class="navbar">
 					<form name="navForm">
-						<input type="hidden" name="user_code"/>
+						<input type="hidden" name="user_code" id="user_code" value="${user_code }"/>
 					</form>
 					<ul style="margin-left: auto; margin-right: auto;">
 						<li><a class="nav-link scrollto active updateform" onclick="javascript:pageMove('userupdateform.action', '${user_code }');">정보</a></li>
@@ -68,8 +68,8 @@
 				<hr>
 				<!-- End InnerNav -->
 				<div class = "row justify-content-end">
-					<form action="userupdate.action" class=" form-horizontal" method="post" id="my_update_form">
-				  		<fieldset disabled="disabled">
+					<form action="userupdate.action" class="form-horizontal" method="post" id="my_update_form">
+				  		<!-- <fieldset disabled="disabled"> -->
 							<div class="row mb-3">
 								<div class = "col-sm-3"></div>
 								<label for="id" class="col-sm-2 col-form-label">아이디</label>
@@ -246,18 +246,20 @@
 										</c:forEach>
 									</select>
 								</div>
+								<input type="text" class="form-control" id="user_code" name="user_code" 
+								value="${user.user_code }" disabled="disabled" hidden="hidden">
 								<div class = "col-sm-3"></div>
 							</div>
-					</fieldset>
+					<!-- </fieldset> -->
+					<div style = "text-align: center;">
+						<button type="button" class ="btn btn-primary" id ="modify" 
+						style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
+						수정하기</button>
+						<button type ="submit" class ="btn btn-primary" id ="modify_done" onclick="modifyMember()" 
+						style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
+						수정완료</button>
+					</div>
 				</form>
-				</div>
-				<div style = "text-align: center;">
-					<button type="button" class ="btn btn-primary" id ="modify" 
-					style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
-					수정하기</button>
-					<button type ="button" class ="btn btn-primary" id ="modify_done" 
-					style="background-color: #3498db; border-radius: 50px;width: 100px; border: none; display: inline-block;">
-					수정완료</button>
 				</div>
 			</div>
 			<hr>
@@ -295,12 +297,14 @@
 		{
 			$("fieldset").attr("disabled", false);
 			
+			/* 
 			$("#modify_done").click(function()
 			{
 				alert("수정이 완료되었습니다.");
 				$("#my_update_form").attr("action", "userupdate.action?user_code=" + $("#user_code").val());
 				$("#my_update_form").submit();
 			});
+			 */
 		});
 		/* 
 		$("#updateform").click(function()
@@ -309,6 +313,79 @@
 		});
 		 */
 	});
+	
+	function modifyMember() {
+	    
+	    var subject_part_code = $("#subject_part_code").val();
+	    var region_part_code = $("#region_part_code").val();
+	    var position_part_code = $("#position_part_code").val();
+	    var time_part_code = $("#time_part_code").val();
+	    var domain_part_code = $("#domain_part_code").val();
+	    var name = $("#name").val();
+	    var u_nickname = $("#u_nickname").val();
+	    var u_tel = $("#u_tel").val();
+	    var u_intro = $("#u_intro").val();
+	    var u_portfolio_url = $("#u_portfolio_url").val();
+	    var u_email = $("#u_email").val();
+	    
+	    var param = {"subject_part_code":subject_part_code
+	    		, "region_part_code":region_part_code
+	    		, "time_part_code":time_part_code
+	    		, "domain_part_code":domain_part_code
+	    		, "region_part_code":region_part_code
+	    		, "name":name
+	    		, "u_nickname":u_nickname
+	    		, "u_tel":u_tel
+	    		, "u_intro":u_intro
+	    		, "u_portfolio_url":u_portfolio_url
+	    		, "u_email":u_email}
+	    
+	    if(memberPass == '') {
+	        alert("비밀번호를 올바르게 입력해주세요.");
+	    } else {
+	        $.ajax({
+	            async:false,
+	            type:'POST',
+	            data: JSON.stringify(param),
+	            url:"userupdate.action",
+	            dataType: "text",
+	            contentType: "application/json; charset=UTF-8",
+	            success : function(data) {    
+	                alert("뿅이 완료되었습니다.");
+	                //location.href="";
+	            },
+	            error: function(jqXHR, textStatus, errorThrown) {
+	                alert("ERROR : " + textStatus + " : " + errorThrown);
+	            }        
+	        })
+	    }
+	    
+	}
+	
+	/*
+	function ajaxRequest()
+	{
+		$.ajaxSetup({async: false});
+		$.post("ajaxpwUser.action"
+				, {
+					user_code: $("#user_code").val(), pw: $("#pw").val()
+		}, function(data)
+		{
+			if ($.trim(data) == 0)
+			{
+				$("#err").html("비밀번호가 일치하지 않습니다.");
+				$("#err").css("display", "inline");
+				$("#pw").focus();
+				return;
+			}
+			else
+			{
+				$("#my_update_form").attr("action", "userupdateform.action?user_code=" + $("#user_code").val());  
+				$("#my_update_form").submit();
+			}
+		});
+	}
+	*/
 	
 	// a태그 post 방식으로 넘기기
 	function pageMove(url, user_code)

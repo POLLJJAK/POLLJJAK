@@ -47,7 +47,7 @@
 									아이디<em style="color: red;"> * </em>
 								</label>
 								<div class="col-sm-4" >
-									<input type="text" class="form-control" id="id" name="id" autofocus="autofocus">
+									<input type="text" class="form-control" id="id" name="id" placeholder="5~20자리 영문 및 숫자" autofocus="autofocus">
 									<span class="err" id="errId"></span> 
 									<span class="err" id="errIdCheck"></span> 
 								</div>
@@ -64,7 +64,7 @@
 									비밀번호<em style="color: red;"> * </em>
 								</label>
 								<div class="col-sm-4">
-									<input type="password" class="form-control" id="pw" name="pw" autocomplete="off">
+									<input type="password" class="form-control" id="pw" name="pw" placeholder="8~20자리 영문자, 숫자, 특수문자 1 개씩 포함" autocomplete="off">
 									안전도 <progress class="meter" max="4" value="0" id="meter"></progress>
 									<div class="textbox"></div>
 									<span class="err" id="pwSecure"></span><!-- 안전도 경고 -->
@@ -89,7 +89,7 @@
 									이름<em style="color: red;"> * </em>
 								</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="name" name="name">
+									<input type="text" class="form-control" id="name" name="name" placeholder="2자리이상 한글 및 영어">
 									<span class="err" id="errName"></span>
 								</div>
 								<div class = "col-sm-3"></div>
@@ -100,7 +100,7 @@
 									닉네임<em style="color: red;"> * </em>
 								</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="nickName" name="u_nickname">
+									<input type="text" class="form-control" id="nickName" name="u_nickname" placeholder="20자 이하 한글, 영문, 숫자">
 									<span class="err" id="errNickName"></span>
 								</div>
 								<div class = "col-sm-3"></div>
@@ -111,7 +111,7 @@
 									이메일<em style="color: red;"> * </em>
 								</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="email" name="email">
+									<input type="text" class="form-control" id="email" name="email" placeholder="5~20자 영문, 숫자">
 									<div class="input-group">
 										<span class="col-sm-1" style="text-align: center; padding-top: 5px;">@</span>
 										<select class="form-select" id="domain" name="domain_part_code">
@@ -132,7 +132,7 @@
 									전화번호<em style="color: red;"> * </em>
 								</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" id="tel" name="u_tel">
+									<input type="text" class="form-control" id="tel" name="u_tel" placeholder="하이픈(-) 제외한 숫자만">
 									<span class="err" id="errTel"></span>
 								</div>
 								<!-- 

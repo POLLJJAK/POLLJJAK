@@ -126,7 +126,7 @@
 	</select>
 	
 	
-	<update id="updateInfo">
+	<update id="updateInfo" parameterType="com.test.dto.UserDTO">
 		UPDATE U
 		SET SUBJECT_PART_CODE = #{subject_part_code}
 		  , REGION_PART_CODE = #{region_part_code}
@@ -141,27 +141,27 @@
 		  , U_EMAIL = #{u_email}
 		WHERE USER_CODE = #{user_code}
 	</update>
-	<update id="updateskill">
+	<update id="updateskill" parameterType="com.test.dto.UserDTO">
 		UPDATE U_SKILL
 		SET SKILL_PART_CODE = #{skill_part_code}
 		WHERE USER_CODE = #{user_code}
 		  AND U_SKILL_PART_CODE = 'USPT000001'
 	</update>
-	<update id="updateskill1">
+	<update id="updateskill1" parameterType="com.test.dto.UserDTO">
 		UPDATE U_SKILL
 		SET SKILL_PART_CODE = #{skill_part_code1}
 		WHERE USER_CODE = #{user_code}
 		  AND U_SKILL_PART_CODE = 'USPT000002'
           AND SKILL_PART_CODE = #{skill_part_code1}
 	</update>
-	<update id="updateskill2">
+	<update id="updateskill2" parameterType="com.test.dto.UserDTO">
 		UPDATE U_SKILL
 		SET SKILL_PART_CODE = #{skill_part_code2}
 		WHERE USER_CODE = #{user_code}
 		  AND U_SKILL_PART_CODE = 'USPT000002'
           AND SKILL_PART_CODE = #{skill_part_code2}
 	</update>
-	<update id="updateskill3">
+	<update id="updateskill3" parameterType="com.test.dto.UserDTO">
 		UPDATE U_SKILL
 		SET SKILL_PART_CODE = #{skill_part_code3}
 		WHERE USER_CODE = #{user_code}

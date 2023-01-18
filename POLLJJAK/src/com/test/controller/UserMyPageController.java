@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.SessionScope;
@@ -149,7 +150,7 @@ public class UserMyPageController
 	
 	// 일반 회원정보 수정(마이페이지 업데이트)
 	@RequestMapping(value = "/userupdate.action", method = RequestMethod.POST)
-	public String userUpdate(UserDTO user, HttpServletRequest request, Model model)
+	public String userUpdate(@RequestBody UserDTO user, HttpServletRequest request, Model model) throws Exception
 	{
 		String result = null;
 		// 세션처리 -----------------------------------------
