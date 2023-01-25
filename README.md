@@ -31,7 +31,7 @@
 <br>
 
 ### 프로젝트 소개 자료
-![1](프로젝트 문서/발표자료 PNG/003.png)
+![1](https://github.com/POLLJJAK/POLLJJAK/blob/c83cd33b4b1114ac1f2b70592a0197e43cd0b4de/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%84%9C/%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C%20PNG/003.png)
 ![2](프로젝트 문서/발표자료 PNG/004.png)
 ![3](프로젝트 문서/발표자료 PNG/006.png)
 ![4](프로젝트 문서/발표자료 PNG/007.png)
