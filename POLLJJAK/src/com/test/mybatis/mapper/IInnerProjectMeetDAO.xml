@@ -55,6 +55,7 @@
 			AND A2.USER_CODE = A3.USER_CODE
 		)
 		WHERE MEET_SID BETWEEN #{start} AND #{end}
+		ORDER BY PH_MEET_DATE DESC
 	</select>
 	
 	<select id="meetInsertForm_memberlist" resultType="com.test.dto.InnerProjectMeetDTO">
