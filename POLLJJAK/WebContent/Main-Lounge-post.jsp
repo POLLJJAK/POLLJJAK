@@ -585,7 +585,7 @@ function call()
        var content = $("#input_rereply" + comment_code).val();
        //content = content.trim();
 
-      alert(post_code);
+      //alert(post_code);
       
        if(content == ""){   // 입력된게 없을때
            alert("글을 입력하세요!");
