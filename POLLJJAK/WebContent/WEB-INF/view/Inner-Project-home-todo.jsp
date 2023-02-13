@@ -145,27 +145,28 @@ String cp = request.getContextPath();
 										 <div class="toast-body">
 										   	<div class="p-1">
 										   		<div class="mb-1">제목</div>
-										   		<input type="text" class="toDoInputBox" maxlength="30" >
+										   		<input type="text" class="toDoInputBox" id="todoTitle" name="todoTitle" maxlength="30" >
 										   	</div>
 										   	<div class="p-1">
 										   		<div class="mb-1">종류</div>
+										   		
 										   			<div class="radioBtn" id="cpt">
-														<input type="radio" id="cpt1" name="cpt" value="CPT0000001"><label for="cpt1">회의</label>
-														<input type="radio" id="cpt2" name="cpt" value="CPT0000002"><label for="cpt2">공통업무</label>
+														<input type="radio" id="cpt1" name="todoPartCode" value="CPT0000001"><label for="cpt1">회의</label>
+														<input type="radio" id="cpt2" name="todoPartCode" value="CPT0000002"><label for="cpt2">공통업무</label>
 													</div>
 													
 										   	</div>
 		 									<div class="p-1">
 												<div class="mb-1">시작일</div>
 												<div>
-													<input type="text" class="toDoInputBox2" id="start_schedule" name="todoStartDate">
-													<select name="start_time">
+													<input type="text" class="datepicker toDoInputBox2" id="start_schedule" name="todoStartDate">
+													<select id="start_hour" name="start_hour">
 														<c:forEach var="hour" begin="0" end="23">
 															<option value="<c:if test="${hour < 10}">0</c:if>${hour}"><c:if test="${hour < 10}">0</c:if>${hour}
 														</c:forEach>
 													</select> 시
 													
-													<select>
+													<select  id="start_minute" name="start_minute">
 														<c:forEach var="min" begin="0" end="59">
 															<option value="<c:if test="${min < 10}">0</c:if>${min}"><c:if test="${min < 10}">0</c:if>${min}
 														</c:forEach>
@@ -175,14 +176,14 @@ String cp = request.getContextPath();
 												
 												<div class="mb-1">종료일</div>
 												<div>
-													<input type="text" class="toDoInputBox2" id="end_schedule" name="todoEndDate">
-													<select name="end_time">
+													<input type="text" class="datepicker toDoInputBox2" id="end_schedule" name="todoEndDate">
+													<select id="end_hour" name="end_hour">
 														<c:forEach var="hour" begin="0" end="23">
 															<option value="<c:if test="${hour < 10}">0</c:if>${hour}"><c:if test="${hour < 10}">0</c:if>${hour}
 														</c:forEach>
 													</select> 시
 													
-													<select>
+													<select id="end_minute" name="end_minute">
 														<c:forEach var="min" begin="0" end="59">
 															<option value="<c:if test="${min < 10}">0</c:if>${min}"><c:if test="${min < 10}">0</c:if>${min}
 														</c:forEach>
@@ -191,7 +192,7 @@ String cp = request.getContextPath();
 											</div>
 											
 										    <div class="mt-2 pt-2 border-top">
-										      <button type="button" class="gradientBtn color-9" onclick="click_todoAdd()">등록하기</button>
+										      <button type="button" class="gradientBtn color-9" id="click_todoAdd">등록하기</button>
 										    </div>
 										  </div>
 										  
@@ -239,87 +240,148 @@ String cp = request.getContextPath();
 
 <script>
 	$(function() {
-			// calendar element 취득
-			var calendarEl = $('#calendar')[0];
-			
-			// full-calendar 생성하기
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				
-				// 해더에 표시할 툴바
-				headerToolbar : {
-					left : 'prev,next today',
-					center : 'title',
-					/* right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek' */
-				},
-				/* initialDate : '2022-12-25', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.) */
-				timeZone: 'Asia/Seoul',
-				locale : 'ko', // 한국어 설정
-				editable : true, // 수정 가능
-				selectable: true,
-				/*
-				드래그하면 마지막 날짜가 지정한 날짜의 다음날까지 포함해서 출력된다.
-		        ex) 2022-08-20 ~ 2022-08-21 까지 캘린더에 드래그하면 결과값은 2022-08-20 ~ 2022-08-22
-		        우리가 의도했던 결과와 다르므로 결과값을 임의로 조정해주어야 한다.  
-		        */
-		        select: function (info) {
-		            changeDateFormat(info);
-		        },
-				//================ajax 데이터 불러올 부분 ========================//
-				events: function(info, successCallback, failureCallback) {
-					
-					$.ajax({
-						url:"calendar.action?u_p_apply_code=" + '${u_p_apply_code}',
-						type:"GET",
-						dataType: "json",
-						success: function(data) {
-							alert("성공:" + data);
 		
-						},
-						error: function(data) {
-							//alert("error:"+ data);
-						}
-					});
+		// calendar element 취득
+		//var calendarEl = $('#calendar')[0];
+		var calendarEl = document.getElementById('calendar');
+		
+		// full-calendar 생성하기
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+			
+			// 해더에 표시할 툴바
+			headerToolbar : {
+				left : 'prev,next today',
+				center : 'title',
+				/* right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek' */
+			},
+			/* initialDate : '2022-12-25', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.) */
+			timeZone: 'Asia/Seoul',
+			locale : 'ko', // 한국어 설정
+			editable : true, // 수정 가능
+			selectable: true,
+	        select: function (info) {
+	            changeDateFormat(info);
+	        },
+			//================ajax 데이터 불러올 부분 ========================//
+			events: function(info, successCallback, failureCallback) {
+				$.ajax({
+					url:"calendar.action?u_p_apply_code=" + '${u_p_apply_code}',
+					type:"GET",
+					dataType: "json",
+					contentType : "application/json; charset-utf-8",
+					success: function(data) {
+						console.log(data);
+						successCallback(data);
+					}
 					
-				}
-
-			});
-			// 캘린더 랜더링
-			calendar.render();
+				});
+			}
+				
 		});
 		
+		// 캘린더 랜더링
+		calendar.render();
 		
-		
-		
+	});
 
+	
+		
+	
+	$(function() {
+		
+		
+		$('#click_todoAdd').click(function() {
+			// 일정 제목
+			var todoTitle = document.getElementById("todoTitle");
+			
+			
+			// 일정 분류
+			var radios = document.getElementsByName("todoPartCode").length;
+			var todoPartCode ='';
+			for(var i = 0; i < radios; i++) {
+				if(document.getElementsByName("todoPartCode")[i].checked == true)
+					todoPartCode = document.getElementsByName("todoPartCode")[i].value;
+			}
+			
+			
+			// 시작일
+			var start_schedule = document.getElementById("start_schedule");
+			var todoStartDate = start_schedule.value;
+			
+			var start_hour = document.getElementById("start_hour");
+			var start_minute = document.getElementById("start_minute");
+			var hour = '';
+			var minutes = '';
+			
+			for(var i = 0; i < start_hour.length; i++) {
+				if(document.getElementById("start_hour")[i].selected == true)
+					hour = document.getElementById("start_hour")[i].value;
+			}
+			for(var i = 0; i < start_minute.length; i++) {
+				if(document.getElementById("start_minute")[i].selected == true)
+					minute = document.getElementById("start_minute")[i].value;
+			}
+			
+			var start_date = todoStartDate + " " + hour + ":" + minute;
+			
+			
+			
+			// 종료일
+			var end_schedule = document.getElementById("end_schedule");
+			var todoEndDate = end_schedule.value;
+			
+			var end_hour = document.getElementById("end_hour");
+			var end_minute = document.getElementById("end_minute");
 
- 
-	function changeDateFormat(info) {
-	    const startDate = info.start; // 시작일자 Date 형식으로 저장
-	    const endDate = new Date(info.end.setDate(info.end.getDate() - 1)); // 마지막 날의 day를 -1하여 Date 형식으로 저장
-	    const startYear = startDate.getFullYear();
-	    const startMonth = startDate.getMonth() + 1;
-	    const startDay = startDate.getDate();
-	    const endYear = endDate.getFullYear();
-	    const endMonth = endDate.getMonth() + 1;
-	    const endDay = endDate.getDate();
+			for(var i = 0; i < end_hour.length; i++) {
+				if(document.getElementById("end_hour")[i].selected == true)
+					hour = document.getElementById("end_hour")[i].value;
+			}
+			for(var i = 0; i < end_minute.length; i++) {
+				if(document.getElementById("end_minute")[i].selected == true)
+					minute = document.getElementById("end_minute")[i].value;
+			}
+			
+			var end_date = todoEndDate + " " + hour + ":" + minute;
+		
+			
+			// todoTitle, todoPartCode, start_date, end_date
+			
+			if (todoTitle.value == "" || todoPartCode == "" || todoStartDate == "" || todoEndDate == "")
+			{
+				alert("빈칸 없이 입력해주세요.");
+			}
+			else {
+				insertTodo(todoTitle.value, todoPartCode, start_date, end_date);	
+			}
+
+		});
+		
+	});
+
+		
+	function insertTodo(todoTitle, todoPartCode, start_date, end_date) {
+		$.ajax({
+			url:"insertTodo.action?u_p_apply_code=" + '${u_p_apply_code}',
+			type:"POST",
+			data : { 
+				todoTitle : todoTitle,
+				todoPartCode : todoPartCode,
+				start_date : start_date,
+				end_date : end_date
+			},					
+			dataType: "text",
+			success : function(data) {
+				alert('일정이 등록되었습니다.');
+			},
+			error : function (err) {   
+				alert('일정 등록에 실패하였습니다.');
+				
+			}
+		});
+	};
 	
-	    // "YYYY-MM-DD" 형식으로 출력하게끔 만든다.
-	    // 한 자리 숫자를 두 자리 숫자로 만들기 위해 한 자리 수 앞에 0을 붙여줘야 한다.
-	    document.getElementById("start_schedule").value = startYear + "-" +
-	        (startMonth >= 10 ? startMonth : "0" + startMonth) +
-	        "-" +
-	        (startDay >= 10 ? startDay : "0" + startDay);
-	    document.getElementById("end_schedule").value =
-	        endYear +
-	        "-" +
-	        (endMonth >= 10 ? endMonth : "0" + endMonth) +
-	        "-" +
-	        (endDay >= 10 ? endDay : "0" + endDay);
-	}
-	
-	
-	
-	
+
 	
 	// 일정 등록 버튼 토스트창 표시
 	const toastTrigger = document.getElementById('addtoDo')
@@ -332,13 +394,6 @@ String cp = request.getContextPath();
 	  })
 	}
 	
-
-
-	$(function() {
-		
-		$('#').click(function() {
-		});	
-	});
 	
 	
 </script>

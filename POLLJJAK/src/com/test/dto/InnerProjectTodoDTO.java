@@ -3,15 +3,17 @@ package com.test.dto;
 public class InnerProjectTodoDTO
 {
 	private String todoCode;
-	private String todoPartCode;
-	private String todoUserCode;
 	private String todoTitle;
 	private String todoStartDate;
 	private String todoEndDate;
+	
+	private String todoPartCode;
+	private String todoUserCode;
 	private String todoInsertDate;
 	
 	
 	
+
 	private String u_p_apply_code;
 	
 	public String getU_p_apply_code()
@@ -22,8 +24,6 @@ public class InnerProjectTodoDTO
 	{
 		this.u_p_apply_code = u_p_apply_code;
 	}
-	
-	
 	
 	public String getTodoCode()
 	{
@@ -82,7 +82,42 @@ public class InnerProjectTodoDTO
 		this.todoInsertDate = todoInsertDate;
 	}
 	
+
 	
 	
+	
+	// fullcalendar 연동 
+	private String title;
+	private String start;
+	private String end;
+	
+	
+	public String getTitle()
+	{
+		return title;
+	}
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+	public String getStart()
+	{
+		return start;
+	}
+	public void setStart(String start)
+	{
+		this.start = start;
+	}
+	public String getEnd()
+	{
+		return end;
+	}
+	public void setEnd(String end)
+	{
+		this.end = end;
+	}
 	
 }
+	
+	
+	

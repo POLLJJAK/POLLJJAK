@@ -5,14 +5,17 @@
 
 <mapper namespace="com.test.mybatis.IInnerProjectTodoDAO">
 
-	<select id="tdm" parameterType = "String" resultType ="com.test.dto.InnerProjectTodoDTO">
-		SELECT PH_CAL_CODE
-		, PH_CAL_PART
-		, U_P_APPLY_CODE
-		, PH_CAL_TITLE
-		, PH_CAL_START_DATE
-		, PH_CAL_END_DATE
-		, PH_CAL_INSERT_DATE
+	
+	<resultMap type="HashMap" id="calMap">
+		<result property="title" column="title" />
+		<result property="start" column="start1" />
+		<result property="end" column="end1" />
+	</resultMap>
+	<select id="calenList" resultMap="calMap">
+		SELECT 
+		PH_CAL_TITLE AS title
+		, TO_CHAR(PH_CAL_START_DATE, 'YYYY-MM-DD"T"HH24:MI:SS') start1
+		, TO_CHAR(PH_CAL_END_DATE, 'YYYY-MM-DD"T"HH24:MI:SS') end1
 		
 		FROM PH_CAL PC, PH_CAL_PART PCP
 		WHERE PC.PH_CAL_PART_CODE = PCP.PH_CAL_PART_CODE
@@ -30,5 +33,19 @@
 			AND U_P_APPLY_CODE NOT IN (SELECT U_P_APPLY_CODE FROM P_REJECT)
 		)
 	</select>
+	
+	
+	<insert id="todoInsert">			
+		INSERT INTO PH_CAL(PH_CAL_CODE, PH_CAL_PART_CODE, U_P_APPLY_CODE, PH_CAL_TITLE, PH_CAL_START_DATE, PH_CAL_END_DATE, PH_CAL_INSERT_DATE)
+		VALUES(
+		'PHCA'|| LPAD(PH_CAL_CODE_SEQ.NEXTVAL, 6,'0')
+		, #{todoPartCode}
+		, #{u_p_apply_code}
+		, #{todoTitle}
+		, TO_DATE(#{todoStartDate},'YYYY-MM-DD HH24:MI:SS')
+		, TO_DATE(#{todoEndDate},'YYYY-MM-DD HH24:MI:SS')
+		, SYSDATE)
+	</insert>
+
 
 </mapper>
